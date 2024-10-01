@@ -96,18 +96,40 @@ limitations under the License.
     </features>
 
     <!-- Attributes -->
-    <attribute side="server" code="0x0000" define="SupportedAreas"      type="array"     entryType="AreaStruct"      writable="false" isNullable="false" optional="false">SupportedAreas</attribute>
-    <attribute side="server" code="0x0001" define="SupportedMaps"       type="array"     entryType="MapStruct"       writable="false" isNullable="false" optional="true" >SupportedMaps</attribute>
-    <attribute side="server" code="0x0002" define="SelectedAreas"       type="array"     entryType="int32u"          writable="false" isNullable="false" optional="false">SelectedAreas</attribute>
+    <attribute side="server" code="0x0000" define="SupportedAreas"      type="array"     entryType="AreaStruct"      writable="false" isNullable="false" optional="false">
+      <description>SupportedAreas</description>
+      <mandatoryConform/>
+    </attribute>
+    <attribute side="server" code="0x0001" define="SupportedMaps"       type="array"     entryType="MapStruct"       writable="false" isNullable="false" optional="true" >
+      <description>SupportedMaps</description>
+      <mandatoryConform>
+        <feature name="MAPS"/>
+      </mandatoryConform>
+    </attribute>
+    <attribute side="server" code="0x0002" define="SelectedAreas"       type="array"     entryType="int32u"          writable="false" isNullable="false" optional="false">
+      <description>SelectedAreas</description>
+      <mandatoryConform/>
+    </attribute>
     <attribute side="server" code="0x0003" define="CurrentArea"         type="int32u"                                writable="false" isNullable="true"  optional="true" >CurrentArea</attribute>
-    <attribute side="server" code="0x0004" define="EstimatedEndTime"    type="epoch_s"                               writable="false" isNullable="true"  optional="true" >EstimatedEndTime</attribute>
-    <attribute side="server" code="0x0005" define="Progress"            type="array"     entryType="ProgressStruct"  writable="false" isNullable="false" optional="true" >Progress</attribute>
+    <attribute side="server" code="0x0004" define="EstimatedEndTime"    type="epoch_s"                               writable="false" isNullable="true"  optional="true" >
+      <description>EstimatedEndTime</description>
+      <optionalConform>
+        <attribute name="CurrentArea"/>
+      </optionalConform>
+    </attribute>
+    <attribute side="server" code="0x0005" define="Progress"            type="array"     entryType="ProgressStruct"  writable="false" isNullable="false" optional="true" >
+      <description>Progress</description>
+      <mandatoryConform>
+        <feature name="PROG"/>
+      </mandatoryConform>
+    </attribute>
 
     <!-- Commands -->
     <command source="client" code="0x00" name="SelectAreas" response="SelectAreasResponse" optional="false">
       <description>
         Command used to select a set of device areas, where the device is to operate.
       </description>
+      <mandatoryConform/>
       <arg name="NewAreas" type="int32u" array="true"/>
     </command>
 
@@ -115,6 +137,7 @@ limitations under the License.
       <description>
         This command is sent by the device on receipt of the SelectAreas command.
       </description>
+      <mandatoryConform/>
       <arg name="Status"     type="SelectAreasStatus"/>
       <arg name="StatusText" type="char_string" length="256"/>
     </command>
@@ -130,6 +153,9 @@ limitations under the License.
       <description>
         This command is sent by the device on receipt of the SkipArea command.
       </description>
+      <mandatoryConform>
+        <command name="SkipArea"/>
+      </mandatoryConform>
       <arg name="Status"     type="SkipAreaStatus"/>
       <arg name="StatusText" type="char_string" length="256"/>
     </command>

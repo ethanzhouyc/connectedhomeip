@@ -199,45 +199,69 @@ limitations under the License.
       </feature>
     </features>
 
-    <attribute side="server" code="0x0000" define="LOAD_CONTROL_PROGRAMS" type="array" entryType="LoadControlProgramStruct" writable="false">LoadControlPrograms</attribute>
-    <attribute side="server" code="0x0001" define="NUMBER_OF_LOAD_CONTROL_PROGRAMS" type="int8u" min="5" writable="false" default="5">NumberOfLoadControlPrograms</attribute>
-    <attribute side="server" code="0x0002" define="LOAD_CONTROL_EVENTS" type="array" entryType="LoadControlEventStruct" writable="false">Events</attribute>
-    <attribute side="server" code="0x0003" define="LOAD_CONTROL_ACTIVE_EVENTS" type="array" entryType="LoadControlEventStruct" writable="false">ActiveEvents</attribute>
-    <attribute side="server" code="0x0004" define="NUMBER_OF_EVENTS_PER_PROGRAM" type="int8u" min="10" writable="false" default="10">NumberOfEventsPerProgram</attribute>
-    <attribute side="server" code="0x0005" define="NUMBER_OF_TRANSITIONS" type="int8u" min="3" writable="false" default="3">NumberOfTransitions</attribute>
+    <attribute side="server" code="0x0000" define="LOAD_CONTROL_PROGRAMS" type="array" entryType="LoadControlProgramStruct" writable="false">
+      <description>LoadControlPrograms</description>
+      <mandatoryConform/>
+    </attribute>
+    <attribute side="server" code="0x0001" define="NUMBER_OF_LOAD_CONTROL_PROGRAMS" type="int8u" min="5" writable="false" default="5">
+      <description>NumberOfLoadControlPrograms</description>
+      <mandatoryConform/>
+    </attribute>
+    <attribute side="server" code="0x0002" define="LOAD_CONTROL_EVENTS" type="array" entryType="LoadControlEventStruct" writable="false">
+      <description>Events</description>
+      <mandatoryConform/>
+    </attribute>
+    <attribute side="server" code="0x0003" define="LOAD_CONTROL_ACTIVE_EVENTS" type="array" entryType="LoadControlEventStruct" writable="false">
+      <description>ActiveEvents</description>
+      <mandatoryConform/>
+    </attribute>
+    <attribute side="server" code="0x0004" define="NUMBER_OF_EVENTS_PER_PROGRAM" type="int8u" min="10" writable="false" default="10">
+      <description>NumberOfEventsPerProgram</description>
+      <mandatoryConform/>
+    </attribute>
+    <attribute side="server" code="0x0005" define="NUMBER_OF_TRANSITIONS" type="int8u" min="3" writable="false" default="3">
+      <description>NumberOfTransitions</description>
+      <mandatoryConform/>
+    </attribute>
     <attribute side="server" code="0x0006" define="DEFAULT_RANDOM_START" type="int8u" min="0" max="0x3C" default="0x1E" writable="true">
       <description>DefaultRandomStart</description>
       <access op="read" privilege="view"/>
       <access op="write" privilege="manage"/>
+      <mandatoryConform/>
     </attribute>
     <attribute side="server" code="0x0007" define="DEFAULT_RANDOM_DURATION" type="int8u" min="0" max="0x3C" default="0" writable="true">
       <description>DefaultRandomDuration</description>
       <access op="read" privilege="view"/>
       <access op="write" privilege="manage"/>
+      <mandatoryConform/>
     </attribute>
 
     <command source="client" code="0x00" name="RegisterLoadControlProgramRequest" optional="false">
       <description>
         Upon receipt, this SHALL insert a new LoadControlProgramStruct into LoadControlPrograms, or if the ProgramID matches an existing LoadControlProgramStruct, then the provider SHALL be updated with the provided values.
       </description>
+      <mandatoryConform/>
       <arg name="LoadControlProgram" type="LoadControlProgramStruct"/>
     </command>
     <command source="client" code="0x01" name="UnregisterLoadControlProgramRequest" optional="false">
       <description>
         Upon receipt, this SHALL remove a the LoadControlProgramStruct from LoadControlPrograms with the matching ProgramID.
       </description>
+      <mandatoryConform/>
       <arg name="LoadControlProgramID" type="octet_string" length="16"/>
     </command>
     <command source="client" code="0x02" name="AddLoadControlEventRequest" optional="false">
       <description>
         On receipt of the AddLoadControlEventsRequest command, the server SHALL add a load control event.
       </description>
+      <mandatoryConform/>
       <arg name="Event" type="LoadControlEventStruct"/>
     </command>
     <command source="client" code="0x03" name="RemoveLoadControlEventRequest" optional="false">
       <description>
         Upon receipt, this SHALL remove the LoadControlEventStruct with the matching EventID from LoadEventPrograms.
       </description>
+      <mandatoryConform/>
       <arg name="EventID" type="octet_string" length="16"/>
       <arg name="CancelControl" type="CancelControlBitmap"/>
     </command>

@@ -133,128 +133,253 @@ limitations under the License.
             cluster itself. Those attributes/commands are marked with a special comment. -->
 
         <!-- Attributes -->
-        <attribute side="server" code="0" define="LOCK_STATE" type="DlLockState" min="0" max="3" isNullable="true" reportable="true" writable="false">LockState</attribute>
-        <attribute side="server" code="1" define="LOCK_TYPE" type="DlLockType" min="0" max="11" writable="false">LockType</attribute>
-        <attribute side="server" code="2" define="ACTUATOR_ENABLED" type="boolean" writable="false">ActuatorEnabled</attribute>
+        <attribute side="server" code="0" define="LOCK_STATE" type="DlLockState" min="0" max="3" isNullable="true" reportable="true" writable="false">
+            <description>LockState</description>
+            <mandatoryConform/>
+        </attribute>
+        <attribute side="server" code="1" define="LOCK_TYPE" type="DlLockType" min="0" max="11" writable="false">
+            <description>LockType</description>
+            <mandatoryConform/>
+        </attribute>
+        <attribute side="server" code="2" define="ACTUATOR_ENABLED" type="boolean" writable="false">
+            <description>ActuatorEnabled</description>
+            <mandatoryConform/>
+        </attribute>
         <!-- Conformance feature DPS - for now optional -->
-        <attribute side="server" code="3" define="DOOR_STATE" type="DoorStateEnum" min="0" max="5" isNullable="true" reportable="true" optional="true">DoorState</attribute>
+        <attribute side="server" code="3" define="DOOR_STATE" type="DoorStateEnum" min="0" max="5" isNullable="true" reportable="true" optional="true">
+            <description>DoorState</description>
+            <mandatoryConform>
+                <feature name="DPS"/>
+            </mandatoryConform>
+        </attribute>
         <!-- Conformance feature [DPS] - for now optional -->
         <attribute side="server" code="4" define="DOOR_OPEN_EVENTS" type="int32u" writable="true" optional="true">
             <description>DoorOpenEvents</description>
             <access op="read" role="view" />
             <access op="write" role="manage" />
+            <optionalConform>
+                <feature name="DPS"/>
+            </optionalConform>
         </attribute>
         <!-- Conformance feature [DPS] - for now optional -->
         <attribute side="server" code="5" define="DOOR_CLOSED_EVENTS" type="int32u" writable="true" optional="true">
             <description>DoorClosedEvents</description>
             <access op="read" role="view" />
             <access op="write" role="manage" />
+            <optionalConform>
+                <feature name="DPS"/>
+            </optionalConform>
         </attribute>
         <!-- Conformance feature [DPS] - for now optional -->
         <attribute side="server" code="6" define="OPEN_PERIOD" type="int16u" writable="true" optional="true">
             <description>OpenPeriod</description>
             <access op="read" role="view" />
             <access op="write" role="manage" />
+            <optionalConform>
+                <feature name="DPS"/>
+            </optionalConform>
         </attribute>
         <!-- Conformance feature USR - for now optional -->
-        <attribute side="server" code="17" define="NUM_TOTAL_USERS_SUPPORTED" type="int16u" default="0" writable="false" optional="true">NumberOfTotalUsersSupported</attribute>
+        <attribute side="server" code="17" define="NUM_TOTAL_USERS_SUPPORTED" type="int16u" default="0" writable="false" optional="true">
+            <description>NumberOfTotalUsersSupported</description>
+            <mandatoryConform>
+                <feature name="USR"/>
+            </mandatoryConform>
+        </attribute>
         <!-- Conformance feature PIN - for now optional -->
-        <attribute side="server" code="18" define="NUM_PIN_USERS_SUPPORTED" type="int16u" default="0" writable="false" optional="true">NumberOfPINUsersSupported</attribute>
+        <attribute side="server" code="18" define="NUM_PIN_USERS_SUPPORTED" type="int16u" default="0" writable="false" optional="true">
+            <description>NumberOfPINUsersSupported</description>
+            <mandatoryConform>
+                <feature name="PIN"/>
+            </mandatoryConform>
+        </attribute>
         <!-- Conformance feature RFID - for now optional -->
-        <attribute side="server" code="19" define="NUM_RFID_USERS_SUPPORTED" type="int16u" default="0" writable="false" optional="true">NumberOfRFIDUsersSupported</attribute>
+        <attribute side="server" code="19" define="NUM_RFID_USERS_SUPPORTED" type="int16u" default="0" writable="false" optional="true">
+            <description>NumberOfRFIDUsersSupported</description>
+            <mandatoryConform>
+                <feature name="RID"/>
+            </mandatoryConform>
+        </attribute>
         <!-- Conformance feature WDSCH - for now optional -->
-        <attribute side="server" code="20" define="NUM_WEEKDAY_SCHEDULES_SUPPORTED_PER_USER" type="int8u" default="0" writable="false" optional="true">NumberOfWeekDaySchedulesSupportedPerUser</attribute>
+        <attribute side="server" code="20" define="NUM_WEEKDAY_SCHEDULES_SUPPORTED_PER_USER" type="int8u" default="0" writable="false" optional="true">
+            <description>NumberOfWeekDaySchedulesSupportedPerUser</description>
+            <mandatoryConform>
+                <feature name="WDSCH"/>
+            </mandatoryConform>
+        </attribute>
         <!-- Conformance feature YDSCH - for now optional -->
-        <attribute side="server" code="21" define="NUM_YEARDAY_SCHEDULES_SUPPORTED_PER_USER" type="int8u" default="0" writable="false" optional="true">NumberOfYearDaySchedulesSupportedPerUser</attribute>
+        <attribute side="server" code="21" define="NUM_YEARDAY_SCHEDULES_SUPPORTED_PER_USER" type="int8u" default="0" writable="false" optional="true">
+            <description>NumberOfYearDaySchedulesSupportedPerUser</description>
+            <mandatoryConform>
+                <feature name="YDSCH"/>
+            </mandatoryConform>
+        </attribute>
         <!-- Conformance feature HDSCH - for now optional -->
-        <attribute side="server" code="22" define="NUM_HOLIDAY_SCHEDULES_SUPPORTED" type="int8u" default="0" writable="false" optional="true">NumberOfHolidaySchedulesSupported</attribute>
+        <attribute side="server" code="22" define="NUM_HOLIDAY_SCHEDULES_SUPPORTED" type="int8u" default="0" writable="false" optional="true">
+            <description>NumberOfHolidaySchedulesSupported</description>
+            <mandatoryConform>
+                <feature name="HDSCH"/>
+            </mandatoryConform>
+        </attribute>
         <!-- Conformance feature PIN - for now optional -->
-        <attribute side="server" code="23" define="MAX_PIN_LENGTH" type="int8u" writable="false" optional="true">MaxPINCodeLength</attribute>
+        <attribute side="server" code="23" define="MAX_PIN_LENGTH" type="int8u" writable="false" optional="true">
+            <description>MaxPINCodeLength</description>
+            <mandatoryConform>
+                <feature name="PIN"/>
+            </mandatoryConform>
+        </attribute>
         <!-- Conformance feature PIN - for now optional -->
-        <attribute side="server" code="24" define="MIN_PIN_LENGTH" type="int8u" writable="false" optional="true">MinPINCodeLength</attribute>
+        <attribute side="server" code="24" define="MIN_PIN_LENGTH" type="int8u" writable="false" optional="true">
+            <description>MinPINCodeLength</description>
+            <mandatoryConform>
+                <feature name="PIN"/>
+            </mandatoryConform>
+        </attribute>
         <!-- Conformance feature RID - for now optional -->
-        <attribute side="server" code="25" define="MAX_RFID_CODE_LENGTH" type="int8u" writable="false" optional="true">MaxRFIDCodeLength</attribute>
+        <attribute side="server" code="25" define="MAX_RFID_CODE_LENGTH" type="int8u" writable="false" optional="true">
+            <description>MaxRFIDCodeLength</description>
+            <mandatoryConform>
+                <feature name="RID"/>
+            </mandatoryConform>
+        </attribute>
         <!-- Conformance feature RID - for now optional -->
-        <attribute side="server" code="26" define="MIN_RFID_CODE_LENGTH" type="int8u" writable="false" optional="true">MinRFIDCodeLength</attribute>
+        <attribute side="server" code="26" define="MIN_RFID_CODE_LENGTH" type="int8u" writable="false" optional="true">
+            <description>MinRFIDCodeLength</description>
+            <mandatoryConform>
+                <feature name="RID"/>
+            </mandatoryConform>
+        </attribute>
         <!-- Conformance feature USR - for now optional -->
-        <attribute side="server" code="27" define="CREDENTIAL_RULES_SUPPORT" type="DlCredentialRuleMask" min="0x00" max="0xFF" default="1" writable="false" optional="true">CredentialRulesSupport</attribute>
+        <attribute side="server" code="27" define="CREDENTIAL_RULES_SUPPORT" type="DlCredentialRuleMask" min="0x00" max="0xFF" default="1" writable="false" optional="true">
+            <description>CredentialRulesSupport</description>
+            <mandatoryConform>
+                <feature name="USR"/>
+            </mandatoryConform>
+        </attribute>
         <!-- Conformance feature USR - for now optional  -->
-        <attribute side="server" code="28" define="NUM_CREDENTIALS_SUPPORTED_PER_USER" type="int8u" default="0" writable="false" optional="true">NumberOfCredentialsSupportedPerUser</attribute>
+        <attribute side="server" code="28" define="NUM_CREDENTIALS_SUPPORTED_PER_USER" type="int8u" default="0" writable="false" optional="true">
+            <description>NumberOfCredentialsSupportedPerUser</description>
+            <mandatoryConform>
+                <feature name="USR"/>
+            </mandatoryConform>
+        </attribute>
         <attribute side="server" code="33" define="LANGUAGE" type="char_string" length="3" reportable="true" writable="true" optional="true">
             <description>Language</description>
             <access op="read" role="view" />
             <access op="write" role="manage" />
+            <optionalConform/>
         </attribute>
         <attribute side="server" code="34" define="LED_SETTINGS" type="int8u" min="0" max="2" reportable="true" default="0" writable="true" optional="true">
             <description>LEDSettings</description>
             <access op="read" role="view" />
             <access op="write" role="manage" />
+            <optionalConform/>
         </attribute>
         <attribute side="server" code="35" define="AUTO_RELOCK_TIME" type="int32u" reportable="true" writable="true" optional="true">
             <description>AutoRelockTime</description>
             <access op="read" role="view" />
             <access op="write" role="manage" />
+            <optionalConform/>
         </attribute>
         <attribute side="server" code="36" define="SOUND_VOLUME" type="int8u" min="0" max="3" reportable="true" default="0" writable="true" optional="true">
             <description>SoundVolume</description>
             <access op="read" role="view" />
             <access op="write" role="manage" />
+            <optionalConform/>
         </attribute>
         <attribute side="server" code="37" define="OPERATING_MODE" type="OperatingModeEnum" min="0" max="4" reportable="true" writable="true">
             <description>OperatingMode</description>
             <access op="read" role="view" />
             <access op="write" role="manage" />
+            <mandatoryConform/>
         </attribute>
-        <attribute side="server" code="38" define="SUPPORTED_OPERATING_MODES" type="DlSupportedOperatingModes" min="0x0000" max="0xFFFF" default="0xFFF6" writable="false">SupportedOperatingModes</attribute>
-        <attribute side="server" code="39" define="DEFAULT_CONFIGURATION_REGISTER" type="DlDefaultConfigurationRegister" min="0x0000" max="0xFFFF" reportable="true" default="0" writable="false" optional="true">DefaultConfigurationRegister</attribute>
+        <attribute side="server" code="38" define="SUPPORTED_OPERATING_MODES" type="DlSupportedOperatingModes" min="0x0000" max="0xFFFF" default="0xFFF6" writable="false">
+            <description>SupportedOperatingModes</description>
+            <mandatoryConform/>
+        </attribute>
+        <attribute side="server" code="39" define="DEFAULT_CONFIGURATION_REGISTER" type="DlDefaultConfigurationRegister" min="0x0000" max="0xFFFF" reportable="true" default="0" writable="false" optional="true">
+            <description>DefaultConfigurationRegister</description>
+            <optionalConform/>
+        </attribute>
         <attribute side="server" code="40" define="ENABLE_LOCAL_PROGRAMMING" type="boolean" reportable="true" default="1" writable="true" optional="true">
             <description>EnableLocalProgramming</description>
             <access op="read" role="view" />
             <access op="write" role="administer" />
+            <optionalConform/>
         </attribute>
         <attribute side="server" code="41" define="ENABLE_ONE_TOUCH_LOCKING" type="boolean" reportable="true" default="0" writable="true" optional="true">
             <description>EnableOneTouchLocking</description>
             <access op="read" role="view" />
             <access op="write" role="manage" />
+            <optionalConform/>
         </attribute>
         <attribute side="server" code="42" define="ENABLE_INSIDE_STATUS_LED" type="boolean" reportable="true" default="0" writable="true" optional="true">
             <description>EnableInsideStatusLED</description>
             <access op="read" role="view" />
             <access op="write" role="manage" />
+            <optionalConform/>
         </attribute>
         <attribute side="server" code="43" define="ENABLE_PRIVACY_MODE_BUTTON" type="boolean" reportable="true" default="0" writable="true" optional="true">
             <description>EnablePrivacyModeButton</description>
             <access op="read" role="view" />
             <access op="write" role="manage" />
+            <optionalConform/>
         </attribute>
         <attribute side="server" code="44" define="LOCAL_PROGRAMMING_FEATURES" type="DlLocalProgrammingFeatures" min="0x0" max="0x0F" reportable="true" default="0" writable="true" optional="true">
             <description>LocalProgrammingFeatures</description>
             <access op="read" role="view" />
             <access op="write" role="administer" />
+            <optionalConform/>
         </attribute>
         <!-- Conformance feature PIN | RID - for now optional -->
         <attribute side="server" code="48" define="WRONG_CODE_ENTRY_LIMIT" type="int8u" min="1" max="255" reportable="true" writable="true" optional="true">
             <description>WrongCodeEntryLimit</description>
             <access op="read" role="view" />
             <access op="write" role="administer" />
+            <mandatoryConform>
+                <orTerm>
+                    <feature name="PIN"/>
+                    <feature name="RID"/>
+                </orTerm>
+            </mandatoryConform>
         </attribute>
         <!-- Conformance feature PIN | RID - for now optional -->
         <attribute side="server" code="49" define="USER_CODE_TEMPORARY_DISABLE_TIME" type="int8u" min="1" max="255" reportable="true" writable="true" optional="true">
             <description>UserCodeTemporaryDisableTime</description>
             <access op="read" role="view" />
             <access op="write" role="administer" />
+            <mandatoryConform>
+                <orTerm>
+                    <feature name="PIN"/>
+                    <feature name="RID"/>
+                </orTerm>
+            </mandatoryConform>
         </attribute>
         <!-- Conformance feature [PIN] - for now optional -->
         <attribute side="server" code="50" define="SEND_PIN_OVER_THE_AIR" type="boolean" reportable="true" default="0" writable="true" optional="true">
             <description>SendPINOverTheAir</description>
             <access op="read" role="view" />
             <access op="write" role="administer" />
+            <optionalConform>
+                <andTerm>
+                    <notTerm>
+                        <feature name="USR"/>
+                    </notTerm>
+                    <feature name="PIN"/>
+                </andTerm>
+            </optionalConform>
         </attribute>
         <!-- Conformance feature COTA & PIN - for now optional -->
         <attribute side="server" code="51" define="REQUIRE_PIN_FOR_REMOTE_OPERATION" type="boolean" reportable="true" default="0" writable="true" optional="true">
             <description>RequirePINforRemoteOperation</description>
             <access op="read" role="view" />
             <access op="write" role="administer" />
+            <mandatoryConform>
+                <andTerm>
+                    <feature name="COTA"/>
+                    <feature name="PIN"/>
+                </andTerm>
+            </mandatoryConform>
         </attribute>
         <!-- Attribute SecurityLevel with code 52 is deprecated -->
         <!-- Conformance feature [USR] - for now optional -->
@@ -262,61 +387,98 @@ limitations under the License.
             <description>ExpiringUserTimeout</description>
             <access op="read" role="view" />
             <access op="write" role="administer" />
+            <optionalConform>
+                <feature name="USR"/>
+            </optionalConform>
         </attribute>
         <!-- Conformance feature [ALIRO] - optional -->
         <attribute side="server" code="128" define="ALIRO_READER_VERIFICATION_KEY" type="octet_string" length="65" writable="false" optional="true" isNullable="true" apiMaturity="provisional">
             <description>AliroReaderVerificationKey</description>
             <access op="read" privilege="administer" />
+            <mandatoryConform>
+                <feature name="ALIRO"/>
+            </mandatoryConform>
         </attribute>
         <!-- Conformance feature [ALIRO] - optional -->
         <attribute side="server" code="129" define="ALIRO_READER_GROUP_IDENTIFIER" type="octet_string" length="16" writable="false" optional="true" isNullable="true" apiMaturity="provisional">
             <description>AliroReaderGroupIdentifier</description>
             <access op="read" privilege="administer" />
+            <mandatoryConform>
+                <feature name="ALIRO"/>
+            </mandatoryConform>
         </attribute>
         <!-- Conformance feature [ALIRO] - optional -->
         <attribute side="server" code="130" define="ALIRO_READER_GROUP_SUBIDENTIFIER" type="octet_string" length="16" writable="false" optional="true" apiMaturity="provisional">
             <description>AliroReaderGroupSubIdentifier</description>
             <access op="read" privilege="administer" />
+            <mandatoryConform>
+                <feature name="ALIRO"/>
+            </mandatoryConform>
         </attribute>
         <!-- Conformance feature [ALIRO] - optional -->
         <attribute side="server" code="131" define="ALIRO_EXPEDITED_TRANSACTION_SUPPORTED_PROTOCOL_VERSIONS" type="array" entryType="octet_string" length="16" writable="false" optional="true" apiMaturity="provisional">
             <description>AliroExpeditedTransactionSupportedProtocolVersions</description>
             <access op="read" privilege="administer" />
+            <mandatoryConform>
+                <feature name="ALIRO"/>
+            </mandatoryConform>
         </attribute>
         <!-- Conformance feature [ALBU] - optional if ALIRO is supported -->
         <attribute side="server" code="132" define="ALIRO_GROUP_RESOLVING_KEY" type="octet_string" length="16" writable="false" optional="true" isNullable="true" apiMaturity="provisional">
             <description>AliroGroupResolvingKey</description>
             <access op="read" privilege="administer" />
+            <mandatoryConform>
+                <feature name="ALBU"/>
+            </mandatoryConform>
         </attribute>
         <!-- Conformance feature [ALBU] - optional if ALIRO is supported -->
         <attribute side="server" code="133" define="ALIRO_SUPPORTED_BLE_UWB_PROTOCOL_VERSIONS" type="array" entryType="octet_string" length="16" writable="false" optional="true" apiMaturity="provisional">
             <description>AliroSupportedBLEUWBProtocolVersions</description>
             <access op="read" privilege="administer" />
+            <mandatoryConform>
+                <feature name="ALBU"/>
+            </mandatoryConform>
         </attribute>
         <!-- Conformance feature [ALBU] - optional if ALIRO is supported -->
         <attribute side="server" code="134" define="ALIRO_BLE_ADVERTISING_VERSION" type="int8u" writable="false" optional="true" apiMaturity="provisional">
             <description>AliroBLEAdvertisingVersion</description>
             <access op="read" privilege="administer" />
+            <mandatoryConform>
+                <feature name="ALBU"/>
+            </mandatoryConform>
         </attribute>
         <!-- Conformance feature [ALIRO] - optional -->
-        <attribute side="server" code="135" define="NUMBER_OF_ALIRO_CREDENTIAL_ISSUER_KEYS_SUPPORTED" type="int16u" writable="false" optional="true" apiMaturity="provisional">NumberOfAliroCredentialIssuerKeysSupported</attribute>
+        <attribute side="server" code="135" define="NUMBER_OF_ALIRO_CREDENTIAL_ISSUER_KEYS_SUPPORTED" type="int16u" writable="false" optional="true" apiMaturity="provisional">
+            <description>NumberOfAliroCredentialIssuerKeysSupported</description>
+            <mandatoryConform>
+                <feature name="ALIRO"/>
+            </mandatoryConform>
+        </attribute>
         <!-- Conformance feature [ALIRO] - optional -->
-        <attribute side="server" code="136" define="NUMBER_OF_ALIRO_ENDPOINT_KEYS_SUPPORTED" type="int16u" writable="false" optional="true" apiMaturity="provisional">NumberOfAliroEndpointKeysSupported</attribute>
+        <attribute side="server" code="136" define="NUMBER_OF_ALIRO_ENDPOINT_KEYS_SUPPORTED" type="int16u" writable="false" optional="true" apiMaturity="provisional">
+            <description>NumberOfAliroEndpointKeysSupported</description>
+            <mandatoryConform>
+                <feature name="ALIRO"/>
+            </mandatoryConform>
+        </attribute>
 
         <!-- Commands -->
         <command source="client" code="0" name="LockDoor" mustUseTimedInvoke="true">
             <description>This command causes the lock device to lock the door.</description>
+            <mandatoryConform/>
             <!-- Conformance feature [COTA & PIN] - for now optional -->
             <arg name="PINCode" type="octet_string" optional="true" />
         </command>
         <command source="client" code="1" name="UnlockDoor" mustUseTimedInvoke="true">
             <description>This command causes the lock device to unlock the door.</description>
+            <mandatoryConform/>
             <!-- Conformance feature [COTA & PIN] - for now optional -->
             <arg name="PINCode" type="octet_string" optional="true" />
         </command>
         <!-- Command Toggle with ID 2 is deprecated/disallowed -->
         <command source="client" code="3" name="UnlockWithTimeout" mustUseTimedInvoke="true" optional="true">
             <description>This command causes the lock device to unlock the door with a timeout parameter.</description>
+            <optionalConform/>
             <arg name="Timeout" type="int16u" />
             <!-- Conformance feature [COTA & PIN] - for now optional -->
             <arg name="PINCode" type="octet_string" optional="true" />
@@ -325,6 +487,9 @@ limitations under the License.
         <command source="client" code="11" name="SetWeekDaySchedule" optional="true">
             <description>Set a weekly repeating schedule for a specified user.</description>
             <access op="invoke" role="administer" />
+            <mandatoryConform>
+                <feature name="WDSCH"/>
+            </mandatoryConform>
             <arg name="WeekDayIndex" type="int8u" />
             <arg name="UserIndex" type="int16u" />
             <arg name="DaysMask" type="DaysMaskMap" />
@@ -337,12 +502,18 @@ limitations under the License.
         <command source="client" code="12" name="GetWeekDaySchedule" response="GetWeekDayScheduleResponse" optional="true">
             <description>Retrieve the specific weekly schedule for the specific user.</description>
             <access op="invoke" role="administer" />
+            <mandatoryConform>
+                <feature name="WDSCH"/>
+            </mandatoryConform>
             <arg name="WeekDayIndex" type="int8u" />
             <arg name="UserIndex" type="int16u" />
         </command>
         <!-- Conformance feature WDSCH - for now optional -->
         <command source="server" code="12" name="GetWeekDayScheduleResponse" disableDefaultResponse="true" optional="true">
             <description>Returns the weekly repeating schedule data for the specified schedule index.</description>
+            <mandatoryConform>
+                <feature name="WDSCH"/>
+            </mandatoryConform>
             <arg name="WeekDayIndex" type="int8u" />
             <arg name="UserIndex" type="int16u" />
             <arg name="Status" type="DlStatus" />
@@ -356,6 +527,9 @@ limitations under the License.
         <command source="client" code="13" name="ClearWeekDaySchedule" optional="true">
             <description>Clear the specific weekly schedule or all weekly schedules for the specific user.</description>
             <access op="invoke" role="administer" />
+            <mandatoryConform>
+                <feature name="WDSCH"/>
+            </mandatoryConform>
             <arg name="WeekDayIndex" type="int8u" />
             <arg name="UserIndex" type="int16u" />
         </command>
@@ -363,6 +537,9 @@ limitations under the License.
         <command source="client" code="14" name="SetYearDaySchedule" optional="true">
             <description>Set a time-specific schedule ID for a specified user.</description>
             <access op="invoke" role="administer" />
+            <mandatoryConform>
+                <feature name="YDSCH"/>
+            </mandatoryConform>
             <arg name="YearDayIndex" type="int8u" />
             <arg name="UserIndex" type="int16u" />
             <arg name="LocalStartTime" type="epoch_s" />
@@ -372,12 +549,18 @@ limitations under the License.
         <command source="client" code="15" name="GetYearDaySchedule" response="GetYearDayScheduleResponse" optional="true">
             <description>Returns the year day schedule data for the specified schedule and user indexes.</description>
             <access op="invoke" role="administer" />
+            <mandatoryConform>
+                <feature name="YDSCH"/>
+            </mandatoryConform>
             <arg name="YearDayIndex" type="int8u" />
             <arg name="UserIndex" type="int16u" />
         </command>
         <!-- Conformance feature YDSCH - for now optional -->
         <command source="server" code="15" name="GetYearDayScheduleResponse" disableDefaultResponse="true" optional="true">
             <description>Returns the year day schedule data for the specified schedule and user indexes.</description>
+            <mandatoryConform>
+                <feature name="YDSCH"/>
+            </mandatoryConform>
             <arg name="YearDayIndex" type="int8u" />
             <arg name="UserIndex" type="int16u" />
             <arg name="Status" type="DlStatus" />
@@ -388,6 +571,9 @@ limitations under the License.
         <command source="client" code="16" name="ClearYearDaySchedule" optional="true">
             <description>Clears the specific year day schedule or all year day schedules for the specific user.</description>
             <access op="invoke" role="administer" />
+            <mandatoryConform>
+                <feature name="YDSCH"/>
+            </mandatoryConform>
             <arg name="YearDayIndex" type="int8u" />
             <arg name="UserIndex" type="int16u" />
         </command>
@@ -395,6 +581,9 @@ limitations under the License.
         <command source="client" code="17" name="SetHolidaySchedule" optional="true">
             <description>Set the holiday Schedule by specifying local start time and local end time with respect to any Lock Operating Mode.</description>
             <access op="invoke" role="administer" />
+            <mandatoryConform>
+                <feature name="HDSCH"/>
+            </mandatoryConform>
             <arg name="HolidayIndex" type="int8u" />
             <arg name="LocalStartTime" type="epoch_s" />
             <arg name="LocalEndTime" type="epoch_s" />
@@ -404,11 +593,17 @@ limitations under the License.
         <command source="client" code="18" name="GetHolidaySchedule" response="GetHolidayScheduleResponse" optional="true">
             <description>Get the holiday schedule for the specified index.</description>
             <access op="invoke" role="administer" />
+            <mandatoryConform>
+                <feature name="HDSCH"/>
+            </mandatoryConform>
             <arg name="HolidayIndex" type="int8u" />
         </command>
         <!-- Conformance feature HDSCH - for now optional -->
         <command source="server" code="18" name="GetHolidayScheduleResponse" disableDefaultResponse="true" optional="true">
             <description>Returns the Holiday Schedule Entry for the specified Holiday ID.</description>
+            <mandatoryConform>
+                <feature name="HDSCH"/>
+            </mandatoryConform>
             <arg name="HolidayIndex" type="int8u" />
             <arg name="Status" type="DlStatus" />
             <arg name="LocalStartTime" type="epoch_s" optional="true" />
@@ -419,12 +614,18 @@ limitations under the License.
         <command source="client" code="19" name="ClearHolidaySchedule" optional="true">
             <description>Clears the holiday schedule or all holiday schedules.</description>
             <access op="invoke" role="administer" />
+            <mandatoryConform>
+                <feature name="HDSCH"/>
+            </mandatoryConform>
             <arg name="HolidayIndex" type="int8u" />
         </command>
         <!-- Conformance feature USR - for now optional -->
         <command source="client" code="26" name="SetUser" mustUseTimedInvoke="true" optional="true">
             <description>Set User into the lock.</description>
             <access op="invoke" role="administer" />
+            <mandatoryConform>
+                <feature name="USR"/>
+            </mandatoryConform>
             <arg name="OperationType" type="DataOperationTypeEnum" />
             <arg name="UserIndex" type="int16u" />
             <arg name="UserName" type="char_string" isNullable="true" />
@@ -436,12 +637,18 @@ limitations under the License.
         <!-- Conformance feature USR - for now optional -->
         <command source="client" code="27" name="GetUser" response="GetUserResponse" optional="true">
             <description>Retrieve User.</description>
+            <mandatoryConform>
+                <feature name="USR"/>
+            </mandatoryConform>
             <access op="invoke" role="administer" />
             <arg name="UserIndex" type="int16u" />
         </command>
         <!-- Conformance feature USR - for now optional -->
         <command source="server" code="28" name="GetUserResponse" disableDefaultResponse="true" optional="true">
             <description>Returns the User for the specified UserIndex.</description>
+            <mandatoryConform>
+                <feature name="USR"/>
+            </mandatoryConform>
             <arg name="UserIndex" type="int16u" />
             <arg name="UserName" type="char_string" isNullable="true" />
             <arg name="UserUniqueID" type="int32u" isNullable="true" />
@@ -457,12 +664,18 @@ limitations under the License.
         <command source="client" code="29" name="ClearUser" mustUseTimedInvoke="true" optional="true">
             <description>Clears a User or all Users.</description>
             <access op="invoke" role="administer" />
+            <mandatoryConform>
+                <feature name="USR"/>
+            </mandatoryConform>
             <arg name="UserIndex" type="int16u" />
         </command>
         <!-- Conformance feature USR - for now optional -->
         <command source="client" code="34" name="SetCredential" response="SetCredentialResponse" mustUseTimedInvoke="true" optional="true">
             <description>Set a credential (e.g. PIN, RFID, Fingerprint, etc.) into the lock for a new user, existing user, or ProgrammingUser.</description>
             <access op="invoke" role="administer" />
+            <mandatoryConform>
+                <feature name="USR"/>
+            </mandatoryConform>
             <arg name="OperationType" type="DataOperationTypeEnum" />
             <arg name="Credential" type="CredentialStruct" />
             <arg name="CredentialData" type="long_octet_string" />
@@ -473,6 +686,9 @@ limitations under the License.
         <!-- Conformance feature USR - for now optional -->
         <command source="server" code="35" name="SetCredentialResponse" disableDefaultResponse="true" optional="true">
             <description>Returns the status for setting the specified credential.</description>
+            <mandatoryConform>
+                <feature name="USR"/>
+            </mandatoryConform>
             <arg name="Status" type="DlStatus" />
             <arg name="UserIndex" type="int16u" isNullable="true" />
             <arg name="NextCredentialIndex" type="int16u" isNullable="true" />
@@ -481,11 +697,17 @@ limitations under the License.
         <command source="client" code="36" name="GetCredentialStatus" response="GetCredentialStatusResponse" optional="true">
             <description>Retrieve the status of a particular credential (e.g. PIN, RFID, Fingerprint, etc.) by index.</description>
             <access op="invoke" role="administer" />
+            <mandatoryConform>
+                <feature name="USR"/>
+            </mandatoryConform>
             <arg name="Credential" type="CredentialStruct" />
         </command>
         <!-- Conformance feature USR - for now optional -->
         <command source="server" code="37" name="GetCredentialStatusResponse" disableDefaultResponse="true" optional="true">
             <description>Returns the status for the specified credential.</description>
+            <mandatoryConform>
+                <feature name="USR"/>
+            </mandatoryConform>
             <arg name="CredentialExists" type="boolean" />
             <arg name="UserIndex" type="int16u" isNullable="true" />
             <arg name="CreatorFabricIndex" type="fabric_idx" isNullable="true" />
@@ -497,16 +719,25 @@ limitations under the License.
         <command source="client" code="38" name="ClearCredential" mustUseTimedInvoke="true" optional="true">
             <description>Clear one, one type, or all credentials except ProgrammingPIN credential.</description>
             <access op="invoke" role="administer" />
+            <mandatoryConform>
+                <feature name="USR"/>
+            </mandatoryConform>
             <arg name="Credential" type="CredentialStruct" isNullable="true"/>
         </command>
         <command source="client" code="39" name="UnboltDoor" mustUseTimedInvoke="true" optional="true">
             <description>This command causes the lock device to unlock the door without pulling the latch.</description>
+            <mandatoryConform>
+                <feature name="UBOLT"/>
+            </mandatoryConform>
             <!-- Conformance feature [COTA & PIN] - for now optional -->
             <arg name="PINCode" type="octet_string" optional="true" />
         </command>
         <command source="client" code="40" name="SetAliroReaderConfig" mustUseTimedInvoke="true" optional="true" apiMaturity="provisional">
             <description>This command communicates an Aliro Reader configuration to the lock.</description>
             <access op="invoke" privilege="administer" />
+            <mandatoryConform>
+                <feature name="ALIRO"/>
+            </mandatoryConform>
             <arg name="SigningKey" type="octet_string" length="32" />
             <arg name="VerificationKey" type="octet_string" length="65" />
             <arg name="GroupIdentifier" type="octet_string" length="16" />
@@ -515,6 +746,9 @@ limitations under the License.
         <command source="client" code="41" name="ClearAliroReaderConfig" mustUseTimedInvoke="true" optional="true" apiMaturity="provisional">
             <description>This command clears an existing Aliro Reader configuration for the lock.</description>
             <access op="invoke" privilege="administer" />
+            <mandatoryConform>
+                <feature name="ALIRO"/>
+            </mandatoryConform>
         </command>
 
 

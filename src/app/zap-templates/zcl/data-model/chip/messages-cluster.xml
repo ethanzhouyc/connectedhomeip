@@ -91,12 +91,19 @@ limitations under the License.
       </feature>
     </features>
 
-    <attribute side="server" code="0x0000" define="LIST_MESSAGES" type="array" entryType="MessageStruct" length="8" writable="false" optional="false">Messages</attribute>
-    <attribute side="server" code="0x0001" define="MESSAGES_CLUSTER_ACTIVE_MESSAGES_IDS" type="ARRAY" entryType="octet_string" max="8" writable="false" optional="false">ActiveMessageIDs</attribute>
+    <attribute side="server" code="0x0000" define="LIST_MESSAGES" type="array" entryType="MessageStruct" length="8" writable="false" optional="false">
+      <description>Messages</description>
+      <mandatoryConform/>
+    </attribute>
+    <attribute side="server" code="0x0001" define="MESSAGES_CLUSTER_ACTIVE_MESSAGES_IDS" type="ARRAY" entryType="octet_string" max="8" writable="false" optional="false">
+      <description>ActiveMessageIDs</description>
+      <mandatoryConform/>
+    </attribute>
     <command source="client" code="0x00" name="PresentMessagesRequest" isFabricScoped="true" optional="false">
       <description>
         Command for requesting messages be presented
       </description>
+       <mandatoryConform/>
       <arg name="MessageID" type="octet_string" length="16" optional="false"/>
       <arg name="Priority" type="MessagePriorityEnum" optional="false"/>
       <arg name="MessageControl" type="MessageControlBitmap" default="0" optional="false"/>
@@ -109,6 +116,7 @@ limitations under the License.
       <description>
         Command for cancelling message present requests
       </description>
+       <mandatoryConform/>
       <arg name="MessageIDs" type="octet_string" array="true" optional="false"/>
     </command>
     <event side="server" code="0x00" name="MessageQueued" priority="info" optional="false">

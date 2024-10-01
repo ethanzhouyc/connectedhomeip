@@ -47,10 +47,12 @@ limitations under the License.
     <attribute code="0x0000" side="server" define="DEVICE_DIRECTORY" type="array" entryType="EcosystemDeviceStruct">
       <description>DeviceDirectory</description>
       <access op="read" privilege="manage"/>
+      <mandatoryConform/>
     </attribute>
     <attribute code="0x0001" side="server" define="LOCATION_DIRECTORY" type="array" entryType="EcosystemLocationStruct">
       <description>LocationDirectory</description>
       <access op="read" privilege="manage"/>
+      <mandatoryConform/>
     </attribute>
   </cluster>
 </configurator>

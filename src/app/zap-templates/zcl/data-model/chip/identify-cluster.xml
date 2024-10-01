@@ -52,13 +52,20 @@ limitations under the License.
     <server tick="false" init="false">true</server>
     <globalAttribute side="either" code="0xFFFD" value="4"/>
 
-    <attribute side="server" code="0x0000" define="IDENTIFY_TIME" type="int16u" writable="true"  default="0x0" optional="false">IdentifyTime</attribute>
-    <attribute side="server" code="0x0001" define="IDENTIFY_TYPE" type="IdentifyTypeEnum" writable="false" default="0x00" optional="false">IdentifyType</attribute>
+    <attribute side="server" code="0x0000" define="IDENTIFY_TIME" type="int16u" writable="true"  default="0x0" optional="false">
+      <description>IdentifyTime</description>
+      <mandatoryConform/>
+    </attribute>
+    <attribute side="server" code="0x0001" define="IDENTIFY_TYPE" type="IdentifyTypeEnum" writable="false" default="0x00" optional="false">
+      <description>IdentifyType</description>
+      <mandatoryConform/>
+    </attribute>
 
     <command source="client" code="0x00" name="Identify" optional="false">
       <description>
         Command description for Identify
       </description>
+      <mandatoryConform/>
       <arg name="IdentifyTime" type="int16u"/>
       <access op="invoke" privilege="manage"/>
     </command>
@@ -66,6 +73,7 @@ limitations under the License.
       <description>
         Command description for TriggerEffect
       </description>
+      <optionalConform/>
       <arg name="EffectIdentifier" type="EffectIdentifierEnum"/>
       <arg name="EffectVariant" type="EffectVariantEnum"/>
       <access op="invoke" privilege="manage"/>

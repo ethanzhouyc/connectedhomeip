@@ -58,10 +58,24 @@ limitations under the License.
     </features>
 
     <!-- Base data types -->
-    <attribute side="server" code="0x0000" define="SUPPORTED_MODES"  type="array" entryType="ModeOptionStruct" writable="false" optional="false" isNullable="false" length="255">SupportedModes</attribute>
-    <attribute side="server" code="0x0001" define="CURRENT_MODE"     type="int8u"                              writable="false" optional="false" isNullable="false" reportable="true">CurrentMode</attribute>
-    <attribute side="server" code="0x0002" define="START_UP_MODE"    type="int8u"                              writable="true"  optional="true"  isNullable="true">StartUpMode</attribute>
-    <attribute side="server" code="0x0003" define="ON_MODE"          type="int8u"                              writable="true"  optional="true"  isNullable="true">OnMode</attribute>
+    <attribute side="server" code="0x0000" define="SUPPORTED_MODES"  type="array" entryType="ModeOptionStruct" writable="false" optional="false" isNullable="false" length="255">
+      <description>SupportedModes</description>
+      <mandatoryConform/>
+    </attribute>
+    <attribute side="server" code="0x0001" define="CURRENT_MODE"     type="int8u"                              writable="false" optional="false" isNullable="false" reportable="true">
+      <description>CurrentMode</description>
+      <mandatoryConform/>
+    </attribute>
+    <attribute side="server" code="0x0002" define="START_UP_MODE"    type="int8u"                              writable="true"  optional="true"  isNullable="true">
+      <description>StartUpMode</description>
+      <optionalConform/>
+    </attribute>
+    <attribute side="server" code="0x0003" define="ON_MODE"          type="int8u"                              writable="true"  optional="true"  isNullable="true">
+      <description>OnMode</description>
+      <mandatoryConform>
+        <feature name="DEPONOFF"/>
+      </mandatoryConform>
+    </attribute>
 
     <!-- Commands -->
     <command source="client" code="0x00" name="ChangeToMode" response="ChangeToModeResponse" optional="false">
@@ -69,6 +83,7 @@ limitations under the License.
         This command is used to change device modes.
         On receipt of this command the device SHALL respond with a ChangeToModeResponse command.
       </description>
+      <mandatoryConform/>
       <arg name="NewMode" type="int8u" optional="false"/>
     </command>
 
@@ -76,6 +91,7 @@ limitations under the License.
       <description>
         This command is sent by the device on receipt of the ChangeToModeWithStatus command.
       </description>
+      <mandatoryConform/>
       <arg name="Status"     type="enum8"                   optional="false"/>
       <arg name="StatusText" type="char_string" lenght="64" optional="true"/>
     </command>

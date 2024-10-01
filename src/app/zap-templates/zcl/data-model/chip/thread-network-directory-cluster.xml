@@ -42,30 +42,39 @@ limitations under the License.
             <description>PreferredExtendedPanID</description>
             <access op="read" privilege="manage"/>
             <access op="write" privilege="manage"/>
+            <mandatoryConform/>
         </attribute>
         <attribute side="server" code="0x0001" define="THREAD_NETWORKS" type="array" entryType="ThreadNetworkStruct" writable="false" optional="false">
             <description>ThreadNetworks</description>
             <access op="read" privilege="operate"/>
+            <mandatoryConform/>
         </attribute>
-        <attribute side="server" code="0x0002" define="THREAD_NETWORK_TABLE_SIZE" type="int8u" writable="false" optional="false">ThreadNetworkTableSize</attribute>
+        <attribute side="server" code="0x0002" define="THREAD_NETWORK_TABLE_SIZE" type="int8u" writable="false" optional="false">
+            <description>ThreadNetworkTableSize</description>
+            <mandatoryConform/>
+        </attribute>
 
         <command source="client" code="0x00" name="AddNetwork" mustUseTimedInvoke="true" optional="false">
             <description>Adds an entry to the ThreadNetworks list.</description>
             <access op="invoke" privilege="manage"/>
+            <mandatoryConform/>
             <arg name="OperationalDataset" type="octet_string" length="254"/>
         </command>
         <command source="client" code="0x01" name="RemoveNetwork" mustUseTimedInvoke="true" optional="false">
             <description>Removes an entry from the ThreadNetworks list.</description>
             <access op="invoke" privilege="manage"/>
+            <mandatoryConform/>
             <arg name="ExtendedPanID" type="octet_string" length="8"/>
         </command>
         <command source="client" code="0x02" name="GetOperationalDataset" optional="false" response="OperationalDatasetResponse">
             <description>Retrieves a Thread Operational Dataset from the ThreadNetworks list.</description>
             <access op="invoke" privilege="operate"/>
+            <mandatoryConform/>
             <arg name="ExtendedPanID" type="octet_string" length="8"/>
         </command>
         <command source="server" code="0x03" name="OperationalDatasetResponse" optional="false">
             <description>This is the response to a GetOperationalDataset request.</description>
+            <mandatoryConform/>
             <arg name="OperationalDataset" type="octet_string" length="254"/>
         </command>
     </cluster>
