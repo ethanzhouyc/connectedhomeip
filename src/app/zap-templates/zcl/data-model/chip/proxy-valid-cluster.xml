@@ -17,11 +17,29 @@ limitations under the License.
 <configurator>
     <domain name="CHIP" />
 
-    <cluster>
-        <domain>General</domain>
-        <name>Proxy Valid</name>
-        <code>0x0044</code>
-        <define>PROXY_VALID_CLUSTER</define>
-        <description>Cluster to control Proxy Valid</description>
-    </cluster>
+  <cluster apiMaturity="provisional">
+    <domain name="General"/>
+    <name>Valid Proxies</name>
+    <code>0x0044</code>
+    <define>PROXY_VALID_CLUSTER</define>
+    <description>Cluster to control Proxy Valid</description>
+    <client init="false" tick="false">true</client>
+    <server init="false" tick="false">true</server>
+    <globalAttribute code="0xFFFD" side="either" value="1"/>
+    <attribute code="0x0000" side="server" define="VALID_PROXY_LIST" type="array" entryType="ValidProxyStruct" writable="true">
+      <description>ValidProxyList</description>
+      <mandatoryConform/>
+    </attribute>
+    <command code="0x00" source="client" name="GetValidProxiesRequest" optional="false" response="GetValidProxiesResponse">
+      <description>This command is used during proxy discovery, as specified in Proxy Discovery &amp; Assignment Flow.</description>
+      <mandatoryConform/>
+    </command>
+
+    <command code="0x01" source="server" name="GetValidProxiesResponse" optional="false" disableDefaultResponse="true">
+      <description>This command is used during proxy discovery, as specified in Proxy Discovery &amp; Assignment Flow.</description>
+      <arg id="0" name="ProxyNodeIdList" array="true" type="node_id"/>
+      <mandatoryConform/>
+    </command>
+
+  </cluster>
 </configurator>

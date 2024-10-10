@@ -50,17 +50,22 @@ limitations under the License.
     <description>Attributes and commands for putting a device into Identification mode (e.g. flashing a light).</description>
     <client tick="false" init="false">true</client>
     <server tick="false" init="false">true</server>
-    <globalAttribute side="either" code="0xFFFD" value="4"/>
-
-    <attribute side="server" code="0x0000" define="IDENTIFY_TIME" type="int16u" writable="true"  default="0x0" optional="false">IdentifyTime</attribute>
-    <attribute side="server" code="0x0001" define="IDENTIFY_TYPE" type="IdentifyTypeEnum" writable="false" default="0x00" optional="false">IdentifyType</attribute>
-
+    <globalAttribute side="either" code="0xFFFD" value="5"/>
+    <attribute side="server" code="0x0000" define="IDENTIFY_TIME" type="int16u" writable="true" default="0x0" min="0" max="65535">
+      <description>IdentifyTime</description>
+      <mandatoryConform/>
+    </attribute>
+    <attribute side="server" code="0x0001" define="IDENTIFY_TYPE" type="IdentifyTypeEnum" min="0x00" max="0x05">
+      <description>IdentifyType</description>
+      <mandatoryConform/>
+    </attribute>
     <command source="client" code="0x00" name="Identify" optional="false">
       <description>
         Command description for Identify
       </description>
       <arg name="IdentifyTime" type="int16u"/>
       <access op="invoke" privilege="manage"/>
+      <mandatoryConform/>
     </command>
     <command source="client" code="0x40" name="TriggerEffect" optional="true">
       <description>
@@ -69,6 +74,7 @@ limitations under the License.
       <arg name="EffectIdentifier" type="EffectIdentifierEnum"/>
       <arg name="EffectVariant" type="EffectVariantEnum"/>
       <access op="invoke" privilege="manage"/>
+      <optionalConform/>
     </command>
   </cluster>
 </configurator>

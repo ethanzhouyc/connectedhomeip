@@ -17,26 +17,55 @@ limitations under the License.
 <configurator>
     <domain name="CHIP"/>
 
-    <struct name="ThreadNetworkStruct" apiMaturity="provisional">
-        <cluster code="0x0453"/>
-        <item name="ExtendedPanID" type="octet_string" length="8"/>
-        <item name="NetworkName" type="char_string" length="16"/>
-        <item name="Channel" type="int16u"/>
-        <item name="ActiveTimestamp" type="int64u"/>
-    </struct>
+  <cluster apiMaturity="provisional">
+    <domain name="General"/>
+    <name>Thread Network Directory</name>
+    <code>0x0453</code>
+    <define>THREAD_NETWORK_DIRECTORY_CLUSTER</define>
+    <description>Manages the names and credentials of Thread networks visible to the user.</description>
+    <client tick="false" init="false">true</client>
+    <server tick="false" init="false">true</server>
+    <!-- cluster revision -->
+    <globalAttribute side="either" code="0xFFFD" value="1"/>
+    <attribute side="server" code="0x0000" define="PREFERRED_EXTENDED_PAN_ID" type="octet_string" length="8" writable="true" isNullable="true" minLength="8">
+      <description>PreferredExtendedPanID</description>
+      <access op="write" privilege="manage"/>
+      <mandatoryConform/>
+    </attribute>
+    <attribute side="server" code="0x0001" define="THREAD_NETWORKS" type="array" entryType="ThreadNetworkStruct">
+      <description>ThreadNetworks</description>
+      <mandatoryConform/>
+    </attribute>
+    <attribute side="server" code="0x0002" define="THREAD_NETWORK_TABLE_SIZE" type="int8u" default="10">
+      <description>ThreadNetworkTableSize</description>
+      <mandatoryConform/>
+    </attribute>
+    <command source="client" code="0x00" name="AddNetwork" mustUseTimedInvoke="true" optional="false">
+      <description>Adds an entry to the ThreadNetworks attribute with the specified Thread Operational Dataset.</description>
+      <access op="invoke" privilege="manage"/>
+      <arg id="0" name="OperationalDataset" type="octet_string" length="254"/>
+      <mandatoryConform/>
+    </command>
 
-    <cluster apiMaturity="provisional">
-        <domain>Network Infrastructure</domain>
-        <name>Thread Network Directory</name>
-        <code>0x0453</code>
-        <define>THREAD_NETWORK_DIRECTORY_CLUSTER</define>
-        <description>Manages the names and credentials of Thread networks visible to the user.</description>
+    <command source="client" code="0x01" name="RemoveNetwork" mustUseTimedInvoke="true" optional="false">
+      <description>Removes the network with the given Extended PAN ID from the ThreadNetworks attribute.</description>
+      <access op="invoke" privilege="manage"/>
+      <arg id="0" name="ExtendedPanID" type="octet_string" length="8" minLength="8"/>
+      <mandatoryConform/>
+    </command>
 
-        <client tick="false" init="false">true</client>
-        <server tick="false" init="false">true</server>
+    <command source="client" code="0x02" name="GetOperationalDataset" optional="false" response="OperationalDatasetResponse">
+      <description>Retrieves the Thread Operational Dataset with the given Extended PAN ID.</description>
+      <access op="invoke" privilege="manage"/>
+      <arg id="0" name="ExtendedPanID" type="octet_string" length="8" minLength="8"/>
+      <mandatoryConform/>
+    </command>
 
-        <!-- cluster revision -->
-        <globalAttribute side="either" code="0xFFFD" value="1"/>
+    <command source="server" code="0x03" name="OperationalDatasetResponse" optional="false" disableDefaultResponse="true">
+      <description>Contains the Thread Operational Dataset for the Extended PAN specified in GetOperationalDataset.</description>
+      <arg id="0" name="OperationalDataset" type="octet_string" length="254"/>
+      <mandatoryConform/>
+    </command>
 
         <attribute side="server" code="0x0000" define="PREFERRED_EXTENDED_PAN_ID" type="octet_string" length="8" writable="true" isNullable="true" optional="false">
             <description>PreferredExtendedPanID</description>
