@@ -50,9 +50,18 @@ Git: 0.9-fall2024-87-gcdfdb86be-dirty
         <optionalConform/>
       </feature>
     </features>
-    <attribute side="server" code="0x0000" define="WINDOW_STATUS" type="CommissioningWindowStatusEnum" min="0x00" max="0x02">WindowStatus</attribute>
-    <attribute side="server" code="0x0001" define="ADMIN_FABRIC_INDEX" type="fabric_idx" isNullable="true">AdminFabricIndex</attribute>
-    <attribute side="server" code="0x0002" define="ADMIN_VENDOR_ID" type="vendor_id" isNullable="true">AdminVendorId</attribute>
+    <attribute side="server" code="0x0000" define="WINDOW_STATUS" type="CommissioningWindowStatusEnum" min="0x00" max="0x02">
+      <description>WindowStatus</description>
+      <mandatoryConform/>
+    </attribute>
+    <attribute side="server" code="0x0001" define="ADMIN_FABRIC_INDEX" type="fabric_idx" isNullable="true">
+      <description>AdminFabricIndex</description>
+      <mandatoryConform/>
+    </attribute>
+    <attribute side="server" code="0x0002" define="ADMIN_VENDOR_ID" type="vendor_id" isNullable="true">
+      <description>AdminVendorId</description>
+      <mandatoryConform/>
+    </attribute>
     <command source="client" code="0x00" name="OpenCommissioningWindow" mustUseTimedInvoke="true" optional="false">
       <description>This command is used by a current Administrator to instruct a Node to go into commissioning mode.</description>
       <arg id="0" name="CommissioningTimeout" type="int16u"/>
@@ -61,17 +70,22 @@ Git: 0.9-fall2024-87-gcdfdb86be-dirty
       <arg id="3" name="Iterations" type="int32u" min="1000" max="100000"/>
       <arg id="4" name="Salt" type="octet_string" length="32" minLength="16"/>
       <access op="invoke" privilege="administer"/>
+      <mandatoryConform/>
     </command>
 
     <command source="client" code="0x01" name="OpenBasicCommissioningWindow" mustUseTimedInvoke="true" optional="true">
       <description>This command MAY be used by a current Administrator to instruct a Node to go into commissioning mode, if the node supports the Basic Commissioning Method.</description>
       <arg id="0" name="CommissioningTimeout" type="int16u"/>
       <access op="invoke" privilege="administer"/>
+      <mandatoryConform>
+        <feature name="BC"/>
+      </mandatoryConform>
     </command>
 
     <command source="client" code="0x02" name="RevokeCommissioning" mustUseTimedInvoke="true" optional="false">
       <description>This command is used by a current Administrator to instruct a Node to revoke any active Open Commissioning Window or Open Basic Commissioning Window command.</description>
       <access op="invoke" privilege="administer"/>
+      <mandatoryConform/>
     </command>
 
   </cluster>

@@ -46,18 +46,36 @@ Git: 0.9-fall2024-87-gcdfdb86be-dirty
         <optionalConform/>
       </feature>
     </features>
-    <attribute side="server" code="0x0000" define="MASK" type="AlarmBitmap" default="0" min="0x00000000" max="0x0000003F">Mask</attribute>
-    <attribute side="server" code="0x0001" define="LATCH" type="AlarmBitmap" default="0" optional="true" min="0x00000000" max="0x0000003F">Latch</attribute>
-    <attribute side="server" code="0x0002" define="STATE" type="AlarmBitmap" default="0" min="0x00000000" max="0x0000003F">State</attribute>
-    <attribute side="server" code="0x0003" define="SUPPORTED" type="AlarmBitmap" default="0" min="0x00000000" max="0x0000003F">Supported</attribute>
+    <attribute side="server" code="0x0000" define="MASK" type="AlarmBitmap" default="0" min="0x00000000" max="0x0000003F">
+      <description>Mask</description>
+      <mandatoryConform/>
+    </attribute>
+    <attribute side="server" code="0x0001" define="LATCH" type="AlarmBitmap" default="0" optional="true" min="0x00000000" max="0x0000003F">
+      <description>Latch</description>
+      <mandatoryConform>
+        <feature name="RESET"/>
+      </mandatoryConform>
+    </attribute>
+    <attribute side="server" code="0x0002" define="STATE" type="AlarmBitmap" default="0" min="0x00000000" max="0x0000003F">
+      <description>State</description>
+      <mandatoryConform/>
+    </attribute>
+    <attribute side="server" code="0x0003" define="SUPPORTED" type="AlarmBitmap" default="0" min="0x00000000" max="0x0000003F">
+      <description>Supported</description>
+      <mandatoryConform/>
+    </attribute>
     <command source="client" code="0x00" name="Reset" optional="true">
       <description>This command resets active and latched alarms (if possible).</description>
       <arg id="0" name="Alarms" type="AlarmBitmap" default="0x00000000" min="0x00000000" max="0x0000003F"/>
+      <mandatoryConform>
+        <feature name="RESET"/>
+      </mandatoryConform>
     </command>
 
     <command source="client" code="0x01" name="ModifyEnabledAlarms" optional="true">
       <description>This command allows a client to request that an alarm be enabled or suppressed at the server.</description>
       <arg id="0" name="Mask" type="AlarmBitmap" default="0x00000000" min="0x00000000" max="0x0000003F"/>
+      <optionalConform/>
     </command>
 
     <event side="server" code="0x00" priority="info" name="Notify">
@@ -66,6 +84,7 @@ Git: 0.9-fall2024-87-gcdfdb86be-dirty
       <field id="2" name="Inactive" type="AlarmBitmap" default="0x00000000" min="0x00000000" max="0x0000003F"/>
       <field id="3" name="State" type="AlarmBitmap" default="0x00000000" min="0x00000000" max="0x0000003F"/>
       <field id="4" name="Mask" type="AlarmBitmap" default="0x00000000" min="0x00000000" max="0x0000003F"/>
+      <mandatoryConform/>
     </event>
 
   </cluster>

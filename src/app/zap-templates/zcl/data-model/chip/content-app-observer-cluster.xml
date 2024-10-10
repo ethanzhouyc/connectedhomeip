@@ -35,6 +35,7 @@ Git: 0.9-fall2024-87-gcdfdb86be-dirty
       <description>Upon receipt, the data field MAY be parsed and interpreted.</description>
       <arg id="0" name="Data" type="long_char_string" length="500"/>
       <arg id="1" name="EncodingHint" type="char_string" optional="true" length="100"/>
+      <mandatoryConform/>
     </command>
 
     <command source="server" code="0x01" name="ContentAppMessageResponse" optional="false" apiMaturity="provisional" disableDefaultResponse="true">
@@ -42,6 +43,7 @@ Git: 0.9-fall2024-87-gcdfdb86be-dirty
       <arg id="0" name="Status" type="StatusEnum" min="0x00" max="0x01"/>
       <arg id="1" name="Data" type="long_char_string" optional="true" length="500"/>
       <arg id="2" name="EncodingHint" type="char_string" optional="true" length="100"/>
+      <mandatoryConform/>
     </command>
 
   </cluster>

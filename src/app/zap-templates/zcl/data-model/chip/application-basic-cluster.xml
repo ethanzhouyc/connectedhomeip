@@ -31,16 +31,38 @@ Git: 0.9-fall2024-87-gcdfdb86be-dirty
     <server init="false" tick="false">true</server>
     <globalAttribute code="0xFFFD" side="either" value="1"/>
     <description>This cluster provides information about an application running on a TV or media player device which is represented as an endpoint.</description>
-    <attribute side="server" code="0x0000" define="APPLICATION_VENDOR_NAME" type="char_string" length="32" optional="true">VendorName</attribute>
-    <attribute side="server" code="0x0001" define="APPLICATION_VENDOR_ID" type="vendor_id" optional="true">VendorID</attribute>
-    <attribute side="server" code="0x0002" define="APPLICATION_NAME" type="char_string">ApplicationName</attribute>
-    <attribute side="server" code="0x0003" define="APPLICATION_PRODUCT_ID" type="int16u" optional="true">ProductID</attribute>
-    <attribute side="server" code="0x0004" define="APPLICATION_APP" type="ApplicationStruct">Application</attribute>
-    <attribute side="server" code="0x0005" define="APPLICATION_STATUS" type="ApplicationStatusEnum" min="0x00" max="0x03">Status</attribute>
-    <attribute side="server" code="0x0006" define="APPLICATION_VERSION" type="char_string" length="32">ApplicationVersion</attribute>
+    <attribute side="server" code="0x0000" define="APPLICATION_VENDOR_NAME" type="char_string" length="32" optional="true">
+      <description>VendorName</description>
+      <optionalConform/>
+    </attribute>
+    <attribute side="server" code="0x0001" define="APPLICATION_VENDOR_ID" type="vendor_id" optional="true">
+      <description>VendorID</description>
+      <optionalConform/>
+    </attribute>
+    <attribute side="server" code="0x0002" define="APPLICATION_NAME" type="char_string">
+      <description>ApplicationName</description>
+      <mandatoryConform/>
+    </attribute>
+    <attribute side="server" code="0x0003" define="APPLICATION_PRODUCT_ID" type="int16u" optional="true">
+      <description>ProductID</description>
+      <optionalConform/>
+    </attribute>
+    <attribute side="server" code="0x0004" define="APPLICATION_APP" type="ApplicationStruct">
+      <description>Application</description>
+      <mandatoryConform/>
+    </attribute>
+    <attribute side="server" code="0x0005" define="APPLICATION_STATUS" type="ApplicationStatusEnum" min="0x00" max="0x03">
+      <description>Status</description>
+      <mandatoryConform/>
+    </attribute>
+    <attribute side="server" code="0x0006" define="APPLICATION_VERSION" type="char_string" length="32">
+      <description>ApplicationVersion</description>
+      <mandatoryConform/>
+    </attribute>
     <attribute side="server" code="0x0007" define="APPLICATION_ALLOWED_VENDOR_LIST" type="array" entryType="vendor_id">
       <description>AllowedVendorList</description>
       <access op="read" role="administer"/>
+      <mandatoryConform/>
     </attribute>
   </cluster>
 

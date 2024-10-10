@@ -127,37 +127,80 @@ Git: 0.9-fall2024-87-gcdfdb86be-dirty
     <attribute side="server" code="0x0000" define="MAX_NETWORKS" type="int8u" min="1">
       <description>MaxNetworks</description>
       <access op="read" privilege="administer"/>
+      <mandatoryConform/>
     </attribute>
     <attribute side="server" code="0x0001" define="NETWORKS" type="array" entryType="NetworkInfoStruct">
       <description>Networks</description>
       <access op="read" privilege="administer"/>
+      <mandatoryConform/>
     </attribute>
-    <attribute side="server" code="0x0002" define="SCAN_MAX_TIME_SECONDS" type="int8u" optional="true">ScanMaxTimeSeconds</attribute>
-    <attribute side="server" code="0x0003" define="CONNECT_MAX_TIME_SECONDS" type="int8u" optional="true">ConnectMaxTimeSeconds</attribute>
+    <attribute side="server" code="0x0002" define="SCAN_MAX_TIME_SECONDS" type="int8u" optional="true">
+      <description>ScanMaxTimeSeconds</description>
+      <mandatoryConform>
+        <orTerm>
+          <feature name="WI"/>
+          <feature name="TH"/>
+        </orTerm>
+      </mandatoryConform>
+    </attribute>
+    <attribute side="server" code="0x0003" define="CONNECT_MAX_TIME_SECONDS" type="int8u" optional="true">
+      <description>ConnectMaxTimeSeconds</description>
+      <mandatoryConform>
+        <orTerm>
+          <feature name="WI"/>
+          <feature name="TH"/>
+        </orTerm>
+      </mandatoryConform>
+    </attribute>
     <attribute side="server" code="0x0004" define="INTERFACE_ENABLED" type="boolean" writable="true" default="1">
       <description>InterfaceEnabled</description>
       <access op="write" privilege="administer"/>
+      <mandatoryConform/>
     </attribute>
     <attribute side="server" code="0x0005" define="LAST_NETWORKING_STATUS" type="NetworkCommissioningStatusEnum" isNullable="true" min="0x00" max="0x0C">
       <description>LastNetworkingStatus</description>
       <access op="read" privilege="administer"/>
+      <mandatoryConform/>
     </attribute>
     <attribute side="server" code="0x0006" define="LAST_NETWORK_ID" type="octet_string" length="32" isNullable="true" minLength="1">
       <description>LastNetworkID</description>
       <access op="read" privilege="administer"/>
+      <mandatoryConform/>
     </attribute>
     <attribute side="server" code="0x0007" define="LAST_CONNECT_ERROR_VALUE" type="int32s" isNullable="true">
       <description>LastConnectErrorValue</description>
       <access op="read" privilege="administer"/>
+      <mandatoryConform/>
     </attribute>
-    <attribute side="server" code="0x0008" define="SUPPORTED_WIFI_BANDS" type="array" entryType="WiFiBandEnum" optional="true" apiMaturity="provisional" minLength="1">SupportedWiFiBands</attribute>
-    <attribute side="server" code="0x0009" define="SUPPORTED_THREAD_FEATURES" type="ThreadCapabilitiesBitmap" optional="true" apiMaturity="provisional" min="0x0000" max="0x001F">SupportedThreadFeatures</attribute>
-    <attribute side="server" code="0x000A" define="THREAD_VERSION" type="int16u" optional="true" apiMaturity="provisional">ThreadVersion</attribute>
+    <attribute side="server" code="0x0008" define="SUPPORTED_WIFI_BANDS" type="array" entryType="WiFiBandEnum" optional="true" apiMaturity="provisional" minLength="1">
+      <description>SupportedWiFiBands</description>
+      <mandatoryConform>
+        <feature name="WI"/>
+      </mandatoryConform>
+    </attribute>
+    <attribute side="server" code="0x0009" define="SUPPORTED_THREAD_FEATURES" type="ThreadCapabilitiesBitmap" optional="true" apiMaturity="provisional" min="0x0000" max="0x001F">
+      <description>SupportedThreadFeatures</description>
+      <mandatoryConform>
+        <feature name="TH"/>
+      </mandatoryConform>
+    </attribute>
+    <attribute side="server" code="0x000A" define="THREAD_VERSION" type="int16u" optional="true" apiMaturity="provisional">
+      <description>ThreadVersion</description>
+      <mandatoryConform>
+        <feature name="TH"/>
+      </mandatoryConform>
+    </attribute>
     <command source="client" code="0x00" name="ScanNetworks" optional="true" response="ScanNetworksResponse" cli="chip network_commissioning scannetworks">
       <description>This command SHALL scan on the Cluster instance&apos;s associated network interface for either of: </description>
       <arg id="0" name="SSID" type="octet_string" length="32" isNullable="true" optional="true" minLength="1"/>
       <arg id="1" name="Breadcrumb" type="int64u" optional="true"/>
       <access op="invoke" privilege="administer"/>
+      <mandatoryConform>
+        <orTerm>
+          <feature name="WI"/>
+          <feature name="TH"/>
+        </orTerm>
+      </mandatoryConform>
     </command>
 
     <command source="server" code="0x01" name="ScanNetworksResponse" optional="true" cli="chip network_commissioning scannetworksresponse" disableDefaultResponse="true">
@@ -166,6 +209,12 @@ Git: 0.9-fall2024-87-gcdfdb86be-dirty
       <arg id="1" name="DebugText" type="long_char_string" optional="true" length="512"/>
       <arg id="2" name="WiFiScanResults" type="WiFiInterfaceScanResultStruct" array="true" optional="true"/>
       <arg id="3" name="ThreadScanResults" type="ThreadInterfaceScanResultStruct" array="true" optional="true"/>
+      <mandatoryConform>
+        <orTerm>
+          <feature name="WI"/>
+          <feature name="TH"/>
+        </orTerm>
+      </mandatoryConform>
     </command>
 
     <command source="client" code="0x02" name="AddOrUpdateWiFiNetwork" optional="true" response="NetworkConfigResponse" cli="chip network_commissioning addorupdatewifinetwork">
@@ -177,6 +226,9 @@ Git: 0.9-fall2024-87-gcdfdb86be-dirty
       <arg id="4" name="ClientIdentifier" type="octet_string" length="20" optional="true" minLength="20"/>
       <arg id="5" name="PossessionNonce" type="octet_string" length="32" optional="true" minLength="32"/>
       <access op="invoke" privilege="administer"/>
+      <mandatoryConform>
+        <feature name="WI"/>
+      </mandatoryConform>
     </command>
 
     <command source="client" code="0x03" name="AddOrUpdateThreadNetwork" optional="true" response="NetworkConfigResponse" cli="chip network_commissioning addorupdatethreadnetwork">
@@ -184,6 +236,9 @@ Git: 0.9-fall2024-87-gcdfdb86be-dirty
       <arg id="0" name="OperationalDataset" type="octet_string" length="254"/>
       <arg id="1" name="Breadcrumb" type="int64u" optional="true"/>
       <access op="invoke" privilege="administer"/>
+      <mandatoryConform>
+        <feature name="TH"/>
+      </mandatoryConform>
     </command>
 
     <command source="client" code="0x04" name="RemoveNetwork" optional="true" response="NetworkConfigResponse" cli="chip network_commissioning removenetwork">
@@ -191,6 +246,12 @@ Git: 0.9-fall2024-87-gcdfdb86be-dirty
       <arg id="0" name="NetworkID" type="octet_string" length="32" minLength="1"/>
       <arg id="1" name="Breadcrumb" type="int64u" optional="true"/>
       <access op="invoke" privilege="administer"/>
+      <mandatoryConform>
+        <orTerm>
+          <feature name="WI"/>
+          <feature name="TH"/>
+        </orTerm>
+      </mandatoryConform>
     </command>
 
     <command source="server" code="0x05" name="NetworkConfigResponse" optional="true" cli="chip network_commissioning addwifiresponse" disableDefaultResponse="true">
@@ -200,6 +261,12 @@ Git: 0.9-fall2024-87-gcdfdb86be-dirty
       <arg id="2" name="NetworkIndex" type="int8u" optional="true"/>
       <arg id="3" name="ClientIdentity" type="octet_string" length="140" optional="true"/>
       <arg id="4" name="PossessionSignature" type="octet_string" length="64" optional="true" minLength="64"/>
+      <mandatoryConform>
+        <orTerm>
+          <feature name="WI"/>
+          <feature name="TH"/>
+        </orTerm>
+      </mandatoryConform>
     </command>
 
     <command source="client" code="0x06" name="ConnectNetwork" optional="true" response="ConnectNetworkResponse" cli="chip network_commissioning connectnetwork">
@@ -207,6 +274,12 @@ Git: 0.9-fall2024-87-gcdfdb86be-dirty
       <arg id="0" name="NetworkID" type="octet_string" length="32" minLength="1"/>
       <arg id="1" name="Breadcrumb" type="int64u" optional="true"/>
       <access op="invoke" privilege="administer"/>
+      <mandatoryConform>
+        <orTerm>
+          <feature name="WI"/>
+          <feature name="TH"/>
+        </orTerm>
+      </mandatoryConform>
     </command>
 
     <command source="server" code="0x07" name="ConnectNetworkResponse" optional="true" cli="chip network_commissioning connectnetworkresponse" disableDefaultResponse="true">
@@ -214,6 +287,12 @@ Git: 0.9-fall2024-87-gcdfdb86be-dirty
       <arg id="0" name="NetworkingStatus" type="NetworkCommissioningStatusEnum" min="0x00" max="0x0C"/>
       <arg id="1" name="DebugText" type="char_string" optional="true"/>
       <arg id="2" name="ErrorValue" type="int32s" isNullable="true"/>
+      <mandatoryConform>
+        <orTerm>
+          <feature name="WI"/>
+          <feature name="TH"/>
+        </orTerm>
+      </mandatoryConform>
     </command>
 
     <command source="client" code="0x08" name="ReorderNetwork" optional="true" response="NetworkConfigResponse" cli="chip network_commissioning connectnetwork">
@@ -222,6 +301,12 @@ Git: 0.9-fall2024-87-gcdfdb86be-dirty
       <arg id="1" name="NetworkIndex" type="int8u"/>
       <arg id="2" name="Breadcrumb" type="int64u" optional="true"/>
       <access op="invoke" privilege="administer"/>
+      <mandatoryConform>
+        <orTerm>
+          <feature name="WI"/>
+          <feature name="TH"/>
+        </orTerm>
+      </mandatoryConform>
     </command>
 
     <command source="client" code="0x09" name="QueryIdentity" optional="true" response="QueryIdentityResponse" cli="chip network_commissioning queryidentity">
@@ -229,12 +314,18 @@ Git: 0.9-fall2024-87-gcdfdb86be-dirty
       <arg id="0" name="KeyIdentifier" type="octet_string" length="20" minLength="20"/>
       <arg id="1" name="PossessionNonce" type="octet_string" length="32" optional="true" minLength="32"/>
       <access op="invoke" privilege="administer"/>
+      <mandatoryConform>
+        <feature name="PDC"/>
+      </mandatoryConform>
     </command>
 
     <command source="server" code="0x0A" name="QueryIdentityResponse" optional="true" disableDefaultResponse="true">
       <description>The data for this command is as follows: </description>
       <arg id="0" name="Identity" type="octet_string" length="140"/>
       <arg id="1" name="PossessionSignature" type="octet_string" length="64" optional="true" minLength="64"/>
+      <mandatoryConform>
+        <feature name="PDC"/>
+      </mandatoryConform>
     </command>
 
   </cluster>

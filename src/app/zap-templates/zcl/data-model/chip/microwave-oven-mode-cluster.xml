@@ -57,7 +57,13 @@ Git: 0.9-fall2024-87-gcdfdb86be-dirty
       </feature>
     </features>
     <!-- Base data types -->
-    <attribute side="server" code="0x0000" define="SUPPORTED_MODES" type="array" entryType="ModeOptionStruct" length="255" minLength="2">SupportedModes</attribute>
-    <attribute side="server" code="0x0001" define="CURRENT_MODE" type="int8u">CurrentMode</attribute>
+    <attribute side="server" code="0x0000" define="SUPPORTED_MODES" type="array" entryType="ModeOptionStruct" length="255" minLength="2">
+      <description>SupportedModes</description>
+      <mandatoryConform/>
+    </attribute>
+    <attribute side="server" code="0x0001" define="CURRENT_MODE" type="int8u">
+      <description>CurrentMode</description>
+      <mandatoryConform/>
+    </attribute>
   </cluster>
 </configurator>

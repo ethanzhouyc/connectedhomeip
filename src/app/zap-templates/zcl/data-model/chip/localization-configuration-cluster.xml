@@ -38,7 +38,11 @@ Git: 0.9-fall2024-87-gcdfdb86be-dirty
     <attribute side="server" code="0x00" define="ACTIVE_LOCALE" type="char_string" length="35" writable="true">
       <description>ActiveLocale</description>
       <access op="write" privilege="manage"/>
+      <mandatoryConform/>
     </attribute>
-    <attribute side="server" code="0x01" define="SUPPORTED_LOCALES" type="array" entryType="char_string" length="32">SupportedLocales</attribute>
+    <attribute side="server" code="0x01" define="SUPPORTED_LOCALES" type="array" entryType="char_string" length="32">
+      <description>SupportedLocales</description>
+      <mandatoryConform/>
+    </attribute>
   </cluster>
 </configurator>

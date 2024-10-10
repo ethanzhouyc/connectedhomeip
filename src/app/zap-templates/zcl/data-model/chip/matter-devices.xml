@@ -3987,9 +3987,9 @@ limitations under the License.
         </clusters>
     </deviceType>
     <deviceType>
-        <name>MA-energytariff</name>
+        <name>MA-energytariffcalendar</name>
         <domain>CHIP</domain>
-        <typeName>Matter Energy Tariff</typeName>
+        <typeName>Matter Energy Tariff Calendar</typeName>
         <profileId editable="false">0x0103</profileId>
         <deviceId editable="false">0x050B</deviceId>
         <class>Simple</class>

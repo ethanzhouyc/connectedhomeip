@@ -31,28 +31,62 @@ Git: 0.9-fall2024-87-gcdfdb86be-dirty
     <server init="false" tick="false">true</server>
     <description>This cluster supports remotely monitoring and, where supported, changing the operational state of an Oven.</description>
     <globalAttribute side="either" code="0xFFFD" value="1"/>
-    <attribute side="server" code="0x0000" define="PHASE_LIST" type="array" entryType="char_string" isNullable="true" length="32">PhaseList</attribute>
-    <attribute side="server" code="0x0001" define="CURRENT_PHASE" type="int8u" isNullable="true">CurrentPhase</attribute>
-    <attribute side="server" code="0x0002" define="COUNTDOWN_TIME" type="elapsed_s" max="259200" isNullable="true" optional="true">CountdownTime</attribute>
-    <attribute side="server" code="0x0003" define="OPERATIONAL_STATE_LIST" type="array" entryType="OperationalStateStruct">OperationalStateList</attribute>
-    <attribute side="server" code="0x0004" define="OPERATIONAL_STATE" type="OperationalStateEnum" min="0x00" max="0x03">OperationalState</attribute>
-    <attribute side="server" code="0x0005" define="OPERATIONAL_ERROR" type="ErrorStateStruct">OperationalError</attribute>
+    <attribute side="server" code="0x0000" define="PHASE_LIST" type="array" entryType="char_string" isNullable="true" length="32">
+      <description>PhaseList</description>
+      <mandatoryConform/>
+    </attribute>
+    <attribute side="server" code="0x0001" define="CURRENT_PHASE" type="int8u" isNullable="true">
+      <description>CurrentPhase</description>
+      <mandatoryConform/>
+    </attribute>
+    <attribute side="server" code="0x0002" define="COUNTDOWN_TIME" type="elapsed_s" max="259200" isNullable="true" optional="true">
+      <description>CountdownTime</description>
+      <optionalConform/>
+    </attribute>
+    <attribute side="server" code="0x0003" define="OPERATIONAL_STATE_LIST" type="array" entryType="OperationalStateStruct">
+      <description>OperationalStateList</description>
+      <mandatoryConform/>
+    </attribute>
+    <attribute side="server" code="0x0004" define="OPERATIONAL_STATE" type="OperationalStateEnum" min="0x00" max="0x03">
+      <description>OperationalState</description>
+      <mandatoryConform/>
+    </attribute>
+    <attribute side="server" code="0x0005" define="OPERATIONAL_ERROR" type="ErrorStateStruct">
+      <description>OperationalError</description>
+      <mandatoryConform/>
+    </attribute>
     <command source="client" code="0x01" name="Stop" response="OperationalCommandResponse" optional="true">
       <description>This command SHALL be supported if the device supports remotely stopping the operation.</description>
+      <otherwiseConform>
+        <mandatoryConform>
+          <command name="Start"/>
+        </mandatoryConform>
+        <optionalConform/>
+      </otherwiseConform>
     </command>
 
     <command source="client" code="0x02" name="Start" response="OperationalCommandResponse" optional="true">
       <description>This command SHALL be supported if the device supports remotely starting the operation.</description>
+      <optionalConform/>
     </command>
 
     <command source="server" code="0x04" name="OperationalCommandResponse" optional="true" disableDefaultResponse="true">
       <description>This command SHALL be supported by an implementation if any of the other commands defined by this cluster are supported (i.e.</description>
       <arg id="0" name="CommandResponseState" type="ErrorStateStruct"/>
+      <mandatoryConform>
+        <orTerm>
+          <command name="Pause"/>
+          <command name="Stop"/>
+          <command name="Start"/>
+          <command name="Resume"/>
+        </orTerm>
+      </mandatoryConform>
     </command>
 
     <event side="server" code="0x00" priority="critical" name="OperationalError">
       <description>This event is generated when a reportable error condition is detected.</description>
       <field id="0" name="ErrorState" type="ErrorStateStruct"/>
+      <mandatoryConform/>
     </event>
 
     <event side="server" code="0x01" priority="info" name="OperationCompletion" optional="true">
@@ -60,6 +94,7 @@ Git: 0.9-fall2024-87-gcdfdb86be-dirty
       <field id="0" name="CompletionErrorCode" type="enum8"/>
       <field id="1" name="TotalOperationalTime" type="elapsed_s" isNullable="true" optional="true"/>
       <field id="2" name="PausedTime" type="elapsed_s" isNullable="true" optional="true"/>
+      <optionalConform/>
     </event>
 
   </cluster>

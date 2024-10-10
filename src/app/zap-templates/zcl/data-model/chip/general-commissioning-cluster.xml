@@ -64,42 +64,87 @@ Git: 0.9-fall2024-87-gcdfdb86be-dirty
     <attribute side="server" code="0x00" define="BREADCRUMB" type="int64u" writable="true" default="0x0000000000000000">
       <description>Breadcrumb</description>
       <access op="write" privilege="administer"/>
+      <mandatoryConform/>
     </attribute>
-    <attribute side="server" code="0x01" define="BASIC_COMMISSIONING_INFO" type="BasicCommissioningInfo">BasicCommissioningInfo</attribute>
-    <attribute side="server" code="0x02" define="REGULATORY_CONFIG" type="RegulatoryLocationTypeEnum" min="0x00" max="0x02" default="0x02">RegulatoryConfig</attribute>
-    <attribute side="server" code="0x03" define="LOCATION_CAPABILITY" type="RegulatoryLocationTypeEnum" min="0x00" max="0x02" default="0x02">LocationCapability</attribute>
-    <attribute side="server" code="0x04" define="SUPPORTS_CONCURRENT_CONNECTION" type="boolean" default="1">SupportsConcurrentConnection</attribute>
+    <attribute side="server" code="0x01" define="BASIC_COMMISSIONING_INFO" type="BasicCommissioningInfo">
+      <description>BasicCommissioningInfo</description>
+      <mandatoryConform/>
+    </attribute>
+    <attribute side="server" code="0x02" define="REGULATORY_CONFIG" type="RegulatoryLocationTypeEnum" min="0x00" max="0x02" default="0x02">
+      <description>RegulatoryConfig</description>
+      <mandatoryConform/>
+    </attribute>
+    <attribute side="server" code="0x03" define="LOCATION_CAPABILITY" type="RegulatoryLocationTypeEnum" min="0x00" max="0x02" default="0x02">
+      <description>LocationCapability</description>
+      <mandatoryConform/>
+    </attribute>
+    <attribute side="server" code="0x04" define="SUPPORTS_CONCURRENT_CONNECTION" type="boolean" default="1">
+      <description>SupportsConcurrentConnection</description>
+      <mandatoryConform/>
+    </attribute>
     <attribute side="server" code="0x05" define="TC_ACCEPTED_VERSION" type="int16u" optional="true" apiMaturity="provisional">
       <description>TCAcceptedVersion</description>
       <access op="read" privilege="administer"/>
+      <otherwiseConform>
+        <provisionalConform/>
+        <mandatoryConform>
+          <feature name="TC"/>
+        </mandatoryConform>
+      </otherwiseConform>
     </attribute>
     <attribute side="server" code="0x06" define="TC_MIN_REQUIRED_VERSION" type="int16u" optional="true" apiMaturity="provisional">
       <description>TCMinRequiredVersion</description>
       <access op="read" privilege="administer"/>
+      <otherwiseConform>
+        <provisionalConform/>
+        <mandatoryConform>
+          <feature name="TC"/>
+        </mandatoryConform>
+      </otherwiseConform>
     </attribute>
     <attribute side="server" code="0x07" define="TC_ACKNOWLEDGEMENTS" type="bitmap16" optional="true" apiMaturity="provisional">
       <description>TCAcknowledgements</description>
       <access op="read" privilege="administer"/>
+      <otherwiseConform>
+        <provisionalConform/>
+        <mandatoryConform>
+          <feature name="TC"/>
+        </mandatoryConform>
+      </otherwiseConform>
     </attribute>
     <attribute side="server" code="0x08" define="TC_ACKNOWLEDGEMENTS_REQUIRED" type="boolean" optional="true" apiMaturity="provisional" default="1">
       <description>TCAcknowledgementsRequired</description>
       <access op="read" privilege="administer"/>
+      <otherwiseConform>
+        <provisionalConform/>
+        <mandatoryConform>
+          <feature name="TC"/>
+        </mandatoryConform>
+      </otherwiseConform>
     </attribute>
     <attribute side="server" code="0x09" define="TC_UPDATE_DEADLINE" type="int32u" optional="true" apiMaturity="provisional" isNullable="true">
       <description>TCUpdateDeadline</description>
       <access op="read" privilege="administer"/>
+      <otherwiseConform>
+        <provisionalConform/>
+        <mandatoryConform>
+          <feature name="TC"/>
+        </mandatoryConform>
+      </otherwiseConform>
     </attribute>
     <command source="client" code="0x00" name="ArmFailSafe" response="ArmFailSafeResponse" optional="false" cli="chip fabric_commissioning armfailsafe">
       <description>The arguments for this command are as follows: </description>
       <arg id="0" name="ExpiryLengthSeconds" type="int16u" default="900"/>
       <arg id="1" name="Breadcrumb" type="int64u"/>
       <access op="invoke" privilege="administer"/>
+      <mandatoryConform/>
     </command>
 
     <command source="server" code="0x01" name="ArmFailSafeResponse" optional="false" cli="chip fabric_commissioning armfailsaferesponse" disableDefaultResponse="true">
       <description>Success/failure response for ArmFailSafe command</description>
       <arg id="0" name="ErrorCode" type="CommissioningErrorEnum" min="0x00" max="0x07"/>
       <arg id="1" name="DebugText" type="char_string" length="128"/>
+      <mandatoryConform/>
     </command>
 
     <command source="client" code="0x02" name="SetRegulatoryConfig" response="SetRegulatoryConfigResponse" cli="chip fabric_commissioning setregulatoryconfig" optional="false">
@@ -108,23 +153,27 @@ Git: 0.9-fall2024-87-gcdfdb86be-dirty
       <arg id="1" name="CountryCode" type="char_string" length="2" minLength="2"/>
       <arg id="2" name="Breadcrumb" type="int64u"/>
       <access op="invoke" privilege="administer"/>
+      <mandatoryConform/>
     </command>
 
     <command source="server" code="0x03" name="SetRegulatoryConfigResponse" cli="chip fabric_commissioning setregulatoryconfigresponse" optional="false" disableDefaultResponse="true">
       <description>The data for this command is as follows: </description>
       <arg id="0" name="ErrorCode" type="CommissioningErrorEnum" min="0x00" max="0x07"/>
       <arg id="1" name="DebugText" type="char_string"/>
+      <mandatoryConform/>
     </command>
 
     <command source="client" code="0x04" name="CommissioningComplete" response="CommissioningCompleteResponse" isFabricScoped="true" optional="false" cli="chip fabric_commissioning commissioningcomplete">
       <description>This command has no data.</description>
       <access op="invoke" privilege="administer"/>
+      <mandatoryConform/>
     </command>
 
     <command source="server" code="0x05" name="CommissioningCompleteResponse" optional="false" cli="chip fabric_commissioning commissioningcompleteresponse" disableDefaultResponse="true">
       <description>The data for this command is as follows: </description>
       <arg id="0" name="ErrorCode" type="CommissioningErrorEnum" min="0x00" max="0x07"/>
       <arg id="1" name="DebugText" type="char_string"/>
+      <mandatoryConform/>
     </command>
 
     <command source="client" code="0x06" name="SetTCAcknowledgements" optional="true" response="SetTCAcknowledgementsResponse" cli="chip fabric_commissioning settcacknowledgements" apiMaturity="provisional">
@@ -132,11 +181,23 @@ Git: 0.9-fall2024-87-gcdfdb86be-dirty
       <arg id="0" name="TCVersion" type="int16u"/>
       <arg id="1" name="TCUserResponse" type="bitmap16"/>
       <access op="invoke" privilege="administer"/>
+      <otherwiseConform>
+        <provisionalConform/>
+        <mandatoryConform>
+          <feature name="TC"/>
+        </mandatoryConform>
+      </otherwiseConform>
     </command>
 
     <command source="server" code="0x07" name="SetTCAcknowledgementsResponse" optional="true" cli="chip fabric_commissioning settcacknowledgementsresponse" apiMaturity="provisional" disableDefaultResponse="true">
       <description>This command is used to convey the result from SetTCAcknowledgements.</description>
       <arg id="0" name="ErrorCode" type="CommissioningErrorEnum" min="0x00" max="0x07"/>
+      <otherwiseConform>
+        <provisionalConform/>
+        <mandatoryConform>
+          <feature name="TC"/>
+        </mandatoryConform>
+      </otherwiseConform>
     </command>
 
   </cluster>

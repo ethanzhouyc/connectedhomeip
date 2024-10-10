@@ -59,17 +59,70 @@ Git: 0.9-fall2024-87-gcdfdb86be-dirty
         </optionalConform>
       </feature>
     </features>
-    <attribute side="server" code="0x0000" define="MEASURED_VALUE" type="single" isNullable="true" optional="true" reportable="true">MeasuredValue</attribute>
-    <attribute side="server" code="0x0001" define="MIN_MEASURED_VALUE" type="single" isNullable="true" optional="true">MinMeasuredValue</attribute>
-    <attribute side="server" code="0x0002" define="MAX_MEASURED_VALUE" type="single" isNullable="true" optional="true">MaxMeasuredValue</attribute>
-    <attribute side="server" code="0x0003" define="PEAK_MEASURED_VALUE" type="single" isNullable="true" optional="true" reportable="true">PeakMeasuredValue</attribute>
-    <attribute side="server" code="0x0004" define="PEAK_MEASURED_VALUE_WINDOW" type="elapsed_s" max="604800" default="1" optional="true" reportable="true">PeakMeasuredValueWindow</attribute>
-    <attribute side="server" code="0x0005" define="AVG_MEASURED_VALUE" type="single" isNullable="true" optional="true" reportable="true">AverageMeasuredValue</attribute>
-    <attribute side="server" code="0x0006" define="AVG_MEASURED_VALUE_WINDOW" type="elapsed_s" max="604800" default="1" optional="true" reportable="true">AverageMeasuredValueWindow</attribute>
-    <attribute side="server" code="0x0007" define="UNCERTAINTY" type="single" optional="true">Uncertainty</attribute>
-    <attribute side="server" code="0x0008" define="MEASUREMENT_UNIT" type="MeasurementUnitEnum" min="0" max="7" optional="true">MeasurementUnit</attribute>
-    <attribute side="server" code="0x0009" define="MEASUREMENT_MEDIUM" type="MeasurementMediumEnum" min="0" max="2">MeasurementMedium</attribute>
-    <attribute side="server" code="0x000a" define="LEVEL_VALUE" type="LevelValueEnum" min="0" max="4" default="0" optional="true">LevelValue</attribute>
+    <attribute side="server" code="0x0000" define="MEASURED_VALUE" type="single" isNullable="true" optional="true" reportable="true">
+      <description>MeasuredValue</description>
+      <mandatoryConform>
+        <feature name="MEA"/>
+      </mandatoryConform>
+    </attribute>
+    <attribute side="server" code="0x0001" define="MIN_MEASURED_VALUE" type="single" isNullable="true" optional="true">
+      <description>MinMeasuredValue</description>
+      <mandatoryConform>
+        <feature name="MEA"/>
+      </mandatoryConform>
+    </attribute>
+    <attribute side="server" code="0x0002" define="MAX_MEASURED_VALUE" type="single" isNullable="true" optional="true">
+      <description>MaxMeasuredValue</description>
+      <mandatoryConform>
+        <feature name="MEA"/>
+      </mandatoryConform>
+    </attribute>
+    <attribute side="server" code="0x0003" define="PEAK_MEASURED_VALUE" type="single" isNullable="true" optional="true" reportable="true">
+      <description>PeakMeasuredValue</description>
+      <mandatoryConform>
+        <feature name="PEA"/>
+      </mandatoryConform>
+    </attribute>
+    <attribute side="server" code="0x0004" define="PEAK_MEASURED_VALUE_WINDOW" type="elapsed_s" max="604800" default="1" optional="true" reportable="true">
+      <description>PeakMeasuredValueWindow</description>
+      <mandatoryConform>
+        <feature name="PEA"/>
+      </mandatoryConform>
+    </attribute>
+    <attribute side="server" code="0x0005" define="AVG_MEASURED_VALUE" type="single" isNullable="true" optional="true" reportable="true">
+      <description>AverageMeasuredValue</description>
+      <mandatoryConform>
+        <feature name="AVG"/>
+      </mandatoryConform>
+    </attribute>
+    <attribute side="server" code="0x0006" define="AVG_MEASURED_VALUE_WINDOW" type="elapsed_s" max="604800" default="1" optional="true" reportable="true">
+      <description>AverageMeasuredValueWindow</description>
+      <mandatoryConform>
+        <feature name="AVG"/>
+      </mandatoryConform>
+    </attribute>
+    <attribute side="server" code="0x0007" define="UNCERTAINTY" type="single" optional="true">
+      <description>Uncertainty</description>
+      <optionalConform>
+        <feature name="MEA"/>
+      </optionalConform>
+    </attribute>
+    <attribute side="server" code="0x0008" define="MEASUREMENT_UNIT" type="MeasurementUnitEnum" min="0" max="7" optional="true">
+      <description>MeasurementUnit</description>
+      <mandatoryConform>
+        <feature name="MEA"/>
+      </mandatoryConform>
+    </attribute>
+    <attribute side="server" code="0x0009" define="MEASUREMENT_MEDIUM" type="MeasurementMediumEnum" min="0" max="2">
+      <description>MeasurementMedium</description>
+      <mandatoryConform/>
+    </attribute>
+    <attribute side="server" code="0x000a" define="LEVEL_VALUE" type="LevelValueEnum" min="0" max="4" default="0" optional="true">
+      <description>LevelValue</description>
+      <mandatoryConform>
+        <feature name="LEV"/>
+      </mandatoryConform>
+    </attribute>
   </cluster>
 
   <cluster>
@@ -110,17 +163,70 @@ Git: 0.9-fall2024-87-gcdfdb86be-dirty
       </feature>
     </features>
     <!-- Attributes -->
-    <attribute side="server" code="0x0000" define="MEASURED_VALUE" type="single" isNullable="true" optional="true" reportable="true">MeasuredValue</attribute>
-    <attribute side="server" code="0x0001" define="MIN_MEASURED_VALUE" type="single" isNullable="true" optional="true">MinMeasuredValue</attribute>
-    <attribute side="server" code="0x0002" define="MAX_MEASURED_VALUE" type="single" isNullable="true" optional="true">MaxMeasuredValue</attribute>
-    <attribute side="server" code="0x0003" define="PEAK_MEASURED_VALUE" type="single" isNullable="true" optional="true" reportable="true">PeakMeasuredValue</attribute>
-    <attribute side="server" code="0x0004" define="PEAK_MEASURED_VALUE_WINDOW" type="elapsed_s" max="604800" default="1" optional="true" reportable="true">PeakMeasuredValueWindow</attribute>
-    <attribute side="server" code="0x0005" define="AVG_MEASURED_VALUE" type="single" isNullable="true" optional="true" reportable="true">AverageMeasuredValue</attribute>
-    <attribute side="server" code="0x0006" define="AVG_MEASURED_VALUE_WINDOW" type="elapsed_s" max="604800" default="1" optional="true" reportable="true">AverageMeasuredValueWindow</attribute>
-    <attribute side="server" code="0x0007" define="UNCERTAINTY" type="single" optional="true">Uncertainty</attribute>
-    <attribute side="server" code="0x0008" define="MEASUREMENT_UNIT" type="MeasurementUnitEnum" min="0" max="7" optional="true">MeasurementUnit</attribute>
-    <attribute side="server" code="0x0009" define="MEASUREMENT_MEDIUM" type="MeasurementMediumEnum" min="0" max="2">MeasurementMedium</attribute>
-    <attribute side="server" code="0x000a" define="LEVEL_VALUE" type="LevelValueEnum" min="0" max="4" default="0" optional="true">LevelValue</attribute>
+    <attribute side="server" code="0x0000" define="MEASURED_VALUE" type="single" isNullable="true" optional="true" reportable="true">
+      <description>MeasuredValue</description>
+      <mandatoryConform>
+        <feature name="MEA"/>
+      </mandatoryConform>
+    </attribute>
+    <attribute side="server" code="0x0001" define="MIN_MEASURED_VALUE" type="single" isNullable="true" optional="true">
+      <description>MinMeasuredValue</description>
+      <mandatoryConform>
+        <feature name="MEA"/>
+      </mandatoryConform>
+    </attribute>
+    <attribute side="server" code="0x0002" define="MAX_MEASURED_VALUE" type="single" isNullable="true" optional="true">
+      <description>MaxMeasuredValue</description>
+      <mandatoryConform>
+        <feature name="MEA"/>
+      </mandatoryConform>
+    </attribute>
+    <attribute side="server" code="0x0003" define="PEAK_MEASURED_VALUE" type="single" isNullable="true" optional="true" reportable="true">
+      <description>PeakMeasuredValue</description>
+      <mandatoryConform>
+        <feature name="PEA"/>
+      </mandatoryConform>
+    </attribute>
+    <attribute side="server" code="0x0004" define="PEAK_MEASURED_VALUE_WINDOW" type="elapsed_s" max="604800" default="1" optional="true" reportable="true">
+      <description>PeakMeasuredValueWindow</description>
+      <mandatoryConform>
+        <feature name="PEA"/>
+      </mandatoryConform>
+    </attribute>
+    <attribute side="server" code="0x0005" define="AVG_MEASURED_VALUE" type="single" isNullable="true" optional="true" reportable="true">
+      <description>AverageMeasuredValue</description>
+      <mandatoryConform>
+        <feature name="AVG"/>
+      </mandatoryConform>
+    </attribute>
+    <attribute side="server" code="0x0006" define="AVG_MEASURED_VALUE_WINDOW" type="elapsed_s" max="604800" default="1" optional="true" reportable="true">
+      <description>AverageMeasuredValueWindow</description>
+      <mandatoryConform>
+        <feature name="AVG"/>
+      </mandatoryConform>
+    </attribute>
+    <attribute side="server" code="0x0007" define="UNCERTAINTY" type="single" optional="true">
+      <description>Uncertainty</description>
+      <optionalConform>
+        <feature name="MEA"/>
+      </optionalConform>
+    </attribute>
+    <attribute side="server" code="0x0008" define="MEASUREMENT_UNIT" type="MeasurementUnitEnum" min="0" max="7" optional="true">
+      <description>MeasurementUnit</description>
+      <mandatoryConform>
+        <feature name="MEA"/>
+      </mandatoryConform>
+    </attribute>
+    <attribute side="server" code="0x0009" define="MEASUREMENT_MEDIUM" type="MeasurementMediumEnum" min="0" max="2">
+      <description>MeasurementMedium</description>
+      <mandatoryConform/>
+    </attribute>
+    <attribute side="server" code="0x000a" define="LEVEL_VALUE" type="LevelValueEnum" min="0" max="4" default="0" optional="true">
+      <description>LevelValue</description>
+      <mandatoryConform>
+        <feature name="LEV"/>
+      </mandatoryConform>
+    </attribute>
   </cluster>
 
   <cluster>
@@ -160,17 +266,70 @@ Git: 0.9-fall2024-87-gcdfdb86be-dirty
         </optionalConform>
       </feature>
     </features>
-    <attribute side="server" code="0x0000" define="MEASURED_VALUE" type="single" isNullable="true" optional="true" reportable="true">MeasuredValue</attribute>
-    <attribute side="server" code="0x0001" define="MIN_MEASURED_VALUE" type="single" isNullable="true" optional="true">MinMeasuredValue</attribute>
-    <attribute side="server" code="0x0002" define="MAX_MEASURED_VALUE" type="single" isNullable="true" optional="true">MaxMeasuredValue</attribute>
-    <attribute side="server" code="0x0003" define="PEAK_MEASURED_VALUE" type="single" isNullable="true" optional="true" reportable="true">PeakMeasuredValue</attribute>
-    <attribute side="server" code="0x0004" define="PEAK_MEASURED_VALUE_WINDOW" type="elapsed_s" max="604800" default="1" optional="true" reportable="true">PeakMeasuredValueWindow</attribute>
-    <attribute side="server" code="0x0005" define="AVG_MEASURED_VALUE" type="single" isNullable="true" optional="true" reportable="true">AverageMeasuredValue</attribute>
-    <attribute side="server" code="0x0006" define="AVG_MEASURED_VALUE_WINDOW" type="elapsed_s" max="604800" default="1" optional="true" reportable="true">AverageMeasuredValueWindow</attribute>
-    <attribute side="server" code="0x0007" define="UNCERTAINTY" type="single" optional="true">Uncertainty</attribute>
-    <attribute side="server" code="0x0008" define="MEASUREMENT_UNIT" type="MeasurementUnitEnum" min="0" max="7" optional="true">MeasurementUnit</attribute>
-    <attribute side="server" code="0x0009" define="MEASUREMENT_MEDIUM" type="MeasurementMediumEnum" min="0" max="2">MeasurementMedium</attribute>
-    <attribute side="server" code="0x000a" define="LEVEL_VALUE" type="LevelValueEnum" min="0" max="4" default="0" optional="true">LevelValue</attribute>
+    <attribute side="server" code="0x0000" define="MEASURED_VALUE" type="single" isNullable="true" optional="true" reportable="true">
+      <description>MeasuredValue</description>
+      <mandatoryConform>
+        <feature name="MEA"/>
+      </mandatoryConform>
+    </attribute>
+    <attribute side="server" code="0x0001" define="MIN_MEASURED_VALUE" type="single" isNullable="true" optional="true">
+      <description>MinMeasuredValue</description>
+      <mandatoryConform>
+        <feature name="MEA"/>
+      </mandatoryConform>
+    </attribute>
+    <attribute side="server" code="0x0002" define="MAX_MEASURED_VALUE" type="single" isNullable="true" optional="true">
+      <description>MaxMeasuredValue</description>
+      <mandatoryConform>
+        <feature name="MEA"/>
+      </mandatoryConform>
+    </attribute>
+    <attribute side="server" code="0x0003" define="PEAK_MEASURED_VALUE" type="single" isNullable="true" optional="true" reportable="true">
+      <description>PeakMeasuredValue</description>
+      <mandatoryConform>
+        <feature name="PEA"/>
+      </mandatoryConform>
+    </attribute>
+    <attribute side="server" code="0x0004" define="PEAK_MEASURED_VALUE_WINDOW" type="elapsed_s" max="604800" default="1" optional="true" reportable="true">
+      <description>PeakMeasuredValueWindow</description>
+      <mandatoryConform>
+        <feature name="PEA"/>
+      </mandatoryConform>
+    </attribute>
+    <attribute side="server" code="0x0005" define="AVG_MEASURED_VALUE" type="single" isNullable="true" optional="true" reportable="true">
+      <description>AverageMeasuredValue</description>
+      <mandatoryConform>
+        <feature name="AVG"/>
+      </mandatoryConform>
+    </attribute>
+    <attribute side="server" code="0x0006" define="AVG_MEASURED_VALUE_WINDOW" type="elapsed_s" max="604800" default="1" optional="true" reportable="true">
+      <description>AverageMeasuredValueWindow</description>
+      <mandatoryConform>
+        <feature name="AVG"/>
+      </mandatoryConform>
+    </attribute>
+    <attribute side="server" code="0x0007" define="UNCERTAINTY" type="single" optional="true">
+      <description>Uncertainty</description>
+      <optionalConform>
+        <feature name="MEA"/>
+      </optionalConform>
+    </attribute>
+    <attribute side="server" code="0x0008" define="MEASUREMENT_UNIT" type="MeasurementUnitEnum" min="0" max="7" optional="true">
+      <description>MeasurementUnit</description>
+      <mandatoryConform>
+        <feature name="MEA"/>
+      </mandatoryConform>
+    </attribute>
+    <attribute side="server" code="0x0009" define="MEASUREMENT_MEDIUM" type="MeasurementMediumEnum" min="0" max="2">
+      <description>MeasurementMedium</description>
+      <mandatoryConform/>
+    </attribute>
+    <attribute side="server" code="0x000a" define="LEVEL_VALUE" type="LevelValueEnum" min="0" max="4" default="0" optional="true">
+      <description>LevelValue</description>
+      <mandatoryConform>
+        <feature name="LEV"/>
+      </mandatoryConform>
+    </attribute>
   </cluster>
 
   <cluster>
@@ -210,17 +369,70 @@ Git: 0.9-fall2024-87-gcdfdb86be-dirty
         </optionalConform>
       </feature>
     </features>
-    <attribute side="server" code="0x0000" define="MEASURED_VALUE" type="single" isNullable="true" optional="true" reportable="true">MeasuredValue</attribute>
-    <attribute side="server" code="0x0001" define="MIN_MEASURED_VALUE" type="single" isNullable="true" optional="true">MinMeasuredValue</attribute>
-    <attribute side="server" code="0x0002" define="MAX_MEASURED_VALUE" type="single" isNullable="true" optional="true">MaxMeasuredValue</attribute>
-    <attribute side="server" code="0x0003" define="PEAK_MEASURED_VALUE" type="single" isNullable="true" optional="true" reportable="true">PeakMeasuredValue</attribute>
-    <attribute side="server" code="0x0004" define="PEAK_MEASURED_VALUE_WINDOW" type="elapsed_s" max="604800" default="1" optional="true" reportable="true">PeakMeasuredValueWindow</attribute>
-    <attribute side="server" code="0x0005" define="AVG_MEASURED_VALUE" type="single" isNullable="true" optional="true" reportable="true">AverageMeasuredValue</attribute>
-    <attribute side="server" code="0x0006" define="AVG_MEASURED_VALUE_WINDOW" type="elapsed_s" max="604800" default="1" optional="true" reportable="true">AverageMeasuredValueWindow</attribute>
-    <attribute side="server" code="0x0007" define="UNCERTAINTY" type="single" optional="true">Uncertainty</attribute>
-    <attribute side="server" code="0x0008" define="MEASUREMENT_UNIT" type="MeasurementUnitEnum" min="0" max="7" optional="true">MeasurementUnit</attribute>
-    <attribute side="server" code="0x0009" define="MEASUREMENT_MEDIUM" type="MeasurementMediumEnum" min="0" max="2">MeasurementMedium</attribute>
-    <attribute side="server" code="0x000a" define="LEVEL_VALUE" type="LevelValueEnum" min="0" max="4" default="0" optional="true">LevelValue</attribute>
+    <attribute side="server" code="0x0000" define="MEASURED_VALUE" type="single" isNullable="true" optional="true" reportable="true">
+      <description>MeasuredValue</description>
+      <mandatoryConform>
+        <feature name="MEA"/>
+      </mandatoryConform>
+    </attribute>
+    <attribute side="server" code="0x0001" define="MIN_MEASURED_VALUE" type="single" isNullable="true" optional="true">
+      <description>MinMeasuredValue</description>
+      <mandatoryConform>
+        <feature name="MEA"/>
+      </mandatoryConform>
+    </attribute>
+    <attribute side="server" code="0x0002" define="MAX_MEASURED_VALUE" type="single" isNullable="true" optional="true">
+      <description>MaxMeasuredValue</description>
+      <mandatoryConform>
+        <feature name="MEA"/>
+      </mandatoryConform>
+    </attribute>
+    <attribute side="server" code="0x0003" define="PEAK_MEASURED_VALUE" type="single" isNullable="true" optional="true" reportable="true">
+      <description>PeakMeasuredValue</description>
+      <mandatoryConform>
+        <feature name="PEA"/>
+      </mandatoryConform>
+    </attribute>
+    <attribute side="server" code="0x0004" define="PEAK_MEASURED_VALUE_WINDOW" type="elapsed_s" max="604800" default="1" optional="true" reportable="true">
+      <description>PeakMeasuredValueWindow</description>
+      <mandatoryConform>
+        <feature name="PEA"/>
+      </mandatoryConform>
+    </attribute>
+    <attribute side="server" code="0x0005" define="AVG_MEASURED_VALUE" type="single" isNullable="true" optional="true" reportable="true">
+      <description>AverageMeasuredValue</description>
+      <mandatoryConform>
+        <feature name="AVG"/>
+      </mandatoryConform>
+    </attribute>
+    <attribute side="server" code="0x0006" define="AVG_MEASURED_VALUE_WINDOW" type="elapsed_s" max="604800" default="1" optional="true" reportable="true">
+      <description>AverageMeasuredValueWindow</description>
+      <mandatoryConform>
+        <feature name="AVG"/>
+      </mandatoryConform>
+    </attribute>
+    <attribute side="server" code="0x0007" define="UNCERTAINTY" type="single" optional="true">
+      <description>Uncertainty</description>
+      <optionalConform>
+        <feature name="MEA"/>
+      </optionalConform>
+    </attribute>
+    <attribute side="server" code="0x0008" define="MEASUREMENT_UNIT" type="MeasurementUnitEnum" min="0" max="7" optional="true">
+      <description>MeasurementUnit</description>
+      <mandatoryConform>
+        <feature name="MEA"/>
+      </mandatoryConform>
+    </attribute>
+    <attribute side="server" code="0x0009" define="MEASUREMENT_MEDIUM" type="MeasurementMediumEnum" min="0" max="2">
+      <description>MeasurementMedium</description>
+      <mandatoryConform/>
+    </attribute>
+    <attribute side="server" code="0x000a" define="LEVEL_VALUE" type="LevelValueEnum" min="0" max="4" default="0" optional="true">
+      <description>LevelValue</description>
+      <mandatoryConform>
+        <feature name="LEV"/>
+      </mandatoryConform>
+    </attribute>
   </cluster>
 
   <cluster>
@@ -260,17 +472,70 @@ Git: 0.9-fall2024-87-gcdfdb86be-dirty
         </optionalConform>
       </feature>
     </features>
-    <attribute side="server" code="0x0000" define="MEASURED_VALUE" type="single" isNullable="true" optional="true" reportable="true">MeasuredValue</attribute>
-    <attribute side="server" code="0x0001" define="MIN_MEASURED_VALUE" type="single" isNullable="true" optional="true">MinMeasuredValue</attribute>
-    <attribute side="server" code="0x0002" define="MAX_MEASURED_VALUE" type="single" isNullable="true" optional="true">MaxMeasuredValue</attribute>
-    <attribute side="server" code="0x0003" define="PEAK_MEASURED_VALUE" type="single" isNullable="true" optional="true" reportable="true">PeakMeasuredValue</attribute>
-    <attribute side="server" code="0x0004" define="PEAK_MEASURED_VALUE_WINDOW" type="elapsed_s" max="604800" default="1" optional="true" reportable="true">PeakMeasuredValueWindow</attribute>
-    <attribute side="server" code="0x0005" define="AVG_MEASURED_VALUE" type="single" isNullable="true" optional="true" reportable="true">AverageMeasuredValue</attribute>
-    <attribute side="server" code="0x0006" define="AVG_MEASURED_VALUE_WINDOW" type="elapsed_s" max="604800" default="1" optional="true" reportable="true">AverageMeasuredValueWindow</attribute>
-    <attribute side="server" code="0x0007" define="UNCERTAINTY" type="single" optional="true">Uncertainty</attribute>
-    <attribute side="server" code="0x0008" define="MEASUREMENT_UNIT" type="MeasurementUnitEnum" min="0" max="7" optional="true">MeasurementUnit</attribute>
-    <attribute side="server" code="0x0009" define="MEASUREMENT_MEDIUM" type="MeasurementMediumEnum" min="0" max="2">MeasurementMedium</attribute>
-    <attribute side="server" code="0x000a" define="LEVEL_VALUE" type="LevelValueEnum" min="0" max="4" default="0" optional="true">LevelValue</attribute>
+    <attribute side="server" code="0x0000" define="MEASURED_VALUE" type="single" isNullable="true" optional="true" reportable="true">
+      <description>MeasuredValue</description>
+      <mandatoryConform>
+        <feature name="MEA"/>
+      </mandatoryConform>
+    </attribute>
+    <attribute side="server" code="0x0001" define="MIN_MEASURED_VALUE" type="single" isNullable="true" optional="true">
+      <description>MinMeasuredValue</description>
+      <mandatoryConform>
+        <feature name="MEA"/>
+      </mandatoryConform>
+    </attribute>
+    <attribute side="server" code="0x0002" define="MAX_MEASURED_VALUE" type="single" isNullable="true" optional="true">
+      <description>MaxMeasuredValue</description>
+      <mandatoryConform>
+        <feature name="MEA"/>
+      </mandatoryConform>
+    </attribute>
+    <attribute side="server" code="0x0003" define="PEAK_MEASURED_VALUE" type="single" isNullable="true" optional="true" reportable="true">
+      <description>PeakMeasuredValue</description>
+      <mandatoryConform>
+        <feature name="PEA"/>
+      </mandatoryConform>
+    </attribute>
+    <attribute side="server" code="0x0004" define="PEAK_MEASURED_VALUE_WINDOW" type="elapsed_s" max="604800" default="1" optional="true" reportable="true">
+      <description>PeakMeasuredValueWindow</description>
+      <mandatoryConform>
+        <feature name="PEA"/>
+      </mandatoryConform>
+    </attribute>
+    <attribute side="server" code="0x0005" define="AVG_MEASURED_VALUE" type="single" isNullable="true" optional="true" reportable="true">
+      <description>AverageMeasuredValue</description>
+      <mandatoryConform>
+        <feature name="AVG"/>
+      </mandatoryConform>
+    </attribute>
+    <attribute side="server" code="0x0006" define="AVG_MEASURED_VALUE_WINDOW" type="elapsed_s" max="604800" default="1" optional="true" reportable="true">
+      <description>AverageMeasuredValueWindow</description>
+      <mandatoryConform>
+        <feature name="AVG"/>
+      </mandatoryConform>
+    </attribute>
+    <attribute side="server" code="0x0007" define="UNCERTAINTY" type="single" optional="true">
+      <description>Uncertainty</description>
+      <optionalConform>
+        <feature name="MEA"/>
+      </optionalConform>
+    </attribute>
+    <attribute side="server" code="0x0008" define="MEASUREMENT_UNIT" type="MeasurementUnitEnum" min="0" max="7" optional="true">
+      <description>MeasurementUnit</description>
+      <mandatoryConform>
+        <feature name="MEA"/>
+      </mandatoryConform>
+    </attribute>
+    <attribute side="server" code="0x0009" define="MEASUREMENT_MEDIUM" type="MeasurementMediumEnum" min="0" max="2">
+      <description>MeasurementMedium</description>
+      <mandatoryConform/>
+    </attribute>
+    <attribute side="server" code="0x000a" define="LEVEL_VALUE" type="LevelValueEnum" min="0" max="4" default="0" optional="true">
+      <description>LevelValue</description>
+      <mandatoryConform>
+        <feature name="LEV"/>
+      </mandatoryConform>
+    </attribute>
   </cluster>
 
   <cluster>
@@ -310,17 +575,70 @@ Git: 0.9-fall2024-87-gcdfdb86be-dirty
         </optionalConform>
       </feature>
     </features>
-    <attribute side="server" code="0x0000" define="MEASURED_VALUE" type="single" isNullable="true" optional="true" reportable="true">MeasuredValue</attribute>
-    <attribute side="server" code="0x0001" define="MIN_MEASURED_VALUE" type="single" isNullable="true" optional="true">MinMeasuredValue</attribute>
-    <attribute side="server" code="0x0002" define="MAX_MEASURED_VALUE" type="single" isNullable="true" optional="true">MaxMeasuredValue</attribute>
-    <attribute side="server" code="0x0003" define="PEAK_MEASURED_VALUE" type="single" isNullable="true" optional="true" reportable="true">PeakMeasuredValue</attribute>
-    <attribute side="server" code="0x0004" define="PEAK_MEASURED_VALUE_WINDOW" type="elapsed_s" max="604800" default="1" optional="true" reportable="true">PeakMeasuredValueWindow</attribute>
-    <attribute side="server" code="0x0005" define="AVG_MEASURED_VALUE" type="single" isNullable="true" optional="true" reportable="true">AverageMeasuredValue</attribute>
-    <attribute side="server" code="0x0006" define="AVG_MEASURED_VALUE_WINDOW" type="elapsed_s" max="604800" default="1" optional="true" reportable="true">AverageMeasuredValueWindow</attribute>
-    <attribute side="server" code="0x0007" define="UNCERTAINTY" type="single" optional="true">Uncertainty</attribute>
-    <attribute side="server" code="0x0008" define="MEASUREMENT_UNIT" type="MeasurementUnitEnum" min="0" max="7" optional="true">MeasurementUnit</attribute>
-    <attribute side="server" code="0x0009" define="MEASUREMENT_MEDIUM" type="MeasurementMediumEnum" min="0" max="2">MeasurementMedium</attribute>
-    <attribute side="server" code="0x000a" define="LEVEL_VALUE" type="LevelValueEnum" min="0" max="4" default="0" optional="true">LevelValue</attribute>
+    <attribute side="server" code="0x0000" define="MEASURED_VALUE" type="single" isNullable="true" optional="true" reportable="true">
+      <description>MeasuredValue</description>
+      <mandatoryConform>
+        <feature name="MEA"/>
+      </mandatoryConform>
+    </attribute>
+    <attribute side="server" code="0x0001" define="MIN_MEASURED_VALUE" type="single" isNullable="true" optional="true">
+      <description>MinMeasuredValue</description>
+      <mandatoryConform>
+        <feature name="MEA"/>
+      </mandatoryConform>
+    </attribute>
+    <attribute side="server" code="0x0002" define="MAX_MEASURED_VALUE" type="single" isNullable="true" optional="true">
+      <description>MaxMeasuredValue</description>
+      <mandatoryConform>
+        <feature name="MEA"/>
+      </mandatoryConform>
+    </attribute>
+    <attribute side="server" code="0x0003" define="PEAK_MEASURED_VALUE" type="single" isNullable="true" optional="true" reportable="true">
+      <description>PeakMeasuredValue</description>
+      <mandatoryConform>
+        <feature name="PEA"/>
+      </mandatoryConform>
+    </attribute>
+    <attribute side="server" code="0x0004" define="PEAK_MEASURED_VALUE_WINDOW" type="elapsed_s" max="604800" default="1" optional="true" reportable="true">
+      <description>PeakMeasuredValueWindow</description>
+      <mandatoryConform>
+        <feature name="PEA"/>
+      </mandatoryConform>
+    </attribute>
+    <attribute side="server" code="0x0005" define="AVG_MEASURED_VALUE" type="single" isNullable="true" optional="true" reportable="true">
+      <description>AverageMeasuredValue</description>
+      <mandatoryConform>
+        <feature name="AVG"/>
+      </mandatoryConform>
+    </attribute>
+    <attribute side="server" code="0x0006" define="AVG_MEASURED_VALUE_WINDOW" type="elapsed_s" max="604800" default="1" optional="true" reportable="true">
+      <description>AverageMeasuredValueWindow</description>
+      <mandatoryConform>
+        <feature name="AVG"/>
+      </mandatoryConform>
+    </attribute>
+    <attribute side="server" code="0x0007" define="UNCERTAINTY" type="single" optional="true">
+      <description>Uncertainty</description>
+      <optionalConform>
+        <feature name="MEA"/>
+      </optionalConform>
+    </attribute>
+    <attribute side="server" code="0x0008" define="MEASUREMENT_UNIT" type="MeasurementUnitEnum" min="0" max="7" optional="true">
+      <description>MeasurementUnit</description>
+      <mandatoryConform>
+        <feature name="MEA"/>
+      </mandatoryConform>
+    </attribute>
+    <attribute side="server" code="0x0009" define="MEASUREMENT_MEDIUM" type="MeasurementMediumEnum" min="0" max="2">
+      <description>MeasurementMedium</description>
+      <mandatoryConform/>
+    </attribute>
+    <attribute side="server" code="0x000a" define="LEVEL_VALUE" type="LevelValueEnum" min="0" max="4" default="0" optional="true">
+      <description>LevelValue</description>
+      <mandatoryConform>
+        <feature name="LEV"/>
+      </mandatoryConform>
+    </attribute>
   </cluster>
 
   <cluster>
@@ -360,17 +678,70 @@ Git: 0.9-fall2024-87-gcdfdb86be-dirty
         </optionalConform>
       </feature>
     </features>
-    <attribute side="server" code="0x0000" define="MEASURED_VALUE" type="single" isNullable="true" optional="true" reportable="true">MeasuredValue</attribute>
-    <attribute side="server" code="0x0001" define="MIN_MEASURED_VALUE" type="single" isNullable="true" optional="true">MinMeasuredValue</attribute>
-    <attribute side="server" code="0x0002" define="MAX_MEASURED_VALUE" type="single" isNullable="true" optional="true">MaxMeasuredValue</attribute>
-    <attribute side="server" code="0x0003" define="PEAK_MEASURED_VALUE" type="single" isNullable="true" optional="true" reportable="true">PeakMeasuredValue</attribute>
-    <attribute side="server" code="0x0004" define="PEAK_MEASURED_VALUE_WINDOW" type="elapsed_s" max="604800" default="1" optional="true" reportable="true">PeakMeasuredValueWindow</attribute>
-    <attribute side="server" code="0x0005" define="AVG_MEASURED_VALUE" type="single" isNullable="true" optional="true" reportable="true">AverageMeasuredValue</attribute>
-    <attribute side="server" code="0x0006" define="AVG_MEASURED_VALUE_WINDOW" type="elapsed_s" max="604800" default="1" optional="true" reportable="true">AverageMeasuredValueWindow</attribute>
-    <attribute side="server" code="0x0007" define="UNCERTAINTY" type="single" optional="true">Uncertainty</attribute>
-    <attribute side="server" code="0x0008" define="MEASUREMENT_UNIT" type="MeasurementUnitEnum" min="0" max="7" optional="true">MeasurementUnit</attribute>
-    <attribute side="server" code="0x0009" define="MEASUREMENT_MEDIUM" type="MeasurementMediumEnum" min="0" max="2">MeasurementMedium</attribute>
-    <attribute side="server" code="0x000a" define="LEVEL_VALUE" type="LevelValueEnum" min="0" max="4" default="0" optional="true">LevelValue</attribute>
+    <attribute side="server" code="0x0000" define="MEASURED_VALUE" type="single" isNullable="true" optional="true" reportable="true">
+      <description>MeasuredValue</description>
+      <mandatoryConform>
+        <feature name="MEA"/>
+      </mandatoryConform>
+    </attribute>
+    <attribute side="server" code="0x0001" define="MIN_MEASURED_VALUE" type="single" isNullable="true" optional="true">
+      <description>MinMeasuredValue</description>
+      <mandatoryConform>
+        <feature name="MEA"/>
+      </mandatoryConform>
+    </attribute>
+    <attribute side="server" code="0x0002" define="MAX_MEASURED_VALUE" type="single" isNullable="true" optional="true">
+      <description>MaxMeasuredValue</description>
+      <mandatoryConform>
+        <feature name="MEA"/>
+      </mandatoryConform>
+    </attribute>
+    <attribute side="server" code="0x0003" define="PEAK_MEASURED_VALUE" type="single" isNullable="true" optional="true" reportable="true">
+      <description>PeakMeasuredValue</description>
+      <mandatoryConform>
+        <feature name="PEA"/>
+      </mandatoryConform>
+    </attribute>
+    <attribute side="server" code="0x0004" define="PEAK_MEASURED_VALUE_WINDOW" type="elapsed_s" max="604800" default="1" optional="true" reportable="true">
+      <description>PeakMeasuredValueWindow</description>
+      <mandatoryConform>
+        <feature name="PEA"/>
+      </mandatoryConform>
+    </attribute>
+    <attribute side="server" code="0x0005" define="AVG_MEASURED_VALUE" type="single" isNullable="true" optional="true" reportable="true">
+      <description>AverageMeasuredValue</description>
+      <mandatoryConform>
+        <feature name="AVG"/>
+      </mandatoryConform>
+    </attribute>
+    <attribute side="server" code="0x0006" define="AVG_MEASURED_VALUE_WINDOW" type="elapsed_s" max="604800" default="1" optional="true" reportable="true">
+      <description>AverageMeasuredValueWindow</description>
+      <mandatoryConform>
+        <feature name="AVG"/>
+      </mandatoryConform>
+    </attribute>
+    <attribute side="server" code="0x0007" define="UNCERTAINTY" type="single" optional="true">
+      <description>Uncertainty</description>
+      <optionalConform>
+        <feature name="MEA"/>
+      </optionalConform>
+    </attribute>
+    <attribute side="server" code="0x0008" define="MEASUREMENT_UNIT" type="MeasurementUnitEnum" min="0" max="7" optional="true">
+      <description>MeasurementUnit</description>
+      <mandatoryConform>
+        <feature name="MEA"/>
+      </mandatoryConform>
+    </attribute>
+    <attribute side="server" code="0x0009" define="MEASUREMENT_MEDIUM" type="MeasurementMediumEnum" min="0" max="2">
+      <description>MeasurementMedium</description>
+      <mandatoryConform/>
+    </attribute>
+    <attribute side="server" code="0x000a" define="LEVEL_VALUE" type="LevelValueEnum" min="0" max="4" default="0" optional="true">
+      <description>LevelValue</description>
+      <mandatoryConform>
+        <feature name="LEV"/>
+      </mandatoryConform>
+    </attribute>
   </cluster>
 
   <cluster>
@@ -410,17 +781,70 @@ Git: 0.9-fall2024-87-gcdfdb86be-dirty
         </optionalConform>
       </feature>
     </features>
-    <attribute side="server" code="0x0000" define="MEASURED_VALUE" type="single" isNullable="true" optional="true" reportable="true">MeasuredValue</attribute>
-    <attribute side="server" code="0x0001" define="MIN_MEASURED_VALUE" type="single" isNullable="true" optional="true">MinMeasuredValue</attribute>
-    <attribute side="server" code="0x0002" define="MAX_MEASURED_VALUE" type="single" isNullable="true" optional="true">MaxMeasuredValue</attribute>
-    <attribute side="server" code="0x0003" define="PEAK_MEASURED_VALUE" type="single" isNullable="true" optional="true" reportable="true">PeakMeasuredValue</attribute>
-    <attribute side="server" code="0x0004" define="PEAK_MEASURED_VALUE_WINDOW" type="elapsed_s" max="604800" default="1" optional="true" reportable="true">PeakMeasuredValueWindow</attribute>
-    <attribute side="server" code="0x0005" define="AVG_MEASURED_VALUE" type="single" isNullable="true" optional="true" reportable="true">AverageMeasuredValue</attribute>
-    <attribute side="server" code="0x0006" define="AVG_MEASURED_VALUE_WINDOW" type="elapsed_s" max="604800" default="1" optional="true" reportable="true">AverageMeasuredValueWindow</attribute>
-    <attribute side="server" code="0x0007" define="UNCERTAINTY" type="single" optional="true">Uncertainty</attribute>
-    <attribute side="server" code="0x0008" define="MEASUREMENT_UNIT" type="MeasurementUnitEnum" min="0" max="7" optional="true">MeasurementUnit</attribute>
-    <attribute side="server" code="0x0009" define="MEASUREMENT_MEDIUM" type="MeasurementMediumEnum" min="0" max="2">MeasurementMedium</attribute>
-    <attribute side="server" code="0x000a" define="LEVEL_VALUE" type="LevelValueEnum" min="0" max="4" default="0" optional="true">LevelValue</attribute>
+    <attribute side="server" code="0x0000" define="MEASURED_VALUE" type="single" isNullable="true" optional="true" reportable="true">
+      <description>MeasuredValue</description>
+      <mandatoryConform>
+        <feature name="MEA"/>
+      </mandatoryConform>
+    </attribute>
+    <attribute side="server" code="0x0001" define="MIN_MEASURED_VALUE" type="single" isNullable="true" optional="true">
+      <description>MinMeasuredValue</description>
+      <mandatoryConform>
+        <feature name="MEA"/>
+      </mandatoryConform>
+    </attribute>
+    <attribute side="server" code="0x0002" define="MAX_MEASURED_VALUE" type="single" isNullable="true" optional="true">
+      <description>MaxMeasuredValue</description>
+      <mandatoryConform>
+        <feature name="MEA"/>
+      </mandatoryConform>
+    </attribute>
+    <attribute side="server" code="0x0003" define="PEAK_MEASURED_VALUE" type="single" isNullable="true" optional="true" reportable="true">
+      <description>PeakMeasuredValue</description>
+      <mandatoryConform>
+        <feature name="PEA"/>
+      </mandatoryConform>
+    </attribute>
+    <attribute side="server" code="0x0004" define="PEAK_MEASURED_VALUE_WINDOW" type="elapsed_s" max="604800" default="1" optional="true" reportable="true">
+      <description>PeakMeasuredValueWindow</description>
+      <mandatoryConform>
+        <feature name="PEA"/>
+      </mandatoryConform>
+    </attribute>
+    <attribute side="server" code="0x0005" define="AVG_MEASURED_VALUE" type="single" isNullable="true" optional="true" reportable="true">
+      <description>AverageMeasuredValue</description>
+      <mandatoryConform>
+        <feature name="AVG"/>
+      </mandatoryConform>
+    </attribute>
+    <attribute side="server" code="0x0006" define="AVG_MEASURED_VALUE_WINDOW" type="elapsed_s" max="604800" default="1" optional="true" reportable="true">
+      <description>AverageMeasuredValueWindow</description>
+      <mandatoryConform>
+        <feature name="AVG"/>
+      </mandatoryConform>
+    </attribute>
+    <attribute side="server" code="0x0007" define="UNCERTAINTY" type="single" optional="true">
+      <description>Uncertainty</description>
+      <optionalConform>
+        <feature name="MEA"/>
+      </optionalConform>
+    </attribute>
+    <attribute side="server" code="0x0008" define="MEASUREMENT_UNIT" type="MeasurementUnitEnum" min="0" max="7" optional="true">
+      <description>MeasurementUnit</description>
+      <mandatoryConform>
+        <feature name="MEA"/>
+      </mandatoryConform>
+    </attribute>
+    <attribute side="server" code="0x0009" define="MEASUREMENT_MEDIUM" type="MeasurementMediumEnum" min="0" max="2">
+      <description>MeasurementMedium</description>
+      <mandatoryConform/>
+    </attribute>
+    <attribute side="server" code="0x000a" define="LEVEL_VALUE" type="LevelValueEnum" min="0" max="4" default="0" optional="true">
+      <description>LevelValue</description>
+      <mandatoryConform>
+        <feature name="LEV"/>
+      </mandatoryConform>
+    </attribute>
   </cluster>
 
   <cluster>
@@ -460,17 +884,70 @@ Git: 0.9-fall2024-87-gcdfdb86be-dirty
         </optionalConform>
       </feature>
     </features>
-    <attribute side="server" code="0x0000" define="MEASURED_VALUE" type="single" isNullable="true" optional="true" reportable="true">MeasuredValue</attribute>
-    <attribute side="server" code="0x0001" define="MIN_MEASURED_VALUE" type="single" isNullable="true" optional="true">MinMeasuredValue</attribute>
-    <attribute side="server" code="0x0002" define="MAX_MEASURED_VALUE" type="single" isNullable="true" optional="true">MaxMeasuredValue</attribute>
-    <attribute side="server" code="0x0003" define="PEAK_MEASURED_VALUE" type="single" isNullable="true" optional="true" reportable="true">PeakMeasuredValue</attribute>
-    <attribute side="server" code="0x0004" define="PEAK_MEASURED_VALUE_WINDOW" type="elapsed_s" max="604800" default="1" optional="true" reportable="true">PeakMeasuredValueWindow</attribute>
-    <attribute side="server" code="0x0005" define="AVG_MEASURED_VALUE" type="single" isNullable="true" optional="true" reportable="true">AverageMeasuredValue</attribute>
-    <attribute side="server" code="0x0006" define="AVG_MEASURED_VALUE_WINDOW" type="elapsed_s" max="604800" default="1" optional="true" reportable="true">AverageMeasuredValueWindow</attribute>
-    <attribute side="server" code="0x0007" define="UNCERTAINTY" type="single" optional="true">Uncertainty</attribute>
-    <attribute side="server" code="0x0008" define="MEASUREMENT_UNIT" type="MeasurementUnitEnum" min="0" max="7" optional="true">MeasurementUnit</attribute>
-    <attribute side="server" code="0x0009" define="MEASUREMENT_MEDIUM" type="MeasurementMediumEnum" min="0" max="2">MeasurementMedium</attribute>
-    <attribute side="server" code="0x000a" define="LEVEL_VALUE" type="LevelValueEnum" min="0" max="4" default="0" optional="true">LevelValue</attribute>
+    <attribute side="server" code="0x0000" define="MEASURED_VALUE" type="single" isNullable="true" optional="true" reportable="true">
+      <description>MeasuredValue</description>
+      <mandatoryConform>
+        <feature name="MEA"/>
+      </mandatoryConform>
+    </attribute>
+    <attribute side="server" code="0x0001" define="MIN_MEASURED_VALUE" type="single" isNullable="true" optional="true">
+      <description>MinMeasuredValue</description>
+      <mandatoryConform>
+        <feature name="MEA"/>
+      </mandatoryConform>
+    </attribute>
+    <attribute side="server" code="0x0002" define="MAX_MEASURED_VALUE" type="single" isNullable="true" optional="true">
+      <description>MaxMeasuredValue</description>
+      <mandatoryConform>
+        <feature name="MEA"/>
+      </mandatoryConform>
+    </attribute>
+    <attribute side="server" code="0x0003" define="PEAK_MEASURED_VALUE" type="single" isNullable="true" optional="true" reportable="true">
+      <description>PeakMeasuredValue</description>
+      <mandatoryConform>
+        <feature name="PEA"/>
+      </mandatoryConform>
+    </attribute>
+    <attribute side="server" code="0x0004" define="PEAK_MEASURED_VALUE_WINDOW" type="elapsed_s" max="604800" default="1" optional="true" reportable="true">
+      <description>PeakMeasuredValueWindow</description>
+      <mandatoryConform>
+        <feature name="PEA"/>
+      </mandatoryConform>
+    </attribute>
+    <attribute side="server" code="0x0005" define="AVG_MEASURED_VALUE" type="single" isNullable="true" optional="true" reportable="true">
+      <description>AverageMeasuredValue</description>
+      <mandatoryConform>
+        <feature name="AVG"/>
+      </mandatoryConform>
+    </attribute>
+    <attribute side="server" code="0x0006" define="AVG_MEASURED_VALUE_WINDOW" type="elapsed_s" max="604800" default="1" optional="true" reportable="true">
+      <description>AverageMeasuredValueWindow</description>
+      <mandatoryConform>
+        <feature name="AVG"/>
+      </mandatoryConform>
+    </attribute>
+    <attribute side="server" code="0x0007" define="UNCERTAINTY" type="single" optional="true">
+      <description>Uncertainty</description>
+      <optionalConform>
+        <feature name="MEA"/>
+      </optionalConform>
+    </attribute>
+    <attribute side="server" code="0x0008" define="MEASUREMENT_UNIT" type="MeasurementUnitEnum" min="0" max="7" optional="true">
+      <description>MeasurementUnit</description>
+      <mandatoryConform>
+        <feature name="MEA"/>
+      </mandatoryConform>
+    </attribute>
+    <attribute side="server" code="0x0009" define="MEASUREMENT_MEDIUM" type="MeasurementMediumEnum" min="0" max="2">
+      <description>MeasurementMedium</description>
+      <mandatoryConform/>
+    </attribute>
+    <attribute side="server" code="0x000a" define="LEVEL_VALUE" type="LevelValueEnum" min="0" max="4" default="0" optional="true">
+      <description>LevelValue</description>
+      <mandatoryConform>
+        <feature name="LEV"/>
+      </mandatoryConform>
+    </attribute>
   </cluster>
 
   <cluster>
@@ -510,17 +987,70 @@ Git: 0.9-fall2024-87-gcdfdb86be-dirty
         </optionalConform>
       </feature>
     </features>
-    <attribute side="server" code="0x0000" define="MEASURED_VALUE" type="single" isNullable="true" optional="true" reportable="true">MeasuredValue</attribute>
-    <attribute side="server" code="0x0001" define="MIN_MEASURED_VALUE" type="single" isNullable="true" optional="true">MinMeasuredValue</attribute>
-    <attribute side="server" code="0x0002" define="MAX_MEASURED_VALUE" type="single" isNullable="true" optional="true">MaxMeasuredValue</attribute>
-    <attribute side="server" code="0x0003" define="PEAK_MEASURED_VALUE" type="single" isNullable="true" optional="true" reportable="true">PeakMeasuredValue</attribute>
-    <attribute side="server" code="0x0004" define="PEAK_MEASURED_VALUE_WINDOW" type="elapsed_s" max="604800" default="1" optional="true" reportable="true">PeakMeasuredValueWindow</attribute>
-    <attribute side="server" code="0x0005" define="AVG_MEASURED_VALUE" type="single" isNullable="true" optional="true" reportable="true">AverageMeasuredValue</attribute>
-    <attribute side="server" code="0x0006" define="AVG_MEASURED_VALUE_WINDOW" type="elapsed_s" max="604800" default="1" optional="true" reportable="true">AverageMeasuredValueWindow</attribute>
-    <attribute side="server" code="0x0007" define="UNCERTAINTY" type="single" optional="true">Uncertainty</attribute>
-    <attribute side="server" code="0x0008" define="MEASUREMENT_UNIT" type="MeasurementUnitEnum" min="0" max="7" optional="true">MeasurementUnit</attribute>
-    <attribute side="server" code="0x0009" define="MEASUREMENT_MEDIUM" type="MeasurementMediumEnum" min="0" max="2">MeasurementMedium</attribute>
-    <attribute side="server" code="0x000a" define="LEVEL_VALUE" type="LevelValueEnum" min="0" max="4" default="0" optional="true">LevelValue</attribute>
+    <attribute side="server" code="0x0000" define="MEASURED_VALUE" type="single" isNullable="true" optional="true" reportable="true">
+      <description>MeasuredValue</description>
+      <mandatoryConform>
+        <feature name="MEA"/>
+      </mandatoryConform>
+    </attribute>
+    <attribute side="server" code="0x0001" define="MIN_MEASURED_VALUE" type="single" isNullable="true" optional="true">
+      <description>MinMeasuredValue</description>
+      <mandatoryConform>
+        <feature name="MEA"/>
+      </mandatoryConform>
+    </attribute>
+    <attribute side="server" code="0x0002" define="MAX_MEASURED_VALUE" type="single" isNullable="true" optional="true">
+      <description>MaxMeasuredValue</description>
+      <mandatoryConform>
+        <feature name="MEA"/>
+      </mandatoryConform>
+    </attribute>
+    <attribute side="server" code="0x0003" define="PEAK_MEASURED_VALUE" type="single" isNullable="true" optional="true" reportable="true">
+      <description>PeakMeasuredValue</description>
+      <mandatoryConform>
+        <feature name="PEA"/>
+      </mandatoryConform>
+    </attribute>
+    <attribute side="server" code="0x0004" define="PEAK_MEASURED_VALUE_WINDOW" type="elapsed_s" max="604800" default="1" optional="true" reportable="true">
+      <description>PeakMeasuredValueWindow</description>
+      <mandatoryConform>
+        <feature name="PEA"/>
+      </mandatoryConform>
+    </attribute>
+    <attribute side="server" code="0x0005" define="AVG_MEASURED_VALUE" type="single" isNullable="true" optional="true" reportable="true">
+      <description>AverageMeasuredValue</description>
+      <mandatoryConform>
+        <feature name="AVG"/>
+      </mandatoryConform>
+    </attribute>
+    <attribute side="server" code="0x0006" define="AVG_MEASURED_VALUE_WINDOW" type="elapsed_s" max="604800" default="1" optional="true" reportable="true">
+      <description>AverageMeasuredValueWindow</description>
+      <mandatoryConform>
+        <feature name="AVG"/>
+      </mandatoryConform>
+    </attribute>
+    <attribute side="server" code="0x0007" define="UNCERTAINTY" type="single" optional="true">
+      <description>Uncertainty</description>
+      <optionalConform>
+        <feature name="MEA"/>
+      </optionalConform>
+    </attribute>
+    <attribute side="server" code="0x0008" define="MEASUREMENT_UNIT" type="MeasurementUnitEnum" min="0" max="7" optional="true">
+      <description>MeasurementUnit</description>
+      <mandatoryConform>
+        <feature name="MEA"/>
+      </mandatoryConform>
+    </attribute>
+    <attribute side="server" code="0x0009" define="MEASUREMENT_MEDIUM" type="MeasurementMediumEnum" min="0" max="2">
+      <description>MeasurementMedium</description>
+      <mandatoryConform/>
+    </attribute>
+    <attribute side="server" code="0x000a" define="LEVEL_VALUE" type="LevelValueEnum" min="0" max="4" default="0" optional="true">
+      <description>LevelValue</description>
+      <mandatoryConform>
+        <feature name="LEV"/>
+      </mandatoryConform>
+    </attribute>
   </cluster>
 
   <!-- Cluster Data Types -->

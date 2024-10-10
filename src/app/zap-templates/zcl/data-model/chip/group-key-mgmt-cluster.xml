@@ -80,41 +80,57 @@ Git: 0.9-fall2024-87-gcdfdb86be-dirty
     <attribute side="server" code="0x0000" define="GROUP_KEY_MAP" type="array" entryType="GroupKeyMapStruct" writable="true">
       <description>GroupKeyMap</description>
       <access op="write" privilege="manage"/>
+      <mandatoryConform/>
     </attribute>
-    <attribute side="server" code="0x0001" define="GROUP_TABLE" type="array" entryType="GroupInfoMapStruct">GroupTable</attribute>
-    <attribute side="server" code="0x0002" define="MAX_GROUPS_PER_FABRIC" type="int16u" default="0">MaxGroupsPerFabric</attribute>
-    <attribute side="server" code="0x0003" define="MAX_GROUP_KEYS_PER_FABRIC" type="int16u" min="1" max="65535" default="1">MaxGroupKeysPerFabric</attribute>
+    <attribute side="server" code="0x0001" define="GROUP_TABLE" type="array" entryType="GroupInfoMapStruct">
+      <description>GroupTable</description>
+      <mandatoryConform/>
+    </attribute>
+    <attribute side="server" code="0x0002" define="MAX_GROUPS_PER_FABRIC" type="int16u" default="0">
+      <description>MaxGroupsPerFabric</description>
+      <mandatoryConform/>
+    </attribute>
+    <attribute side="server" code="0x0003" define="MAX_GROUP_KEYS_PER_FABRIC" type="int16u" min="1" max="65535" default="1">
+      <description>MaxGroupKeysPerFabric</description>
+      <mandatoryConform/>
+    </attribute>
     <command source="client" code="0x00" name="KeySetWrite" isFabricScoped="true" optional="false" cli="zcl GroupKeyManagement KeySetWrite">
       <description>This command is used by Administrators to set the state of a given Group Key Set, including atomically updating the state of all epoch keys.</description>
       <arg id="0" name="GroupKeySet" type="GroupKeySetStruct"/>
       <access op="invoke" privilege="administer"/>
+      <mandatoryConform/>
     </command>
 
     <command source="client" code="0x01" name="KeySetRead" isFabricScoped="true" response="KeySetReadResponse" optional="false" cli="zcl GroupKeyManagement KeySetRead">
       <description>This command is used by Administrators to read the state of a given Group Key Set.</description>
       <arg id="0" name="GroupKeySetID" type="int16u"/>
       <access op="invoke" privilege="administer"/>
+      <mandatoryConform/>
     </command>
 
     <command source="server" code="0x02" name="KeySetReadResponse" optional="false" disableDefaultResponse="true">
       <description>This command SHALL be generated in response to the KeySetRead command, if a valid Group Key Set was found.</description>
       <arg id="0" name="GroupKeySet" type="GroupKeySetStruct"/>
+      <mandatoryConform/>
     </command>
 
     <command source="client" code="0x03" name="KeySetRemove" isFabricScoped="true" optional="false" cli="zcl GroupKeyManagement KeySetRemove">
       <description>This command is used by Administrators to remove all state of a given Group Key Set.</description>
       <arg id="0" name="GroupKeySetID" type="int16u"/>
       <access op="invoke" privilege="administer"/>
+      <mandatoryConform/>
     </command>
 
     <command source="client" code="0x04" name="KeySetReadAllIndices" response="KeySetReadAllIndicesResponse" isFabricScoped="true" optional="false" cli="zcl GroupKeyManagement KeySetReadAllIndices">
       <description>This command is used by Administrators to query a list of all Group Key Sets associated with the accessing fabric.</description>
       <access op="invoke" privilege="administer"/>
+      <mandatoryConform/>
     </command>
 
     <command source="server" code="0x05" name="KeySetReadAllIndicesResponse" optional="false" disableDefaultResponse="true">
       <description>This command SHALL be generated in response to KeySetReadAllIndices and it SHALL contain the list of _GroupKeySetID_ for all Group Key Sets associated with the scoped Fabric.</description>
       <arg id="0" name="GroupKeySetIDs" type="int16u" array="true"/>
+      <mandatoryConform/>
     </command>
 
   </cluster>

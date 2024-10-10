@@ -33,6 +33,7 @@ Git: 0.9-fall2024-87-gcdfdb86be-dirty
     <description>This cluster provides an interface for managing low power mode on a device.</description>
     <command source="client" code="0x00" name="Sleep" optional="false">
       <description>This command SHALL put the device into low power mode.</description>
+      <mandatoryConform/>
     </command>
 
   </cluster>

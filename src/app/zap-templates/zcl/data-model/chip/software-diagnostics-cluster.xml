@@ -45,13 +45,30 @@ Git: 0.9-fall2024-87-gcdfdb86be-dirty
         <optionalConform/>
       </feature>
     </features>
-    <attribute side="server" code="0x00" define="THREAD_METRICS" type="array" entryType="ThreadMetricsStruct" length="64" optional="true">ThreadMetrics</attribute>
-    <attribute side="server" code="0x01" define="CURRENT_HEAP_FREE" type="int64u" optional="true">CurrentHeapFree</attribute>
-    <attribute side="server" code="0x02" define="CURRENT_HEAP_USED" type="int64u" optional="true">CurrentHeapUsed</attribute>
-    <attribute side="server" code="0x03" define="CURRENT_HEAP_HIGH_WATERMARK" type="int64u" optional="true">CurrentHeapHighWatermark</attribute>
+    <attribute side="server" code="0x00" define="THREAD_METRICS" type="array" entryType="ThreadMetricsStruct" length="64" optional="true">
+      <description>ThreadMetrics</description>
+      <optionalConform/>
+    </attribute>
+    <attribute side="server" code="0x01" define="CURRENT_HEAP_FREE" type="int64u" optional="true">
+      <description>CurrentHeapFree</description>
+      <optionalConform/>
+    </attribute>
+    <attribute side="server" code="0x02" define="CURRENT_HEAP_USED" type="int64u" optional="true">
+      <description>CurrentHeapUsed</description>
+      <optionalConform/>
+    </attribute>
+    <attribute side="server" code="0x03" define="CURRENT_HEAP_HIGH_WATERMARK" type="int64u" optional="true">
+      <description>CurrentHeapHighWatermark</description>
+      <mandatoryConform>
+        <feature name="WTRMRK"/>
+      </mandatoryConform>
+    </attribute>
     <command source="client" code="0x00" name="ResetWatermarks" optional="true" cli="chip software_diagnostics resetwatermarks">
       <description>Receipt of this command SHALL reset the following values which track high and lower watermarks: </description>
       <access op="invoke" privilege="manage"/>
+      <mandatoryConform>
+        <feature name="WTRMRK"/>
+      </mandatoryConform>
     </command>
 
     <event side="server" code="0x00" name="SoftwareFault" priority="info" optional="true">
@@ -59,6 +76,7 @@ Git: 0.9-fall2024-87-gcdfdb86be-dirty
       <field id="0" name="ID" type="int64u" default="0"/>
       <field id="1" name="Name" type="char_string" length="8" optional="true"/>
       <field id="2" name="FaultRecording" type="long_octet_string" length="1024" optional="true"/>
+      <optionalConform/>
     </event>
 
   </cluster>

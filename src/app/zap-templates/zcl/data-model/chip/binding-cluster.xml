@@ -43,6 +43,7 @@ Git: 0.9-fall2024-87-gcdfdb86be-dirty
     <attribute side="server" code="0x0000" define="BINDING_LIST" type="array" entryType="TargetStruct" writable="true">
       <description>Binding</description>
       <access op="write" role="manage"/>
+      <mandatoryConform/>
     </attribute>
   </cluster>
 </configurator>

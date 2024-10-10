@@ -97,9 +97,18 @@ Git: 0.9-fall2024-87-gcdfdb86be-dirty
     <client init="false" tick="false">true</client>
     <server init="false" tick="false">true</server>
     <globalAttribute code="0xFFFD" side="either" value="1"/>
-    <attribute side="server" code="0x0000" define="ACTION_LIST" type="array" entryType="ActionStruct" length="256">ActionList</attribute>
-    <attribute side="server" code="0x0001" define="ENDPOINT_LIST" type="array" entryType="EndpointListStruct" length="256">EndpointLists</attribute>
-    <attribute side="server" code="0x0002" define="SETUP_URL" type="long_char_string" length="512" optional="true">SetupURL</attribute>
+    <attribute side="server" code="0x0000" define="ACTION_LIST" type="array" entryType="ActionStruct" length="256">
+      <description>ActionList</description>
+      <mandatoryConform/>
+    </attribute>
+    <attribute side="server" code="0x0001" define="ENDPOINT_LIST" type="array" entryType="EndpointListStruct" length="256">
+      <description>EndpointLists</description>
+      <mandatoryConform/>
+    </attribute>
+    <attribute side="server" code="0x0002" define="SETUP_URL" type="long_char_string" length="512" optional="true">
+      <description>SetupURL</description>
+      <optionalConform/>
+    </attribute>
     <command source="client" code="0x00" name="InstantAction" optional="true">
       <description>This command SHALL have the following data fields: </description>
       <arg id="0" name="ActionID" type="int16u"/>
@@ -182,6 +191,7 @@ Git: 0.9-fall2024-87-gcdfdb86be-dirty
       <field id="0" name="ActionID" type="int16u"/>
       <field id="1" name="InvokeID" type="int32u"/>
       <field id="2" name="NewState" type="ActionStateEnum" min="0x00" max="0x03"/>
+      <mandatoryConform/>
     </event>
 
     <event side="server" code="0x01" priority="info" name="ActionFailed">
@@ -190,6 +200,7 @@ Git: 0.9-fall2024-87-gcdfdb86be-dirty
       <field id="1" name="InvokeID" type="int32u"/>
       <field id="2" name="NewState" type="ActionStateEnum" min="0x00" max="0x03"/>
       <field id="3" name="Error" type="ActionErrorEnum" min="0x00" max="0x01"/>
+      <mandatoryConform/>
     </event>
 
   </cluster>

@@ -47,9 +47,29 @@ Git: 0.9-fall2024-87-gcdfdb86be-dirty
         <optionalConform choice="a" more="true" min="1"/>
       </feature>
     </features>
-    <attribute side="server" code="0x0000" define="SPIN_SPEEDS" type="array" entryType="char_string" optional="true" length="16">SpinSpeeds</attribute>
-    <attribute side="server" code="0x0001" define="SPIN_SPEED_CURRENT" type="int8u" max="15" writable="true" isNullable="true" optional="true">SpinSpeedCurrent</attribute>
-    <attribute side="server" code="0x0002" define="NUMBER_OF_RINSES" type="NumberOfRinsesEnum" writable="true" optional="true" min="0x00" max="0x03" default="0x01">NumberOfRinses</attribute>
-    <attribute side="server" code="0x0003" define="SUPPORTED_RINSES" type="array" entryType="NumberOfRinsesEnum" optional="true" length="4">SupportedRinses</attribute>
+    <attribute side="server" code="0x0000" define="SPIN_SPEEDS" type="array" entryType="char_string" optional="true" length="16">
+      <description>SpinSpeeds</description>
+      <mandatoryConform>
+        <feature name="SPIN"/>
+      </mandatoryConform>
+    </attribute>
+    <attribute side="server" code="0x0001" define="SPIN_SPEED_CURRENT" type="int8u" max="15" writable="true" isNullable="true" optional="true">
+      <description>SpinSpeedCurrent</description>
+      <mandatoryConform>
+        <feature name="SPIN"/>
+      </mandatoryConform>
+    </attribute>
+    <attribute side="server" code="0x0002" define="NUMBER_OF_RINSES" type="NumberOfRinsesEnum" writable="true" optional="true" min="0x00" max="0x03" default="0x01">
+      <description>NumberOfRinses</description>
+      <mandatoryConform>
+        <feature name="RINSE"/>
+      </mandatoryConform>
+    </attribute>
+    <attribute side="server" code="0x0003" define="SUPPORTED_RINSES" type="array" entryType="NumberOfRinsesEnum" optional="true" length="4">
+      <description>SupportedRinses</description>
+      <mandatoryConform>
+        <feature name="RINSE"/>
+      </mandatoryConform>
+    </attribute>
   </cluster>
 </configurator>

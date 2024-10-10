@@ -45,11 +45,13 @@ Git: 0.9-fall2024-87-gcdfdb86be-dirty
     <command source="client" code="0x00" name="SendKey" response="SendKeyResponse" optional="false">
       <description>Upon receipt, this SHALL process a keycode as input to the media endpoint.</description>
       <arg id="0" name="KeyCode" type="CecKeyCodeEnum" min="0x00" max="0x76"/>
+      <mandatoryConform/>
     </command>
 
     <command source="server" code="0x01" name="SendKeyResponse" optional="false" disableDefaultResponse="true">
       <description>This command SHALL be generated in response to a SendKey command.</description>
       <arg id="0" name="Status" type="StatusEnum" min="0x00" max="0x02"/>
+      <mandatoryConform/>
     </command>
 
   </cluster>

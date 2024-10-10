@@ -38,15 +38,40 @@ Git: 0.9-fall2024-87-gcdfdb86be-dirty
       </feature>
     </features>
     <!--Conformance feature BALA - for now optional-->
-    <attribute code="0x0000" side="server" type="array" entryType="BalanceStruct" define="ENERGY_PREFERENCE_ENERGY_BALANCES" optional="true" length="10" minLength="2">EnergyBalances</attribute>
+    <attribute code="0x0000" side="server" type="array" entryType="BalanceStruct" define="ENERGY_PREFERENCE_ENERGY_BALANCES" optional="true" length="10" minLength="2">
+      <description>EnergyBalances</description>
+      <mandatoryConform>
+        <feature name="BALA"/>
+      </mandatoryConform>
+    </attribute>
     <!--Conformance feature BALA - for now optional-->
-    <attribute code="0x0001" side="server" type="int8u" define="ENERGY_PREFERENCE_CURRENT_ENERGY_BALANCE" writable="true" optional="true" min="0" max="255">CurrentEnergyBalance</attribute>
+    <attribute code="0x0001" side="server" type="int8u" define="ENERGY_PREFERENCE_CURRENT_ENERGY_BALANCE" writable="true" optional="true" min="0" max="255">
+      <description>CurrentEnergyBalance</description>
+      <mandatoryConform>
+        <feature name="BALA"/>
+      </mandatoryConform>
+    </attribute>
     <!--Conformance feature BALA - for now optional-->
-    <attribute code="0x0002" side="server" type="array" entryType="EnergyPriorityEnum" define="ENERGY_PREFERENCE_ENERGY_PRIORITIES" optional="true" length="2" minLength="2">EnergyPriorities</attribute>
+    <attribute code="0x0002" side="server" type="array" entryType="EnergyPriorityEnum" define="ENERGY_PREFERENCE_ENERGY_PRIORITIES" optional="true" length="2" minLength="2">
+      <description>EnergyPriorities</description>
+      <mandatoryConform>
+        <feature name="BALA"/>
+      </mandatoryConform>
+    </attribute>
     <!--Conformance feature LPMS - for now optional-->
-    <attribute code="0x0003" side="server" type="array" entryType="BalanceStruct" define="ENERGY_PREFERENCE_LOW_POWER_MODE_SENSITIVITIES" optional="true" length="10" minLength="2">LowPowerModeSensitivities</attribute>
+    <attribute code="0x0003" side="server" type="array" entryType="BalanceStruct" define="ENERGY_PREFERENCE_LOW_POWER_MODE_SENSITIVITIES" optional="true" length="10" minLength="2">
+      <description>LowPowerModeSensitivities</description>
+      <mandatoryConform>
+        <feature name="LPMS"/>
+      </mandatoryConform>
+    </attribute>
     <!--Conformance feature LPMS - for now optional-->
-    <attribute code="0x0004" side="server" type="int8u" define="ENERGY_PREFERENCE_CURRENT_LOW_POWER_MODE_SENSITIVITY" writable="true" optional="true" min="0" max="255">CurrentLowPowerModeSensitivity</attribute>
+    <attribute code="0x0004" side="server" type="int8u" define="ENERGY_PREFERENCE_CURRENT_LOW_POWER_MODE_SENSITIVITY" writable="true" optional="true" min="0" max="255">
+      <description>CurrentLowPowerModeSensitivity</description>
+      <mandatoryConform>
+        <feature name="LPMS"/>
+      </mandatoryConform>
+    </attribute>
   </cluster>
 
   <enum name="EnergyPriorityEnum" type="enum8">

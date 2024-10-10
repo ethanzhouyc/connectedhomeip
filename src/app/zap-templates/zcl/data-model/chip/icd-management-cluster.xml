@@ -110,22 +110,68 @@ Git: 0.9-fall2024-87-gcdfdb86be-dirty
         </otherwiseConform>
       </feature>
     </features>
-    <attribute side="server" code="0x00" define="IDLE_MODE_DURATION" type="int32u" min="1" max="64800" default="1">IdleModeDuration</attribute>
-    <attribute side="server" code="0x01" define="ACTIVE_MODE_DURATION" type="int32u" default="300">ActiveModeDuration</attribute>
-    <attribute side="server" code="0x02" define="ACTIVE_MODE_THRESHOLD" type="int16u" default="300">ActiveModeThreshold</attribute>
+    <attribute side="server" code="0x00" define="IDLE_MODE_DURATION" type="int32u" min="1" max="64800" default="1">
+      <description>IdleModeDuration</description>
+      <mandatoryConform/>
+    </attribute>
+    <attribute side="server" code="0x01" define="ACTIVE_MODE_DURATION" type="int32u" default="300">
+      <description>ActiveModeDuration</description>
+      <mandatoryConform/>
+    </attribute>
+    <attribute side="server" code="0x02" define="ACTIVE_MODE_THRESHOLD" type="int16u" default="300">
+      <description>ActiveModeThreshold</description>
+      <mandatoryConform/>
+    </attribute>
     <attribute side="server" code="0x03" define="REGISTERED_CLIENTS" type="array" entryType="MonitoringRegistrationStruct" optional="true">
       <description>RegisteredClients</description>
       <access op="read" privilege="administer"/>
+      <mandatoryConform>
+        <feature name="CIP"/>
+      </mandatoryConform>
     </attribute>
     <attribute side="server" code="0x04" define="ICD_COUNTER" type="int32u" default="0" optional="true">
       <description>ICDCounter</description>
       <access op="read" privilege="administer"/>
+      <mandatoryConform>
+        <feature name="CIP"/>
+      </mandatoryConform>
     </attribute>
-    <attribute side="server" code="0x05" define="CLIENTS_SUPPORTED_PER_FABRIC" type="int16u" min="1" default="1" optional="true">ClientsSupportedPerFabric</attribute>
-    <attribute side="server" code="0x06" define="USER_ACTIVE_MODE_TRIGGER_HINT" type="UserActiveModeTriggerBitmap" optional="true" apiMaturity="provisional" min="0x00000000" max="0x0001FFFF" default="0x00000000">UserActiveModeTriggerHint</attribute>
-    <attribute side="server" code="0x07" define="USER_ACTIVE_MODE_TRIGGER_INSTRUCTION" type="char_string" length="128" optional="true" apiMaturity="provisional">UserActiveModeTriggerInstruction</attribute>
-    <attribute side="server" code="0x08" define="OPERATING_MODE" type="OperatingModeEnum" optional="true" apiMaturity="provisional" min="0x00" max="0x01">OperatingMode</attribute>
-    <attribute side="server" code="0x09" define="MAXIMUM_CHECK_IN_BACK_OFF" type="int32u" default="1" max="64800" optional="true" apiMaturity="provisional" min="1">MaximumCheckInBackoff</attribute>
+    <attribute side="server" code="0x05" define="CLIENTS_SUPPORTED_PER_FABRIC" type="int16u" min="1" default="1" optional="true">
+      <description>ClientsSupportedPerFabric</description>
+      <mandatoryConform>
+        <feature name="CIP"/>
+      </mandatoryConform>
+    </attribute>
+    <attribute side="server" code="0x06" define="USER_ACTIVE_MODE_TRIGGER_HINT" type="UserActiveModeTriggerBitmap" optional="true" apiMaturity="provisional" min="0x00000000" max="0x0001FFFF" default="0x00000000">
+      <description>UserActiveModeTriggerHint</description>
+      <otherwiseConform>
+        <provisionalConform/>
+        <mandatoryConform>
+          <feature name="UAT"/>
+        </mandatoryConform>
+      </otherwiseConform>
+    </attribute>
+    <attribute side="server" code="0x07" define="USER_ACTIVE_MODE_TRIGGER_INSTRUCTION" type="char_string" length="128" optional="true" apiMaturity="provisional">
+      <description>UserActiveModeTriggerInstruction</description>
+      <otherwiseConform>
+        <provisionalConform/>
+      </otherwiseConform>
+    </attribute>
+    <attribute side="server" code="0x08" define="OPERATING_MODE" type="OperatingModeEnum" optional="true" apiMaturity="provisional" min="0x00" max="0x01">
+      <description>OperatingMode</description>
+      <otherwiseConform>
+        <provisionalConform/>
+        <mandatoryConform>
+          <feature name="LITS"/>
+        </mandatoryConform>
+      </otherwiseConform>
+    </attribute>
+    <attribute side="server" code="0x09" define="MAXIMUM_CHECK_IN_BACK_OFF" type="int32u" default="1" max="64800" optional="true" apiMaturity="provisional" min="1">
+      <description>MaximumCheckInBackoff</description>
+      <mandatoryConform>
+        <feature name="CIP"/>
+      </mandatoryConform>
+    </attribute>
     <command source="client" code="0x00" name="RegisterClient" response="RegisterClientResponse" isFabricScoped="true" optional="true">
       <description>This command allows a client to register itself with the ICD to be notified when the device is available for communication.</description>
       <arg id="0" name="CheckInNodeID" type="node_id"/>
@@ -134,11 +180,17 @@ Git: 0.9-fall2024-87-gcdfdb86be-dirty
       <arg id="3" name="VerificationKey" type="octet_string" length="16" optional="true" minLength="16"/>
       <arg id="4" name="ClientType" type="ClientTypeEnum" min="0x00" max="0x01"/>
       <access op="invoke" privilege="manage"/>
+      <mandatoryConform>
+        <feature name="CIP"/>
+      </mandatoryConform>
     </command>
 
     <command source="server" code="0x01" name="RegisterClientResponse" optional="true" disableDefaultResponse="true">
       <description>This command SHALL be sent by the ICD Management Cluster server in response to a successful RegisterClient command.</description>
       <arg id="0" name="ICDCounter" type="int32u"/>
+      <mandatoryConform>
+        <feature name="CIP"/>
+      </mandatoryConform>
     </command>
 
     <command source="client" code="0x02" name="UnregisterClient" isFabricScoped="true" optional="true">
@@ -146,16 +198,31 @@ Git: 0.9-fall2024-87-gcdfdb86be-dirty
       <arg id="0" name="CheckInNodeID" type="node_id"/>
       <arg id="1" name="VerificationKey" type="octet_string" length="16" optional="true" minLength="16"/>
       <access op="invoke" privilege="manage"/>
+      <mandatoryConform>
+        <feature name="CIP"/>
+      </mandatoryConform>
     </command>
 
     <command source="client" code="0x03" name="StayActiveRequest" response="StayActiveResponse" optional="true">
       <description>This command allows a client to request that the server stays in active mode for at least a given time duration (in milliseconds) from when this command is received.</description>
       <arg id="0" name="StayActiveDuration" type="int32u"/>
+      <otherwiseConform>
+        <mandatoryConform>
+          <feature name="LITS"/>
+        </mandatoryConform>
+        <optionalConform/>
+      </otherwiseConform>
     </command>
 
     <command source="server" code="0x04" name="StayActiveResponse" optional="true" disableDefaultResponse="true">
       <description>This message SHALL be sent by the ICD in response to the StayActiveRequest command and SHALL contain the computed duration (in milliseconds) that the ICD intends to stay active for.</description>
       <arg id="0" name="PromisedActiveDuration" type="int32u"/>
+      <otherwiseConform>
+        <mandatoryConform>
+          <feature name="LITS"/>
+        </mandatoryConform>
+        <optionalConform/>
+      </otherwiseConform>
     </command>
 
   </cluster>

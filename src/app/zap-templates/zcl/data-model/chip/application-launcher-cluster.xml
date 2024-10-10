@@ -36,28 +36,40 @@ Git: 0.9-fall2024-87-gcdfdb86be-dirty
         <optionalConform/>
       </feature>
     </features>
-    <attribute side="server" code="0x0000" define="APPLICATION_LAUNCHER_LIST" type="array" entryType="int16u" optional="true">CatalogList</attribute>
-    <attribute side="server" code="0x0001" define="APPLICATION_LAUNCHER_CURRENT_APP" type="ApplicationEPStruct" isNullable="true" optional="true">CurrentApp</attribute>
+    <attribute side="server" code="0x0000" define="APPLICATION_LAUNCHER_LIST" type="array" entryType="int16u" optional="true">
+      <description>CatalogList</description>
+      <mandatoryConform>
+        <feature name="AP"/>
+      </mandatoryConform>
+    </attribute>
+    <attribute side="server" code="0x0001" define="APPLICATION_LAUNCHER_CURRENT_APP" type="ApplicationEPStruct" isNullable="true" optional="true">
+      <description>CurrentApp</description>
+      <optionalConform/>
+    </attribute>
     <command source="client" code="0x00" name="LaunchApp" response="LauncherResponse" optional="false">
       <description>Upon receipt of this command, the server SHALL launch the application with optional data.</description>
       <arg id="0" name="Application" type="ApplicationStruct" optional="true"/>
       <arg id="1" name="Data" type="octet_string" optional="true"/>
+      <mandatoryConform/>
     </command>
 
     <command source="client" code="0x01" name="StopApp" response="LauncherResponse" optional="false">
       <description>Upon receipt of this command, the server SHALL stop the application if it is running.</description>
       <arg id="0" name="Application" type="ApplicationStruct" optional="true"/>
+      <mandatoryConform/>
     </command>
 
     <command source="client" code="0x02" name="HideApp" response="LauncherResponse" optional="false">
       <description>Upon receipt of this command, the server SHALL hide the application.</description>
       <arg id="0" name="Application" type="ApplicationStruct" optional="true"/>
+      <mandatoryConform/>
     </command>
 
     <command source="server" code="0x03" name="LauncherResponse" optional="false" disableDefaultResponse="true">
       <description>This command SHALL be generated in response to LaunchApp/StopApp/HideApp commands.</description>
       <arg id="0" name="Status" type="StatusEnum" min="0x00" max="0x05"/>
       <arg id="1" name="Data" type="octet_string" optional="true"/>
+      <mandatoryConform/>
     </command>
 
   </cluster>

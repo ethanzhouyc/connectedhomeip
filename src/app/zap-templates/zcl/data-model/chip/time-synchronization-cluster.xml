@@ -116,77 +116,165 @@ Git: 0.9-fall2024-87-gcdfdb86be-dirty
         <optionalConform/>
       </feature>
     </features>
-    <attribute side="server" code="0x0000" define="UTC_TIME" type="epoch_us" isNullable="true">UTCTime</attribute>
-    <attribute side="server" code="0x0001" define="GRANULARITY" type="GranularityEnum" default="0x00" min="0x00" max="0x04">Granularity</attribute>
-    <attribute side="server" code="0x0002" define="TIME_SOURCE" type="TimeSourceEnum" default="0x00" optional="true" min="0x00" max="0x10">TimeSource</attribute>
-    <attribute side="server" code="0x0003" define="TRUSTED_TIME_SOURCE" type="TrustedTimeSourceStruct" isNullable="true" optional="true">TrustedTimeSource</attribute>
-    <attribute side="server" code="0x0004" define="DEFAULT_NTP" type="char_string" length="128" isNullable="true" optional="true">DefaultNTP</attribute>
-    <attribute side="server" code="0x0005" define="TIME_ZONE" type="array" entryType="TimeZoneStruct" optional="true" length="2" minLength="1">TimeZone</attribute>
-    <attribute side="server" code="0x0006" define="DST_OFFSET" type="array" entryType="DSTOffsetStruct" optional="true">DSTOffset</attribute>
-    <attribute side="server" code="0x0007" define="LOCAL_TIME" type="epoch_us" isNullable="true" optional="true">LocalTime</attribute>
-    <attribute side="server" code="0x0008" define="TIME_ZONE_DATABASE" type="TimeZoneDatabaseEnum" default="2" optional="true" min="0x00" max="0x02">TimeZoneDatabase</attribute>
-    <attribute side="server" code="0x0009" define="NTP_SERVER_AVAILABLE" type="boolean" default="0" optional="true">NTPServerAvailable</attribute>
-    <attribute side="server" code="0x000A" define="TIME_ZONE_LIST_MAX_SIZE" type="int8u" min="1" max="2" optional="true">TimeZoneListMaxSize</attribute>
-    <attribute side="server" code="0x000B" define="DST_OFFSET_LIST_MAX_SIZE" type="int8u" min="1" optional="true">DSTOffsetListMaxSize</attribute>
-    <attribute side="server" code="0x000C" define="SUPPORTS_DNS_RESOLVE" type="boolean" default="0" optional="true">SupportsDNSResolve</attribute>
+    <attribute side="server" code="0x0000" define="UTC_TIME" type="epoch_us" isNullable="true">
+      <description>UTCTime</description>
+      <mandatoryConform/>
+    </attribute>
+    <attribute side="server" code="0x0001" define="GRANULARITY" type="GranularityEnum" default="0x00" min="0x00" max="0x04">
+      <description>Granularity</description>
+      <mandatoryConform/>
+    </attribute>
+    <attribute side="server" code="0x0002" define="TIME_SOURCE" type="TimeSourceEnum" default="0x00" optional="true" min="0x00" max="0x10">
+      <description>TimeSource</description>
+      <optionalConform/>
+    </attribute>
+    <attribute side="server" code="0x0003" define="TRUSTED_TIME_SOURCE" type="TrustedTimeSourceStruct" isNullable="true" optional="true">
+      <description>TrustedTimeSource</description>
+      <mandatoryConform>
+        <feature name="TSC"/>
+      </mandatoryConform>
+    </attribute>
+    <attribute side="server" code="0x0004" define="DEFAULT_NTP" type="char_string" length="128" isNullable="true" optional="true">
+      <description>DefaultNTP</description>
+      <mandatoryConform>
+        <feature name="NTPC"/>
+      </mandatoryConform>
+    </attribute>
+    <attribute side="server" code="0x0005" define="TIME_ZONE" type="array" entryType="TimeZoneStruct" optional="true" length="2" minLength="1">
+      <description>TimeZone</description>
+      <mandatoryConform>
+        <feature name="TZ"/>
+      </mandatoryConform>
+    </attribute>
+    <attribute side="server" code="0x0006" define="DST_OFFSET" type="array" entryType="DSTOffsetStruct" optional="true">
+      <description>DSTOffset</description>
+      <mandatoryConform>
+        <feature name="TZ"/>
+      </mandatoryConform>
+    </attribute>
+    <attribute side="server" code="0x0007" define="LOCAL_TIME" type="epoch_us" isNullable="true" optional="true">
+      <description>LocalTime</description>
+      <mandatoryConform>
+        <feature name="TZ"/>
+      </mandatoryConform>
+    </attribute>
+    <attribute side="server" code="0x0008" define="TIME_ZONE_DATABASE" type="TimeZoneDatabaseEnum" default="2" optional="true" min="0x00" max="0x02">
+      <description>TimeZoneDatabase</description>
+      <mandatoryConform>
+        <feature name="TZ"/>
+      </mandatoryConform>
+    </attribute>
+    <attribute side="server" code="0x0009" define="NTP_SERVER_AVAILABLE" type="boolean" default="0" optional="true">
+      <description>NTPServerAvailable</description>
+      <mandatoryConform>
+        <feature name="NTPS"/>
+      </mandatoryConform>
+    </attribute>
+    <attribute side="server" code="0x000A" define="TIME_ZONE_LIST_MAX_SIZE" type="int8u" min="1" max="2" optional="true">
+      <description>TimeZoneListMaxSize</description>
+      <mandatoryConform>
+        <feature name="TZ"/>
+      </mandatoryConform>
+    </attribute>
+    <attribute side="server" code="0x000B" define="DST_OFFSET_LIST_MAX_SIZE" type="int8u" min="1" optional="true">
+      <description>DSTOffsetListMaxSize</description>
+      <mandatoryConform>
+        <feature name="TZ"/>
+      </mandatoryConform>
+    </attribute>
+    <attribute side="server" code="0x000C" define="SUPPORTS_DNS_RESOLVE" type="boolean" default="0" optional="true">
+      <description>SupportsDNSResolve</description>
+      <mandatoryConform>
+        <feature name="NTPC"/>
+      </mandatoryConform>
+    </attribute>
     <command source="client" code="0x00" name="SetUTCTime" optional="false">
       <description>The data for this command are as follows: </description>
       <arg id="0" name="UTCTime" type="epoch_us" default="0"/>
       <arg id="1" name="Granularity" type="GranularityEnum" default="0x00" min="0x00" max="0x04"/>
       <arg id="2" name="TimeSource" type="TimeSourceEnum" optional="true" default="0x00" min="0x00" max="0x10"/>
       <access op="invoke" privilege="administer"/>
+      <mandatoryConform/>
     </command>
 
     <command source="client" code="0x01" name="SetTrustedTimeSource" isFabricScoped="true" optional="true">
       <description>This command SHALL set the TrustedTimeSource attribute.</description>
       <arg id="0" name="TrustedTimeSource" type="FabricScopedTrustedTimeSourceStruct" isNullable="true"/>
       <access op="invoke" privilege="administer"/>
+      <mandatoryConform>
+        <feature name="TSC"/>
+      </mandatoryConform>
     </command>
 
     <command source="client" code="0x02" name="SetTimeZone" response="SetTimeZoneResponse" optional="true">
       <description>This command is used to set the time zone of the node.</description>
       <arg id="0" name="TimeZone" type="TimeZoneStruct" array="true" length="2" minLength="1"/>
       <access op="invoke" privilege="manage"/>
+      <mandatoryConform>
+        <feature name="TZ"/>
+      </mandatoryConform>
     </command>
 
     <command source="server" code="0x03" name="SetTimeZoneResponse" optional="true" disableDefaultResponse="true">
       <description>This command SHALL be generated in response to a SetTimeZone command.</description>
       <arg id="0" name="DSTOffsetsRequired" type="boolean" default="1"/>
+      <mandatoryConform>
+        <feature name="TZ"/>
+      </mandatoryConform>
     </command>
 
     <command source="client" code="0x04" name="SetDSTOffset" optional="true">
       <description>This command is used to set the DST offsets for a node.</description>
       <arg id="0" name="DSTOffset" type="DSTOffsetStruct" array="true"/>
       <access op="invoke" privilege="manage"/>
+      <mandatoryConform>
+        <feature name="TZ"/>
+      </mandatoryConform>
     </command>
 
     <command source="client" code="0x05" name="SetDefaultNTP" optional="true">
       <description>This command is used to set the DefaultNTP attribute.</description>
       <arg id="0" name="DefaultNTP" type="char_string" length="128" isNullable="true"/>
       <access op="invoke" privilege="administer"/>
+      <mandatoryConform>
+        <feature name="NTPC"/>
+      </mandatoryConform>
     </command>
 
     <event code="0x0000" name="DSTTableEmpty" priority="info" side="server" optional="true">
       <description>This event SHALL be generated when the node stops applying the current DSTOffset and there are no entries in the list with a larger ValidStarting time, indicating the need to possibly get new DST data.</description>
+      <mandatoryConform>
+        <feature name="TZ"/>
+      </mandatoryConform>
     </event>
 
     <event code="0x0001" name="DSTStatus" priority="info" side="server" optional="true">
       <description>This event SHALL be generated when the node starts or stops applying a DST offset.</description>
       <field id="0" name="DSTOffsetActive" type="boolean"/>
+      <mandatoryConform>
+        <feature name="TZ"/>
+      </mandatoryConform>
     </event>
 
     <event code="0x0002" name="TimeZoneStatus" priority="info" side="server" optional="true">
       <description>This event SHALL be generated when the node changes its time zone offset or name.</description>
       <field id="0" name="Offset" type="int32s" min="-43200" max="50400"/>
       <field id="1" name="Name" type="char_string" optional="true"/>
+      <mandatoryConform>
+        <feature name="TZ"/>
+      </mandatoryConform>
     </event>
 
     <event code="0x0003" name="TimeFailure" priority="info" side="server">
       <description>This event SHALL be generated if the node has not generated a TimeFailure event in the last hour, and the node is unable to get a time from any source.</description>
+      <mandatoryConform/>
     </event>
 
     <event code="0x0004" name="MissingTrustedTimeSource" priority="info" side="server" optional="true">
       <description>This event SHALL be generated if the TrustedTimeSource is set to null upon fabric removal or by a SetTrustedTimeSource command.</description>
+      <mandatoryConform>
+        <feature name="TSC"/>
+      </mandatoryConform>
     </event>
 
   </cluster>

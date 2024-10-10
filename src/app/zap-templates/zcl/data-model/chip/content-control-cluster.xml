@@ -82,120 +82,226 @@ Git: 0.9-fall2024-87-gcdfdb86be-dirty
         <optionalConform/>
       </feature>
     </features>
-    <attribute side="server" code="0x0000" define="ENABLED" type="boolean">Enabled</attribute>
-    <attribute side="server" code="0x0001" define="ON_DEMAND_RATINGS" type="array" entryType="RatingNameStruct" optional="true">OnDemandRatings</attribute>
-    <attribute side="server" code="0x0002" define="ON_DEMAND_THRESHOLD" type="char_string" length="8" optional="true">OnDemandRatingThreshold</attribute>
-    <attribute side="server" code="0x0003" define="SCHEDULED_CONTENT_RATINGS" type="array" entryType="RatingNameStruct" optional="true">ScheduledContentRatings</attribute>
-    <attribute side="server" code="0x0004" define="SCHEDULED_CONTENT_RATING_THRESHOLD" type="char_string" length="8" optional="true">ScheduledContentRatingThreshold</attribute>
-    <attribute side="server" code="0x0005" define="SCREEN_DAILY_TIME" type="elapsed_s" optional="true" max="86400">ScreenDailyTime</attribute>
-    <attribute side="server" code="0x0006" define="REMAINING_SCREEN_TIME" type="elapsed_s" optional="true" max="86400">RemainingScreenTime</attribute>
-    <attribute side="server" code="0x0007" define="ENABLED" type="boolean" optional="true">BlockUnrated</attribute>
-    <attribute code="0x0008" side="server" define="BLOCK_CHANNEL_LIST" type="array" entryType="BlockChannelStruct" optional="true">BlockChannelList</attribute>
-    <attribute code="0x0009" side="server" define="BLOCK_APPLICATION_LIST" type="array" entryType="AppInfoStruct" optional="true">BlockApplicationList</attribute>
-    <attribute code="0x000A" side="server" define="BLOCK_CONTENT_TIME_WINDOW" type="array" entryType="TimeWindowStruct" length="7" optional="true">BlockContentTimeWindow</attribute>
+    <attribute side="server" code="0x0000" define="ENABLED" type="boolean">
+      <description>Enabled</description>
+      <mandatoryConform/>
+    </attribute>
+    <attribute side="server" code="0x0001" define="ON_DEMAND_RATINGS" type="array" entryType="RatingNameStruct" optional="true">
+      <description>OnDemandRatings</description>
+      <mandatoryConform>
+        <feature name="OCR"/>
+      </mandatoryConform>
+    </attribute>
+    <attribute side="server" code="0x0002" define="ON_DEMAND_THRESHOLD" type="char_string" length="8" optional="true">
+      <description>OnDemandRatingThreshold</description>
+      <mandatoryConform>
+        <feature name="OCR"/>
+      </mandatoryConform>
+    </attribute>
+    <attribute side="server" code="0x0003" define="SCHEDULED_CONTENT_RATINGS" type="array" entryType="RatingNameStruct" optional="true">
+      <description>ScheduledContentRatings</description>
+      <mandatoryConform>
+        <feature name="SCR"/>
+      </mandatoryConform>
+    </attribute>
+    <attribute side="server" code="0x0004" define="SCHEDULED_CONTENT_RATING_THRESHOLD" type="char_string" length="8" optional="true">
+      <description>ScheduledContentRatingThreshold</description>
+      <mandatoryConform>
+        <feature name="SCR"/>
+      </mandatoryConform>
+    </attribute>
+    <attribute side="server" code="0x0005" define="SCREEN_DAILY_TIME" type="elapsed_s" optional="true" max="86400">
+      <description>ScreenDailyTime</description>
+      <mandatoryConform>
+        <feature name="ST"/>
+      </mandatoryConform>
+    </attribute>
+    <attribute side="server" code="0x0006" define="REMAINING_SCREEN_TIME" type="elapsed_s" optional="true" max="86400">
+      <description>RemainingScreenTime</description>
+      <mandatoryConform>
+        <feature name="ST"/>
+      </mandatoryConform>
+    </attribute>
+    <attribute side="server" code="0x0007" define="ENABLED" type="boolean" optional="true">
+      <description>BlockUnrated</description>
+      <mandatoryConform>
+        <feature name="BU"/>
+      </mandatoryConform>
+    </attribute>
+    <attribute code="0x0008" side="server" define="BLOCK_CHANNEL_LIST" type="array" entryType="BlockChannelStruct" optional="true">
+      <description>BlockChannelList</description>
+      <mandatoryConform>
+        <feature name="BC"/>
+      </mandatoryConform>
+    </attribute>
+    <attribute code="0x0009" side="server" define="BLOCK_APPLICATION_LIST" type="array" entryType="AppInfoStruct" optional="true">
+      <description>BlockApplicationList</description>
+      <mandatoryConform>
+        <feature name="BA"/>
+      </mandatoryConform>
+    </attribute>
+    <attribute code="0x000A" side="server" define="BLOCK_CONTENT_TIME_WINDOW" type="array" entryType="TimeWindowStruct" length="7" optional="true">
+      <description>BlockContentTimeWindow</description>
+      <mandatoryConform>
+        <feature name="BTW"/>
+      </mandatoryConform>
+    </attribute>
     <command source="client" code="0x00" name="UpdatePIN" optional="true" mustUseTimedInvoke="true">
       <description>The purpose of this command is to update the PIN used for protecting configuration of the content control settings.</description>
       <access op="invoke" privilege="manage"/>
       <arg id="0" name="OldPIN" type="char_string" length="6"/>
       <arg id="1" name="NewPIN" type="char_string" length="6"/>
+      <mandatoryConform>
+        <feature name="PM"/>
+      </mandatoryConform>
     </command>
 
     <command source="client" code="0x01" name="ResetPIN" response="ResetPINResponse" optional="true" mustUseTimedInvoke="true">
       <description>The purpose of this command is to reset the PIN.</description>
       <access op="invoke" privilege="administer"/>
+      <mandatoryConform>
+        <feature name="PM"/>
+      </mandatoryConform>
     </command>
 
     <command source="server" code="0x02" name="ResetPINResponse" optional="true" disableDefaultResponse="true">
       <description>This command SHALL be generated in response to a ResetPIN command.</description>
       <arg id="0" name="PINCode" type="char_string" length="6"/>
+      <mandatoryConform>
+        <feature name="PM"/>
+      </mandatoryConform>
     </command>
 
     <command source="client" code="0x03" name="Enable" optional="false" mustUseTimedInvoke="true">
       <description>The purpose of this command is to turn on the Content Control feature on a media device.</description>
       <access op="invoke" privilege="manage"/>
+      <mandatoryConform/>
     </command>
 
     <command source="client" code="0x04" name="Disable" optional="false" mustUseTimedInvoke="true">
       <description>The purpose of this command is to turn off the Content Control feature on a media device.</description>
       <access op="invoke" privilege="manage"/>
+      <mandatoryConform/>
     </command>
 
     <command source="client" code="0x05" name="AddBonusTime" optional="true">
       <description>The purpose of this command is to add the extra screen time for the user.</description>
       <arg id="0" name="PINCode" type="char_string" optional="true" length="6"/>
       <arg id="1" name="BonusTime" type="elapsed_s"/>
+      <mandatoryConform>
+        <feature name="ST"/>
+      </mandatoryConform>
     </command>
 
     <command source="client" code="0x06" name="SetScreenDailyTime" optional="true">
       <description>The purpose of this command is to set the ScreenDailyTime attribute.</description>
       <access op="invoke" privilege="manage"/>
       <arg id="0" name="ScreenTime" type="elapsed_s" max="86400"/>
+      <mandatoryConform>
+        <feature name="ST"/>
+      </mandatoryConform>
     </command>
 
     <command source="client" code="0x07" name="BlockUnratedContent" optional="true">
       <description>The purpose of this command is to specify whether programs with no Content rating must be blocked by this media device.</description>
       <access op="invoke" privilege="manage"/>
+      <mandatoryConform>
+        <feature name="BU"/>
+      </mandatoryConform>
     </command>
 
     <command source="client" code="0x08" name="UnblockUnratedContent" optional="true">
       <description>The purpose of this command is to specify whether programs with no Content rating must be blocked by this media device.</description>
       <access op="invoke" privilege="manage"/>
+      <mandatoryConform>
+        <feature name="BU"/>
+      </mandatoryConform>
     </command>
 
     <command source="client" code="0x09" name="SetOnDemandRatingThreshold" optional="true">
       <description>The purpose of this command is to set the OnDemandRatingThreshold attribute.</description>
       <access op="invoke" privilege="manage"/>
       <arg id="0" name="Rating" type="char_string" length="8"/>
+      <mandatoryConform>
+        <feature name="OCR"/>
+      </mandatoryConform>
     </command>
 
     <command source="client" code="0x0A" name="SetScheduledContentRatingThreshold" optional="true">
       <description>The purpose of this command is to set ScheduledContentRatingThreshold attribute.</description>
       <access op="invoke" privilege="manage"/>
       <arg id="0" name="Rating" type="char_string" length="8"/>
+      <mandatoryConform>
+        <feature name="SCR"/>
+      </mandatoryConform>
     </command>
 
     <command code="0x0B" source="client" name="AddBlockChannels" optional="true">
       <description>The purpose of this command is to set BlockChannelList attribute.</description>
       <access op="invoke" privilege="manage"/>
       <arg id="0" name="Channels" array="true" type="BlockChannelStruct"/>
+      <mandatoryConform>
+        <feature name="BC"/>
+      </mandatoryConform>
     </command>
 
     <command code="0x0C" source="client" name="RemoveBlockChannels" optional="true">
       <description>The purpose of this command is to remove channels from the BlockChannelList attribute.</description>
       <access op="invoke" privilege="manage"/>
       <arg id="0" name="ChannelIndexes" array="true" type="int16u"/>
+      <mandatoryConform>
+        <feature name="BC"/>
+      </mandatoryConform>
     </command>
 
     <command code="0x0D" source="client" name="AddBlockApplications" optional="true">
       <description>The purpose of this command is to set applications to the BlockApplicationList attribute.</description>
       <access op="invoke" privilege="manage"/>
       <arg id="0" name="Applications" array="true" type="AppInfoStruct"/>
+      <mandatoryConform>
+        <feature name="BA"/>
+      </mandatoryConform>
     </command>
 
     <command code="0x0E" source="client" name="RemoveBlockApplications" optional="true">
       <description>The purpose of this command is to remove applications from the BlockApplicationList attribute.</description>
       <access op="invoke" privilege="manage"/>
       <arg id="0" name="Applications" array="true" type="AppInfoStruct"/>
+      <mandatoryConform>
+        <feature name="BA"/>
+      </mandatoryConform>
     </command>
 
     <command code="0x0F" source="client" name="SetBlockContentTimeWindow" optional="true">
       <description>The purpose of this command is to set the BlockContentTimeWindow attribute.</description>
       <access op="invoke" privilege="manage"/>
       <arg id="0" name="TimeWindow" type="TimeWindowStruct"/>
+      <mandatoryConform>
+        <feature name="BTW"/>
+      </mandatoryConform>
     </command>
 
     <command code="0x10" source="client" name="RemoveBlockContentTimeWindow" optional="true">
       <description>The purpose of this command is to remove the selected time windows from the BlockContentTimeWindow attribute.</description>
       <access op="invoke" privilege="manage"/>
       <arg id="0" name="TimeWindowIndexes" array="true" type="int16u"/>
+      <mandatoryConform>
+        <feature name="BTW"/>
+      </mandatoryConform>
     </command>
 
     <event side="server" code="0x00" priority="info" name="RemainingScreenTimeExpired" optional="true">
       <description>This event SHALL be generated when the RemainingScreenTime equals 0.</description>
+      <mandatoryConform>
+        <feature name="ST"/>
+      </mandatoryConform>
     </event>
 
     <event code="0x0001" name="EnteringBlockContentTimeWindow" priority="info" side="server" optional="true">
       <description>This event SHALL be generated when entering a period of blocked content as configured in the BlockContentTimeWindow attribute.</description>
+      <mandatoryConform>
+        <feature name="BTW"/>
+      </mandatoryConform>
     </event>
 
   </cluster>

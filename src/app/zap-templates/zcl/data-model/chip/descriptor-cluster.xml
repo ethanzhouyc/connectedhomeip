@@ -49,11 +49,31 @@ Git: 0.9-fall2024-87-gcdfdb86be-dirty
     <features>
       <feature bit="0" code="TAGLIST" name="TagList" summary="The TagList attribute is present"/>
     </features>
-    <attribute side="server" code="0x0000" define="DEVICE_LIST" type="array" entryType="DeviceTypeStruct" minLength="1">DeviceTypeList</attribute>
-    <attribute side="server" code="0x0001" define="SERVER_LIST" type="array" entryType="cluster_id">ServerList</attribute>
-    <attribute side="server" code="0x0002" define="CLIENT_LIST" type="array" entryType="cluster_id">ClientList</attribute>
-    <attribute side="server" code="0x0003" define="PARTS_LIST" type="array" entryType="endpoint_no">PartsList</attribute>
-    <attribute side="server" code="0x0004" define="TAG_LIST" type="array" entryType="SemanticTagStruct" optional="true" length="6" minLength="1">TagList</attribute>
-    <attribute code="0x0005" side="server" define="ENDPOINT_UNIQUE_ID" type="char_string" length="32" optional="true">EndpointUniqueID</attribute>
+    <attribute side="server" code="0x0000" define="DEVICE_LIST" type="array" entryType="DeviceTypeStruct" minLength="1">
+      <description>DeviceTypeList</description>
+      <mandatoryConform/>
+    </attribute>
+    <attribute side="server" code="0x0001" define="SERVER_LIST" type="array" entryType="cluster_id">
+      <description>ServerList</description>
+      <mandatoryConform/>
+    </attribute>
+    <attribute side="server" code="0x0002" define="CLIENT_LIST" type="array" entryType="cluster_id">
+      <description>ClientList</description>
+      <mandatoryConform/>
+    </attribute>
+    <attribute side="server" code="0x0003" define="PARTS_LIST" type="array" entryType="endpoint_no">
+      <description>PartsList</description>
+      <mandatoryConform/>
+    </attribute>
+    <attribute side="server" code="0x0004" define="TAG_LIST" type="array" entryType="SemanticTagStruct" optional="true" length="6" minLength="1">
+      <description>TagList</description>
+      <mandatoryConform>
+        <feature name="TAGLIST"/>
+      </mandatoryConform>
+    </attribute>
+    <attribute code="0x0005" side="server" define="ENDPOINT_UNIQUE_ID" type="char_string" length="32" optional="true">
+      <description>EndpointUniqueID</description>
+      <optionalConform/>
+    </attribute>
   </cluster>
 </configurator>

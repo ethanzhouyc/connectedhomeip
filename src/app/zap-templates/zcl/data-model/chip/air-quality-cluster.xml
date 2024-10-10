@@ -46,7 +46,10 @@ Git: 0.9-fall2024-87-gcdfdb86be-dirty
       </feature>
     </features>
     <!-- Attributes -->
-    <attribute side="server" code="0x0000" define="AIR_QUALITY" type="AirQualityEnum" min="0" max="6" default="0">AirQuality</attribute>
+    <attribute side="server" code="0x0000" define="AIR_QUALITY" type="AirQualityEnum" min="0" max="6" default="0">
+      <description>AirQuality</description>
+      <mandatoryConform/>
+    </attribute>
   </cluster>
 
   <!-- Cluster Data Types -->

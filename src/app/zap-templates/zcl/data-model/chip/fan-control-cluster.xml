@@ -114,6 +114,9 @@ Git: 0.9-fall2024-87-gcdfdb86be-dirty
       <arg id="0" name="Direction" type="StepDirectionEnum" default="0x00" min="0x00" max="0x01"/>
       <arg id="1" name="Wrap" type="boolean" optional="true" default="0"/>
       <arg id="2" name="LowestOff" type="boolean" optional="true" default="1"/>
+      <mandatoryConform>
+        <feature name="STEP"/>
+      </mandatoryConform>
     </command>
 
   </cluster>

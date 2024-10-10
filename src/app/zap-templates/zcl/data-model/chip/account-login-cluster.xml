@@ -36,6 +36,7 @@ Git: 0.9-fall2024-87-gcdfdb86be-dirty
       <description>The purpose of this command is to determine if the active user account of the given Content App matches the active user account of a given Commissionee, and when it does, return a Setup PIN code which can be used for password-authenticated session establishment (PASE) with the Commissionee.</description>
       <access op="invoke" role="administer"/>
       <arg id="0" name="TempAccountIdentifier" minLength="16" length="100" type="char_string"/>
+      <mandatoryConform/>
     </command>
 
     <command source="client" code="0x02" name="Login" isFabricScoped="true" mustUseTimedInvoke="true" optional="false">
@@ -44,22 +45,26 @@ Git: 0.9-fall2024-87-gcdfdb86be-dirty
       <arg id="0" name="TempAccountIdentifier" minLength="16" length="100" type="char_string"/>
       <arg id="1" name="SetupPIN" minLength="8" type="char_string"/>
       <arg id="2" name="Node" type="node_id" optional="true"/>
+      <mandatoryConform/>
     </command>
 
     <command source="client" code="0x03" name="Logout" isFabricScoped="true" mustUseTimedInvoke="true" optional="false">
       <description>The purpose of this command is to instruct the Content App to clear the current user account.</description>
       <arg id="0" name="Node" type="node_id" optional="true"/>
+      <mandatoryConform/>
     </command>
 
     <command source="server" code="0x01" name="GetSetupPINResponse" optional="false" disableDefaultResponse="true" isFabricScoped="true">
       <description>This message is sent in response to the GetSetupPIN command, and contains the Setup PIN code, or null when the account identified in the request does not match the active account of the running Content App.</description>
       <arg id="0" name="SetupPIN" type="char_string"/>
+      <mandatoryConform/>
     </command>
 
     <event side="server" code="0x00" priority="critical" name="LoggedOut" optional="true" isFabricSensitive="true">
       <description>This event can be used by the Content App to indicate that the current user has logged out.</description>
       <field id="0" name="Node" type="node_id" optional="true"/>
       <access op="read" privilege="administer"/>
+      <optionalConform/>
     </event>
 
   </cluster>

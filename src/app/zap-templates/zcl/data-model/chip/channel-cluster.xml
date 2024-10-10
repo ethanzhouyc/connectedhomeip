@@ -46,29 +46,56 @@ Git: 0.9-fall2024-87-gcdfdb86be-dirty
         <optionalConform/>
       </feature>
     </features>
-    <attribute side="server" code="0x0000" define="CHANNEL_LIST" type="array" entryType="ChannelInfoStruct" optional="true">ChannelList</attribute>
-    <attribute side="server" code="0x0001" define="CHANNEL_LINEUP" type="LineupInfoStruct" isNullable="true" optional="true">Lineup</attribute>
-    <attribute side="server" code="0x0002" define="CHANNEL_CURRENT_CHANNEL" type="ChannelInfoStruct" isNullable="true" optional="true">CurrentChannel</attribute>
+    <attribute side="server" code="0x0000" define="CHANNEL_LIST" type="array" entryType="ChannelInfoStruct" optional="true">
+      <description>ChannelList</description>
+      <mandatoryConform>
+        <feature name="CL"/>
+      </mandatoryConform>
+    </attribute>
+    <attribute side="server" code="0x0001" define="CHANNEL_LINEUP" type="LineupInfoStruct" isNullable="true" optional="true">
+      <description>Lineup</description>
+      <mandatoryConform>
+        <feature name="LI"/>
+      </mandatoryConform>
+    </attribute>
+    <attribute side="server" code="0x0002" define="CHANNEL_CURRENT_CHANNEL" type="ChannelInfoStruct" isNullable="true" optional="true">
+      <description>CurrentChannel</description>
+      <optionalConform/>
+    </attribute>
     <command source="client" code="0x00" name="ChangeChannel" response="ChangeChannelResponse" optional="true">
       <description>Change the channel to the channel case-insensitive exact matching the value passed as an argument.</description>
       <arg id="0" name="Match" type="char_string"/>
+      <mandatoryConform>
+        <orTerm>
+          <feature name="CL"/>
+          <feature name="LI"/>
+        </orTerm>
+      </mandatoryConform>
     </command>
 
     <command source="client" code="0x02" name="ChangeChannelByNumber" optional="false">
       <description>Change the channel to the channel with the given Number in the ChannelList attribute.</description>
       <arg id="0" name="MajorNumber" type="int16u"/>
       <arg id="1" name="MinorNumber" type="int16u"/>
+      <mandatoryConform/>
     </command>
 
     <command source="client" code="0x03" name="SkipChannel" optional="false">
       <description>This command provides channel up and channel down functionality, but allows channel index jumps of size Count.</description>
       <arg id="0" name="Count" type="int16s"/>
+      <mandatoryConform/>
     </command>
 
     <command source="server" code="0x01" name="ChangeChannelResponse" optional="true" disableDefaultResponse="true">
       <description>This command SHALL be generated in response to a ChangeChannel command.</description>
       <arg id="0" name="Status" type="StatusEnum" min="0x00" max="0x02"/>
       <arg id="1" name="Data" type="char_string" optional="true"/>
+      <mandatoryConform>
+        <orTerm>
+          <feature name="CL"/>
+          <feature name="LI"/>
+        </orTerm>
+      </mandatoryConform>
     </command>
 
     <command source="client" code="0x04" name="GetProgramGuide" response="ProgramGuideResponse" optional="true">
@@ -80,12 +107,18 @@ Git: 0.9-fall2024-87-gcdfdb86be-dirty
       <arg id="5" name="RecordingFlag" type="RecordingFlagBitmap" optional="true" isNullable="true" min="0x00" max="0x07"/>
       <arg id="6" name="ExternalIDList" type="AdditionalInfoStruct" array="true" optional="true" length="255"/>
       <arg id="7" name="Data" type="long_octet_string" optional="true" length="8092"/>
+      <mandatoryConform>
+        <feature name="EG"/>
+      </mandatoryConform>
     </command>
 
     <command source="server" code="0x05" name="ProgramGuideResponse" optional="true" apiMaturity="provisional" disableDefaultResponse="true">
       <description>This command is a response to the GetProgramGuide command.</description>
       <arg id="0" name="Paging" type="ChannelPagingStruct"/>
       <arg id="1" name="ProgramList" type="ProgramStruct" array="true"/>
+      <mandatoryConform>
+        <feature name="EG"/>
+      </mandatoryConform>
     </command>
 
     <command source="client" code="0x06" name="RecordProgram" optional="true">
@@ -94,6 +127,12 @@ Git: 0.9-fall2024-87-gcdfdb86be-dirty
       <arg id="1" name="ShouldRecordSeries" type="boolean"/>
       <arg id="2" name="ExternalIDList" type="AdditionalInfoStruct" array="true" optional="true" length="255"/>
       <arg id="3" name="Data" type="long_octet_string" optional="true" length="8092"/>
+      <mandatoryConform>
+        <andTerm>
+          <feature name="RP"/>
+          <feature name="EG"/>
+        </andTerm>
+      </mandatoryConform>
     </command>
 
     <command source="client" code="0x07" name="CancelRecordProgram" optional="true">
@@ -102,6 +141,12 @@ Git: 0.9-fall2024-87-gcdfdb86be-dirty
       <arg id="1" name="ShouldRecordSeries" type="boolean"/>
       <arg id="2" name="ExternalIDList" type="AdditionalInfoStruct" array="true" optional="true" length="255"/>
       <arg id="3" name="Data" type="long_octet_string" optional="true" length="8092"/>
+      <mandatoryConform>
+        <andTerm>
+          <feature name="RP"/>
+          <feature name="EG"/>
+        </andTerm>
+      </mandatoryConform>
     </command>
 
   </cluster>

@@ -34,6 +34,7 @@ Git: 0.9-fall2024-87-gcdfdb86be-dirty
     <attribute side="server" code="0x0000" define="LABEL_LIST" type="array" entryType="LabelStruct" writable="true">
       <description>LabelList</description>
       <access op="write" privilege="manage"/>
+      <mandatoryConform/>
     </attribute>
   </cluster>
 </configurator>

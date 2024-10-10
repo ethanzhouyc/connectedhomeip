@@ -37,6 +37,9 @@ Git: 0.9-fall2024-87-gcdfdb86be-dirty
     <client init="false" tick="false">true</client>
     <server init="false" tick="false">true</server>
     <globalAttribute code="0xFFFD" side="either" value="1"/>
-    <attribute code="0x0000" side="server" define="CONFIGURATION_LIST" type="array" entryType="ConfigurationStruct" writable="true">ConfigurationList</attribute>
+    <attribute code="0x0000" side="server" define="CONFIGURATION_LIST" type="array" entryType="ConfigurationStruct" writable="true">
+      <description>ConfigurationList</description>
+      <mandatoryConform/>
+    </attribute>
   </cluster>
 </configurator>

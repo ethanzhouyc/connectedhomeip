@@ -58,6 +58,7 @@ Git: 0.9-fall2024-87-gcdfdb86be-dirty
       <arg id="0" name="Intent" type="IntentEnum" min="0x00" max="0x02"/>
       <arg id="1" name="RequestedProtocol" type="TransferProtocolEnum" min="0x00" max="0x01"/>
       <arg id="2" name="TransferFileDesignator" type="char_string" length="32" optional="true"/>
+      <mandatoryConform/>
     </command>
 
     <command source="server" code="0x01" name="RetrieveLogsResponse" optional="false" cli="chip logs response" disableDefaultResponse="true">
@@ -66,6 +67,7 @@ Git: 0.9-fall2024-87-gcdfdb86be-dirty
       <arg id="1" name="LogContent" type="long_octet_string" length="1024"/>
       <arg id="2" name="UTCTimeStamp" type="epoch_us" optional="true"/>
       <arg id="3" name="TimeSinceBoot" type="systime_us" optional="true"/>
+      <mandatoryConform/>
     </command>
 
   </cluster>

@@ -36,11 +36,18 @@ Git: 0.9-fall2024-87-gcdfdb86be-dirty
         <optionalConform/>
       </feature>
     </features>
-    <attribute side="server" code="0x0000" define="AUDIO_OUTPUT_LIST" type="array" entryType="OutputInfoStruct">OutputList</attribute>
-    <attribute side="server" code="0x0001" define="AUDIO_OUTPUT_CURRENT_OUTPUT" type="int8u">CurrentOutput</attribute>
+    <attribute side="server" code="0x0000" define="AUDIO_OUTPUT_LIST" type="array" entryType="OutputInfoStruct">
+      <description>OutputList</description>
+      <mandatoryConform/>
+    </attribute>
+    <attribute side="server" code="0x0001" define="AUDIO_OUTPUT_CURRENT_OUTPUT" type="int8u">
+      <description>CurrentOutput</description>
+      <mandatoryConform/>
+    </attribute>
     <command source="client" code="0x00" name="SelectOutput" optional="false">
       <description>Upon receipt, this SHALL change the output on the device to the output at a specific index in the Output List.</description>
       <arg id="0" name="Index" type="int8u"/>
+      <mandatoryConform/>
     </command>
 
     <command source="client" code="0x01" name="RenameOutput" optional="true">
@@ -48,6 +55,9 @@ Git: 0.9-fall2024-87-gcdfdb86be-dirty
       <access op="invoke" role="manage"/>
       <arg id="0" name="Index" type="int8u"/>
       <arg id="1" name="Name" type="char_string"/>
+      <mandatoryConform>
+        <feature name="NU"/>
+      </mandatoryConform>
     </command>
 
   </cluster>
