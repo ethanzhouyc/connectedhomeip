@@ -24,12 +24,11 @@ limitations under the License.
     <define>FLOW_MEASUREMENT_CLUSTER</define>
     <client tick="false" init="false">true</client>
     <server tick="false" init="false">true</server>
-    <globalAttribute code="0xFFFD" side="either" value="3"/>
-    <attribute side="server" code="0x0000" define="FLOW_MEASURED_VALUE" type="int16u" isNullable="true" reportable="true">
+    <attribute side="server" code="0x0000" define="FLOW_MEASURED_VALUE" type="int16u" isNullable="true">
       <description>MeasuredValue</description>
       <mandatoryConform/>
     </attribute>
-    <attribute side="server" code="0x0001" define="FLOW_MIN_MEASURED_VALUE" type="int16u" isNullable="true" max="65533">
+    <attribute side="server" code="0x0001" define="FLOW_MIN_MEASURED_VALUE" type="int16u" isNullable="true">
       <description>MinMeasuredValue</description>
       <mandatoryConform/>
     </attribute>

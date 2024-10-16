@@ -55,11 +55,11 @@ limitations under the License.
     </features>
 
     <!-- Base data types -->
-    <attribute side="server" code="0x0000" define="SUPPORTED_MODES" type="array" entryType="ModeOptionStruct" length="255" minLength="2">
+    <attribute side="server" code="0x0000" define="SUPPORTED_MODES" type="array" entryType="ModeOptionStruct" length="255">
       <description>SupportedModes</description>
       <mandatoryConform/>
     </attribute>
-    <attribute side="server" code="0x0001" define="CURRENT_MODE" type="int8u">
+    <attribute side="server" code="0x0001" define="CURRENT_MODE" type="int8u" reportable="true">
       <description>CurrentMode</description>
       <mandatoryConform/>
     </attribute>

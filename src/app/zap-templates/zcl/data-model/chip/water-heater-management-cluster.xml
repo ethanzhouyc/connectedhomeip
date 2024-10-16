@@ -108,7 +108,7 @@ limitations under the License.
     </event>
 
     <event code="0x0001" name="BoostEnded" priority="info" side="server">
-      <description>This event SHALL be generated whenever the BoostState transitions from Active to Inactive.</description>
+      <description>BoostEnded</description>
       <mandatoryConform/>
     </event>
 

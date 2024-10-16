@@ -99,19 +99,19 @@ limitations under the License.
         <feature name="AVG"/>
       </mandatoryConform>
     </attribute>
-    <attribute side="server" code="0x0007" define="UNCERTAINTY" type="single" optional="true">
+    <attribute side="server" code="0x0007" define="UNCERTAINTY" type="single" default="0" optional="true">
       <description>Uncertainty</description>
       <optionalConform>
         <feature name="MEA"/>
       </optionalConform>
     </attribute>
-    <attribute side="server" code="0x0008" define="MEASUREMENT_UNIT" type="MeasurementUnitEnum" min="0" max="7" optional="true">
+    <attribute side="server" code="0x0008" define="MEASUREMENT_UNIT" type="MeasurementUnitEnum" min="0" max="7" default="0" optional="true">
       <description>MeasurementUnit</description>
       <mandatoryConform>
         <feature name="MEA"/>
       </mandatoryConform>
     </attribute>
-    <attribute side="server" code="0x0009" define="MEASUREMENT_MEDIUM" type="MeasurementMediumEnum" min="0" max="2">
+    <attribute side="server" code="0x0009" define="MEASUREMENT_MEDIUM" type="MeasurementMediumEnum" min="0" max="2" default="0" optional="true">
       <description>MeasurementMedium</description>
       <mandatoryConform/>
     </attribute>
@@ -207,19 +207,19 @@ limitations under the License.
         <feature name="AVG"/>
       </mandatoryConform>
     </attribute>
-    <attribute side="server" code="0x0007" define="UNCERTAINTY" type="single" optional="true">
+    <attribute side="server" code="0x0007" define="UNCERTAINTY" type="single" default="0" optional="true">
       <description>Uncertainty</description>
       <optionalConform>
         <feature name="MEA"/>
       </optionalConform>
     </attribute>
-    <attribute side="server" code="0x0008" define="MEASUREMENT_UNIT" type="MeasurementUnitEnum" min="0" max="7" optional="true">
+    <attribute side="server" code="0x0008" define="MEASUREMENT_UNIT" type="MeasurementUnitEnum" min="0" max="7" default="0" optional="true">
       <description>MeasurementUnit</description>
       <mandatoryConform>
         <feature name="MEA"/>
       </mandatoryConform>
     </attribute>
-    <attribute side="server" code="0x0009" define="MEASUREMENT_MEDIUM" type="MeasurementMediumEnum" min="0" max="2">
+    <attribute side="server" code="0x0009" define="MEASUREMENT_MEDIUM" type="MeasurementMediumEnum" min="0" max="2" default="0" optional="true">
       <description>MeasurementMedium</description>
       <mandatoryConform/>
     </attribute>
@@ -313,19 +313,19 @@ limitations under the License.
         <feature name="AVG"/>
       </mandatoryConform>
     </attribute>
-    <attribute side="server" code="0x0007" define="UNCERTAINTY" type="single" optional="true">
+    <attribute side="server" code="0x0007" define="UNCERTAINTY" type="single" default="0" optional="true">
       <description>Uncertainty</description>
       <optionalConform>
         <feature name="MEA"/>
       </optionalConform>
     </attribute>
-    <attribute side="server" code="0x0008" define="MEASUREMENT_UNIT" type="MeasurementUnitEnum" min="0" max="7" optional="true">
+    <attribute side="server" code="0x0008" define="MEASUREMENT_UNIT" type="MeasurementUnitEnum" min="0" max="7" default="0" optional="true">
       <description>MeasurementUnit</description>
       <mandatoryConform>
         <feature name="MEA"/>
       </mandatoryConform>
     </attribute>
-    <attribute side="server" code="0x0009" define="MEASUREMENT_MEDIUM" type="MeasurementMediumEnum" min="0" max="2">
+    <attribute side="server" code="0x0009" define="MEASUREMENT_MEDIUM" type="MeasurementMediumEnum" min="0" max="2" default="0" optional="true">
       <description>MeasurementMedium</description>
       <mandatoryConform/>
     </attribute>
@@ -419,19 +419,19 @@ limitations under the License.
         <feature name="AVG"/>
       </mandatoryConform>
     </attribute>
-    <attribute side="server" code="0x0007" define="UNCERTAINTY" type="single" optional="true">
+    <attribute side="server" code="0x0007" define="UNCERTAINTY" type="single" default="0" optional="true">
       <description>Uncertainty</description>
       <optionalConform>
         <feature name="MEA"/>
       </optionalConform>
     </attribute>
-    <attribute side="server" code="0x0008" define="MEASUREMENT_UNIT" type="MeasurementUnitEnum" min="0" max="7" optional="true">
+    <attribute side="server" code="0x0008" define="MEASUREMENT_UNIT" type="MeasurementUnitEnum" min="0" max="7" default="0" optional="true">
       <description>MeasurementUnit</description>
       <mandatoryConform>
         <feature name="MEA"/>
       </mandatoryConform>
     </attribute>
-    <attribute side="server" code="0x0009" define="MEASUREMENT_MEDIUM" type="MeasurementMediumEnum" min="0" max="2">
+    <attribute side="server" code="0x0009" define="MEASUREMENT_MEDIUM" type="MeasurementMediumEnum" min="0" max="2" default="0" optional="true">
       <description>MeasurementMedium</description>
       <mandatoryConform/>
     </attribute>
@@ -525,19 +525,19 @@ limitations under the License.
         <feature name="AVG"/>
       </mandatoryConform>
     </attribute>
-    <attribute side="server" code="0x0007" define="UNCERTAINTY" type="single" optional="true">
+    <attribute side="server" code="0x0007" define="UNCERTAINTY" type="single" default="0" optional="true">
       <description>Uncertainty</description>
       <optionalConform>
         <feature name="MEA"/>
       </optionalConform>
     </attribute>
-    <attribute side="server" code="0x0008" define="MEASUREMENT_UNIT" type="MeasurementUnitEnum" min="0" max="7" optional="true">
+    <attribute side="server" code="0x0008" define="MEASUREMENT_UNIT" type="MeasurementUnitEnum" min="0" max="7" default="0" optional="true">
       <description>MeasurementUnit</description>
       <mandatoryConform>
         <feature name="MEA"/>
       </mandatoryConform>
     </attribute>
-    <attribute side="server" code="0x0009" define="MEASUREMENT_MEDIUM" type="MeasurementMediumEnum" min="0" max="2">
+    <attribute side="server" code="0x0009" define="MEASUREMENT_MEDIUM" type="MeasurementMediumEnum" min="0" max="2" default="0" optional="true">
       <description>MeasurementMedium</description>
       <mandatoryConform/>
     </attribute>
@@ -631,19 +631,19 @@ limitations under the License.
         <feature name="AVG"/>
       </mandatoryConform>
     </attribute>
-    <attribute side="server" code="0x0007" define="UNCERTAINTY" type="single" optional="true">
+    <attribute side="server" code="0x0007" define="UNCERTAINTY" type="single" default="0" optional="true">
       <description>Uncertainty</description>
       <optionalConform>
         <feature name="MEA"/>
       </optionalConform>
     </attribute>
-    <attribute side="server" code="0x0008" define="MEASUREMENT_UNIT" type="MeasurementUnitEnum" min="0" max="7" optional="true">
+    <attribute side="server" code="0x0008" define="MEASUREMENT_UNIT" type="MeasurementUnitEnum" min="0" max="7" default="0" optional="true">
       <description>MeasurementUnit</description>
       <mandatoryConform>
         <feature name="MEA"/>
       </mandatoryConform>
     </attribute>
-    <attribute side="server" code="0x0009" define="MEASUREMENT_MEDIUM" type="MeasurementMediumEnum" min="0" max="2">
+    <attribute side="server" code="0x0009" define="MEASUREMENT_MEDIUM" type="MeasurementMediumEnum" min="0" max="2" default="0" optional="true">
       <description>MeasurementMedium</description>
       <mandatoryConform/>
     </attribute>
@@ -737,19 +737,19 @@ limitations under the License.
         <feature name="AVG"/>
       </mandatoryConform>
     </attribute>
-    <attribute side="server" code="0x0007" define="UNCERTAINTY" type="single" optional="true">
+    <attribute side="server" code="0x0007" define="UNCERTAINTY" type="single" default="0" optional="true">
       <description>Uncertainty</description>
       <optionalConform>
         <feature name="MEA"/>
       </optionalConform>
     </attribute>
-    <attribute side="server" code="0x0008" define="MEASUREMENT_UNIT" type="MeasurementUnitEnum" min="0" max="7" optional="true">
+    <attribute side="server" code="0x0008" define="MEASUREMENT_UNIT" type="MeasurementUnitEnum" min="0" max="7" default="0" optional="true">
       <description>MeasurementUnit</description>
       <mandatoryConform>
         <feature name="MEA"/>
       </mandatoryConform>
     </attribute>
-    <attribute side="server" code="0x0009" define="MEASUREMENT_MEDIUM" type="MeasurementMediumEnum" min="0" max="2">
+    <attribute side="server" code="0x0009" define="MEASUREMENT_MEDIUM" type="MeasurementMediumEnum" min="0" max="2" default="0" optional="true">
       <description>MeasurementMedium</description>
       <mandatoryConform/>
     </attribute>
@@ -843,19 +843,19 @@ limitations under the License.
         <feature name="AVG"/>
       </mandatoryConform>
     </attribute>
-    <attribute side="server" code="0x0007" define="UNCERTAINTY" type="single" optional="true">
+    <attribute side="server" code="0x0007" define="UNCERTAINTY" type="single" default="0" optional="true">
       <description>Uncertainty</description>
       <optionalConform>
         <feature name="MEA"/>
       </optionalConform>
     </attribute>
-    <attribute side="server" code="0x0008" define="MEASUREMENT_UNIT" type="MeasurementUnitEnum" min="0" max="7" optional="true">
+    <attribute side="server" code="0x0008" define="MEASUREMENT_UNIT" type="MeasurementUnitEnum" min="0" max="7" default="0" optional="true">
       <description>MeasurementUnit</description>
       <mandatoryConform>
         <feature name="MEA"/>
       </mandatoryConform>
     </attribute>
-    <attribute side="server" code="0x0009" define="MEASUREMENT_MEDIUM" type="MeasurementMediumEnum" min="0" max="2">
+    <attribute side="server" code="0x0009" define="MEASUREMENT_MEDIUM" type="MeasurementMediumEnum" min="0" max="2" default="0" optional="true">
       <description>MeasurementMedium</description>
       <mandatoryConform/>
     </attribute>
@@ -949,19 +949,19 @@ limitations under the License.
         <feature name="AVG"/>
       </mandatoryConform>
     </attribute>
-    <attribute side="server" code="0x0007" define="UNCERTAINTY" type="single" optional="true">
+    <attribute side="server" code="0x0007" define="UNCERTAINTY" type="single" default="0" optional="true">
       <description>Uncertainty</description>
       <optionalConform>
         <feature name="MEA"/>
       </optionalConform>
     </attribute>
-    <attribute side="server" code="0x0008" define="MEASUREMENT_UNIT" type="MeasurementUnitEnum" min="0" max="7" optional="true">
+    <attribute side="server" code="0x0008" define="MEASUREMENT_UNIT" type="MeasurementUnitEnum" min="0" max="7" default="0" optional="true">
       <description>MeasurementUnit</description>
       <mandatoryConform>
         <feature name="MEA"/>
       </mandatoryConform>
     </attribute>
-    <attribute side="server" code="0x0009" define="MEASUREMENT_MEDIUM" type="MeasurementMediumEnum" min="0" max="2">
+    <attribute side="server" code="0x0009" define="MEASUREMENT_MEDIUM" type="MeasurementMediumEnum" min="0" max="2" default="0" optional="true">
       <description>MeasurementMedium</description>
       <mandatoryConform/>
     </attribute>
@@ -1055,19 +1055,19 @@ limitations under the License.
         <feature name="AVG"/>
       </mandatoryConform>
     </attribute>
-    <attribute side="server" code="0x0007" define="UNCERTAINTY" type="single" optional="true">
+    <attribute side="server" code="0x0007" define="UNCERTAINTY" type="single" default="0" optional="true">
       <description>Uncertainty</description>
       <optionalConform>
         <feature name="MEA"/>
       </optionalConform>
     </attribute>
-    <attribute side="server" code="0x0008" define="MEASUREMENT_UNIT" type="MeasurementUnitEnum" min="0" max="7" optional="true">
+    <attribute side="server" code="0x0008" define="MEASUREMENT_UNIT" type="MeasurementUnitEnum" min="0" max="7" default="0" optional="true">
       <description>MeasurementUnit</description>
       <mandatoryConform>
         <feature name="MEA"/>
       </mandatoryConform>
     </attribute>
-    <attribute side="server" code="0x0009" define="MEASUREMENT_MEDIUM" type="MeasurementMediumEnum" min="0" max="2">
+    <attribute side="server" code="0x0009" define="MEASUREMENT_MEDIUM" type="MeasurementMediumEnum" min="0" max="2" default="0" optional="true">
       <description>MeasurementMedium</description>
       <mandatoryConform/>
     </attribute>

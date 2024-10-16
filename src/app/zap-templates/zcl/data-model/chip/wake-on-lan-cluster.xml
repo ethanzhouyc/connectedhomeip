@@ -31,7 +31,7 @@ limitations under the License.
       <description>MACAddress</description>
       <optionalConform/>
     </attribute>
-    <attribute apiMaturity="provisional" side="server" code="0x0001" define="LINK_LOCAL_ADDRESS" type="octet_string" optional="true">
+    <attribute apiMaturity="provisional" side="server" code="0x0001" define="LINK_LOCAL_ADDRESS" type="octet_string" length="16" optional="true">
       <description>LinkLocalAddress</description>
       <optionalConform/>
     </attribute>

@@ -33,7 +33,7 @@ limitations under the License.
       <access op="write" privilege="manage"/>
       <mandatoryConform/>
     </attribute>
-    <attribute side="server" code="0x01" define="SUPPORTED_LOCALES" type="array" entryType="char_string" length="32">
+    <attribute side="server" code="0x01" define="SUPPORTED_LOCALES" type="array" entryType="char_string" length="254">
       <description>SupportedLocales</description>
       <mandatoryConform/>
     </attribute>
