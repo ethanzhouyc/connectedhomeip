@@ -77,11 +77,12 @@ Interactions with the switch device are exposed as attributes (for the latching 
         </optionalConform>
       </feature>
     </features>
+
     <attribute side="server" code="0x0000" define="NUMBER_OF_POSITIONS" type="int8u" default="2" min="2">
       <description>NumberOfPositions</description>
       <mandatoryConform/>
     </attribute>
-    <attribute side="server" code="0x0001" define="CURRENT_POSITION" type="int8u" default="0">
+    <attribute side="server" code="0x0001" define="CURRENT_POSITION" type="int8u" reportable="true">
       <description>CurrentPosition</description>
       <mandatoryConform/>
     </attribute>
@@ -92,44 +93,44 @@ Interactions with the switch device are exposed as attributes (for the latching 
       </mandatoryConform>
     </attribute>
     <event side="server" code="0x00" priority="info" name="SwitchLatched" optional="true">
-      <description>This event SHALL be generated, when the latching switch is moved to a new position.</description>
-      <field id="0" name="NewPosition" type="int8u" min="0"/>
+      <description>SwitchLatched</description>
+      <field id="0" name="NewPosition" type="int8u" />
       <mandatoryConform>
         <feature name="LS"/>
       </mandatoryConform>
     </event>
     <event side="server" code="0x01" priority="info" name="InitialPress" optional="true">
-      <description>This event SHALL be generated, when the momentary switch starts to be pressed (after debouncing).</description>
-      <field id="0" name="NewPosition" type="int8u" min="0"/>
+      <description>InitialPress</description>
+      <field id="0" name="NewPosition" type="int8u" />
       <mandatoryConform>
         <feature name="MS"/>
       </mandatoryConform>
     </event>
     <event side="server" code="0x02" priority="info" name="LongPress" optional="true">
-      <description>This event SHALL be generated when the momentary switch has been pressed for a &quot;long&quot; time.</description>
-      <field id="0" name="NewPosition" type="int8u" min="0"/>
+      <description>LongPress</description>
+      <field id="0" name="NewPosition" type="int8u" />
       <mandatoryConform>
         <feature name="MSL"/>
       </mandatoryConform>
     </event>
     <event side="server" code="0x03" priority="info" name="ShortRelease" optional="true">
-      <description>If the server has the Action Switch (AS) feature flag set, this event SHALL NOT be generated at all, since setting the Action Switch feature flag forbids the Momentary Switch ShortRelease (MSR) feature flag from being set.</description>
-      <field id="0" name="PreviousPosition" type="int8u" min="0"/>
+      <description>ShortRelease</description>
+      <field id="0" name="PreviousPosition" type="int8u" />
       <mandatoryConform>
         <feature name="MSR"/>
       </mandatoryConform>
     </event>
     <event side="server" code="0x04" priority="info" name="LongRelease" optional="true">
-      <description>This event SHALL be generated, when the momentary switch has been released (after debouncing) and after having been pressed for a long time, i.e.</description>
-      <field id="0" name="PreviousPosition" type="int8u" min="0"/>
+      <description>LongRelease</description>
+      <field id="0" name="PreviousPosition" type="int8u" />
       <mandatoryConform>
         <feature name="MSL"/>
       </mandatoryConform>
     </event>
     <event side="server" code="0x05" priority="info" name="MultiPressOngoing" optional="true">
-      <description>If the server has the the Action Switch (AS) feature flag set, this event SHALL NOT be generated at all.</description>
-      <field id="0" name="NewPosition" type="int8u" min="0"/>
-      <field id="1" name="CurrentNumberOfPressesCounted" type="int8u" min="2"/>
+      <description>MultiPressOngoing</description>
+      <field id="0" name="NewPosition" type="int8u" />
+      <field id="1" name="CurrentNumberOfPressesCounted" type="int8u" />
       <mandatoryConform>
         <andTerm>
           <feature name="MSM"/>
@@ -140,8 +141,8 @@ Interactions with the switch device are exposed as attributes (for the latching 
       </mandatoryConform>
     </event>
     <event side="server" code="0x06" priority="info" name="MultiPressComplete" optional="true">
-      <description>This event SHALL be generated to indicate how many times the momentary switch has been pressed in a multi-press sequence, after it has been detected that the sequence has ended.</description>
-      <field id="0" name="PreviousPosition" type="int8u" min="0"/>
+      <description>MultiPressComplete</description>
+      <field id="0" name="PreviousPosition" type="int8u" />
       <field id="1" name="TotalNumberOfPressesCounted" type="int8u"/>
       <mandatoryConform>
         <feature name="MSM"/>

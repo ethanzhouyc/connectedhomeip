@@ -107,11 +107,12 @@ limitations under the License.
         <optionalConform/>
       </feature>
     </features>
+    
     <attribute side="server" code="0x00" define="CHANNEL" type="int16u" isNullable="true">
       <description>Channel</description>
       <mandatoryConform/>
     </attribute>
-    <attribute side="server" code="0x01" define="ROUTING_ROLE" type="RoutingRoleEnum" isNullable="true" min="0x00" max="0x06">
+    <attribute side="server" code="0x01" define="ROUTING_ROLE" type="RoutingRoleEnum" isNullable="true">
       <description>RoutingRole</description>
       <mandatoryConform/>
     </attribute>
@@ -127,7 +128,7 @@ limitations under the License.
       <description>ExtendedPanId</description>
       <mandatoryConform/>
     </attribute>
-    <attribute side="server" code="0x05" define="MESH_LOCAL_PREFIX" type="octet_string" isNullable="true">
+    <attribute side="server" code="0x05" define="MESH_LOCAL_PREFIX" type="octet_string" length="17" isNullable="true">
       <description>MeshLocalPrefix</description>
       <mandatoryConform/>
     </attribute>
@@ -137,11 +138,11 @@ limitations under the License.
         <feature name="ERRCNT"/>
       </mandatoryConform>
     </attribute>
-    <attribute side="server" code="0x07" define="NEIGHBOR_TABLE" type="array" entryType="NeighborTableStruct">
+    <attribute side="server" code="0x07" define="NEIGHBOR_TABLE" type="array" entryType="NeighborTableStruct" length="254">
       <description>NeighborTable</description>
       <mandatoryConform/>
     </attribute>
-    <attribute side="server" code="0x08" define="ROUTE_TABLE" type="array" entryType="RouteTableStruct">
+    <attribute side="server" code="0x08" define="ROUTE_TABLE" type="array" entryType="RouteTableStruct" length="254">
       <description>RouteTable</description>
       <mandatoryConform/>
     </attribute>
@@ -433,7 +434,7 @@ limitations under the License.
       <description>SecurityPolicy</description>
       <mandatoryConform/>
     </attribute>
-    <attribute side="server" code="0x3C" define="DIAG_CHANNEL_MASK" type="octet_string" length="4" isNullable="true" minLength="4">
+    <attribute side="server" code="0x3C" define="DIAG_CHANNEL_MASK" type="octet_string" length="4" isNullable="true">
       <description>ChannelPage0Mask</description>
       <mandatoryConform/>
     </attribute>
@@ -445,14 +446,6 @@ limitations under the License.
       <description>ActiveNetworkFaultsList</description>
       <mandatoryConform/>
     </attribute>
-    <attribute code="0x003F" side="server" define="EXT_ADDRESS" type="int64u" isNullable="true">
-      <description>ExtAddress</description>
-      <mandatoryConform/>
-    </attribute>
-    <attribute code="0x0040" side="server" define="RLOC_16" type="int16u" isNullable="true">
-      <description>Rloc16</description>
-      <mandatoryConform/>
-    </attribute>
     <command source="client" code="0x00" name="ResetCounts" optional="true" cli="chip thread_network_diagnostics resetcounts">
       <description>Reception of this command SHALL reset the OverrunCount attributes to 0</description>
       <access op="invoke" privilege="manage"/>
@@ -461,29 +454,16 @@ limitations under the License.
       </mandatoryConform>
     </command>
     <event side="server" code="0x00" name="ConnectionStatus" priority="info" optional="true">
-<<<<<<< HEAD
       <description>Indicate that a Node’s connection status to a Thread network has changed</description>
-      <field id="0" name="ConnectionStatus" type="ConnectionStatusEnum"/>
-=======
-      <description>The ConnectionStatus Event SHALL indicate that a Node&apos;s connection status to a Thread network has changed.</description>
-      <field id="0" name="ConnectionStatus" type="ConnectionStatusEnum" min="0x00" max="0x01"/>
       <optionalConform/>
->>>>>>> 8ed8ff9b5b (with flag)
+      <field id="0" name="ConnectionStatus" type="ConnectionStatusEnum"/>
     </event>
     <event side="server" code="0x01" name="NetworkFaultChange" priority="info" optional="true">
-<<<<<<< HEAD
       <description>Indicate a change in the set of network faults currently detected by the Node</description>
       <field id="0" name="Current" type="NetworkFaultEnum" array="true"/>
       <field id="1" name="Previous" type="NetworkFaultEnum" array="true"/>
-    </event>    
-=======
-      <description>The NetworkFaultChange Event SHALL indicate a change in the set of network faults currently detected by the Node.</description>
-      <field id="0" name="Current" type="NetworkFaultEnum" array="true" length="4"/>
-      <field id="1" name="Previous" type="NetworkFaultEnum" array="true" length="4"/>
       <optionalConform/>
-    </event>
-
->>>>>>> 8ed8ff9b5b (with flag)
+    </event>    
   </cluster>
 
 </configurator>

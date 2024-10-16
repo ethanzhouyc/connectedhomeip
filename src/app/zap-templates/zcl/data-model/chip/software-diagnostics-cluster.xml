@@ -36,7 +36,8 @@ limitations under the License.
         <optionalConform/>
       </feature>
     </features>
-    <attribute side="server" code="0x00" define="THREAD_METRICS" type="array" entryType="ThreadMetricsStruct" length="64" optional="true">
+
+    <attribute side="server" code="0x00" define="THREAD_METRICS" type="array" entryType="ThreadMetricsStruct" length="254" optional="true">
       <description>ThreadMetrics</description>
       <optionalConform/>
     </attribute>
@@ -65,10 +66,9 @@ limitations under the License.
       <description>Indicate the last software fault that has taken place on the Node.</description>
       <field id="0" name="ID" type="int64u"/>
       <field id="1" name="Name" type="char_string" length="8" optional="true"/>
-      <field id="2" name="FaultRecording" type="long_octet_string" length="1024" optional="true"/>
+      <field id="2" name="FaultRecording" type="octet_string" length="1024" optional="true"/>
       <optionalConform/>
     </event>
-
   </cluster>
 
 </configurator>

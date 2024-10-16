@@ -96,11 +96,11 @@ limitations under the License.
     </features>
 
     <!-- Attributes -->
-    <attribute side="server" code="0x0000" define="SupportedAreas" type="array" entryType="AreaStruct" length="255">
+    <attribute side="server" code="0x0000" define="SupportedAreas" type="array" entryType="AreaStruct">
       <description>SupportedAreas</description>
       <mandatoryConform/>
     </attribute>
-    <attribute side="server" code="0x0001" define="SupportedMaps" type="array" entryType="MapStruct" optional="true" length="255">
+    <attribute side="server" code="0x0001" define="SupportedMaps" type="array" entryType="MapStruct" optional="true">
       <description>SupportedMaps</description>
       <mandatoryConform>
         <feature name="MAPS"/>
@@ -119,23 +119,28 @@ limitations under the License.
         <attribute name="CurrentArea"/>
       </optionalConform>
     </attribute>
-    <attribute side="server" code="0x0005" define="Progress" type="array" entryType="ProgressStruct" optional="true" length="255">
+    <attribute side="server" code="0x0005" define="Progress" type="array" entryType="ProgressStruct" optional="true">
       <description>Progress</description>
       <mandatoryConform>
         <feature name="PROG"/>
       </mandatoryConform>
     </attribute>
+    
     <!-- Commands -->
     <command source="client" code="0x00" name="SelectAreas" response="SelectAreasResponse" optional="false">
-      <description>This command is used to select a set of device areas, where the device is to operate.</description>
-      <arg id="0" name="NewAreas" type="int32u" array="true"/>
+      <description>
+        Command used to select a set of device areas, where the device is to operate.
+      </description>
+      <arg name="NewAreas" type="int32u" array="true"/>
       <mandatoryConform/>
     </command>
 
     <command source="server" code="0x01" name="SelectAreasResponse" disableDefaultResponse="true" optional="false">
-      <description>This command is sent by the device on receipt of the SelectAreas command.</description>
-      <arg id="0" name="Status" type="SelectAreasStatus" min="0x00" max="0x03"/>
-      <arg id="1" name="StatusText" type="long_char_string" length="256"/>
+      <description>
+        This command is sent by the device on receipt of the SelectAreas command.
+      </description>
+      <arg name="Status"     type="SelectAreasStatus"/>
+      <arg name="StatusText" type="char_string" length="256"/>
       <mandatoryConform/>
     </command>
 
@@ -147,9 +152,11 @@ limitations under the License.
     </command>
 
     <command source="server" code="0x03" name="SkipAreaResponse" disableDefaultResponse="true" optional="true">
-      <description>This command is sent by the device on receipt of the SkipArea command.</description>
-      <arg id="0" name="Status" type="SkipAreaStatus" min="0x00" max="0x03"/>
-      <arg id="1" name="StatusText" type="long_char_string" length="256"/>
+      <description>
+        This command is sent by the device on receipt of the SkipArea command.
+      </description>
+      <arg name="Status"     type="SkipAreaStatus"/>
+      <arg name="StatusText" type="char_string" length="256"/>
       <mandatoryConform>
         <command name="SkipArea"/>
       </mandatoryConform>

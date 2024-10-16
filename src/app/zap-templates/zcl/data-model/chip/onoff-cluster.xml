@@ -81,7 +81,8 @@ limitations under the License.
         </optionalConform>
       </feature>
     </features>
-    <attribute side="server" code="0x0000" define="ON_OFF" type="boolean" default="0">
+    
+    <attribute side="server" code="0x0000" define="ON_OFF" type="boolean" default="0" reportable="true">
       <description>OnOff</description>
       <mandatoryConform/>
     </attribute>
@@ -91,13 +92,13 @@ limitations under the License.
         <feature name="LT"/>
       </mandatoryConform>
     </attribute>
-    <attribute side="server" code="0x4001" define="ON_TIME" type="int16u" default="0" writable="true" optional="true" min="0" max="65535">
+    <attribute side="server" code="0x4001" define="ON_TIME" type="int16u" default="0" writable="true" optional="true">
       <description>OnTime</description>
       <mandatoryConform>
         <feature name="LT"/>
       </mandatoryConform>
     </attribute>
-    <attribute side="server" code="0x4002" define="OFF_WAIT_TIME" type="int16u" default="0" writable="true" optional="true" min="0" max="65535">
+    <attribute side="server" code="0x4002" define="OFF_WAIT_TIME" type="int16u" default="0" writable="true" optional="true">
       <description>OffWaitTime</description>
       <mandatoryConform>
         <feature name="LT"/>
@@ -137,25 +138,25 @@ limitations under the License.
 
     <command source="client" code="0x40" name="OffWithEffect" optional="true">
       <description>The OffWithEffect command allows devices to be turned off using enhanced ways of fading.</description>
-      <arg id="0" name="EffectIdentifier" type="EffectIdentifierEnum" min="0x00" max="0x01"/>
-      <arg id="1" name="EffectVariant" type="enum8" default="0"/>
+      <arg name="EffectIdentifier" type="EffectIdentifierEnum"/>
+      <arg name="EffectVariant" type="enum8"/>
       <mandatoryConform>
         <feature name="LT"/>
       </mandatoryConform>
     </command>
 
     <command source="client" code="0x41" name="OnWithRecallGlobalScene" optional="true">
-      <description>This command allows the recall of the settings when the device was turned off.</description>
+      <description>The OnWithRecallGlobalScene command allows the recall of the settings when the device was turned off.</description>
       <mandatoryConform>
         <feature name="LT"/>
       </mandatoryConform>
     </command>
 
     <command source="client" code="0x42" name="OnWithTimedOff" optional="true">
-      <description>This command allows devices to be turned on for a specific duration with a guarded off duration so that SHOULD the device be subsequently turned off, further OnWithTimedOff commands, received during this time, are prevented from turning the devices back on.</description>
-      <arg id="0" name="OnOffControl" type="OnOffControlBitmap" min="0" max="1"/>
-      <arg id="1" name="OnTime" type="int16u" max="0xFFFE"/>
-      <arg id="2" name="OffWaitTime" type="int16u" max="0xFFFE"/>
+      <description>The OnWithTimedOff command allows devices to be turned on for a specific duration with a guarded off duration so that SHOULD the device be subsequently switched off, further OnWithTimedOff commands, received during this time, are prevented from turning the devices back on.</description>
+      <arg name="OnOffControl" type="OnOffControlBitmap"/>
+      <arg name="OnTime" type="int16u"/>
+      <arg name="OffWaitTime" type="int16u"/>
       <mandatoryConform>
         <feature name="LT"/>
       </mandatoryConform>

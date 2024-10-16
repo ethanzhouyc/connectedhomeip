@@ -65,7 +65,7 @@ limitations under the License.
       <mandatoryConform/>
     </attribute>
     <!-- PowerOnLevel and PowerOnFadeTime are deprecated -->
-    <attribute side="server" code="0x0014" define="INTRINSIC_BALLAST_FACTOR" type="int8u" writable="true" isNullable="true" optional="true" min="0" max="254">
+    <attribute side="server" code="0x0014" define="INTRINSIC_BALLAST_FACTOR" type="int8u" writable="true" isNullable="true" optional="true">
       <description>IntrinsicBallastFactor</description>
       <access op="write" privilege="manage"/>
       <optionalConform/>

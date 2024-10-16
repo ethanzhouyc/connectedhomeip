@@ -31,7 +31,8 @@ limitations under the License.
         <optionalConform/>
       </feature>
     </features>
-    <attribute side="server" code="0x0000" define="MEDIA_INPUT_LIST" type="array" entryType="InputInfoStruct">
+
+    <attribute side="server" code="0x0000" define="MEDIA_INPUT_LIST" type="array" entryType="InputInfoStruct" length="254">
       <description>InputList</description>
       <mandatoryConform/>
     </attribute>
@@ -39,27 +40,28 @@ limitations under the License.
       <description>CurrentInput</description>
       <mandatoryConform/>
     </attribute>
+
     <command source="client" code="0x00" name="SelectInput" optional="false">
-      <description>Upon receipt, this command SHALL change the media input on the device to the input at a specific index in the Input List.</description>
-      <arg id="0" name="Index" type="int8u"/>
+      <description>Upon receipt, this SHALL change the input on the media device to the input at a specific index in the Input List.</description>
+      <arg name="Index" type="int8u"/>
       <mandatoryConform/>
     </command>
 
     <command source="client" code="0x01" name="ShowInputStatus" optional="false">
-      <description>Upon receipt, this command SHALL display the active status of the input list on screen.</description>
+      <description>Upon receipt, this SHALL display the active status of the input list on screen.</description>
       <mandatoryConform/>
     </command>
 
     <command source="client" code="0x02" name="HideInputStatus" optional="false">
-      <description>Upon receipt, this command SHALL hide the input list from the screen.</description>
+      <description>Upon receipt, this SHALL hide the input list from the screen.</description>
       <mandatoryConform/>
     </command>
 
     <command source="client" code="0x03" name="RenameInput" optional="true">
       <description>Upon receipt, this SHALL rename the input at a specific index in the Input List. Updates to the input name SHALL appear in the TV settings menus.    </description>
       <access op="invoke" privilege="manage"/>
-      <arg id="0" name="Index" type="int8u"/>
-      <arg id="1" name="Name" type="char_string"/>
+      <arg name="Index" type="int8u"/>
+      <arg name="Name" type="char_string"/>
       <mandatoryConform>
         <feature name="NU"/>
       </mandatoryConform>

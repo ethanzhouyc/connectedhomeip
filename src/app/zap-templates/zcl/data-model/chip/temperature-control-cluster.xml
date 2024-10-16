@@ -39,6 +39,7 @@ limitations under the License.
         </optionalConform>
       </feature>
     </features>
+
     <attribute side="server" code="0x0000" define="TEMP_SETPOINT" type="temperature" optional="true">
       <description>TemperatureSetpoint</description>
       <mandatoryConform>
@@ -63,36 +64,24 @@ limitations under the License.
         <feature name="STEP"/>
       </mandatoryConform>
     </attribute>
-    <attribute side="server" code="0x0004" define="SELECTED_TEMP_LEVEL" type="int8u" optional="true" max="31">
+    <attribute side="server" code="0x0004" define="SELECTED_TEMP_LEVEL" type="int8u" optional="true">
       <description>SelectedTemperatureLevel</description>
       <mandatoryConform>
         <feature name="TL"/>
       </mandatoryConform>
     </attribute>
-    <attribute side="server" code="0x0005" define="SUPPORTED_TEMP_LEVELS" type="array" entryType="char_string" optional="true" length="32">
+    <attribute side="server" code="0x0005" define="SUPPORTED_TEMP_LEVELS" type="array" entryType="char_string" optional="true">
       <description>SupportedTemperatureLevels</description>
       <mandatoryConform>
         <feature name="TL"/>
       </mandatoryConform>
     </attribute>
+
     <command source="client" code="0x00" name="SetTemperature" optional="false">
-      <description>The SetTemperature command SHALL have the following data fields: </description>
-      <arg id="0" name="TargetTemperature" type="temperature" optional="true"/>
-      <arg id="1" name="TargetTemperatureLevel" type="int8u" optional="true"/>
+      <description>Set Temperature</description>
+      <arg name="TargetTemperature" type="temperature" min="MIN_TEMP" max="MAX_TEMP" optional="true"/>
+      <arg name="TargetTemperatureLevel" type="int8u" optional="true"/>
       <mandatoryConform/>
-    </command>
-
-    <attribute side="server" code="0x0000" define="TEMP_SETPOINT" type="temperature" writable="false" optional="true">TemperatureSetpoint</attribute>
-    <attribute side="server" code="0x0001" define="MIN_TEMP" type="temperature" writable="false" optional="true">MinTemperature</attribute>
-    <attribute side="server" code="0x0002" define="MAX_TEMP" type="temperature" writable="false" optional="true">MaxTemperature</attribute>
-    <attribute side="server" code="0x0003" define="STEP" type="temperature" writable="false" optional="true">Step</attribute>
-    <attribute side="server" code="0x0004" define="SELECTED_TEMP_LEVEL" type="int8u" writable="false" optional="true">SelectedTemperatureLevel</attribute>
-    <attribute side="server" code="0x0005" define="SUPPORTED_TEMP_LEVELS" type="array" entryType="char_string" writable="false" optional="true">SupportedTemperatureLevels</attribute>
-
-    <command source="client" code="0x00" name="SetTemperature" optional="false">
-        <description>Set Temperature</description>
-        <arg name="TargetTemperature" type="temperature" min="MIN_TEMP" max="MAX_TEMP" optional="true"/>
-        <arg name="TargetTemperatureLevel" type="int8u" optional="true"/>
     </command>
   </cluster>
 

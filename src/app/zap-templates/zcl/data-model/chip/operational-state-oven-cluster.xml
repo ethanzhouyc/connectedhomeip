@@ -53,15 +53,16 @@ limitations under the License.
     <description>This cluster supports remotely monitoring and, where supported, changing the operational state of an Oven.</description>
 
     <globalAttribute side="either" code="0xFFFD" value="1"/>
-    <attribute side="server" code="0x0000" define="PHASE_LIST" type="array" entryType="char_string" isNullable="true" length="32">
+    
+    <attribute side="server" code="0x0000" define="PHASE_LIST" type="array" entryType="char_string" isNullable="true">
       <description>PhaseList</description>
       <mandatoryConform/>
     </attribute>
-    <attribute side="server" code="0x0001" define="CURRENT_PHASE" type="int8u" isNullable="true">
+    <attribute side="server" code="0x0001" define="CURRENT_PHASE" type="int8u" min="0x00" max="0x1F" isNullable="true">
       <description>CurrentPhase</description>
       <mandatoryConform/>
     </attribute>
-    <attribute side="server" code="0x0002" define="COUNTDOWN_TIME" type="elapsed_s" max="259200" isNullable="true" optional="true">
+    <attribute side="server" code="0x0002" define="COUNTDOWN_TIME" type="elapsed_s" min="0x00" max="259200" isNullable="true" optional="true">
       <description>CountdownTime</description>
       <optionalConform/>
     </attribute>
@@ -69,7 +70,7 @@ limitations under the License.
       <description>OperationalStateList</description>
       <mandatoryConform/>
     </attribute>
-    <attribute side="server" code="0x0004" define="OPERATIONAL_STATE" type="OperationalStateEnum" min="0x00" max="0x03">
+    <attribute side="server" code="0x0004" define="OPERATIONAL_STATE" type="OperationalStateEnum">
       <description>OperationalState</description>
       <mandatoryConform/>
     </attribute>
@@ -77,8 +78,13 @@ limitations under the License.
       <description>OperationalError</description>
       <mandatoryConform/>
     </attribute>
+
+    <command source="client" code="0x00" name="Pause" response="OperationalCommandResponse" optional="true">
+      <description>Upon receipt, the device SHALL pause its operation if it is possible based on the current function of the server.</description>
+    </command>
+
     <command source="client" code="0x01" name="Stop" response="OperationalCommandResponse" optional="true">
-      <description>This command SHALL be supported if the device supports remotely stopping the operation.</description>
+      <description>Upon receipt, the device SHALL stop its operation if it is at a position where it is safe to do so and/or permitted.</description>
       <otherwiseConform>
         <mandatoryConform>
           <command name="Start"/>
@@ -88,13 +94,17 @@ limitations under the License.
     </command>
 
     <command source="client" code="0x02" name="Start" response="OperationalCommandResponse" optional="true">
-      <description>This command SHALL be supported if the device supports remotely starting the operation.</description>
+      <description>Upon receipt, the device SHALL start its operation if it is safe to do so and the device is in an operational state from which it can be started.</description>
       <optionalConform/>
     </command>
 
-    <command source="server" code="0x04" name="OperationalCommandResponse" optional="true" disableDefaultResponse="true">
-      <description>This command SHALL be supported by an implementation if any of the other commands defined by this cluster are supported (i.e.</description>
-      <arg id="0" name="CommandResponseState" type="ErrorStateStruct"/>
+    <command source="client" code="0x03" name="Resume" response="OperationalCommandResponse" optional="true">
+      <description>Upon receipt, the device SHALL resume its operation from the point it was at when it received the Pause command, or from the point when it was paused by means outside of this cluster (for example by manual button press).</description>
+    </command>
+
+    <command source="server" code="0x04" name="OperationalCommandResponse" optional="true">
+      <description>This command SHALL be generated in response to any of the Start, Stop, Pause, or Resume commands.</description>
+      <arg name="CommandResponseState" type="ErrorStateStruct"/>
       <mandatoryConform>
         <orTerm>
           <command name="Pause"/>
@@ -105,8 +115,8 @@ limitations under the License.
       </mandatoryConform>
     </command>
 
-    <event side="server" code="0x00" priority="critical" name="OperationalError">
-      <description>This event is generated when a reportable error condition is detected.</description>
+    <event side="server" code="0x00" priority="critical" name="OperationalError" optional="false">
+      <description>OperationalError</description>
       <field id="0" name="ErrorState" type="ErrorStateStruct"/>
       <mandatoryConform/>
     </event>

@@ -255,14 +255,14 @@ limitations under the License.
       <arg id="0" name="ChargingEnabledUntil" type="epoch_s" isNullable="true"/>
       <arg id="1" name="MinimumChargeCurrent" type="amperage_ma" min="0"/>
       <arg id="2" name="MaximumChargeCurrent" type="amperage_ma" min="0"/>
-      <description>This command allows a client to enable the EVSE to charge an EV, and to provide or update the maximum and minimum charge current.</description>
+      <description>This command allows a client to enable the EVSE to charge an EV,</description>
       <mandatoryConform/>
     </command>
 
     <command source="client" code="0x03" name="EnableDischarging" optional="true" mustUseTimedInvoke="true" apiMaturity="provisional">
       <arg id="0" name="DischargingEnabledUntil" type="epoch_s" isNullable="true"/>
       <arg id="1" name="MaximumDischargeCurrent" type="amperage_ma" min="0"/>
-      <description>Upon receipt, this SHALL allow a client to enable the discharge of an EV, and to provide or update the maximum discharge current.</description>
+      <description>Upon receipt, this SHALL allow a client to enable the discharge of an EV,</description>
       <mandatoryConform>
         <feature name="V2X"/>
       </mandatoryConform>

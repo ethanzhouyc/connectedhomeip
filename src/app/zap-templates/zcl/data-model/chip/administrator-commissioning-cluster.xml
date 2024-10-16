@@ -43,7 +43,7 @@ limitations under the License.
         <optionalConform/>
       </feature>
     </features>
-    <attribute side="server" code="0x0000" define="WINDOW_STATUS" type="CommissioningWindowStatusEnum" min="0x00" max="0x02">
+    <attribute side="server" code="0x0000" define="WINDOW_STATUS" type="CommissioningWindowStatusEnum">
       <description>WindowStatus</description>
       <mandatoryConform/>
     </attribute>
@@ -55,6 +55,7 @@ limitations under the License.
       <description>AdminVendorId</description>
       <mandatoryConform/>
     </attribute>
+    
     <command source="client" code="0x00" name="OpenCommissioningWindow" mustUseTimedInvoke="true" optional="false">
       <description>This command is used by a current Administrator to instruct a Node to go into commissioning mode using enhanced commissioning method.</description>
       <arg name="CommissioningTimeout" type="int16u"/>

@@ -17,18 +17,11 @@ limitations under the License.
 <configurator>
     <domain name="CHIP" />
 
-  <cluster apiMaturity="provisional">
-    <domain name="General"/>
-    <name>Proxy Configuration</name>
-    <code>0x0042</code>
-    <define>PROXY_CONFIGURATION_CLUSTER</define>
-    <description>Cluster to control Proxy Configuration</description>
-    <client init="false" tick="false">true</client>
-    <server init="false" tick="false">true</server>
-    <globalAttribute code="0xFFFD" side="either" value="1"/>
-    <attribute code="0x0000" side="server" define="CONFIGURATION_LIST" type="array" entryType="ConfigurationStruct" writable="true">
-      <description>ConfigurationList</description>
-      <mandatoryConform/>
-    </attribute>
-  </cluster>
+    <cluster>
+        <domain>General</domain>
+        <name>Proxy Configuration</name>
+        <code>0x0042</code>
+        <define>PROXY_CONFIGURATION_CLUSTER</define>
+        <description>Cluster to control Proxy Configuration</description>
+    </cluster>
 </configurator>

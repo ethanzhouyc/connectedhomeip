@@ -49,6 +49,7 @@ limitations under the License.
         <optionalConform/>
       </feature>
     </features>
+    
     <attribute side="server" code="0x0000" define="MAX_PRESSURE" type="int16s" isNullable="true">
       <description>MaxPressure</description>
       <mandatoryConform/>
@@ -149,7 +150,7 @@ limitations under the License.
         </optionalConform>
       </otherwiseConform>
     </attribute>
-    <attribute side="server" code="0x000B" define="MIN_CONST_TEMP" type="int16s" isNullable="true" min="-27315" optional="true">
+    <attribute side="server" code="0x000B" define="MIN_CONST_TEMP" type="int16s" isNullable="true" min="0x954D" optional="true">
       <description>MinConstTemp</description>
       <otherwiseConform>
         <mandatoryConform>
@@ -160,7 +161,7 @@ limitations under the License.
         </optionalConform>
       </otherwiseConform>
     </attribute>
-    <attribute side="server" code="0x000C" define="MAX_CONST_TEMP" type="int16s" isNullable="true" min="-27315" optional="true">
+    <attribute side="server" code="0x000C" define="MAX_CONST_TEMP" type="int16s" isNullable="true" min="0x954D" optional="true">
       <description>MaxConstTemp</description>
       <otherwiseConform>
         <mandatoryConform>
@@ -171,7 +172,7 @@ limitations under the License.
         </optionalConform>
       </otherwiseConform>
     </attribute>
-    <attribute side="server" code="0x0010" define="PUMP_STATUS" type="PumpStatusBitmap" default="0x0000" reportable="true" optional="true" min="0x0000" max="0x01FF">
+    <attribute side="server" code="0x0010" define="PUMP_STATUS" type="PumpStatusBitmap" default="0x0000" reportable="true" optional="true">
       <description>PumpStatus</description>
       <optionalConform/>
     </attribute>

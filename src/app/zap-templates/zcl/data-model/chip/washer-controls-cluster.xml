@@ -45,25 +45,26 @@ limitations under the License.
         <optionalConform/>
       </feature>
     </features>
-    <attribute side="server" code="0x0000" define="SPIN_SPEEDS" type="array" entryType="char_string" optional="true" length="16">
+    
+    <attribute side="server" code="0x0000" define="SPIN_SPEEDS" type="array" entryType="char_string" optional="true">
       <description>SpinSpeeds</description>
       <mandatoryConform>
         <feature name="SPIN"/>
       </mandatoryConform>
     </attribute>
-    <attribute side="server" code="0x0001" define="SPIN_SPEED_CURRENT" type="int8u" max="15" writable="true" isNullable="true" optional="true">
+    <attribute side="server" code="0x0001" define="SPIN_SPEED_CURRENT" type="int8u" max="0x1F" writable="true" isNullable="true" optional="true">
       <description>SpinSpeedCurrent</description>
       <mandatoryConform>
         <feature name="SPIN"/>
       </mandatoryConform>
     </attribute>
-    <attribute side="server" code="0x0002" define="NUMBER_OF_RINSES" type="NumberOfRinsesEnum" writable="true" optional="true" min="0x00" max="0x03" default="0x01">
+    <attribute side="server" code="0x0002" define="NUMBER_OF_RINSES" type="NumberOfRinsesEnum" writable="true" optional="true">
       <description>NumberOfRinses</description>
       <mandatoryConform>
         <feature name="RINSE"/>
       </mandatoryConform>
     </attribute>
-    <attribute side="server" code="0x0003" define="SUPPORTED_RINSES" type="array" entryType="NumberOfRinsesEnum" optional="true" length="4">
+    <attribute side="server" code="0x0003" define="SUPPORTED_RINSES" type="array" entryType="NumberOfRinsesEnum" optional="true">
       <description>SupportedRinses</description>
       <mandatoryConform>
         <feature name="RINSE"/>

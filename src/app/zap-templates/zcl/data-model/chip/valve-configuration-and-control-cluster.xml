@@ -59,7 +59,7 @@ limitations under the License.
 
     <!-- min max definition for attribute size larger than 2 bytes is not allowed by zap codegen https://github.com/project-chip/zap/issues/1187 -->
     <!-- Therefore, this check needs to be done in code. -->
-    <attribute side="server" code="0x0000" define="OPEN_DURATION" type="elapsed_s" isNullable="true" min="1">
+    <attribute side="server" code="0x0000" define="OPEN_DURATION" type="elapsed_s" isNullable="true">
       <description>OpenDuration</description>
       <mandatoryConform/>
     </attribute>
@@ -79,11 +79,11 @@ limitations under the License.
       <description>RemainingDuration</description>
       <mandatoryConform/>
     </attribute>
-    <attribute side="server" code="0x0004" define="CURRENT_STATE" type="ValveStateEnum" isNullable="true" min="0x00" max="0x02">
+    <attribute side="server" code="0x0004" define="CURRENT_STATE" type="ValveStateEnum" isNullable="true">
       <description>CurrentState</description>
       <mandatoryConform/>
     </attribute>
-    <attribute side="server" code="0x0005" define="TARGET_STATE" type="ValveStateEnum" isNullable="true" min="0x00" max="0x02">
+    <attribute side="server" code="0x0005" define="TARGET_STATE" type="ValveStateEnum" isNullable="true">
       <description>TargetState</description>
       <mandatoryConform/>
     </attribute>
@@ -105,20 +105,21 @@ limitations under the License.
         <feature name="LVL"/>
       </optionalConform>
     </attribute>
-    <attribute side="server" code="0x0009" define="VALVE_FAULT" type="ValveFaultBitmap" optional="true" min="0x0000" max="0x003F" default="0x0000">
+    <attribute side="server" code="0x0009" define="VALVE_FAULT" type="ValveFaultBitmap" optional="true">
       <description>ValveFault</description>
       <optionalConform/>
     </attribute>
-    <attribute side="server" code="0x000A" define="LEVEL_STEP" type="int8u" min="1" max="50" optional="true" default="1">
+    <attribute side="server" code="0x000A" define="LEVEL_STEP" type="int8u" min="1" max="50" optional="true">
       <description>LevelStep</description>
       <optionalConform>
         <feature name="LVL"/>
       </optionalConform>
     </attribute>
+    
     <command source="client" code="0x00" name="Open" optional="false">
       <description>This command is used to set the valve to its open position.</description>
-      <arg id="0" name="OpenDuration" type="elapsed_s" optional="true" isNullable="true" min="1"/>
-      <arg id="1" name="TargetLevel" type="percent" optional="true" min="1"/>
+      <arg name="OpenDuration" type="elapsed_s" optional="true" isNullable="true"/>
+      <arg name="TargetLevel" type="percent" optional="true"/>
       <mandatoryConform/>
     </command>
 
@@ -135,8 +136,8 @@ limitations under the License.
     </event>
 
     <event side="server" code="0x01" priority="info" name="ValveFault" optional="true">
-      <description>This event SHALL be generated when the valve registers or clears a fault, e.g.</description>
-      <field id="0" name="ValveFault" type="ValveFaultBitmap" min="0x0000" max="0x003F"/>
+      <description>This event SHALL be generated when the valve registers or clears a fault.</description>
+      <field id="0" name="ValveFault" type="ValveFaultBitmap"/>
       <optionalConform/>
     </event>
   </cluster>

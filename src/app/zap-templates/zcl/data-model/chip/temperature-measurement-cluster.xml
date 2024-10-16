@@ -25,15 +25,15 @@ limitations under the License.
     <client tick="false" init="false">true</client>
     <server tick="false" init="false">true</server>
     <globalAttribute code="0xFFFD" side="either" value="4"/>
-    <attribute side="server" code="0x0000" define="TEMP_MEASURED_VALUE" type="temperature" min="-27315" isNullable="true" reportable="true">
+    <attribute side="server" code="0x0000" define="TEMP_MEASURED_VALUE" type="temperature" min="0x954d" isNullable="true">
       <description>MeasuredValue</description>
       <mandatoryConform/>
     </attribute>
-    <attribute side="server" code="0x0001" define="TEMP_MIN_MEASURED_VALUE" type="temperature" min="-27315" max="0x7ffe" isNullable="true">
+    <attribute side="server" code="0x0001" define="TEMP_MIN_MEASURED_VALUE" type="temperature" min="0x954d" max="0x7ffe" isNullable="true" default="0x8000">
       <description>MinMeasuredValue</description>
       <mandatoryConform/>
     </attribute>
-    <attribute side="server" code="0x0002" define="TEMP_MAX_MEASURED_VALUE" type="temperature" min="-27314" isNullable="true">
+    <attribute side="server" code="0x0002" define="TEMP_MAX_MEASURED_VALUE" type="temperature" min="0x954e" isNullable="true" default="0x8000">
       <description>MaxMeasuredValue</description>
       <mandatoryConform/>
     </attribute>

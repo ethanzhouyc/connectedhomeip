@@ -126,6 +126,7 @@ limitations under the License.
         <optionalConform/>
       </feature>
     </features>
+    
     <attribute side="server" code="0x0000" define="COLOR_CONTROL_CURRENT_HUE" type="int8u" max="0xFE" reportable="true" default="0x00" optional="true">
       <description>CurrentHue</description>
       <mandatoryConform>
@@ -145,21 +146,21 @@ limitations under the License.
       <optionalConform/>
     </attribute>
     <!-- REMAINING_TIME -->
-    <attribute side="server" code="0x0003" define="COLOR_CONTROL_CURRENT_X" type="int16u" max="0xFEFF" reportable="true" optional="true">
+    <attribute side="server" code="0x0003" define="COLOR_CONTROL_CURRENT_X" type="int16u" max="0xFEFF" default="0x616B" reportable="true" optional="true">
       <description>CurrentX</description>
       <mandatoryConform>
         <feature name="XY"/>
       </mandatoryConform>
     </attribute>
     <!-- CURRENT_X -->
-    <attribute side="server" code="0x0004" define="COLOR_CONTROL_CURRENT_Y" type="int16u" max="0xFEFF" reportable="true" optional="true">
+    <attribute side="server" code="0x0004" define="COLOR_CONTROL_CURRENT_Y" type="int16u" max="0xFEFF" default="0x607D" reportable="true" optional="true">
       <description>CurrentY</description>
       <mandatoryConform>
         <feature name="XY"/>
       </mandatoryConform>
     </attribute>
     <!-- CURRENT_Y -->
-    <attribute side="server" code="0x0005" define="COLOR_CONTROL_DRIFT_COMPENSATION" type="DriftCompensationEnum" optional="true" min="0x00" max="0x04">
+    <attribute side="server" code="0x0005" define="COLOR_CONTROL_DRIFT_COMPENSATION" type="DriftCompensationEnum" optional="true">
       <description>DriftCompensation</description>
       <optionalConform/>
     </attribute>
@@ -169,19 +170,19 @@ limitations under the License.
       <optionalConform/>
     </attribute>
     <!-- COMPENSATION_TEXT -->
-    <attribute side="server" code="0x0007" define="COLOR_CONTROL_COLOR_TEMPERATURE" type="int16u" max="0xFEFF" reportable="true" optional="true">
+    <attribute side="server" code="0x0007" define="COLOR_CONTROL_COLOR_TEMPERATURE" type="int16u" min="0x0001" max="0xFEFF" reportable="true" default="0x00FA" optional="true">
       <description>ColorTemperatureMireds</description>
       <mandatoryConform>
         <feature name="CT"/>
       </mandatoryConform>
     </attribute>
     <!-- COLOR_TEMPERATURE -->
-    <attribute side="server" code="0x0008" define="COLOR_CONTROL_COLOR_MODE" type="ColorModeEnum" default="0x01" min="0x00" max="0x02">
+    <attribute side="server" code="0x0008" define="COLOR_CONTROL_COLOR_MODE" type="ColorModeEnum" default="0x01">
       <description>ColorMode</description>
       <mandatoryConform/>
     </attribute>
     <!-- COLOR_MODE -->
-    <attribute side="server" code="0x000F" define="COLOR_CONTROL_OPTIONS" type="OptionsBitmap" writable="true" default="0x00" min="0x00" max="0x01">
+    <attribute side="server" code="0x000F" define="COLOR_CONTROL_OPTIONS" type="OptionsBitmap" writable="true" default="0x00">
       <description>Options</description>
       <mandatoryConform/>
     </attribute>
@@ -502,63 +503,7 @@ limitations under the License.
       <optionalConform/>
     </attribute>
     <!-- COLOR_POINT_B_INTENSITY -->
-    <attribute code="0x4000" side="server" define="COLOR_CONTROL_ENHANCED_CURRENT_HUE" type="int16u" default="0" optional="true">
-      <description>EnhancedCurrentHue</description>
-      <mandatoryConform>
-        <feature name="EHUE"/>
-      </mandatoryConform>
-    </attribute>
-    <attribute code="0x4001" side="server" define="COLOR_CONTROL_ENHANCED_COLOR_MODE" type="EnhancedColorModeEnum" min="0x00" max="0x03" default="0x01">
-      <description>EnhancedColorMode</description>
-      <mandatoryConform/>
-    </attribute>
-    <attribute code="0x4002" side="server" define="COLOR_CONTROL_COLOR_LOOP_ACTIVE" type="int8u" max="1" default="0" optional="true">
-      <description>ColorLoopActive</description>
-      <mandatoryConform>
-        <feature name="CL"/>
-      </mandatoryConform>
-    </attribute>
-    <attribute code="0x4003" side="server" define="COLOR_CONTROL_COLOR_LOOP_DIRECTION" type="int8u" max="1" default="0" optional="true">
-      <description>ColorLoopDirection</description>
-      <mandatoryConform>
-        <feature name="CL"/>
-      </mandatoryConform>
-    </attribute>
-    <attribute code="0x4004" side="server" define="COLOR_CONTROL_COLOR_LOOP_TIME" type="int16u" default="25" optional="true">
-      <description>ColorLoopTime</description>
-      <mandatoryConform>
-        <feature name="CL"/>
-      </mandatoryConform>
-    </attribute>
-    <attribute code="0x4005" side="server" define="COLOR_CONTROL_COLOR_LOOP_START_ENHANCED_HUE" type="int16u" default="8960" optional="true">
-      <description>ColorLoopStartEnhancedHue</description>
-      <mandatoryConform>
-        <feature name="CL"/>
-      </mandatoryConform>
-    </attribute>
-    <attribute code="0x4006" side="server" define="COLOR_CONTROL_COLOR_LOOP_STORED_ENHANCED_HUE" type="int16u" default="0" optional="true">
-      <description>ColorLoopStoredEnhancedHue</description>
-      <mandatoryConform>
-        <feature name="CL"/>
-      </mandatoryConform>
-    </attribute>
-    <attribute code="0x400A" side="server" define="COLOR_CONTROL_COLOR_CAPABILITIES" type="ColorCapabilitiesBitmap" max="0x001F" default="0x0000">
-      <description>ColorCapabilities</description>
-      <mandatoryConform/>
-    </attribute>
-    <attribute code="0x400B" side="server" define="COLOR_CONTROL_COLOR_TEMP_PHYSICAL_MIN_MIREDS" type="int16u" min="1" max="65279" optional="true">
-      <description>ColorTempPhysicalMinMireds</description>
-      <mandatoryConform>
-        <feature name="CT"/>
-      </mandatoryConform>
-    </attribute>
-    <attribute code="0x400C" side="server" define="COLOR_CONTROL_COLOR_TEMP_PHYSICAL_MAX_MIREDS" type="int16u" max="65279" optional="true">
-      <description>ColorTempPhysicalMaxMireds</description>
-      <mandatoryConform>
-        <feature name="CT"/>
-      </mandatoryConform>
-    </attribute>
-    <attribute side="server" code="0x400D" define="COLOR_CONTROL_TEMPERATURE_LEVEL_MIN_MIREDS" type="int16u" min="1" max="65279" optional="true">
+    <attribute side="server" code="0x400D" define="COLOR_CONTROL_TEMPERATURE_LEVEL_MIN_MIREDS" type="int16u" optional="true">
       <description>CoupleColorTempToLevelMinMireds</description>
       <mandatoryConform>
         <orTerm>
@@ -567,7 +512,7 @@ limitations under the License.
         </orTerm>
       </mandatoryConform>
     </attribute>
-    <attribute side="server" code="0x4010" define="START_UP_COLOR_TEMPERATURE_MIREDS" type="int16u" min="1" max="0xFEFF" writable="true" isNullable="true" optional="true">
+    <attribute side="server" code="0x4010" define="START_UP_COLOR_TEMPERATURE_MIREDS" type="int16u" max="0xFEFF" writable="true" isNullable="true" optional="true">
       <description>StartUpColorTemperatureMireds</description>
       <access op="read" role="view"/>
       <access op="write" role="manage"/>
@@ -583,11 +528,11 @@ limitations under the License.
       <description>
         Move to specified hue.
       </description>
-      <arg id="0" name="Hue" type="int8u" max="254"/>
-      <arg id="1" name="Direction" type="DirectionEnum" min="0x00" max="0x03"/>
-      <arg id="2" name="TransitionTime" type="int16u" max="65534"/>
-      <arg id="3" name="OptionsMask" type="OptionsBitmap" default="0x00" min="0x00" max="0x01"/>
-      <arg id="4" name="OptionsOverride" type="OptionsBitmap" default="0x00" min="0x00" max="0x01"/>
+      <arg name="Hue" type="int8u"/>
+      <arg name="Direction" type="DirectionEnum"/>
+      <arg name="TransitionTime" type="int16u"/>
+      <arg name="OptionsMask" type="OptionsBitmap"/>
+      <arg name="OptionsOverride" type="OptionsBitmap"/>
       <mandatoryConform>
         <feature name="HS"/>
       </mandatoryConform>
@@ -597,10 +542,10 @@ limitations under the License.
       <description>
         Move hue up or down at specified rate.
       </description>
-      <arg id="0" name="MoveMode" type="MoveModeEnum" min="0x00" max="0x03"/>
-      <arg id="1" name="Rate" type="int8u"/>
-      <arg id="2" name="OptionsMask" type="OptionsBitmap" default="0x00" min="0x00" max="0x01"/>
-      <arg id="3" name="OptionsOverride" type="OptionsBitmap" default="0x00" min="0x00" max="0x01"/>
+      <arg name="MoveMode" type="MoveModeEnum"/>
+      <arg name="Rate" type="int8u"/>
+      <arg name="OptionsMask" type="OptionsBitmap"/>
+      <arg name="OptionsOverride" type="OptionsBitmap"/>
       <mandatoryConform>
         <feature name="HS"/>
       </mandatoryConform>
@@ -610,11 +555,11 @@ limitations under the License.
       <description>
         Step hue up or down by specified size at specified rate.
       </description>
-      <arg id="0" name="StepMode" type="StepModeEnum" min="0x00" max="0x03"/>
-      <arg id="1" name="StepSize" type="int8u"/>
-      <arg id="2" name="TransitionTime" type="int8u"/>
-      <arg id="3" name="OptionsMask" type="OptionsBitmap" default="0x00" min="0x00" max="0x01"/>
-      <arg id="4" name="OptionsOverride" type="OptionsBitmap" default="0x00" min="0x00" max="0x01"/>
+      <arg name="StepMode" type="StepModeEnum"/>
+      <arg name="StepSize" type="int8u"/>
+      <arg name="TransitionTime" type="int8u"/>
+      <arg name="OptionsMask" type="OptionsBitmap"/>
+      <arg name="OptionsOverride" type="OptionsBitmap"/>
       <mandatoryConform>
         <feature name="HS"/>
       </mandatoryConform>
@@ -624,10 +569,10 @@ limitations under the License.
       <description>
         Move to specified saturation.
       </description>
-      <arg id="0" name="Saturation" type="int8u" max="254"/>
-      <arg id="1" name="TransitionTime" type="int16u" max="65534"/>
-      <arg id="2" name="OptionsMask" type="OptionsBitmap" default="0x00" min="0x00" max="0x01"/>
-      <arg id="3" name="OptionsOverride" type="OptionsBitmap" default="0x00" min="0x00" max="0x01"/>
+      <arg name="Saturation" type="int8u"/>
+      <arg name="TransitionTime" type="int16u"/>
+      <arg name="OptionsMask" type="OptionsBitmap"/>
+      <arg name="OptionsOverride" type="OptionsBitmap"/>
       <mandatoryConform>
         <feature name="HS"/>
       </mandatoryConform>
@@ -637,10 +582,10 @@ limitations under the License.
       <description>
         Move saturation up or down at specified rate.
       </description>
-      <arg id="0" name="MoveMode" type="MoveModeEnum" min="0x00" max="0x03"/>
-      <arg id="1" name="Rate" type="int8u"/>
-      <arg id="2" name="OptionsMask" type="OptionsBitmap" default="0x00" min="0x00" max="0x01"/>
-      <arg id="3" name="OptionsOverride" type="OptionsBitmap" default="0x00" min="0x00" max="0x01"/>
+      <arg name="MoveMode" type="MoveModeEnum"/>
+      <arg name="Rate" type="int8u"/>
+      <arg name="OptionsMask" type="OptionsBitmap"/>
+      <arg name="OptionsOverride" type="OptionsBitmap"/>
       <mandatoryConform>
         <feature name="HS"/>
       </mandatoryConform>
@@ -650,11 +595,11 @@ limitations under the License.
       <description>
         Step saturation up or down by specified size at specified rate.
       </description>
-      <arg id="0" name="StepMode" type="StepModeEnum" min="0x00" max="0x03"/>
-      <arg id="1" name="StepSize" type="int8u"/>
-      <arg id="2" name="TransitionTime" type="int8u"/>
-      <arg id="3" name="OptionsMask" type="OptionsBitmap" default="0x00" min="0x00" max="0x01"/>
-      <arg id="4" name="OptionsOverride" type="OptionsBitmap" default="0x00" min="0x00" max="0x01"/>
+      <arg name="StepMode" type="StepModeEnum"/>
+      <arg name="StepSize" type="int8u"/>
+      <arg name="TransitionTime" type="int8u"/>
+      <arg name="OptionsMask" type="OptionsBitmap"/>
+      <arg name="OptionsOverride" type="OptionsBitmap"/>
       <mandatoryConform>
         <feature name="HS"/>
       </mandatoryConform>
@@ -664,11 +609,11 @@ limitations under the License.
       <description>
         Move to hue and saturation.
       </description>
-      <arg id="0" name="Hue" type="int8u" max="254"/>
-      <arg id="1" name="Saturation" type="int8u" max="254"/>
-      <arg id="2" name="TransitionTime" type="int16u" max="65534"/>
-      <arg id="3" name="OptionsMask" type="OptionsBitmap" default="0x00" min="0x00" max="0x01"/>
-      <arg id="4" name="OptionsOverride" type="OptionsBitmap" default="0x00" min="0x00" max="0x01"/>
+      <arg name="Hue" type="int8u"/>
+      <arg name="Saturation" type="int8u"/>
+      <arg name="TransitionTime" type="int16u"/>
+      <arg name="OptionsMask" type="OptionsBitmap"/>
+      <arg name="OptionsOverride" type="OptionsBitmap"/>
       <mandatoryConform>
         <feature name="HS"/>
       </mandatoryConform>
@@ -678,11 +623,11 @@ limitations under the License.
       <description>
         Move to specified color.
       </description>
-      <arg id="0" name="ColorX" type="int16u" max="65279"/>
-      <arg id="1" name="ColorY" type="int16u" max="65279"/>
-      <arg id="2" name="TransitionTime" type="int16u" max="65534"/>
-      <arg id="3" name="OptionsMask" type="OptionsBitmap" default="0x00" min="0x00" max="0x01"/>
-      <arg id="4" name="OptionsOverride" type="OptionsBitmap" default="0x00" min="0x00" max="0x01"/>
+      <arg name="ColorX" type="int16u"/>
+      <arg name="ColorY" type="int16u"/>
+      <arg name="TransitionTime" type="int16u"/>
+      <arg name="OptionsMask" type="OptionsBitmap"/>
+      <arg name="OptionsOverride" type="OptionsBitmap"/>
       <mandatoryConform>
         <feature name="XY"/>
       </mandatoryConform>
@@ -692,10 +637,10 @@ limitations under the License.
       <description>
         Moves the color.
       </description>
-      <arg id="0" name="RateX" type="int16s"/>
-      <arg id="1" name="RateY" type="int16s"/>
-      <arg id="2" name="OptionsMask" type="OptionsBitmap" default="0x00" min="0x00" max="0x01"/>
-      <arg id="3" name="OptionsOverride" type="OptionsBitmap" default="0x00" min="0x00" max="0x01"/>
+      <arg name="RateX" type="int16s"/>
+      <arg name="RateY" type="int16s"/>
+      <arg name="OptionsMask" type="OptionsBitmap"/>
+      <arg name="OptionsOverride" type="OptionsBitmap"/>
       <mandatoryConform>
         <feature name="XY"/>
       </mandatoryConform>
@@ -705,11 +650,11 @@ limitations under the License.
       <description>
         Steps the lighting to a specific color.
       </description>
-      <arg id="0" name="StepX" type="int16s"/>
-      <arg id="1" name="StepY" type="int16s"/>
-      <arg id="2" name="TransitionTime" type="int16u" max="65534"/>
-      <arg id="3" name="OptionsMask" type="OptionsBitmap" default="0x00" min="0x00" max="0x01"/>
-      <arg id="4" name="OptionsOverride" type="OptionsBitmap" default="0x00" min="0x00" max="0x01"/>
+      <arg name="StepX" type="int16s"/>
+      <arg name="StepY" type="int16s"/>
+      <arg name="TransitionTime" type="int16u"/>
+      <arg name="OptionsMask" type="OptionsBitmap"/>
+      <arg name="OptionsOverride" type="OptionsBitmap"/>
       <mandatoryConform>
         <feature name="XY"/>
       </mandatoryConform>
@@ -719,116 +664,14 @@ limitations under the License.
       <description>
         Move to a specific color temperature.
       </description>
-      <arg id="0" name="ColorTemperatureMireds" type="int16u" max="65279"/>
-      <arg id="1" name="TransitionTime" type="int16u" max="65534"/>
-      <arg id="2" name="OptionsMask" type="OptionsBitmap" default="0x00" min="0x00" max="0x01"/>
-      <arg id="3" name="OptionsOverride" type="OptionsBitmap" default="0x00" min="0x00" max="0x01"/>
+      <arg name="ColorTemperatureMireds" type="int16u"/>
+      <arg name="TransitionTime" type="int16u"/>
+      <arg name="OptionsMask" type="OptionsBitmap"/>
+      <arg name="OptionsOverride" type="OptionsBitmap"/>
       <mandatoryConform>
         <feature name="CT"/>
       </mandatoryConform>
     </command>
-
-    <command code="0x40" source="client" name="EnhancedMoveToHue" optional="true">
-      <description>This command allows the light to be moved in a smooth continuous transition from their current hue to a target hue.</description>
-      <arg id="0" name="EnhancedHue" type="int16u"/>
-      <arg id="1" name="Direction" type="DirectionEnum" min="0x00" max="0x03"/>
-      <arg id="2" name="TransitionTime" type="int16u" max="65534"/>
-      <arg id="3" name="OptionsMask" type="OptionsBitmap" default="0x00" min="0x00" max="0x01"/>
-      <arg id="4" name="OptionsOverride" type="OptionsBitmap" default="0x00" min="0x00" max="0x01"/>
-      <mandatoryConform>
-        <feature name="EHUE"/>
-      </mandatoryConform>
-    </command>
-
-    <command code="0x41" source="client" name="EnhancedMoveHue" optional="true">
-      <description>This command allows the light to start a continuous transition starting from their current hue.</description>
-      <arg id="0" name="MoveMode" type="MoveModeEnum" min="0x00" max="0x03"/>
-      <arg id="1" name="Rate" type="int16u"/>
-      <arg id="2" name="OptionsMask" type="OptionsBitmap" default="0x00" min="0x00" max="0x01"/>
-      <arg id="3" name="OptionsOverride" type="OptionsBitmap" default="0x00" min="0x00" max="0x01"/>
-      <mandatoryConform>
-        <feature name="EHUE"/>
-      </mandatoryConform>
-    </command>
-
-    <command code="0x42" source="client" name="EnhancedStepHue" optional="true">
-      <description>This command allows the light to be moved in a stepped transition from their current hue, resulting in a linear transition through XY space.</description>
-      <arg id="0" name="StepMode" type="StepModeEnum" min="0x00" max="0x03"/>
-      <arg id="1" name="StepSize" type="int16u"/>
-      <arg id="2" name="TransitionTime" type="int16u" max="65534"/>
-      <arg id="3" name="OptionsMask" type="OptionsBitmap" default="0x00" min="0x00" max="0x01"/>
-      <arg id="4" name="OptionsOverride" type="OptionsBitmap" default="0x00" min="0x00" max="0x01"/>
-      <mandatoryConform>
-        <feature name="EHUE"/>
-      </mandatoryConform>
-    </command>
-
-    <command code="0x43" source="client" name="EnhancedMoveToHueAndSaturation" optional="true">
-      <description>This command allows the light to be moved in a smooth continuous transition from their current hue to a target hue and from their current saturation to a target saturation.</description>
-      <arg id="0" name="EnhancedHue" type="int16u"/>
-      <arg id="1" name="Saturation" type="int8u" max="254"/>
-      <arg id="2" name="TransitionTime" type="int16u" max="65534"/>
-      <arg id="3" name="OptionsMask" type="OptionsBitmap" default="0x00" min="0x00" max="0x01"/>
-      <arg id="4" name="OptionsOverride" type="OptionsBitmap" default="0x00" min="0x00" max="0x01"/>
-      <mandatoryConform>
-        <feature name="EHUE"/>
-      </mandatoryConform>
-    </command>
-
-    <command code="0x44" source="client" name="ColorLoopSet" optional="true">
-      <description>This command allows a color loop to be activated such that the color light cycles through its range of hues.</description>
-      <arg id="0" name="UpdateFlags" type="UpdateFlagsBitmap" min="0x00" max="0x0F"/>
-      <arg id="1" name="Action" type="ColorLoopActionEnum" min="0x00" max="0x02"/>
-      <arg id="2" name="Direction" type="ColorLoopDirectionEnum" min="0x00" max="0x01"/>
-      <arg id="3" name="Time" type="int16u"/>
-      <arg id="4" name="StartHue" type="int16u"/>
-      <arg id="5" name="OptionsMask" type="OptionsBitmap" default="0x00" min="0x00" max="0x01"/>
-      <arg id="6" name="OptionsOverride" type="OptionsBitmap" default="0x00" min="0x00" max="0x01"/>
-      <mandatoryConform>
-        <feature name="CL"/>
-      </mandatoryConform>
-    </command>
-
-    <command code="0x47" source="client" name="StopMoveStep" optional="true">
-      <description>This command is provided to allow MoveTo and Step commands to be stopped.</description>
-      <arg id="0" name="OptionsMask" type="OptionsBitmap" default="0x00" min="0x00" max="0x01"/>
-      <arg id="1" name="OptionsOverride" type="OptionsBitmap" default="0x00" min="0x00" max="0x01"/>
-      <mandatoryConform>
-        <orTerm>
-          <feature name="HS"/>
-          <feature name="XY"/>
-          <feature name="CT"/>
-        </orTerm>
-      </mandatoryConform>
-    </command>
-
-    <command code="0x4B" source="client" name="MoveColorTemperature" optional="true">
-      <description>This command allows the color temperature of the light to be moved at a specified rate.</description>
-      <arg id="0" name="MoveMode" type="MoveModeEnum" min="0x00" max="0x03"/>
-      <arg id="1" name="Rate" type="int16u"/>
-      <arg id="2" name="ColorTemperatureMinimumMireds" type="int16u" max="65279"/>
-      <arg id="3" name="ColorTemperatureMaximumMireds" type="int16u" max="65279"/>
-      <arg id="4" name="OptionsMask" type="OptionsBitmap" default="0x00" min="0x00" max="0x01"/>
-      <arg id="5" name="OptionsOverride" type="OptionsBitmap" default="0x00" min="0x00" max="0x01"/>
-      <mandatoryConform>
-        <feature name="CT"/>
-      </mandatoryConform>
-    </command>
-
-    <command code="0x4C" source="client" name="StepColorTemperature" optional="true">
-      <description>This command allows the color temperature of the light to be stepped with a specified step size.</description>
-      <arg id="0" name="StepMode" type="StepModeEnum" min="0x00" max="0x03"/>
-      <arg id="1" name="StepSize" type="int16u"/>
-      <arg id="2" name="TransitionTime" type="int16u" max="65534"/>
-      <arg id="3" name="ColorTemperatureMinimumMireds" type="int16u" max="65279"/>
-      <arg id="4" name="ColorTemperatureMaximumMireds" type="int16u" max="65279"/>
-      <arg id="5" name="OptionsMask" type="OptionsBitmap" default="0x00" min="0x00" max="0x01"/>
-      <arg id="6" name="OptionsOverride" type="OptionsBitmap" default="0x00" min="0x00" max="0x01"/>
-      <mandatoryConform>
-        <feature name="CT"/>
-      </mandatoryConform>
-    </command>
-
   </cluster>
 
   <clusterExtension code="0x0300">

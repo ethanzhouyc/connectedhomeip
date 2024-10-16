@@ -57,7 +57,8 @@ limitations under the License.
         <optionalConform/>
       </feature>
     </features>
-    <attribute side="server" code="0x0000" define="CURRENT_SENSITIVITY_LEVEL" type="int8u" writable="true" optional="true" max="9">
+
+    <attribute side="server" code="0x0000" define="CURRENT_SENSITIVITY_LEVEL" type="int8u" writable="true" optional="true">
       <description>CurrentSensitivityLevel</description>
       <mandatoryConform>
         <feature name="SENSLVL"/>
@@ -69,13 +70,13 @@ limitations under the License.
         <feature name="SENSLVL"/>
       </mandatoryConform>
     </attribute>
-    <attribute side="server" code="0x0002" define="DEFAULT_SENSITIVITY_LEVEL" type="int8u" optional="true" max="9">
+    <attribute side="server" code="0x0002" define="DEFAULT_SENSITIVITY_LEVEL" type="int8u" optional="true">
       <description>DefaultSensitivityLevel</description>
       <optionalConform>
         <feature name="SENSLVL"/>
       </optionalConform>
     </attribute>
-    <attribute side="server" code="0x0003" define="ALARMS_ACTIVE" type="AlarmModeBitmap" optional="true" min="0x00" max="0x03" default="0x00">
+    <attribute side="server" code="0x0003" define="ALARMS_ACTIVE" type="AlarmModeBitmap" optional="true">
       <description>AlarmsActive</description>
       <mandatoryConform>
         <orTerm>
@@ -84,13 +85,13 @@ limitations under the License.
         </orTerm>
       </mandatoryConform>
     </attribute>
-    <attribute side="server" code="0x0004" define="ALARMS_SUPPRESSED" type="AlarmModeBitmap" optional="true" min="0x00" max="0x03" default="0x00">
+    <attribute side="server" code="0x0004" define="ALARMS_SUPPRESSED" type="AlarmModeBitmap" optional="true">
       <description>AlarmsSuppressed</description>
       <mandatoryConform>
         <feature name="SPRS"/>
       </mandatoryConform>
     </attribute>
-    <attribute side="server" code="0x0005" define="ALARMS_ENABLED" type="AlarmModeBitmap" optional="true" min="0x00" max="0x03">
+    <attribute side="server" code="0x0005" define="ALARMS_ENABLED" type="AlarmModeBitmap" optional="true">
       <description>AlarmsEnabled</description>
       <optionalConform>
         <orTerm>
@@ -99,7 +100,7 @@ limitations under the License.
         </orTerm>
       </optionalConform>
     </attribute>
-    <attribute side="server" code="0x0006" define="ALARMS_SUPPORTED" type="AlarmModeBitmap" optional="true" min="0x00" max="0x03" default="0x00">
+    <attribute side="server" code="0x0006" define="ALARMS_SUPPORTED" type="AlarmModeBitmap" optional="true">
       <description>AlarmsSupported</description>
       <mandatoryConform>
         <orTerm>
@@ -108,13 +109,14 @@ limitations under the License.
         </orTerm>
       </mandatoryConform>
     </attribute>
-    <attribute side="server" code="0x0007" define="SENSOR_FAULT" type="SensorFaultBitmap" default="0" optional="true" min="0x0000" max="0x0001">
+    <attribute side="server" code="0x0007" define="SENSOR_FAULT" type="SensorFaultBitmap" default="0" optional="true">
       <description>SensorFault</description>
       <optionalConform/>
     </attribute>
+    
     <command source="client" code="0x00" name="SuppressAlarm" optional="true">
       <description>This command is used to suppress the specified alarm mode.</description>
-      <arg id="0" name="AlarmsToSuppress" type="AlarmModeBitmap" min="0x00" max="0x03"/>
+      <arg name="AlarmsToSuppress" type="AlarmModeBitmap"/>
       <mandatoryConform>
         <feature name="SPRS"/>
       </mandatoryConform>
@@ -122,7 +124,7 @@ limitations under the License.
 
     <command source="client" code="0x01" name="EnableDisableAlarm" optional="true">
       <description>This command is used to enable or disable the specified alarm mode.</description>
-      <arg id="0" name="AlarmsToEnableDisable" type="AlarmModeBitmap" min="0x00" max="0x03"/>
+      <arg name="AlarmsToEnableDisable" type="AlarmModeBitmap"/>
       <mandatoryConform>
         <orTerm>
           <feature name="VIS"/>
@@ -132,9 +134,9 @@ limitations under the License.
     </command>
 
     <event side="server" code="0x00" priority="info" name="AlarmsStateChanged" optional="true">
-      <description>This event SHALL be generated after any bits in the AlarmsActive and/or AlarmsSuppressed attributes change.</description>
-      <field id="0" name="AlarmsActive" type="AlarmModeBitmap" min="0x00" max="0x03"/>
-      <field id="1" name="AlarmsSuppressed" type="AlarmModeBitmap" optional="true" min="0x00" max="0x03"/>
+      <description>This event SHALL be generated when any bits in the AlarmsActive and/or AlarmsSuppressed attributes change.</description>
+      <field id="0" name="AlarmsActive" type="AlarmModeBitmap"/>
+      <field id="1" name="AlarmsSuppressed" type="AlarmModeBitmap" optional="true"/>
       <mandatoryConform>
         <orTerm>
           <feature name="VIS"/>
@@ -145,7 +147,7 @@ limitations under the License.
 
     <event side="server" code="0x01" priority="info" name="SensorFault" optional="true">
       <description>This event SHALL be generated when the device registers or clears a fault.</description>
-      <field id="0" name="SensorFault" type="SensorFaultBitmap" min="0x0000" max="0x0001"/>
+      <field id="0" name="SensorFault" type="SensorFaultBitmap"/>
       <optionalConform/>
     </event>
   </cluster>

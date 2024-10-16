@@ -186,7 +186,7 @@ planned operation.">
     </command>
 
     <command source="client" code="0x07" name="CancelRequest" optional="true">
-      <description>Allows a client to request cancellation of a previous adjustment request in a StartTimeAdjustRequest, ModifyForecastRequest or RequestConstraintBasedForecast command.</description>
+      <description>Allows a client to request cancellation of a previous adjustment request in a StartTimeAdjustRequest, ModifyForecastRequest or RequestConstraintBasedForecast command</description>
       <mandatoryConform>
         <orTerm>
           <feature name="STA"/>
@@ -197,7 +197,7 @@ planned operation.">
     </command>
 
     <event code="0x00" name="PowerAdjustStart" priority="info" side="server" apiMaturity="provisional" optional="true">
-      <description>This event SHALL be generated when the Power Adjustment session is started.</description>
+      <description>PowerAdjustStart</description>
       <mandatoryConform>
         <feature name="PA"/>
       </mandatoryConform>
@@ -214,7 +214,7 @@ planned operation.">
     </event>
 
     <event code="0x02" name="Paused" priority="info" side="server" apiMaturity="provisional" optional="true">
-      <description>This event SHALL be generated when the ESA enters the Paused state.</description>
+      <description>Paused</description>
       <mandatoryConform>
         <feature name="PAU"/>
       </mandatoryConform>

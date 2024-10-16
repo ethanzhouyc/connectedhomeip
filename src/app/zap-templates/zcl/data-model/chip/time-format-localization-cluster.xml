@@ -58,12 +58,12 @@ limitations under the License.
       </features>
 
     <!-- Base data types -->
-    <attribute side="server" code="0x00" define="HOUR_FORMAT" type="HourFormatEnum" writable="true" min="0x00" max="0xFF">
+    <attribute side="server" code="0x00" define="HOUR_FORMAT" type="HourFormatEnum" writable="true">
       <description>HourFormat</description>
       <access op="write" role="manage"/>
       <mandatoryConform/>
     </attribute>
-    <attribute side="server" code="0x01" define="ACTIVE_CALENDAR_TYPE" type="CalendarTypeEnum" writable="true" optional="true" min="0x00" max="0xFF">
+    <attribute side="server" code="0x01" define="ACTIVE_CALENDAR_TYPE" type="CalendarTypeEnum" writable="true" optional="true">
       <description>ActiveCalendarType</description>
       <access op="write" role="manage"/>
       <mandatoryConform>

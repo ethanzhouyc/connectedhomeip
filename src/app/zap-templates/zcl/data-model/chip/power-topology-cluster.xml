@@ -43,6 +43,7 @@ limitations under the License.
         </optionalConform>
       </feature>
     </features>
+    
     <attribute code="0x0000" side="server" define="AVAILABLE_ENDPOINTS" type="array" entryType="endpoint_no" length="20" optional="true">
       <description>AvailableEndpoints</description>
       <mandatoryConform>

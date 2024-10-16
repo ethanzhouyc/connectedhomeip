@@ -62,11 +62,11 @@ limitations under the License.
       <description>BasicCommissioningInfo</description>
       <mandatoryConform/>
     </attribute>
-    <attribute side="server" code="0x02" define="REGULATORY_CONFIG" type="RegulatoryLocationTypeEnum" min="0x00" max="0x02" default="0x02">
+    <attribute side="server" code="0x02" define="REGULATORY_CONFIG" type="RegulatoryLocationTypeEnum">
       <description>RegulatoryConfig</description>
       <mandatoryConform/>
     </attribute>
-    <attribute side="server" code="0x03" define="LOCATION_CAPABILITY" type="RegulatoryLocationTypeEnum" min="0x00" max="0x02" default="0x02">
+    <attribute side="server" code="0x03" define="LOCATION_CAPABILITY" type="RegulatoryLocationTypeEnum">
       <description>LocationCapability</description>
       <mandatoryConform/>
     </attribute>
@@ -133,8 +133,8 @@ limitations under the License.
     </command>
     <command source="server" code="0x01" name="ArmFailSafeResponse" optional="false" cli="chip fabric_commissioning armfailsaferesponse">
       <description>Success/failure response for ArmFailSafe command</description>
-      <arg id="0" name="ErrorCode" type="CommissioningErrorEnum" min="0x00" max="0x07"/>
-      <arg id="1" name="DebugText" type="char_string" length="128"/>
+      <arg name="ErrorCode" type="CommissioningErrorEnum"/>
+      <arg name="DebugText" type="char_string" length="128"/>
       <mandatoryConform/>
     </command>
     <command source="client" code="0x02" name="SetRegulatoryConfig" response="SetRegulatoryConfigResponse" cli="chip fabric_commissioning setregulatoryconfig">
@@ -145,11 +145,10 @@ limitations under the License.
       <access op="invoke" privilege="administer"/>
       <mandatoryConform/>
     </command>
-
-    <command source="server" code="0x03" name="SetRegulatoryConfigResponse" cli="chip fabric_commissioning setregulatoryconfigresponse" optional="false" disableDefaultResponse="true">
-      <description>The data for this command is as follows: </description>
-      <arg id="0" name="ErrorCode" type="CommissioningErrorEnum" min="0x00" max="0x07"/>
-      <arg id="1" name="DebugText" type="char_string"/>
+    <command source="server" code="0x03" name="SetRegulatoryConfigResponse" cli="chip fabric_commissioning setregulatoryconfigresponse">
+      <description>Success/failure response for SetRegulatoryConfig command</description>
+      <arg name="ErrorCode" type="CommissioningErrorEnum"/>
+      <arg name="DebugText" type="char_string"/>
       <mandatoryConform/>
     </command>
     <command source="client" code="0x04" name="CommissioningComplete" response="CommissioningCompleteResponse" isFabricScoped="true" optional="false" cli="chip fabric_commissioning commissioningcomplete">
@@ -157,11 +156,10 @@ limitations under the License.
       <access op="invoke" privilege="administer"/>
       <mandatoryConform/>
     </command>
-
-    <command source="server" code="0x05" name="CommissioningCompleteResponse" optional="false" cli="chip fabric_commissioning commissioningcompleteresponse" disableDefaultResponse="true">
-      <description>The data for this command is as follows: </description>
-      <arg id="0" name="ErrorCode" type="CommissioningErrorEnum" min="0x00" max="0x07"/>
-      <arg id="1" name="DebugText" type="char_string"/>
+    <command source="server" code="0x05" name="CommissioningCompleteResponse" optional="false" cli="chip fabric_commissioning commissioningcompleteresponse">
+      <description>Indicates to client whether CommissioningComplete command succeeded</description>
+      <arg name="ErrorCode" type="CommissioningErrorEnum"/>
+      <arg name="DebugText" type="char_string"/>
       <mandatoryConform/>
     </command>
     <command source="client" code="0x06" name="SetTCAcknowledgements" optional="true" response="SetTCAcknowledgementsResponse" cli="chip fabric_commissioning settcacknowledgements" apiMaturity="provisional">
@@ -178,7 +176,7 @@ limitations under the License.
     </command>
     <command source="server" code="0x07" name="SetTCAcknowledgementsResponse" optional="true" cli="chip fabric_commissioning settcacknowledgementsresponse" apiMaturity="provisional">
       <description>This command is used to convey the result from SetTCAcknowledgements.</description>
-      <arg id="0" name="ErrorCode" type="CommissioningErrorEnum" min="0x00" max="0x07"/>
+      <arg name="ErrorCode" type="CommissioningErrorEnum"/>
       <otherwiseConform>
         <provisionalConform/>
         <mandatoryConform>

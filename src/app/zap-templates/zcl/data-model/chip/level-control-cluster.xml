@@ -61,7 +61,7 @@ limitations under the License.
         <provisionalConform/>
       </feature>
     </features>
-    <attribute side="server" code="0x0000" define="CURRENT_LEVEL" type="int8u" isNullable="true" min="1" max="254">
+    <attribute side="server" code="0x0000" define="CURRENT_LEVEL" type="int8u" isNullable="true">
       <description>CurrentLevel</description>
       <mandatoryConform/>
     </attribute>
@@ -71,7 +71,7 @@ limitations under the License.
         <feature name="LT"/>
       </mandatoryConform>
     </attribute>
-    <attribute side="server" code="0x0002" define="MINIMUM_LEVEL" type="int8u" max="254" default="0x00" optional="true">
+    <attribute side="server" code="0x0002" define="MINIMUM_LEVEL" type="int8u" default="0x00" optional="true">
       <description>MinLevel</description>
       <optionalConform>
         <notTerm>
@@ -79,7 +79,7 @@ limitations under the License.
         </notTerm>
       </optionalConform>
     </attribute>
-    <attribute side="server" code="0x0003" define="MAXIMUM_LEVEL" type="int8u" min="1" max="254" default="0xFE" optional="true">
+    <attribute side="server" code="0x0003" define="MAXIMUM_LEVEL" type="int8u" default="0xFE" optional="true">
       <description>MaxLevel</description>
       <optionalConform/>
     </attribute>
@@ -101,23 +101,23 @@ limitations under the License.
         <feature name="FQ"/>
       </mandatoryConform>
     </attribute>
-    <attribute side="server" code="0x0010" define="ON_OFF_TRANSITION_TIME" type="int16u" writable="true" default="0x0000" optional="true" min="0" max="65535">
+    <attribute side="server" code="0x0010" define="ON_OFF_TRANSITION_TIME" type="int16u" writable="true" default="0x0000" optional="true">
       <description>OnOffTransitionTime</description>
       <optionalConform/>
     </attribute>
-    <attribute side="server" code="0x0011" define="ON_LEVEL" type="int8u" isNullable="true" writable="true" min="1" max="254">
+    <attribute side="server" code="0x0011" define="ON_LEVEL" type="int8u" isNullable="true" writable="true">
       <description>OnLevel</description>
       <mandatoryConform/>
     </attribute>
-    <attribute side="server" code="0x0012" define="ON_TRANSITION_TIME" type="int16u" isNullable="true" writable="true" optional="true" min="0" max="0xFFFE">
+    <attribute side="server" code="0x0012" define="ON_TRANSITION_TIME" type="int16u" isNullable="true" writable="true" optional="true">
       <description>OnTransitionTime</description>
       <optionalConform/>
     </attribute>
-    <attribute side="server" code="0x0013" define="OFF_TRANSITION_TIME" type="int16u" isNullable="true" writable="true" optional="true" min="0" max="0xFFFE">
+    <attribute side="server" code="0x0013" define="OFF_TRANSITION_TIME" type="int16u" isNullable="true" writable="true" optional="true">
       <description>OffTransitionTime</description>
       <optionalConform/>
     </attribute>
-    <attribute side="server" code="0x0014" define="DEFAULT_MOVE_RATE" type="int8u" isNullable="true" min="0x01" writable="true" optional="true">
+    <attribute side="server" code="0x0014" define="DEFAULT_MOVE_RATE" type="int8u" isNullable="true" min="0x01" max="0xFE" writable="true" optional="true">
       <description>DefaultMoveRate</description>
       <optionalConform/>
     </attribute>
@@ -125,7 +125,7 @@ limitations under the License.
       <description>Options</description>
       <mandatoryConform/>
     </attribute>
-    <attribute side="server" code="0x4000" define="START_UP_CURRENT_LEVEL" type="int8u" isNullable="true" writable="true" optional="true" min="0" max="254">
+    <attribute side="server" code="0x4000" define="START_UP_CURRENT_LEVEL" type="int8u" isNullable="true" writable="true" optional="true">
       <description>StartUpCurrentLevel</description>
       <access op="read" role="view"/>
       <access op="write" role="manage"/>
@@ -138,10 +138,10 @@ limitations under the License.
       <description>
         Command description for MoveToLevel
       </description>
-      <arg id="0" name="Level" type="int8u" max="254"/>
-      <arg id="1" name="TransitionTime" type="int16u" isNullable="true"/>
-      <arg id="2" name="OptionsMask" type="OptionsBitmap" default="0x00" min="0x00" max="0x03"/>
-      <arg id="3" name="OptionsOverride" type="OptionsBitmap" default="0x00" min="0x00" max="0x03"/>
+      <arg name="Level"           type="int8u"/>
+      <arg name="TransitionTime"  type="int16u" isNullable="true"/>
+      <arg name="OptionsMask"     type="OptionsBitmap"/>
+      <arg name="OptionsOverride" type="OptionsBitmap"/>
       <mandatoryConform/>
     </command>
 
@@ -149,10 +149,10 @@ limitations under the License.
       <description>
         Command description for Move
       </description>
-      <arg id="0" name="MoveMode" type="MoveModeEnum" min="0x00" max="0x01"/>
-      <arg id="1" name="Rate" type="int8u" isNullable="true"/>
-      <arg id="2" name="OptionsMask" type="OptionsBitmap" default="0x00" min="0x00" max="0x03"/>
-      <arg id="3" name="OptionsOverride" type="OptionsBitmap" default="0x00" min="0x00" max="0x03"/>
+      <arg name="MoveMode" type="MoveModeEnum"/>
+      <arg name="Rate" type="int8u" isNullable="true"/>
+      <arg name="OptionsMask" type="OptionsBitmap"/>
+      <arg name="OptionsOverride" type="OptionsBitmap"/>
       <mandatoryConform/>
     </command>
 
@@ -160,11 +160,11 @@ limitations under the License.
       <description>
         Command description for Step
       </description>
-      <arg id="0" name="StepMode" type="StepModeEnum" min="0x00" max="0x01"/>
-      <arg id="1" name="StepSize" type="int8u"/>
-      <arg id="2" name="TransitionTime" type="int16u" isNullable="true"/>
-      <arg id="3" name="OptionsMask" type="OptionsBitmap" default="0x00" min="0x00" max="0x03"/>
-      <arg id="4" name="OptionsOverride" type="OptionsBitmap" default="0x00" min="0x00" max="0x03"/>
+      <arg name="StepMode" type="StepModeEnum"/>
+      <arg name="StepSize" type="int8u"/>
+      <arg name="TransitionTime" type="int16u" isNullable="true"/>
+      <arg name="OptionsMask" type="OptionsBitmap"/>
+      <arg name="OptionsOverride" type="OptionsBitmap"/>
       <mandatoryConform/>
     </command>
 
@@ -172,8 +172,8 @@ limitations under the License.
       <description>
         Command description for Stop
       </description>
-      <arg id="0" name="OptionsMask" type="OptionsBitmap" default="0x00" min="0x00" max="0x03"/>
-      <arg id="1" name="OptionsOverride" type="OptionsBitmap" default="0x00" min="0x00" max="0x03"/>
+      <arg name="OptionsMask" type="OptionsBitmap"/>
+      <arg name="OptionsOverride" type="OptionsBitmap"/>
       <mandatoryConform/>
     </command>
 
@@ -181,6 +181,10 @@ limitations under the License.
       <description>
         Command description for MoveToLevelWithOnOff
       </description>
+      <arg name="Level"           type="int8u"/>
+      <arg name="TransitionTime"  type="int16u" isNullable="true"/>
+      <arg name="OptionsMask"     type="OptionsBitmap"/>
+      <arg name="OptionsOverride" type="OptionsBitmap"/>
       <mandatoryConform/>
     </command>
 
@@ -188,6 +192,10 @@ limitations under the License.
       <description>
         Command description for MoveWithOnOff
       </description>
+      <arg name="MoveMode" type="MoveModeEnum"/>
+      <arg name="Rate" type="int8u" isNullable="true"/>
+      <arg name="OptionsMask" type="OptionsBitmap"/>
+      <arg name="OptionsOverride" type="OptionsBitmap"/>
       <mandatoryConform/>
     </command>
 
@@ -195,6 +203,11 @@ limitations under the License.
       <description>
         Command description for StepWithOnOff
       </description>
+      <arg name="StepMode" type="StepModeEnum"/>
+      <arg name="StepSize" type="int8u"/>
+      <arg name="TransitionTime" type="int16u" isNullable="true"/>
+      <arg name="OptionsMask" type="OptionsBitmap"/>
+      <arg name="OptionsOverride" type="OptionsBitmap"/>
       <mandatoryConform/>
     </command>
 
@@ -202,6 +215,8 @@ limitations under the License.
       <description>
         Command description for StopWithOnOff
       </description>
+      <arg name="OptionsMask" type="OptionsBitmap"/>
+      <arg name="OptionsOverride" type="OptionsBitmap"/>
       <mandatoryConform/>
     </command>
 
@@ -210,7 +225,7 @@ limitations under the License.
         Change the currrent frequency to the provided one, or a close
         approximation if the exact provided one is not possible.
       </description>
-      <arg id="0" name="Frequency" type="int16u" default="0"/>
+      <arg name="Frequency" type="int16u"/>
       <mandatoryConform>
         <feature name="FQ"/>
       </mandatoryConform>

@@ -64,16 +64,18 @@ limitations under the License.
     <client init="false" tick="false">true</client>
     <server init="false" tick="false">true</server>
     <description>This cluster supports remotely monitoring and, where supported, changing the operational state of a Robotic Vacuum.</description>
-    <globalAttribute side="either" code="0xFFFD" value="2"/>
-    <attribute side="server" code="0x0000" define="PHASE_LIST" type="array" entryType="char_string" isNullable="true" length="32">
+    
+    <globalAttribute side="either" code="0xFFFD" value="1"/>
+    
+    <attribute side="server" code="0x0000" define="PHASE_LIST" type="array" entryType="char_string" isNullable="true">
       <description>PhaseList</description>
       <mandatoryConform/>
     </attribute>
-    <attribute side="server" code="0x0001" define="CURRENT_PHASE" type="int8u" isNullable="true">
+    <attribute side="server" code="0x0001" define="CURRENT_PHASE" type="int8u" min="0x00" max="0x1F" isNullable="true">
       <description>CurrentPhase</description>
       <mandatoryConform/>
     </attribute>
-    <attribute side="server" code="0x0002" define="COUNTDOWN_TIME" type="elapsed_s" max="259200" isNullable="true" optional="true">
+    <attribute side="server" code="0x0002" define="COUNTDOWN_TIME" type="elapsed_s" min="0" max="259200" isNullable="true" optional="true">
       <description>CountdownTime</description>
       <optionalConform/>
     </attribute>
@@ -81,12 +83,13 @@ limitations under the License.
       <description>OperationalStateList</description>
       <mandatoryConform/>
     </attribute>
+    
     <!--
 The type of this attribute in the spec is OperationalStateEnum, but the OperationalStateEnum in our XML
 excludes the values from the base OperationalState cluster.  Just use ENUM8 for the type, so it allows
 both values from this cluster and from the base cluster.
 -->
-    <attribute side="server" code="0x0004" define="OPERATIONAL_STATE" type="OperationalStateEnum" min="0x00" max="0x42">
+    <attribute side="server" code="0x0004" define="OPERATIONAL_STATE" type="enum8">
       <description>OperationalState</description>
       <mandatoryConform/>
     </attribute>
@@ -94,8 +97,9 @@ both values from this cluster and from the base cluster.
       <description>OperationalError</description>
       <mandatoryConform/>
     </attribute>
+
     <command source="client" code="0x00" name="Pause" response="OperationalCommandResponse" optional="true">
-      <description>This command SHALL be supported if the device supports remotely pausing the operation.</description>
+      <description>Upon receipt, the device SHALL pause its operation if it is possible based on the current function of the server.</description>
       <otherwiseConform>
         <mandatoryConform>
           <command name="Resume"/>
@@ -109,7 +113,7 @@ both values from this cluster and from the base cluster.
     <!-- Command Start with code 0x02 is deprecated -->
 
     <command source="client" code="0x03" name="Resume" response="OperationalCommandResponse" optional="true">
-      <description>This command SHALL be supported if the device supports remotely resuming the operation.</description>
+      <description>Upon receipt, the device SHALL resume its operation from the point it was at when it received the Pause command, or from the point when it was paused by means outside of this cluster (for example by manual button press).</description>
       <otherwiseConform>
         <mandatoryConform>
           <command name="Pause"/>
@@ -118,9 +122,9 @@ both values from this cluster and from the base cluster.
       </otherwiseConform>
     </command>
 
-    <command source="server" code="0x04" name="OperationalCommandResponse" optional="true" disableDefaultResponse="true">
-      <description>This command SHALL be supported by an implementation if any of the other commands defined by this cluster are supported (i.e.</description>
-      <arg id="0" name="CommandResponseState" type="ErrorStateStruct"/>
+    <command source="server" code="0x04" name="OperationalCommandResponse" optional="true">
+      <description>This command SHALL be generated in response to any of the Start, Stop, Pause, or Resume commands.</description>
+      <arg name="CommandResponseState" type="ErrorStateStruct"/>
       <mandatoryConform>
         <orTerm>
           <command name="Pause"/>
@@ -139,15 +143,15 @@ both values from this cluster and from the base cluster.
       </otherwiseConform>
     </command>
 
-    <event side="server" code="0x00" priority="critical" name="OperationalError">
-      <description>This event is generated when a reportable error condition is detected.</description>
+    <event side="server" code="0x00" priority="critical" name="OperationalError" optional="false">
+      <description>OperationalError</description>
       <field id="0" name="ErrorState" type="ErrorStateStruct"/>
       <mandatoryConform/>
     </event>
 
     <event side="server" code="0x01" priority="info" name="OperationCompletion" optional="true">
-      <description>This event SHOULD be generated when the overall operation ends, successfully or otherwise.</description>
-      <field id="0" name="CompletionErrorCode" type="enum8"/>
+      <description>OperationCompletion</description>
+      <field id="0" name="CompletionErrorCode"  type="enum8"                            optional="false"/>
       <field id="1" name="TotalOperationalTime" type="elapsed_s" isNullable="true" optional="true"/>
       <field id="2" name="PausedTime" type="elapsed_s" isNullable="true" optional="true"/>
       <optionalConform/>

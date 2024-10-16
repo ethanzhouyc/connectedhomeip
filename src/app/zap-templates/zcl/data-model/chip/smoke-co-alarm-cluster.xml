@@ -46,27 +46,27 @@ limitations under the License.
     </features>
 
     <!-- Attributes -->
-    <attribute side="server" code="0x0000" define="EXPRESSED_STATE" type="ExpressedStateEnum" min="0x00" max="0x08">
+    <attribute side="server" code="0x0000" define="EXPRESSED_STATE" type="ExpressedStateEnum">
       <description>ExpressedState</description>
       <mandatoryConform/>
     </attribute>
-    <attribute side="server" code="0x0001" define="SMOKE_STATE" type="AlarmStateEnum" optional="true" min="0x00" max="0x02">
+    <attribute side="server" code="0x0001" define="SMOKE_STATE" type="AlarmStateEnum" optional="true">
       <description>SmokeState</description>
       <mandatoryConform>
         <feature name="SMOKE"/>
       </mandatoryConform>
     </attribute>
-    <attribute side="server" code="0x0002" define="CO_STATE" type="AlarmStateEnum" optional="true" min="0x00" max="0x02">
+    <attribute side="server" code="0x0002" define="CO_STATE" type="AlarmStateEnum" optional="true">
       <description>COState</description>
       <mandatoryConform>
         <feature name="CO"/>
       </mandatoryConform>
     </attribute>
-    <attribute side="server" code="0x0003" define="BATTERY_ALERT" type="AlarmStateEnum" min="0x00" max="0x02">
+    <attribute side="server" code="0x0003" define="BATTERY_ALERT" type="AlarmStateEnum">
       <description>BatteryAlert</description>
       <mandatoryConform/>
     </attribute>
-    <attribute side="server" code="0x0004" define="DEVICE_MUTED" type="MuteStateEnum" optional="true" min="0x00" max="0x01">
+    <attribute side="server" code="0x0004" define="DEVICE_MUTED" type="MuteStateEnum" optional="true">
       <description>DeviceMuted</description>
       <optionalConform/>
     </attribute>
@@ -78,19 +78,19 @@ limitations under the License.
       <description>HardwareFaultAlert</description>
       <mandatoryConform/>
     </attribute>
-    <attribute side="server" code="0x0007" define="END_OF_SERVICEALERT" type="EndOfServiceEnum" min="0x00" max="0x01">
+    <attribute side="server" code="0x0007" define="END_OF_SERVICEALERT" type="EndOfServiceEnum">
       <description>EndOfServiceAlert</description>
       <mandatoryConform/>
     </attribute>
-    <attribute side="server" code="0x0008" define="INTERCONNECT_SMOKE_ALARM" type="AlarmStateEnum" optional="true" min="0x00" max="0x02">
+    <attribute side="server" code="0x0008" define="INTERCONNECT_SMOKE_ALARM" type="AlarmStateEnum" optional="true">
       <description>InterconnectSmokeAlarm</description>
       <optionalConform/>
     </attribute>
-    <attribute side="server" code="0x0009" define="INTERCONNECT_CO_ALARM" type="AlarmStateEnum" optional="true" min="0x00" max="0x02">
+    <attribute side="server" code="0x0009" define="INTERCONNECT_CO_ALARM" type="AlarmStateEnum" optional="true">
       <description>InterconnectCOAlarm</description>
       <optionalConform/>
     </attribute>
-    <attribute side="server" code="0x000A" define="CONTAMINATION_STATE" type="ContaminationStateEnum" optional="true" min="0x00" max="0x03">
+    <attribute side="server" code="0x000A" define="CONTAMINATION_STATE" type="ContaminationStateEnum" optional="true">
       <description>ContaminationState</description>
       <optionalConform>
         <feature name="SMOKE"/>
@@ -107,6 +107,7 @@ limitations under the License.
       <description>ExpiryDate</description>
       <optionalConform/>
     </attribute>
+    
     <!-- Commands -->
     <command source="client" code="0x00" name="SelfTestRequest" optional="true">
       <description>This command SHALL initiate a device self-test.</description>
@@ -116,21 +117,21 @@ limitations under the License.
     <!-- Events -->
     <event side="server" code="0x00" name="SmokeAlarm" priority="critical" optional="true">
       <description>This event SHALL be generated when SmokeState attribute changes to either Warning or Critical state.</description>
-      <field id="0" name="AlarmSeverityLevel" type="AlarmStateEnum" min="0x00" max="0x02"/>
+      <field id="0" name="AlarmSeverityLevel" type="AlarmStateEnum" />
       <mandatoryConform>
         <feature name="SMOKE"/>
       </mandatoryConform>
     </event>
     <event side="server" code="0x01" name="COAlarm" priority="critical" optional="true">
       <description>This event SHALL be generated when COState attribute changes to either Warning or Critical state.</description>
-      <field id="0" name="AlarmSeverityLevel" type="AlarmStateEnum" min="0x00" max="0x02"/>
+      <field id="0" name="AlarmSeverityLevel" type="AlarmStateEnum" />
       <mandatoryConform>
         <feature name="CO"/>
       </mandatoryConform>
     </event>
     <event side="server" code="0x02" name="LowBattery" priority="info" optional="false">
       <description>This event SHALL be generated when BatteryAlert attribute changes to either Warning or Critical state.</description>
-      <field id="0" name="AlarmSeverityLevel" type="AlarmStateEnum" min="0x00" max="0x02"/>
+      <field id="0" name="AlarmSeverityLevel" type="AlarmStateEnum" />
       <mandatoryConform/>
     </event>
     <event side="server" code="0x03" name="HardwareFault" priority="info" optional="false">
@@ -155,14 +156,14 @@ limitations under the License.
     </event>
     <event side="server" code="0x08" name="InterconnectSmokeAlarm" priority="critical" optional="true">
       <description>This event SHALL be generated when the device hosting the server receives a smoke alarm from an interconnected sensor.</description>
-      <field id="0" name="AlarmSeverityLevel" type="AlarmStateEnum" min="0x00" max="0x02"/>
+      <field id="0" name="AlarmSeverityLevel" type="AlarmStateEnum" />
       <optionalConform>
         <feature name="SMOKE"/>
       </optionalConform>
     </event>
     <event side="server" code="0x09" name="InterconnectCOAlarm" priority="critical" optional="true">
-      <description>This event SHALL be generated when the device hosting the server receives a CO alarm from an interconnected sensor.</description>
-      <field id="0" name="AlarmSeverityLevel" type="AlarmStateEnum" min="0x00" max="0x02"/>
+      <description>This event SHALL be generated when the device hosting the server receives a smoke alarm from an interconnected sensor.</description>
+      <field id="0" name="AlarmSeverityLevel" type="AlarmStateEnum" />
       <optionalConform>
         <feature name="CO"/>
       </optionalConform>

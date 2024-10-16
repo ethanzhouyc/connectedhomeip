@@ -124,6 +124,7 @@ limitations under the License.
         <feature name="EXTS"/>
       </mandatoryConform>
     </attribute>
+
     <attribute side="server" code="0x0002" define="SUBJECTS_PER_ACCESS_CONTROL_ENTRY" type="int16u" min="4" default="4">
       <description>SubjectsPerAccessControlEntry</description>
       <mandatoryConform/>
@@ -148,6 +149,7 @@ limitations under the License.
         <feature name="MNGD"/>
       </mandatoryConform>
     </attribute>
+    
     <command code="0x00" source="client" name="ReviewFabricRestrictions" isFabricScoped="true" optional="true" response="ReviewFabricRestrictionsResponse">
       <description>This command signals to the service associated with the device vendor that the fabric administrator would like a review of the current restrictions on the accessing fabric.</description>
        <access op="invoke" privilege="administer"/>

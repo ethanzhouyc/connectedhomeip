@@ -63,15 +63,16 @@ limitations under the License.
         <optionalConform/>
       </feature>
     </features>
+    
     <attribute side="server" code="0x00" define="BSSID" type="octet_string" length="6" isNullable="true" minLength="6">
       <description>BSSID</description>
       <mandatoryConform/>
     </attribute>
-    <attribute side="server" code="0x01" define="SECURITY_TYPE" type="SecurityTypeEnum" isNullable="true" min="0x00" max="0x05">
+    <attribute side="server" code="0x01" define="SECURITY_TYPE" type="SecurityTypeEnum" isNullable="true">
       <description>SecurityType</description>
       <mandatoryConform/>
     </attribute>
-    <attribute side="server" code="0x02" define="WIFI_VERSION" type="WiFiVersionEnum" isNullable="true" min="0x00" max="0x06">
+    <attribute side="server" code="0x02" define="WIFI_VERSION" type="WiFiVersionEnum" isNullable="true">
       <description>WiFiVersion</description>
       <mandatoryConform/>
     </attribute>
@@ -130,7 +131,7 @@ limitations under the License.
       </mandatoryConform>
     </attribute>
     <command source="client" code="0x00" name="ResetCounts" optional="true" cli="chip wifi_network_diagnostics resetcounts">
-      <description>Reception of this command SHALL reset the following attributes to 0: </description>
+      <description>Reception of this command SHALL reset the Breacon and Packet related count attributes to 0</description>
       <mandatoryConform>
         <feature name="ERRCNT"/>
       </mandatoryConform>
@@ -147,8 +148,8 @@ limitations under the License.
       <optionalConform/>
     </event>
     <event side="server" code="0x02" name="ConnectionStatus" priority="info" optional="true">
-      <description>The ConnectionStatus Event SHALL indicate that a Node&apos;s connection status to a Wi-Fi network has changed.</description>
-      <field id="0" name="ConnectionStatus" type="ConnectionStatusEnum" min="0x00" max="0x01"/>
+      <description>Indicate that a Node’s connection status to a Wi-Fi network has changed.</description>
+      <field id="0" name="ConnectionStatus" type="ConnectionStatusEnum"/>
       <optionalConform/>
     </event>
   </cluster>

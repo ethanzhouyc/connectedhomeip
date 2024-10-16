@@ -198,6 +198,7 @@ limitations under the License.
         <optionalConform choice="a" more="true"/>
       </feature>
     </features>
+
     <attribute side="server" code="0x0000" define="LOAD_CONTROL_PROGRAMS" type="array" entryType="LoadControlProgramStruct">
       <description>LoadControlPrograms</description>
       <mandatoryConform/>
@@ -210,7 +211,7 @@ limitations under the License.
       <description>Events</description>
       <mandatoryConform/>
     </attribute>
-    <attribute side="server" code="0x0003" define="LOAD_CONTROL_ACTIVE_EVENTS" type="array" entryType="octet_string">
+    <attribute side="server" code="0x0003" define="LOAD_CONTROL_ACTIVE_EVENTS" type="array" entryType="LoadControlEventStruct">
       <description>ActiveEvents</description>
       <mandatoryConform/>
     </attribute>
@@ -236,25 +237,41 @@ limitations under the License.
     </attribute>
 
     <command source="client" code="0x00" name="RegisterLoadControlProgramRequest" optional="false">
-      <description>Upon receipt, this SHALL insert a new LoadControlProgramStruct into LoadControlPrograms, or if the ProgramID matches an existing LoadControlProgramStruct, then the existing LoadControlProgramStruct SHALL be overwritten with the provided values.</description>
-      <arg id="0" name="LoadControlProgram" type="LoadControlProgramStruct"/>
+      <description>
+        Upon receipt, this SHALL insert a new LoadControlProgramStruct into LoadControlPrograms, or if the ProgramID matches an existing LoadControlProgramStruct, then the provider SHALL be updated with the provided values.
+      </description>
+      <arg name="LoadControlProgram" type="LoadControlProgramStruct"/>
       <mandatoryConform/>
     </command>
     <command source="client" code="0x01" name="UnregisterLoadControlProgramRequest" optional="false">
-      <description>Upon receipt, this SHALL remove the LoadControlProgramStruct with the matching ProgramID, if it exists, from LoadControlPrograms.</description>
-      <arg id="0" name="LoadControlProgramID" type="octet_string" length="16" minLength="16"/>
+      <description>
+        Upon receipt, this SHALL remove a the LoadControlProgramStruct from LoadControlPrograms with the matching ProgramID.
+      </description>
+      <arg name="LoadControlProgramID" type="octet_string" length="16"/>
       <mandatoryConform/>
     </command>
     <command source="client" code="0x02" name="AddLoadControlEventRequest" optional="false">
-      <description>On receipt of this command, the server SHALL perform the following procedure: </description>
-      <arg id="0" name="Event" type="LoadControlEventStruct"/>
+      <description>
+        On receipt of the AddLoadControlEventsRequest command, the server SHALL add a load control event.
+      </description>
+      <arg name="Event" type="LoadControlEventStruct"/>
       <mandatoryConform/>
     </command>
     <command source="client" code="0x03" name="RemoveLoadControlEventRequest" optional="false">
-      <description>On receipt of this command, the server SHALL remove any load control events in Events whose EventID matches EventID, either immediately if the RandomEnd Bit bit is not set on the CancelControl field, or after a random duration.</description>
-      <arg id="0" name="EventID" type="octet_string" length="16" minLength="16"/>
-      <arg id="1" name="CancelControl" type="CancelControlBitmap" default="0x0000" min="0x0000" max="0x0001"/>
+      <description>
+        Upon receipt, this SHALL remove the LoadControlEventStruct with the matching EventID from LoadEventPrograms.
+      </description>
+      <arg name="EventID" type="octet_string" length="16"/>
+      <arg name="CancelControl" type="CancelControlBitmap"/>
       <mandatoryConform/>
+    </command>
+    <command source="client" code="0x04" name="ClearLoadControlEventsRequest" optional="true">
+      <!-- Note: Maybe this command needs to have fields?  Who knows!
+           Spec does not define anything about it other than its existence.
+           See https://github.com/CHIP-Specifications/connectedhomeip-spec/issues/8514 -->
+      <description>
+        Upon receipt, this SHALL clear all the load control events.
+      </description>
     </command>
 
     <event side="server" code="0x00" name="LoadControlEventStatusChange" priority="info" optional="false">

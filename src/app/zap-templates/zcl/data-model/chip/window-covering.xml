@@ -57,7 +57,7 @@ limitations under the License.
 
     <!-- Window Covering Information Attribute Set -->
     <!-- Conformance feature M -->
-    <attribute side="server" code="0x0000" define="WC_TYPE" type="TypeEnum" min="0x00" max="0xFF" default="0x00">
+    <attribute side="server" code="0x0000" define="WC_TYPE" type="Type" min="0x00" max="0x09" default="0x00">
       <description>Type</description>
       <mandatoryConform/>
     </attribute>
@@ -120,7 +120,7 @@ limitations under the License.
       </optionalConform>
     </attribute>
     <!-- Conformance feature M -->
-    <attribute side="server" code="0x0007" define="WC_CONFIG_STATUS" type="ConfigStatusBitmap" min="0x00" max="0x7F">
+    <attribute side="server" code="0x0007" define="WC_CONFIG_STATUS" type="ConfigStatus" min="0x00" max="0x7F" default="0x03">
       <description>ConfigStatus</description>
       <mandatoryConform/>
     </attribute>
@@ -145,7 +145,7 @@ limitations under the License.
       </optionalConform>
     </attribute>
     <!-- Conformance feature M -->
-    <attribute side="server" code="0x000A" define="WC_OPERATIONAL_STATUS" type="OperationalStatusBitmap" min="0x00" max="0x3F" default="0x00" reportable="true">
+    <attribute side="server" code="0x000A" define="WC_OPERATIONAL_STATUS" type="OperationalStatus" min="0x00" max="0x7F" default="0x00" reportable="true">
       <description>OperationalStatus</description>
       <mandatoryConform/>
     </attribute>
@@ -170,7 +170,7 @@ limitations under the License.
       </mandatoryConform>
     </attribute>
     <!-- Conformance feature M -->
-    <attribute side="server" code="0x000D" define="WC_END_PRODUCT_TYPE" type="EndProductTypeEnum" min="0x00" max="0xFF" default="0x00">
+    <attribute side="server" code="0x000D" define="WC_END_PRODUCT_TYPE" type="EndProductType" min="0x00" max="0x20" default="0x00">
       <description>EndProductType</description>
       <mandatoryConform/>
     </attribute>
@@ -244,6 +244,7 @@ limitations under the License.
     <!-- Conformance feature M -->
     <attribute side="server" writable="true"  code="0x0017" define="WC_MODE"                                      type="Mode"  min="0x00"   max="0x0F"   default="0x00"   optional="false" >
       <description>Mode</description>
+      <access op="read" role="view" />
       <access op="write" role="manage"/>
       <mandatoryConform/>
     </attribute>
@@ -251,28 +252,29 @@ limitations under the License.
     <!-- attribute side="server" writable="true"  code="0x0018" define="WC_INTERMEDIATE_SETPOINTS_LIFT"           type="octet_string" length="254" default="1,0x0000"        optional="true" >IntermediateSetpointsLift</attribute> -->
     <!-- attribute side="server" writable="true"  code="0x0019" define="WC_INTERMEDIATE_SETPOINTS_TILT"           type="octet_string" length="254" default="1,0x0000"        optional="true" >IntermediateSetpointsTilt</attribute> -->
     <!-- Conformance feature Optional -->
-    <attribute side="server" code="0x001A" define="WC_SAFETY_STATUS" type="SafetyStatusBitmap" min="0x0000" max="0x0FFF" default="0x0000" optional="true" reportable="true">
+    <attribute side="server" code="0x001A" define="WC_SAFETY_STATUS" type="SafetyStatus" min="0x0000" max="0xFFFF" default="0x0000" optional="true" reportable="true">
       <description>SafetyStatus</description>
       <optionalConform/>
     </attribute>
+    
     <!-- Window Covering Command Set -->
     <!-- Conformance feature M -->
     <command source="client" code="0x00" name="UpOrOpen" optional="false" cli="zcl WindowCovering UpOrOpen">
-      <description>Upon receipt of this command, the window covering will adjust its position so the physical lift/slide and tilt is at the maximum open/up position.</description>
+      <description>Moves window covering to InstalledOpenLimitLift and InstalledOpenLimitTilt</description>
       <mandatoryConform/>
     </command>
     <command source="client" code="0x01" name="DownOrClose" optional="false" cli="zcl WindowCovering DownOrClose">
-      <description>Upon receipt of this command, the window covering will adjust its position so the physical lift/slide and tilt is at the maximum closed/down position.</description>
+      <description>Moves window covering to InstalledClosedLimitLift and InstalledCloseLimitTilt</description>
       <mandatoryConform/>
     </command>
     <command source="client" code="0x02" name="StopMotion" optional="false" cli="zcl WindowCovering StopMotion">
-      <description>Upon receipt of this command, the window covering will stop any adjusting to the physical tilt and lift/slide that is currently occurring.</description>
+      <description>Stop any adjusting of window covering</description>
       <mandatoryConform/>
     </command>
     <!-- Conformance feature [LF & ABS] - for now optional -->
     <command source="client" code="0x04" name="GoToLiftValue" optional="true" cli="zcl WindowCovering GoToLiftValue">
-      <description>This command SHALL have the following data fields: </description>
-      <arg id="0" name="LiftValue" type="int16u"/>
+      <description>Go to lift value specified</description>
+      <arg name="LiftValue" type="int16u"/>
       <optionalConform>
         <andTerm>
           <feature name="LF"/>
@@ -282,8 +284,8 @@ limitations under the License.
     </command>
     <!-- Conformance feature LF & PA_LF | [LF] - for now optional -->
     <command source="client" code="0x05" name="GoToLiftPercentage" optional="true" cli="zcl WindowCovering GoToLiftPercentage">
-      <description>This command SHALL have the following data fields: </description>
-      <arg id="0" name="LiftPercent100thsValue" type="percent100ths"/>
+      <description>Go to lift percentage specified</description>
+      <arg name="LiftPercent100thsValue" type="percent100ths"/>
       <otherwiseConform>
         <mandatoryConform>
           <andTerm>
@@ -298,8 +300,8 @@ limitations under the License.
     </command>
     <!-- Conformance feature [TL & ABS] - for now optional -->
     <command source="client" code="0x07" name="GoToTiltValue" optional="true" cli="zcl WindowCovering GoToTiltValue">
-      <description>This command SHALL have the following data fields: </description>
-      <arg id="0" name="TiltValue" type="int16u"/>
+      <description>Go to tilt value specified</description>
+      <arg name="TiltValue" type="int16u"/>
       <optionalConform>
         <andTerm>
           <feature name="TL"/>
@@ -309,8 +311,8 @@ limitations under the License.
     </command>
     <!-- Conformance feature TL & PA_TL | [TL] - for now optional -->
     <command source="client" code="0x08" name="GoToTiltPercentage" optional="true" cli="zcl WindowCovering GoToTiltPercentage">
-      <description>This command SHALL have the following data fields: </description>
-      <arg id="0" name="TiltPercent100thsValue" type="percent100ths"/>
+      <description>Go to tilt percentage specified</description>
+      <arg name="TiltPercent100thsValue" type="percent100ths"/>
       <otherwiseConform>
         <mandatoryConform>
           <andTerm>

@@ -90,28 +90,15 @@ limitations under the License.
         <optionalConform/>
       </feature>
     </features>
+
     <attribute side="server" code="0x0000" define="LIST_MESSAGES" type="array" entryType="MessageStruct" length="8">
       <description>Messages</description>
       <mandatoryConform/>
     </attribute>
-    <attribute side="server" code="0x0001" define="MESSAGES_CLUSTER_ACTIVE_MESSAGES_IDS" type="array" entryType="octet_string" length="8">
+    <attribute side="server" code="0x0001" define="MESSAGES_CLUSTER_ACTIVE_MESSAGES_IDS" type="ARRAY" entryType="octet_string" max="8">
       <description>ActiveMessageIDs</description>
       <mandatoryConform/>
     </attribute>
-    <command source="client" code="0x00" name="PresentMessagesRequest" isFabricScoped="true" optional="false">
-      <description>Upon receipt, this SHALL cause the message in the passed fields to be appended to the Messages attribute.</description>
-      <arg id="0" name="MessageID" type="octet_string" length="16" minLength="16"/>
-      <arg id="1" name="Priority" type="MessagePriorityEnum" default="0x00" min="0x00" max="0x03"/>
-      <arg id="2" name="MessageControl" type="MessageControlBitmap" default="0" min="0x0000" max="0x001F"/>
-      <arg id="3" name="StartTime" type="epoch_s" default="0" isNullable="true"/>
-      <arg id="4" name="Duration" type="int64u" default="0" isNullable="true"/>
-      <arg id="5" name="MessageText" type="long_char_string" length="256"/>
-      <arg id="6" name="Responses" type="MessageResponseOptionStruct" array="true" length="4" optional="true"/>
-      <mandatoryConform/>
-    </command>
-
-    <attribute side="server" code="0x0000" define="LIST_MESSAGES" type="array" entryType="MessageStruct" length="8" writable="false" optional="false">Messages</attribute>
-    <attribute side="server" code="0x0001" define="MESSAGES_CLUSTER_ACTIVE_MESSAGES_IDS" type="ARRAY" entryType="octet_string" max="8" writable="false" optional="false">ActiveMessageIDs</attribute>
     <command source="client" code="0x00" name="PresentMessagesRequest" isFabricScoped="true" optional="false">
       <description>
         Command for requesting messages be presented
@@ -123,31 +110,31 @@ limitations under the License.
       <arg name="Duration" type="int64u" default="0" optional="false" isNullable="true"/>
       <arg name="MessageText" type="char_string" length="256" optional="false"/>
       <arg name="Responses" type="MessageResponseOptionStruct" array="true" length="4" optional="true"/>
+      <mandatoryConform/>
     </command>
     <command source="client" code="0x01" name="CancelMessagesRequest" isFabricScoped="true" optional="false">
       <description>
         Command for cancelling message present requests
       </description>
-      <arg id="0" name="MessageIDs" type="octet_string" array="true" length="8"/>
+      <arg name="MessageIDs" type="octet_string" array="true" optional="false"/>
       <mandatoryConform/>
     </command>
-
-    <event side="server" code="0x00" name="MessageQueued" priority="info" isFabricSensitive="true">
-      <description>This event SHALL be generated when a message is added to the messages attribute.</description>
-      <field id="0" name="MessageID" type="octet_string" length="16" minLength="16"/>
+    <event side="server" code="0x00" name="MessageQueued" priority="info" optional="false">
+      <description>This event SHALL be generated when the message is confirmed by the user, or when the expiration date of the message is reached.</description>
+      <field id="0" name="MessageID" type="octet_string" max="16"/>
       <mandatoryConform/>
     </event>
     <event side="server" code="0x01" name="MessagePresented" priority="info" optional="false">
       <description>This event SHALL be generated when the message is presented to the user.</description>
-      <field id="0" name="MessageID" type="octet_string" length="16" minLength="16"/>
+      <field id="0" name="MessageID" type="octet_string" max="16"/>
       <mandatoryConform/>
     </event>
     <event side="server" code="0x02" name="MessageComplete" priority="info" optional="false">
       <description>This event SHALL be generated when the message is confirmed by the user, or when the expiration date of the message is reached.</description>
       <field id="0" name="MessageID" type="octet_string" optional="false"/>
       <field id="1" name="ResponseID" type="int32u" isNullable="true" optional="true"/>
-      <field id="2" name="Reply" type="long_char_string" length="256" isNullable="true" optional="true"/>
-      <field id="3" name="FutureMessagesPreference" type="FutureMessagePreferenceEnum" isNullable="true" min="0x00" max="0x04"/>
+      <field id="2" name="Reply" type="char_string" length="256" isNullable="true" optional="true"/>
+      <field id="3" name="FutureMessagesPreference" type="FutureMessagePreferenceEnum" isNullable="true" optional="false"/>
       <mandatoryConform/>
     </event>
   </cluster>

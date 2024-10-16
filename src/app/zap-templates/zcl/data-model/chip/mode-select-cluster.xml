@@ -60,15 +60,15 @@ limitations under the License.
       <description>SupportedModes</description>
       <mandatoryConform/>
     </attribute>
-    <attribute side="server" code="0x0003" define="CURRENT_MODE" type="int8u">
+    <attribute side="server" code="0x0003" define="CURRENT_MODE" type="int8u" reportable="true">
       <description>CurrentMode</description>
       <mandatoryConform/>
     </attribute>
-    <attribute side="server" code="0x0004" define="START_UP_MODE" type="int8u" writable="true" optional="true" isNullable="true" min="0" max="254">
+    <attribute side="server" code="0x0004" define="START_UP_MODE" type="int8u" writable="true" optional="true" isNullable="true">
       <description>StartUpMode</description>
       <optionalConform/>
     </attribute>
-    <attribute side="server" code="0x0005" define="ON_MODE" type="int8u" writable="true" optional="true" isNullable="true" min="0" max="254">
+    <attribute side="server" code="0x0005" define="ON_MODE" type="int8u" writable="true" optional="true" isNullable="true">
       <description>OnMode</description>
       <mandatoryConform>
         <feature name="DEPONOFF"/>
@@ -76,8 +76,10 @@ limitations under the License.
     </attribute>
     <!-- Test Commands -->
     <command source="client" code="0x00" name="ChangeToMode" optional="false">
-      <description>On receipt of this command, if the NewMode field indicates a valid mode transition within the supported list, the server SHALL set the CurrentMode attribute to the NewMode value, otherwise, the server SHALL respond with an INVALID_COMMAND status response.</description>
-      <arg id="0" name="NewMode" type="int8u"/>
+      <description>
+        On receipt of this command, if the NewMode field matches the Mode field in an entry of the SupportedModes list, the server SHALL set the CurrentMode attribute to the NewMode value, otherwise, the server SHALL respond with an INVALID_COMMAND status response.
+      </description>
+      <arg name="NewMode" type="int8u" />
       <mandatoryConform/>
     </command>
 
