@@ -36,6 +36,7 @@ limitations under the License.
       <arg name="Status" type="StatusEnum" optional="false"/>
       <arg name="Data" type="char_string" optional="true"/>
       <arg name="EncodingHint" type="char_string" optional="true"/>
+      <mandatoryConform/>
     </command>
 
   </cluster>
