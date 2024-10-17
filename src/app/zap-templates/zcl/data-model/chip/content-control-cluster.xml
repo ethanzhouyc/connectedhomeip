@@ -42,6 +42,7 @@ limitations under the License.
         <optionalConform/>
       </feature>
     </features>
+    
     <attribute side="server" code="0x0000" define="ENABLED" type="boolean">
       <description>Enabled</description>
       <mandatoryConform/>

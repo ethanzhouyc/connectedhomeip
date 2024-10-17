@@ -89,6 +89,7 @@ limitations under the License.
     <code>0x0025</code>
     <define>ACTIONS_CLUSTER</define>
     <description>This cluster provides a standardized way for a Node (typically a Bridge, but could be any Node) to expose action information.</description>
+    
     <attribute side="server" code="0x0000" define="ACTION_LIST" type="array" entryType="ActionStruct" length="256">
       <description>ActionList</description>
       <mandatoryConform/>
@@ -101,6 +102,7 @@ limitations under the License.
       <description>SetupURL</description>
       <optionalConform/>
     </attribute>
+    
     <command source="client" code="0x00" name="InstantAction" optional="true">
       <description>This command triggers an action (state change) on the involved endpoints.</description>
       <arg name="ActionID" type="int16u"/>

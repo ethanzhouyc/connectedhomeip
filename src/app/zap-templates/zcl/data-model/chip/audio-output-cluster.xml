@@ -30,6 +30,7 @@ limitations under the License.
         <optionalConform/>
       </feature>
     </features>
+
     <attribute side="server" code="0x0000" define="AUDIO_OUTPUT_LIST" type="array" entryType="OutputInfoStruct" length="254">
       <description>OutputList</description>
       <mandatoryConform/>
@@ -38,6 +39,7 @@ limitations under the License.
       <description>CurrentOutput</description>
       <mandatoryConform/>
     </attribute>
+    
     <command source="client" code="0x00" name="SelectOutput" optional="false">
       <description>Upon receipt, this SHALL change the output on the media device to the output at a specific index in the Output List.</description>
       <arg name="Index" type="int8u"/>

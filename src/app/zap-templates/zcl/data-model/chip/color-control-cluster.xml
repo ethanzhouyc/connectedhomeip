@@ -126,6 +126,7 @@ limitations under the License.
         <optionalConform/>
       </feature>
     </features>
+    
     <attribute side="server" code="0x0000" define="COLOR_CONTROL_CURRENT_HUE" type="int8u" max="0xFE" reportable="true" default="0x00" optional="true">
       <description>CurrentHue</description>
       <mandatoryConform>

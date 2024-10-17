@@ -57,6 +57,7 @@ limitations under the License.
         <optionalConform/>
       </feature>
     </features>
+
     <attribute side="server" code="0x0000" define="CURRENT_SENSITIVITY_LEVEL" type="int8u" writable="true" optional="true">
       <description>CurrentSensitivityLevel</description>
       <mandatoryConform>
@@ -112,6 +113,7 @@ limitations under the License.
       <description>SensorFault</description>
       <optionalConform/>
     </attribute>
+    
     <command source="client" code="0x00" name="SuppressAlarm" optional="true">
       <description>This command is used to suppress the specified alarm mode.</description>
       <arg name="AlarmsToSuppress" type="AlarmModeBitmap"/>

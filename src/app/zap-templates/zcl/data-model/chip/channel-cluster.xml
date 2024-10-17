@@ -40,6 +40,7 @@ limitations under the License.
         <optionalConform/>
       </feature>
     </features>
+
     <attribute side="server" code="0x0000" define="CHANNEL_LIST" type="array" entryType="ChannelInfoStruct" length="254" optional="true">
       <description>ChannelList</description>
       <mandatoryConform>
@@ -56,6 +57,7 @@ limitations under the License.
       <description>CurrentChannel</description>
       <optionalConform/>
     </attribute>
+    
     <command source="client" code="0x00" name="ChangeChannel" response="ChangeChannelResponse" optional="true">
       <description>Change the channel on the media player to the channel case-insensitive exact matching the value passed as an argument. </description>
       <arg name="Match" type="char_string"/>

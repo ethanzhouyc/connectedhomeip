@@ -57,6 +57,7 @@ limitations under the License.
         </optionalConform>
       </feature>
     </features>
+
     <attribute side="server" code="0x0000" define="MEASURED_VALUE" type="single" isNullable="true" optional="true">
       <description>MeasuredValue</description>
       <mandatoryConform>
@@ -271,6 +272,7 @@ limitations under the License.
         </optionalConform>
       </feature>
     </features>
+
     <attribute side="server" code="0x0000" define="MEASURED_VALUE" type="single" isNullable="true" optional="true">
       <description>MeasuredValue</description>
       <mandatoryConform>
@@ -377,6 +379,7 @@ limitations under the License.
         </optionalConform>
       </feature>
     </features>
+
     <attribute side="server" code="0x0000" define="MEASURED_VALUE" type="single" isNullable="true" optional="true">
       <description>MeasuredValue</description>
       <mandatoryConform>
@@ -483,6 +486,7 @@ limitations under the License.
         </optionalConform>
       </feature>
     </features>
+
     <attribute side="server" code="0x0000" define="MEASURED_VALUE" type="single" isNullable="true" optional="true">
       <description>MeasuredValue</description>
       <mandatoryConform>
@@ -589,6 +593,7 @@ limitations under the License.
         </optionalConform>
       </feature>
     </features>
+
     <attribute side="server" code="0x0000" define="MEASURED_VALUE" type="single" isNullable="true" optional="true">
       <description>MeasuredValue</description>
       <mandatoryConform>
@@ -695,6 +700,7 @@ limitations under the License.
         </optionalConform>
       </feature>
     </features>
+
     <attribute side="server" code="0x0000" define="MEASURED_VALUE" type="single" isNullable="true" optional="true">
       <description>MeasuredValue</description>
       <mandatoryConform>
@@ -801,6 +807,7 @@ limitations under the License.
         </optionalConform>
       </feature>
     </features>
+    
     <attribute side="server" code="0x0000" define="MEASURED_VALUE" type="single" isNullable="true" optional="true">
       <description>MeasuredValue</description>
       <mandatoryConform>
@@ -907,6 +914,7 @@ limitations under the License.
         </optionalConform>
       </feature>
     </features>
+
     <attribute side="server" code="0x0000" define="MEASURED_VALUE" type="single" isNullable="true" optional="true">
       <description>MeasuredValue</description>
       <mandatoryConform>
@@ -1013,6 +1021,7 @@ limitations under the License.
         </optionalConform>
       </feature>
     </features>
+
     <attribute side="server" code="0x0000" define="MEASURED_VALUE" type="single" isNullable="true" optional="true">
       <description>MeasuredValue</description>
       <mandatoryConform>

@@ -44,6 +44,7 @@ limitations under the License.
     <features>
       <feature bit="0" code="TAGLIST" name="TagList" summary="The TagList attribute is present"/>
     </features>
+    
     <attribute side="server" code="0x0000" define="DEVICE_LIST" type="array" entryType="DeviceTypeStruct">
       <description>DeviceTypeList</description>
       <mandatoryConform/>
