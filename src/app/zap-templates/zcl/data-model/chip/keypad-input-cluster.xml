@@ -43,7 +43,7 @@ limitations under the License.
       <mandatoryConform/>
     </command>
 
-    <command source="server" code="0x01" name="SendKeyResponse" optional="false" disableDefaultResponse="true">
+    <command source="server" code="0x01" name="SendKeyResponse" optional="false">
       <description>This command SHALL be generated in response to a SendKey Request command.</description>
       <arg name="Status" type="StatusEnum"/>
       <mandatoryConform/>

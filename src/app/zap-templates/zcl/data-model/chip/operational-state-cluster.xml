@@ -58,7 +58,9 @@ limitations under the License.
     <client init="false" tick="false">true</client>
     <server init="false" tick="false">true</server>
     <description>This cluster supports remotely monitoring and, where supported, changing the operational state of any device where a state machine is a part of the operation.</description>
+    
     <globalAttribute side="either" code="0xFFFD" value="1"/>
+    
     <attribute side="server" code="0x0000" define="PHASE_LIST" type="array" entryType="char_string" isNullable="true">
       <description>PhaseList</description>
       <mandatoryConform/>

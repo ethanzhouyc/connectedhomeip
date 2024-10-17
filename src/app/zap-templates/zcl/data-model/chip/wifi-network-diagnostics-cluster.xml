@@ -63,6 +63,7 @@ limitations under the License.
         <optionalConform/>
       </feature>
     </features>
+    
     <attribute side="server" code="0x00" define="BSSID" type="octet_string" length="6" isNullable="true" minLength="6">
       <description>BSSID</description>
       <mandatoryConform/>

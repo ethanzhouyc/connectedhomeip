@@ -186,7 +186,8 @@ planned operation.">
     </command>
 
     <command source="client" code="0x07" name="CancelRequest" optional="true">
-        <description>Allows a client to request cancellation of a previous adjustment request in a StartTimeAdjustRequest, ModifyForecastRequest or RequestConstraintBasedForecast command</description>      <mandatoryConform>
+      <description>Allows a client to request cancellation of a previous adjustment request in a StartTimeAdjustRequest, ModifyForecastRequest or RequestConstraintBasedForecast command</description>
+      <mandatoryConform>
         <orTerm>
           <feature name="STA"/>
           <feature name="FA"/>

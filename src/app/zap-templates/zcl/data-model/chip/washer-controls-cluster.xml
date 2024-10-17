@@ -45,6 +45,7 @@ limitations under the License.
         <optionalConform/>
       </feature>
     </features>
+    
     <attribute side="server" code="0x0000" define="SPIN_SPEEDS" type="array" entryType="char_string" optional="true">
       <description>SpinSpeeds</description>
       <mandatoryConform>

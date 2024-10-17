@@ -42,6 +42,7 @@ limitations under the License.
         <optionalConform/>
       </feature>
     </features>
+
     <attribute side="server" code="0x0000" define="MASK" type="AlarmBitmap" default="0">
       <description>Mask</description>
       <mandatoryConform/>
@@ -60,6 +61,7 @@ limitations under the License.
       <description>Supported</description>
       <mandatoryConform/>
     </attribute>
+
     <command source="client" code="0x00" name="Reset" optional="true">
       <description>Reset alarm</description>
       <arg name="Alarms" type="AlarmBitmap" optional="false"/>
@@ -74,7 +76,7 @@ limitations under the License.
       <optionalConform/>
     </command>
 
-    <event side="server" code="0x00" priority="info" name="Notify">
+    <event side="server" code="0x00" priority="info" name="Notify" optional="false">
       <description>Notify</description>
       <field id="0" name="Active" type="AlarmBitmap"/>
       <field id="1" name="Inactive" type="AlarmBitmap"/>

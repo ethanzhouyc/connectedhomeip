@@ -67,6 +67,7 @@ limitations under the License.
     </attribute>
     <attribute side="server" code="0x0002" define="START_UP_MODE"    type="int8u"                              writable="true"  optional="true"  isNullable="true">StartUpMode</attribute>
     <attribute side="server" code="0x0003" define="ON_MODE"          type="int8u"                              writable="true"  optional="true"  isNullable="true">OnMode</attribute>
+    
     <!-- Commands -->
     <command source="client" code="0x00" name="ChangeToMode" response="ChangeToModeResponse" optional="false">
       <description>

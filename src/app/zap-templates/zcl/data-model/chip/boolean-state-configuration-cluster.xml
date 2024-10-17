@@ -75,7 +75,7 @@ limitations under the License.
         <feature name="SENSLVL"/>
       </optionalConform>
     </attribute>
-    <attribute side="server" code="0x0003" define="ALARMS_ACTIVE" type="AlarmModeBitmap" optional="true" default="0x00">
+    <attribute side="server" code="0x0003" define="ALARMS_ACTIVE" type="AlarmModeBitmap" optional="true">
       <description>AlarmsActive</description>
       <mandatoryConform>
         <orTerm>
@@ -84,7 +84,7 @@ limitations under the License.
         </orTerm>
       </mandatoryConform>
     </attribute>
-    <attribute side="server" code="0x0004" define="ALARMS_SUPPRESSED" type="AlarmModeBitmap" optional="true" default="0x00">
+    <attribute side="server" code="0x0004" define="ALARMS_SUPPRESSED" type="AlarmModeBitmap" optional="true">
       <description>AlarmsSuppressed</description>
       <mandatoryConform>
         <feature name="SPRS"/>
@@ -99,7 +99,7 @@ limitations under the License.
         </orTerm>
       </optionalConform>
     </attribute>
-    <attribute side="server" code="0x0006" define="ALARMS_SUPPORTED" type="AlarmModeBitmap" optional="true" default="0x00">
+    <attribute side="server" code="0x0006" define="ALARMS_SUPPORTED" type="AlarmModeBitmap" optional="true">
       <description>AlarmsSupported</description>
       <mandatoryConform>
         <orTerm>

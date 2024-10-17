@@ -61,17 +61,17 @@ limitations under the License.
         <provisionalConform/>
       </feature>
     </features>
-    <attribute side="server" code="0x0000" define="CURRENT_LEVEL" type="int8u" isNullable="true" default="0x00">
+    <attribute side="server" code="0x0000" define="CURRENT_LEVEL" type="int8u" isNullable="true">
       <description>CurrentLevel</description>
       <mandatoryConform/>
     </attribute>
-    <attribute side="server" code="0x0001" define="LEVEL_CONTROL_REMAINING_TIME" type="int16u" min="0x0000"  max="0xFFFF" default="0x0000" optional="true">
+    <attribute side="server" code="0x0001" define="LEVEL_CONTROL_REMAINING_TIME" type="int16u" default="0x0000" optional="true">
       <description>RemainingTime</description>
       <mandatoryConform>
         <feature name="LT"/>
       </mandatoryConform>
     </attribute>
-    <attribute side="server" code="0x0002" define="MINIMUM_LEVEL" type="int8u" min="0x00" max="0xFF" default="0x00" optional="true">
+    <attribute side="server" code="0x0002" define="MINIMUM_LEVEL" type="int8u" default="0x00" optional="true">
       <description>MinLevel</description>
       <optionalConform>
         <notTerm>
@@ -79,17 +79,17 @@ limitations under the License.
         </notTerm>
       </optionalConform>
     </attribute>
-    <attribute side="server" code="0x0003" define="MAXIMUM_LEVEL" type="int8u" min="0x00" max="0xFF" default="0xFE" optional="true">
+    <attribute side="server" code="0x0003" define="MAXIMUM_LEVEL" type="int8u" default="0xFE" optional="true">
       <description>MaxLevel</description>
       <optionalConform/>
     </attribute>
-    <attribute side="server" code="0x0004" define="CURRENT_FREQUENCY" type="int16u" min="0x0000" max="0xFFFF" default="0x0000" optional="true" reportable="true">
+    <attribute side="server" code="0x0004" define="CURRENT_FREQUENCY" type="int16u" default="0x0000" optional="true" reportable="true">
       <description>CurrentFrequency</description>
       <mandatoryConform>
         <feature name="FQ"/>
       </mandatoryConform>
     </attribute>
-    <attribute side="server" code="0x0005" define="MIN_FREQUENCY" type="int16u" min="0x0000" max="0xFFFF" default="0x0000" optional="true">
+    <attribute side="server" code="0x0005" define="MIN_FREQUENCY" type="int16u" default="0x0000" optional="true">
       <description>MinFrequency</description>
       <mandatoryConform>
         <feature name="FQ"/>

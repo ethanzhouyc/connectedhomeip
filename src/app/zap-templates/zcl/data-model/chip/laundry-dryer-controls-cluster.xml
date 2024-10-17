@@ -35,7 +35,9 @@ limitations under the License.
         <server init="false" tick="false">true</server>
         <description>This cluster provides a way to access options associated with the operation of
             a laundry dryer device type.</description>
+
     <globalAttribute side="either" code="0xFFFD" value="1"/>
+    
     <attribute side="server" code="0x0000" define="SUPPORTED_DRYNESS_LEVELS" type="array" entryType="DrynessLevelEnum" min="0x01" max="0x04">
       <description>SupportedDrynessLevels</description>
       <mandatoryConform/>

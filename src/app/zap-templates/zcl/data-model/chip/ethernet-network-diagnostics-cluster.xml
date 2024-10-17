@@ -44,6 +44,7 @@ limitations under the License.
         <optionalConform/>
       </feature>
     </features>
+    
     <attribute side="server" code="0x00" define="PHY_RATE" type="PHYRateEnum" isNullable="true" optional="true">
       <description>PHYRate</description>
       <optionalConform/>
@@ -52,31 +53,31 @@ limitations under the License.
       <description>FullDuplex</description>
       <optionalConform/>
     </attribute>
-    <attribute side="server" code="0x02" define="PACKET_RX_COUNT" type="int64u" min="0x0000000000000000" max="0xFFFFFFFFFFFFFFFF" default="0x0000000000000000" optional="true">
+    <attribute side="server" code="0x02" define="PACKET_RX_COUNT" type="int64u" default="0x0000000000000000" optional="true">
       <description>PacketRxCount</description>
       <mandatoryConform>
         <feature name="PKTCNT"/>
       </mandatoryConform>
     </attribute>
-    <attribute side="server" code="0x03" define="PACKET_TX_COUNT" type="int64u" min="0x0000000000000000" max="0xFFFFFFFFFFFFFFFF" default="0x0000000000000000" optional="true">
+    <attribute side="server" code="0x03" define="PACKET_TX_COUNT" type="int64u" default="0x0000000000000000" optional="true">
       <description>PacketTxCount</description>
       <mandatoryConform>
         <feature name="PKTCNT"/>
       </mandatoryConform>
     </attribute>
-    <attribute side="server" code="0x04" define="TX_ERR_COUNT" type="int64u" min="0x0000000000000000" max="0xFFFFFFFFFFFFFFFF" default="0x0000000000000000" optional="true">
+    <attribute side="server" code="0x04" define="TX_ERR_COUNT" type="int64u" default="0x0000000000000000" optional="true">
       <description>TxErrCount</description>
       <mandatoryConform>
         <feature name="ERRCNT"/>
       </mandatoryConform>
     </attribute>
-    <attribute side="server" code="0x05" define="COLLISION_COUNT" type="int64u" min="0x0000000000000000" max="0xFFFFFFFFFFFFFFFF" default="0x0000000000000000" optional="true">
+    <attribute side="server" code="0x05" define="COLLISION_COUNT" type="int64u" default="0x0000000000000000" optional="true">
       <description>CollisionCount</description>
       <mandatoryConform>
         <feature name="ERRCNT"/>
       </mandatoryConform>
     </attribute>
-    <attribute side="server" code="0x06" define="ETHERNET_OVERRUN_COUNT" type="int64u" min="0x0000000000000000" max="0xFFFFFFFFFFFFFFFF" default="0x0000000000000000" optional="true">
+    <attribute side="server" code="0x06" define="ETHERNET_OVERRUN_COUNT" type="int64u" default="0x0000000000000000" optional="true">
       <description>OverrunCount</description>
       <mandatoryConform>
         <feature name="ERRCNT"/>
@@ -86,7 +87,7 @@ limitations under the License.
       <description>CarrierDetect</description>
       <optionalConform/>
     </attribute>
-    <attribute side="server" code="0x08" define="TIME_SINCE_RESET" type="int64u" min="0x0000000000000000" max="0xFFFFFFFFFFFFFFFF" default="0x0000000000000000" optional="true">
+    <attribute side="server" code="0x08" define="TIME_SINCE_RESET" type="int64u" default="0x0000000000000000" optional="true">
       <description>TimeSinceReset</description>
       <optionalConform/>
     </attribute>

@@ -30,7 +30,7 @@ limitations under the License.
         <optionalConform/>
       </feature>
     </features>
-    <attribute side="server" code="0x0000" define="AUDIO_OUTPUT_LIST" type="array" entryType="OutputInfoStruct">
+    <attribute side="server" code="0x0000" define="AUDIO_OUTPUT_LIST" type="array" entryType="OutputInfoStruct" length="254">
       <description>OutputList</description>
       <mandatoryConform/>
     </attribute>

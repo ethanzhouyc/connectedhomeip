@@ -81,6 +81,7 @@ limitations under the License.
         </optionalConform>
       </feature>
     </features>
+    
     <attribute side="server" code="0x0000" define="ON_OFF" type="boolean" default="0" reportable="true">
       <description>OnOff</description>
       <mandatoryConform/>

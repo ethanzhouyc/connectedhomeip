@@ -170,7 +170,7 @@ limitations under the License.
       </mandatoryConform>
     </attribute>
     <!-- Conformance feature M -->
-    <attribute side="server" code="0x000D" define="WC_END_PRODUCT_TYPE" type="EndProductTypeEnum" min="0x00" max="0x20" default="0x00">
+    <attribute side="server" code="0x000D" define="WC_END_PRODUCT_TYPE" type="EndProductType" min="0x00" max="0x20" default="0x00">
       <description>EndProductType</description>
       <mandatoryConform/>
     </attribute>
@@ -252,10 +252,11 @@ limitations under the License.
     <!-- attribute side="server" writable="true"  code="0x0018" define="WC_INTERMEDIATE_SETPOINTS_LIFT"           type="octet_string" length="254" default="1,0x0000"        optional="true" >IntermediateSetpointsLift</attribute> -->
     <!-- attribute side="server" writable="true"  code="0x0019" define="WC_INTERMEDIATE_SETPOINTS_TILT"           type="octet_string" length="254" default="1,0x0000"        optional="true" >IntermediateSetpointsTilt</attribute> -->
     <!-- Conformance feature Optional -->
-    <attribute side="server" code="0x001A" define="WC_SAFETY_STATUS" type="SafetyStatus" min="0x0000" max="0x0FFF" default="0x0000" optional="true" reportable="true">
+    <attribute side="server" code="0x001A" define="WC_SAFETY_STATUS" type="SafetyStatus" min="0x0000" max="0xFFFF" default="0x0000" optional="true" reportable="true">
       <description>SafetyStatus</description>
       <optionalConform/>
     </attribute>
+    
     <!-- Window Covering Command Set -->
     <!-- Conformance feature M -->
     <command source="client" code="0x00" name="UpOrOpen" optional="false" cli="zcl WindowCovering UpOrOpen">

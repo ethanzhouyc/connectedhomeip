@@ -36,19 +36,20 @@ limitations under the License.
         <optionalConform/>
       </feature>
     </features>
+
     <attribute side="server" code="0x00" define="THREAD_METRICS" type="array" entryType="ThreadMetricsStruct" length="254" optional="true">
       <description>ThreadMetrics</description>
       <optionalConform/>
     </attribute>
-    <attribute side="server" code="0x01" define="CURRENT_HEAP_FREE" type="int64u" default="0x0000000000000000" optional="true">
+    <attribute side="server" code="0x01" define="CURRENT_HEAP_FREE" type="int64u" optional="true">
       <description>CurrentHeapFree</description>
       <optionalConform/>
     </attribute>
-    <attribute side="server" code="0x02" define="CURRENT_HEAP_USED" type="int64u" default="0x0000000000000000" optional="true">
+    <attribute side="server" code="0x02" define="CURRENT_HEAP_USED" type="int64u" optional="true">
       <description>CurrentHeapUsed</description>
       <optionalConform/>
     </attribute>
-    <attribute side="server" code="0x03" define="CURRENT_HEAP_HIGH_WATERMARK" type="int64u" default="0x0000000000000000" optional="true">
+    <attribute side="server" code="0x03" define="CURRENT_HEAP_HIGH_WATERMARK" type="int64u" optional="true">
       <description>CurrentHeapHighWatermark</description>
       <mandatoryConform>
         <feature name="WTRMRK"/>
@@ -68,7 +69,6 @@ limitations under the License.
       <field id="2" name="FaultRecording" type="octet_string" length="1024" optional="true"/>
       <optionalConform/>
     </event>
-
   </cluster>
 
 </configurator>

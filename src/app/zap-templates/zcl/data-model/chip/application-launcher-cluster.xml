@@ -30,7 +30,7 @@ limitations under the License.
         <optionalConform/>
       </feature>
     </features>
-    <attribute side="server" code="0x0000" define="APPLICATION_LAUNCHER_LIST" type="array" entryType="int16u" optional="true">
+    <attribute side="server" code="0x0000" define="APPLICATION_LAUNCHER_LIST" type="array" entryType="int16u" reportable="true" optional="true">
       <description>CatalogList</description>
       <mandatoryConform>
         <feature name="AP"/>

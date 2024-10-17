@@ -178,11 +178,11 @@ limitations under the License.
       <arg name="Duration" type="int32u"/>
     </command>
 
-    <event side="server" code="0x00" priority="info" name="StateChanged">
-      <description>This event SHALL be generated when there is a change in the State of an ActionID during the execution of an action and the most recent command using that ActionID used an InvokeID data field.</description>
+    <event side="server" code="0x00" priority="info" name="StateChanged" optional="false">
+      <description>This event SHALL be generated when there is a change in the Status of an ActionID.</description>
       <field id="0" name="ActionID" type="int16u"/>
       <field id="1" name="InvokeID" type="int32u"/>
-      <field id="2" name="NewState" type="ActionStateEnum" min="0x00" max="0x03"/>
+      <field id="2" name="NewState" type="ActionStateEnum" />
       <mandatoryConform/>
     </event>
 

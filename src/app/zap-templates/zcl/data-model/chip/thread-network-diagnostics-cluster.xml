@@ -107,6 +107,7 @@ limitations under the License.
         <optionalConform/>
       </feature>
     </features>
+    
     <attribute side="server" code="0x00" define="CHANNEL" type="int16u" isNullable="true">
       <description>Channel</description>
       <mandatoryConform/>
@@ -443,14 +444,6 @@ limitations under the License.
     </attribute>
     <attribute side="server" code="0x3E" define="ACTIVE_THREAD_NETWORK_FAULTS" type="array" entryType="NetworkFaultEnum" length="4">
       <description>ActiveNetworkFaultsList</description>
-      <mandatoryConform/>
-    </attribute>
-    <attribute code="0x003F" side="server" define="EXT_ADDRESS" type="int64u" isNullable="true">
-      <description>ExtAddress</description>
-      <mandatoryConform/>
-    </attribute>
-    <attribute code="0x0040" side="server" define="RLOC_16" type="int16u" isNullable="true">
-      <description>Rloc16</description>
       <mandatoryConform/>
     </attribute>
     <command source="client" code="0x00" name="ResetCounts" optional="true" cli="chip thread_network_diagnostics resetcounts">

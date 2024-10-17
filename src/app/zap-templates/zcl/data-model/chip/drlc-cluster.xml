@@ -198,6 +198,7 @@ limitations under the License.
         <optionalConform choice="a" more="true"/>
       </feature>
     </features>
+
     <attribute side="server" code="0x0000" define="LOAD_CONTROL_PROGRAMS" type="array" entryType="LoadControlProgramStruct">
       <description>LoadControlPrograms</description>
       <mandatoryConform/>
@@ -210,7 +211,7 @@ limitations under the License.
       <description>Events</description>
       <mandatoryConform/>
     </attribute>
-    <attribute side="server" code="0x0003" define="LOAD_CONTROL_ACTIVE_EVENTS" type="array" entryType="octet_string">
+    <attribute side="server" code="0x0003" define="LOAD_CONTROL_ACTIVE_EVENTS" type="array" entryType="LoadControlEventStruct">
       <description>ActiveEvents</description>
       <mandatoryConform/>
     </attribute>

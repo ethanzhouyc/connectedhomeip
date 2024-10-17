@@ -31,6 +31,7 @@ limitations under the License.
         <optionalConform/>
       </feature>
     </features>
+    
     <attribute side="server" code="0x0000" define="PRESSURE_MEASURED_VALUE" type="int16s" reportable="true" isNullable="true">
       <description>MeasuredValue</description>
       <mandatoryConform/>
@@ -47,7 +48,7 @@ limitations under the License.
       <description>Tolerance</description>
       <optionalConform/>
     </attribute>
-    <attribute side="server" code="0x0010" define="PRESSURE_SCALED_VALUE" type="int16s" optional="true" default="0" isNullable="true" max="32767">
+    <attribute side="server" code="0x0010" define="PRESSURE_SCALED_VALUE" type="int16s" optional="true" default="0" isNullable="true">
       <description>ScaledValue</description>
       <mandatoryConform>
         <feature name="EXT"/>

@@ -79,6 +79,7 @@ limitations under the License.
       <description>MaxGroupKeysPerFabric</description>
       <mandatoryConform/>
     </attribute>
+    
     <command source="client" code="0x00" name="KeySetWrite" isFabricScoped="true" optional="false" cli="zcl GroupKeyManagement KeySetWrite">
       <description>Write a new set of keys for the given key set id.</description>
       <arg name="GroupKeySet" type="GroupKeySetStruct"/>

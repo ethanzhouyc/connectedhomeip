@@ -125,6 +125,7 @@ limitations under the License.
         <feature name="PROG"/>
       </mandatoryConform>
     </attribute>
+    
     <!-- Commands -->
     <command source="client" code="0x00" name="SelectAreas" response="SelectAreasResponse" optional="false">
       <description>

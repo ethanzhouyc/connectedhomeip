@@ -56,6 +56,7 @@ limitations under the License.
       <description>Description</description>
       <mandatoryConform/>
     </attribute>
+    
     <attribute side="server" code="0x0003" define="POWER_SOURCE_WIRED_ASSESSED_INPUT_VOLTAGE" type="int32u" optional="true" isNullable="true">
       <description>WiredAssessedInputVoltage</description>
       <optionalConform>
@@ -104,6 +105,7 @@ limitations under the License.
         <feature name="WIRED"/>
       </optionalConform>
     </attribute>
+    
     <attribute side="server" code="0x000B" define="POWER_SOURCE_BAT_VOLTAGE" type="int32u" optional="true" isNullable="true">
       <description>BatVoltage</description>
       <optionalConform>

@@ -91,21 +91,22 @@ limitations under the License.
         <optionalConform/>
       </feature>
     </features>
+
     <attribute side="server" code="0x00" define="NETWORK_INTERFACES" type="array" entryType="NetworkInterface" length="8">
       <description>NetworkInterfaces</description>
       <mandatoryConform/>
     </attribute>
-    <attribute side="server" code="0x01" define="REBOOT_COUNT" type="int16u" default="0x0000">
+    <attribute side="server" code="0x01" define="REBOOT_COUNT" type="int16u">
       <description>RebootCount</description>
       <mandatoryConform/>
     </attribute>
     <!-- ***NOTE***: UpTime attribute is mandatory starting at Rev >= 2, but because of backwards compatibility, has to be optional here.
          The device type config and cert tests (TC-DGGEN-1.1/2.1) ensure that it is present. -->
-    <attribute side="server" code="0x02" define="UP_TIME" type="int64u" default="0x0000000000000000">
+    <attribute side="server" code="0x02" define="UP_TIME" type="int64u">
       <description>UpTime</description>
       <mandatoryConform/>
     </attribute>
-    <attribute side="server" code="0x03" define="TOTAL_OPERATIONAL_HOURS" type="int32u" default="0x00000000" optional="true">
+    <attribute side="server" code="0x03" define="TOTAL_OPERATIONAL_HOURS" type="int32u" optional="true">
       <description>TotalOperationalHours</description>
       <optionalConform/>
     </attribute>
@@ -169,9 +170,9 @@ limitations under the License.
       </mandatoryConform>
     </command>
 
-   <command source="server" code="0x04" name="PayloadTestResponse" optional="true" apiMaturity="provisional" disableDefaultResponse="true">
-      <description>This command is sent by the server on receipt of the PayloadTestRequest command.</description>
-      <arg id="0" name="Payload" type="long_octet_string" length="2048"/>
+   <command source="server" code="0x04" name="PayloadTestResponse" optional="true" apiMaturity="provisional">
+      <description>Response for the PayloadTestRequest command.</description>
+      <arg name="Payload" type="octet_string" max="2048" optional="false"/>
       <mandatoryConform>
         <feature name="DMTEST"/>
       </mandatoryConform>
@@ -195,7 +196,6 @@ limitations under the License.
       <field id="1" name="Previous" type="NetworkFaultEnum" array="true"/>
       <optionalConform/>
     </event>
-
     <event side="server" code="0x03" name="BootReason" priority="critical" optional="false">
       <description>Indicate the reason that caused the device to start-up.</description>
       <field id="0" name="BootReason" type="BootReasonEnum"/>

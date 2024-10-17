@@ -51,6 +51,7 @@ limitations under the License.
     <client tick="false" init="false">true</client>
     <server tick="false" init="false">true</server>
     <globalAttribute side="either" code="0xFFFD" value="4"/>
+    
     <attribute side="server" code="0x0000" define="IDENTIFY_TIME" type="int16u" writable="true" default="0x0">
       <description>IdentifyTime</description>
       <mandatoryConform/>
@@ -59,6 +60,7 @@ limitations under the License.
       <description>IdentifyType</description>
       <mandatoryConform/>
     </attribute>
+    
     <command source="client" code="0x00" name="Identify" optional="false">
       <description>
         Command description for Identify

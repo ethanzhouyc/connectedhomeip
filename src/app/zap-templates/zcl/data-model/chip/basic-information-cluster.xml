@@ -72,9 +72,8 @@ limitations under the License.
     <description>This cluster provides attributes and events for determining basic information about Nodes, which supports both
       Commissioning and operational determination of Node characteristics, such as Vendor ID, Product ID and serial number,
       which apply to the whole Node. Also allows setting user device information such as location.</description>
-    <client init="false" tick="false">true</client>
-    <server init="false" tick="false">true</server>
-    <globalAttribute side="either" code="0xFFFD" value="4"/>
+    <globalAttribute side="either" code="0xFFFD" value="3"/>
+
     <attribute side="server" code="0" define="DATA_MODEL_REVISION" type="int16u">
       <description>DataModelRevision</description>
       <mandatoryConform/>
@@ -165,21 +164,18 @@ limitations under the License.
       <description>ProductAppearance</description>
       <optionalConform/>
     </attribute>
-    <attribute side="server" code="21" define="SPECIFICATION_VERSION" type="int32u" default="0">
+    <attribute side="server" code="21" define="SPECIFICATION_VERSION" type="int32u">
       <description>SpecificationVersion</description>
       <mandatoryConform/>
     </attribute>
-    <attribute side="server" code="22" define="MAX_PATHS_PER_INVOKE" type="int16u" min="1" default="1">
+    <attribute side="server" code="22" define="MAX_PATHS_PER_INVOKE" type="int16u">
       <description>MaxPathsPerInvoke</description>
       <mandatoryConform/>
     </attribute>
-    <attribute code="0x0017" side="server" define="DEVICE_LOCATION" type="LocationDescriptorStruct" isNullable="true" writable="true" optional="true">
-      <description>DeviceLocation</description>
-      <access op="write" privilege="administer"/>
-      <optionalConform/>
-    </attribute>
-    <event side="server" code="0x00" name="StartUp" priority="critical">
-      <description>The StartUp event SHALL be emitted by a Node as soon as reasonable after completing a boot or reboot process.</description>      <field id="0" name="SoftwareVersion" type="int32u"/>
+
+    <event side="server" code="0x00" name="StartUp" priority="critical" optional="false">
+      <description>The StartUp event SHALL be emitted by a Node as soon as reasonable after completing a boot or reboot process.</description>
+      <field id="0" name="SoftwareVersion" type="int32u"/>
       <mandatoryConform/>
     </event>
     <event side="server" code="0x01" name="ShutDown" priority="critical" optional="true">

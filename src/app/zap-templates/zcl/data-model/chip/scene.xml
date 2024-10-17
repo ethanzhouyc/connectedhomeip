@@ -92,6 +92,7 @@ limitations under the License.
       <description>FabricSceneInfo</description>
       <mandatoryConform/>
     </attribute>
+    
     <command source="client" code="0x00" name="AddScene" response="AddSceneResponse" isFabricScoped="true" optional="false" cli="chip scenes add">
       <description>
         Add a scene to the scene table. Extension field sets are supported, and are inputed as '{"ClusterID": VALUE, "AttributeValueList":[{"AttributeID": VALUE, "Value*": VALUE}]}'

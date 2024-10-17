@@ -77,11 +77,12 @@ Interactions with the switch device are exposed as attributes (for the latching 
         </optionalConform>
       </feature>
     </features>
+
     <attribute side="server" code="0x0000" define="NUMBER_OF_POSITIONS" type="int8u" default="2" min="2">
       <description>NumberOfPositions</description>
       <mandatoryConform/>
     </attribute>
-    <attribute side="server" code="0x0001" define="CURRENT_POSITION" type="int8u">
+    <attribute side="server" code="0x0001" define="CURRENT_POSITION" type="int8u" reportable="true">
       <description>CurrentPosition</description>
       <mandatoryConform/>
     </attribute>

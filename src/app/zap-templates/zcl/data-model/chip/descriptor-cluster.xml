@@ -66,9 +66,5 @@ limitations under the License.
         <feature name="TAGLIST"/>
       </mandatoryConform>
     </attribute>
-    <attribute code="0x0005" side="server" define="ENDPOINT_UNIQUE_ID" type="char_string" length="32" optional="true">
-      <description>EndpointUniqueID</description>
-      <optionalConform/>
-    </attribute>
   </cluster>
 </configurator>

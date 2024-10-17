@@ -32,7 +32,7 @@ limitations under the License.
       <description>VendorID</description>
       <optionalConform/>
     </attribute>
-    <attribute side="server" code="0x0002" define="APPLICATION_NAME" type="char_string">
+    <attribute side="server" code="0x0002" define="APPLICATION_NAME" type="long_char_string" length="256">
       <description>ApplicationName</description>
       <mandatoryConform/>
     </attribute>
@@ -44,7 +44,7 @@ limitations under the License.
       <description>Application</description>
       <mandatoryConform/>
     </attribute>
-    <attribute side="server" code="0x0005" define="APPLICATION_STATUS" type="ApplicationStatusEnum" min="0x00" max="0x03">
+    <attribute side="server" code="0x0005" define="APPLICATION_STATUS" type="ApplicationStatusEnum" default="0x01" min="0x00" max="0xFF">
       <description>Status</description>
       <mandatoryConform/>
     </attribute>
@@ -52,7 +52,7 @@ limitations under the License.
       <description>ApplicationVersion</description>
       <mandatoryConform/>
     </attribute>
-    <attribute side="server" code="0x0007" define="APPLICATION_ALLOWED_VENDOR_LIST" type="array" entryType="vendor_id">
+    <attribute side="server" code="0x0007" define="APPLICATION_ALLOWED_VENDOR_LIST" type="array" entryType="vendor_id" length="32">
       <description>AllowedVendorList</description>
       <access op="read" role="administer"/>
       <mandatoryConform/>

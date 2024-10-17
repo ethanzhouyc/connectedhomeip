@@ -43,7 +43,7 @@ limitations under the License.
         <optionalConform/>
       </feature>
     </features>
-    <attribute side="server" code="0x0000" define="WINDOW_STATUS" type="CommissioningWindowStatusEnum" min="0x00" max="0x02">
+    <attribute side="server" code="0x0000" define="WINDOW_STATUS" type="CommissioningWindowStatusEnum">
       <description>WindowStatus</description>
       <mandatoryConform/>
     </attribute>

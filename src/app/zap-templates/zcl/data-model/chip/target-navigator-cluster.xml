@@ -33,6 +33,7 @@ limitations under the License.
       <description>CurrentTarget</description>
       <optionalConform/>
     </attribute>
+    
     <command source="client" code="0x00" name="NavigateTarget" response="NavigateTargetResponse" optional="false">
       <description>Upon receipt, this SHALL navigation the UX to the target identified.</description>
       <arg name="Target" type="int8u"/>

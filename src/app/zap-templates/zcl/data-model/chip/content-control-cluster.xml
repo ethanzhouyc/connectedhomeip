@@ -70,13 +70,13 @@ limitations under the License.
         <feature name="SCR"/>
       </mandatoryConform>
     </attribute>
-    <attribute side="server" code="0x0005" define="SCREEN_DAILY_TIME" type="elapsed_s" optional="true" max="86400">
+    <attribute side="server" code="0x0005" define="SCREEN_DAILY_TIME" type="elapsed_s" optional="true" length="86400">
       <description>ScreenDailyTime</description>
       <mandatoryConform>
         <feature name="ST"/>
       </mandatoryConform>
     </attribute>
-    <attribute side="server" code="0x0006" define="REMAINING_SCREEN_TIME" type="elapsed_s" optional="true" max="86400">
+    <attribute side="server" code="0x0006" define="REMAINING_SCREEN_TIME" type="elapsed_s" optional="true" length="86400">
       <description>RemainingScreenTime</description>
       <mandatoryConform>
         <feature name="ST"/>
@@ -88,6 +88,12 @@ limitations under the License.
         <feature name="BU"/>
       </mandatoryConform>
     </attribute>
+
+    <command source="client" code="0x00" name="UpdatePIN" optional="true">
+      <description>The purpose of this command is to update the PIN used for protecting configuration of the content control settings. Upon success, the old PIN SHALL no longer work. The PIN is used to ensure that only the Node (or User) with the PIN code can make changes to the Content Control settings, for example, turn off Content Controls or modify the ScreenDailyTime. The PIN is composed of a numeric string of up to 6 human readable characters (displayable) . Upon receipt of this command, the media device SHALL check if the OldPIN field of this command is the same as the current PIN. If the PINs are the same, then the PIN code SHALL be set to NewPIN. Otherwise a response with InvalidPINCode error status SHALL be returned. The media device MAY provide a default PIN to the User via an out of band mechanism. For security reasons, it is recommended that a client encourage the user to update the PIN from its default value when performing configuration of the Content Control settings exposed by this cluster. The ResetPIN command can also be used to obtain the default PIN.</description>
+      <arg name="OldPIN" type="char_string" max="6" optional="true"/>
+      <arg name="NewPIN" type="char_string" max="6" optional="false"/>
+    </command>
 
     <command source="client" code="0x01" name="ResetPIN" response="ResetPINResponse" optional="true">
       <description>The purpose of this command is to reset the PIN. If this command is executed successfully, a ResetPINResponse command with a new PIN SHALL be returned.</description>
@@ -167,7 +173,6 @@ limitations under the License.
         <feature name="ST"/>
       </mandatoryConform>
     </event>
-
   </cluster>
 
   <struct name="RatingNameStruct">

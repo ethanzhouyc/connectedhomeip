@@ -113,6 +113,7 @@ limitations under the License.
         <optionalConform/>
       </feature>
     </features>
+
     <attribute side="server" code="0x0000" define="UTC_TIME" type="epoch_us" isNullable="true">
       <description>UTCTime</description>
       <mandatoryConform/>
@@ -185,6 +186,7 @@ limitations under the License.
         <feature name="NTPC"/>
       </mandatoryConform>
     </attribute>
+    
     <command source="client" code="0x00" name="SetUTCTime" optional="false">
       <description>This command MAY be issued by Administrator to set the time.</description>
       <arg name="UTCTime" type="epoch_us"/>

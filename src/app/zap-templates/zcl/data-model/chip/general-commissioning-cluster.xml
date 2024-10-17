@@ -145,8 +145,7 @@ limitations under the License.
       <access op="invoke" privilege="administer"/>
       <mandatoryConform/>
     </command>
-
-    <command source="server" code="0x03" name="SetRegulatoryConfigResponse" cli="chip fabric_commissioning setregulatoryconfigresponse" optional="false" disableDefaultResponse="true">
+    <command source="server" code="0x03" name="SetRegulatoryConfigResponse" cli="chip fabric_commissioning setregulatoryconfigresponse">
       <description>Success/failure response for SetRegulatoryConfig command</description>
       <arg name="ErrorCode" type="CommissioningErrorEnum"/>
       <arg name="DebugText" type="char_string"/>
@@ -157,7 +156,7 @@ limitations under the License.
       <access op="invoke" privilege="administer"/>
       <mandatoryConform/>
     </command>
-    <command source="server" code="0x05" name="CommissioningCompleteResponse" optional="false" cli="chip fabric_commissioning commissioningcompleteresponse" disableDefaultResponse="true">
+    <command source="server" code="0x05" name="CommissioningCompleteResponse" optional="false" cli="chip fabric_commissioning commissioningcompleteresponse">
       <description>Indicates to client whether CommissioningComplete command succeeded</description>
       <arg name="ErrorCode" type="CommissioningErrorEnum"/>
       <arg name="DebugText" type="char_string"/>

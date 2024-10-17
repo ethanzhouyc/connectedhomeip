@@ -115,6 +115,7 @@ limitations under the License.
         <feature name="LVL"/>
       </optionalConform>
     </attribute>
+    
     <command source="client" code="0x00" name="Open" optional="false">
       <description>This command is used to set the valve to its open position.</description>
       <arg name="OpenDuration" type="elapsed_s" optional="true" isNullable="true"/>

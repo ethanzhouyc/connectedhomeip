@@ -107,6 +107,7 @@ limitations under the License.
       <description>ExpiryDate</description>
       <optionalConform/>
     </attribute>
+    
     <!-- Commands -->
     <command source="client" code="0x00" name="SelfTestRequest" optional="true">
       <description>This command SHALL initiate a device self-test.</description>

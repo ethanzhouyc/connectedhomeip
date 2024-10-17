@@ -64,7 +64,9 @@ limitations under the License.
     <client init="false" tick="false">true</client>
     <server init="false" tick="false">true</server>
     <description>This cluster supports remotely monitoring and, where supported, changing the operational state of a Robotic Vacuum.</description>
+    
     <globalAttribute side="either" code="0xFFFD" value="1"/>
+    
     <attribute side="server" code="0x0000" define="PHASE_LIST" type="array" entryType="char_string" isNullable="true">
       <description>PhaseList</description>
       <mandatoryConform/>
@@ -81,6 +83,7 @@ limitations under the License.
       <description>OperationalStateList</description>
       <mandatoryConform/>
     </attribute>
+    
     <!--
 The type of this attribute in the spec is OperationalStateEnum, but the OperationalStateEnum in our XML
 excludes the values from the base OperationalState cluster.  Just use ENUM8 for the type, so it allows
@@ -148,7 +151,7 @@ both values from this cluster and from the base cluster.
 
     <event side="server" code="0x01" priority="info" name="OperationCompletion" optional="true">
       <description>OperationCompletion</description>
-      <field id="0" name="CompletionErrorCode"  type="enum8"/>
+      <field id="0" name="CompletionErrorCode"  type="enum8"                            optional="false"/>
       <field id="1" name="TotalOperationalTime" type="elapsed_s" isNullable="true" optional="true"/>
       <field id="2" name="PausedTime" type="elapsed_s" isNullable="true" optional="true"/>
       <optionalConform/>

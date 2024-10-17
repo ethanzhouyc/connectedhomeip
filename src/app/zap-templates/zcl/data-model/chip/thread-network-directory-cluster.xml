@@ -37,6 +37,7 @@ limitations under the License.
 
     <!-- cluster revision -->
     <globalAttribute side="either" code="0xFFFD" value="1"/>
+    
     <attribute side="server" code="0x0000" define="PREFERRED_EXTENDED_PAN_ID" type="octet_string" length="8" writable="true" isNullable="true" optional="false">
       <description>PreferredExtendedPanID</description>
       <access op="read" privilege="manage"/>

@@ -169,7 +169,7 @@ limitations under the License.
       <optionalConform/>
     </attribute>
     <!-- COMPENSATION_TEXT -->
-    <attribute side="server" code="0x0007" define="COLOR_CONTROL_COLOR_TEMPERATURE" type="int16u" max="0xFEFF" reportable="true" default="0x00FA" optional="true">
+    <attribute side="server" code="0x0007" define="COLOR_CONTROL_COLOR_TEMPERATURE" type="int16u" min="0x0001" max="0xFEFF" reportable="true" default="0x00FA" optional="true">
       <description>ColorTemperatureMireds</description>
       <mandatoryConform>
         <feature name="CT"/>
@@ -502,7 +502,7 @@ limitations under the License.
       <optionalConform/>
     </attribute>
     <!-- COLOR_POINT_B_INTENSITY -->
-    <attribute side="server" code="0x400D" define="COLOR_CONTROL_TEMPERATURE_LEVEL_MIN_MIREDS" type="int16u" max="0xFFFF" optional="true">
+    <attribute side="server" code="0x400D" define="COLOR_CONTROL_TEMPERATURE_LEVEL_MIN_MIREDS" type="int16u" optional="true">
       <description>CoupleColorTempToLevelMinMireds</description>
       <mandatoryConform>
         <orTerm>
@@ -671,7 +671,6 @@ limitations under the License.
         <feature name="CT"/>
       </mandatoryConform>
     </command>
-
   </cluster>
 
   <clusterExtension code="0x0300">

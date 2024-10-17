@@ -186,6 +186,7 @@ limitations under the License.
       <description>Detemine the set of networks the device sees as available.</description>
       <arg name="SSID" type="octet_string" length="32" isNullable="true" optional="true"/>
       <arg name="Breadcrumb" type="int64u" optional="true"/>
+      <access op="invoke" privilege="administer"/>
       <mandatoryConform>
         <orTerm>
           <feature name="WI"/>
@@ -193,7 +194,6 @@ limitations under the License.
         </orTerm>
       </mandatoryConform>
     </command>
-
     <command source="server" code="0x01" name="ScanNetworksResponse" optional="true" cli="chip network_commissioning scannetworksresponse">
       <description>Relay the set of networks the device sees as available back to the client.</description>
       <arg name="NetworkingStatus" type="NetworkCommissioningStatusEnum"/>
@@ -207,7 +207,6 @@ limitations under the License.
         </orTerm>
       </mandatoryConform>
     </command>
-
     <command source="client" code="0x02" name="AddOrUpdateWiFiNetwork" optional="true" response="NetworkConfigResponse" cli="chip network_commissioning addorupdatewifinetwork">
       <description>Add or update the credentials for a given Wi-Fi network.</description>
       <arg name="SSID" type="octet_string" length="32"/>
@@ -221,7 +220,6 @@ limitations under the License.
         <feature name="WI"/>
       </mandatoryConform>
     </command>
-
     <command source="client" code="0x03" name="AddOrUpdateThreadNetwork" optional="true" response="NetworkConfigResponse" cli="chip network_commissioning addorupdatethreadnetwork">
       <description>Add or update the credentials for a given Thread network.</description>
       <arg name="OperationalDataset" type="octet_string" length="254"/>
@@ -231,7 +229,6 @@ limitations under the License.
         <feature name="TH"/>
       </mandatoryConform>
     </command>
-
     <command source="client" code="0x04" name="RemoveNetwork" optional="true" response="NetworkConfigResponse" cli="chip network_commissioning removenetwork">
       <description>Remove the definition of a given network (including its credentials).</description>
       <arg name="NetworkID" type="octet_string" length="32"/>
@@ -244,7 +241,6 @@ limitations under the License.
         </orTerm>
       </mandatoryConform>
     </command>
-
     <command source="server" code="0x05" name="NetworkConfigResponse" optional="true" cli="chip network_commissioning addwifiresponse">
       <description>Response command for various commands that add/remove/modify network credentials.</description>
       <arg name="NetworkingStatus" type="NetworkCommissioningStatusEnum"/>
@@ -259,7 +255,6 @@ limitations under the License.
         </orTerm>
       </mandatoryConform>
     </command>
-
     <command source="client" code="0x06" name="ConnectNetwork" optional="true" response="ConnectNetworkResponse" cli="chip network_commissioning connectnetwork">
       <description>Connect to the specified network, using previously-defined credentials.</description>
       <arg name="NetworkID" type="octet_string" length="32"/>
@@ -272,7 +267,6 @@ limitations under the License.
         </orTerm>
       </mandatoryConform>
     </command>
-
     <command source="server" code="0x07" name="ConnectNetworkResponse" optional="true" cli="chip network_commissioning connectnetworkresponse">
       <description>Command that indicates whether we have succcessfully connected to a network.</description>
       <arg name="NetworkingStatus" type="NetworkCommissioningStatusEnum"/>
@@ -285,7 +279,6 @@ limitations under the License.
         </orTerm>
       </mandatoryConform>
     </command>
-
     <command source="client" code="0x08" name="ReorderNetwork" optional="true" response="NetworkConfigResponse" cli="chip network_commissioning connectnetwork">
       <description>Modify the order in which networks will be presented in the Networks attribute.</description>
       <arg name="NetworkID" type="octet_string" length="32"/>
@@ -299,7 +292,6 @@ limitations under the License.
         </orTerm>
       </mandatoryConform>
     </command>
-
     <command source="client" code="0x09" name="QueryIdentity" optional="true" response="QueryIdentityResponse" cli="chip network_commissioning queryidentity">
       <description>Retrieve details about and optionally proof of possession of a network client identity.</description>
       <arg name="KeyIdentifier" type="octet_string" length="20"/>
@@ -309,7 +301,6 @@ limitations under the License.
         <feature name="PDC"/>
       </mandatoryConform>
     </command>
-
     <command source="server" code="0x0a" name="QueryIdentityResponse" optional="true">
       <description>Command that contains details about a network client identity and optionally a proof of possession.</description>
       <arg name="Identity" type="octet_string" length="140"/>
@@ -318,6 +309,5 @@ limitations under the License.
         <feature name="PDC"/>
       </mandatoryConform>
     </command>
-
   </cluster>
 </configurator>

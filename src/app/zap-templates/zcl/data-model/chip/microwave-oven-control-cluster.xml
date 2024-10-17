@@ -40,6 +40,7 @@ limitations under the License.
         </optionalConform>
       </feature>
     </features>
+
     <attribute side="server" code="0x0000" define="COOK_TIME" type="elapsed_s" default="30">
       <description>CookTime</description>
       <mandatoryConform/>
@@ -94,6 +95,7 @@ limitations under the License.
       <description>WattRating</description>
       <optionalConform/>
     </attribute>
+    
     <command source="client" code="0x00" name="SetCookingParameters" optional="false">
       <description>Set Cooking Parameters</description>
         <arg name="CookMode"          type="int8u"     optional="true"/>

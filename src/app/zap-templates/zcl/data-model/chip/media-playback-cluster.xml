@@ -45,6 +45,7 @@ limitations under the License.
         <optionalConform/>
       </feature>
     </features>
+
     <attribute side="server" code="0x0000" define="MEDIA_PLAYBACK_STATE" type="PlaybackStateEnum" min="0x00" max="0x03">
       <description>CurrentState</description>
       <mandatoryConform/>
@@ -109,18 +110,20 @@ limitations under the License.
         <feature name="TT"/>
       </mandatoryConform>
     </attribute>
+
+
     <command source="client" code="0x00" name="Play" response="PlaybackResponse" optional="false">
       <description>Upon receipt, this SHALL play media.</description>
       <mandatoryConform/>
     </command>
 
     <command source="client" code="0x01" name="Pause" response="PlaybackResponse" optional="false">
-      <description>Upon receipt, this SHALL pause playback of the media.</description>
+      <description>Upon receipt, this SHALL pause media.</description>
       <mandatoryConform/>
     </command>
 
     <command source="client" code="0x02" name="Stop" response="PlaybackResponse" optional="false">
-      <description>Upon receipt, this SHALL stop playback of the media.</description>
+      <description>Upon receipt, this SHALL stop media. User experience is context-specific. This will often navigate the user back to the location where media was originally launched.</description>
       <mandatoryConform/>
     </command>
 
@@ -130,77 +133,77 @@ limitations under the License.
     </command>
 
     <command source="client" code="0x04" name="Previous" response="PlaybackResponse" optional="true">
-      <description>Upon receipt, this SHALL cause the handler to be invoked for &quot;Previous&quot;.</description>
+      <description>Upon receipt, this SHALL cause the handler to be invoked for "Previous". User experience is context-specific. This will often Go back to the previous media playback item.</description>
       <optionalConform/>
     </command>
 
     <command source="client" code="0x05" name="Next" response="PlaybackResponse" optional="true">
-      <description>Upon receipt, this SHALL cause the handler to be invoked for &quot;Next&quot;.</description>
+      <description>Upon receipt, this SHALL cause the handler to be invoked for "Next". User experience is context-specific. This will often Go forward to the next media playback item.</description>
       <optionalConform/>
     </command>
 
     <command source="client" code="0x06" name="Rewind" response="PlaybackResponse" optional="true">
-      <description>Upon receipt, this SHALL start playback of the media backward in case the media is currently playing in the forward direction or is not playing.</description>
-      <arg id="0" name="AudioAdvanceUnmuted" type="boolean" optional="true" default="0"/>
+      <description>Upon receipt, this SHALL Rewind through media. Different Rewind speeds can be used on the TV based upon the number of sequential calls to this function. This is to avoid needing to define every speed now (multiple fast, slow motion, etc).</description>
+      <arg name="AudioAdvanceUnmuted" type="boolean" optional="true"/>
       <mandatoryConform>
         <feature name="VS"/>
       </mandatoryConform>
     </command>
 
     <command source="client" code="0x07" name="FastForward" response="PlaybackResponse" optional="true">
-      <description>Upon receipt, this SHALL start playback of the media in the forward direction in case the media is currently playing in the backward direction or is not playing.</description>
-      <arg id="0" name="AudioAdvanceUnmuted" type="boolean" optional="true" default="0"/>
+      <description>Upon receipt, this SHALL Advance through media. Different FF speeds can be used on the TV based upon the number of sequential calls to this function. This is to avoid needing to define every speed now (multiple fast, slow motion, etc).</description>
+      <arg name="AudioAdvanceUnmuted" type="boolean" optional="true"/>
       <mandatoryConform>
         <feature name="VS"/>
       </mandatoryConform>
     </command>
 
     <command source="client" code="0x08" name="SkipForward" response="PlaybackResponse" optional="true">
-      <description>Upon receipt, this SHALL Skip forward in the media by the given number of milliseconds, using the data as follows: </description>
-      <arg id="0" name="DeltaPositionMilliseconds" type="int64u"/>
+      <description>Upon receipt, this SHALL Skip forward in the media by the given number of seconds, using the data as follows:</description>
+      <arg name="DeltaPositionMilliseconds" type="int64u"/>
       <optionalConform/>
     </command>
 
     <command source="client" code="0x09" name="SkipBackward" response="PlaybackResponse" optional="true">
-      <description>Upon receipt, this SHALL Skip backward in the media by the given number of milliseconds, using the data as follows: </description>
-      <arg id="0" name="DeltaPositionMilliseconds" type="int64u"/>
+      <description>Upon receipt, this SHALL Skip backward in the media by the given number of seconds, using the data as follows:</description>
+      <arg name="DeltaPositionMilliseconds" type="int64u"/>
       <optionalConform/>
     </command>
 
     <command source="client" code="0x0B" name="Seek" response="PlaybackResponse" optional="true">
-      <description>Upon receipt, this SHALL change the playback position in the media to the given position using data as follows: </description>
-      <arg id="0" name="Position" type="int64u"/>
+      <description>Upon receipt, this SHALL Skip backward in the media by the given number of seconds, using the data as follows:</description>
+      <arg name="position" type="int64u"/>
       <mandatoryConform>
         <feature name="AS"/>
       </mandatoryConform>
     </command>
 
-    <command source="server" code="0x0A" name="PlaybackResponse" optional="false" disableDefaultResponse="true">
-      <description>This command SHALL be generated in response to various Playback Commands.</description>
-      <arg id="0" name="Status" type="StatusEnum" min="0x00" max="0x05"/>
-      <arg id="1" name="Data" type="char_string" optional="true"/>
+    <command source="server" code="0x0A" name="PlaybackResponse" optional="false">
+      <description>This command SHALL be generated in response to various Playback Request commands.</description>
+      <arg name="Status" type="StatusEnum"/>
+      <arg name="Data"   type="char_string" optional="true"/>
       <mandatoryConform/>
     </command>
 
     <command source="client" code="0x0C" name="ActivateAudioTrack" optional="true">
-      <description>Upon receipt, the server SHALL set the active Audio Track to the one identified by the TrackID in the Track catalog for the streaming media.</description>
-      <arg id="0" name="TrackID" type="char_string" length="32"/>
-      <arg id="1" name="AudioOutputIndex" type="int8u" optional="true" isNullable="true"/>
+      <description>Upon receipt, the server SHALL set the active Audio Track to the one identified by the TrackID in the Track catalog for the streaming media. If the TrackID does not exist in the Track catalog, OR does not correspond to the streaming media OR no media is being streamed at the time of receipt of this command, the server will return an error status of INVALID_ARGUMENT.</description>
+      <arg name="TrackID" type="CHAR_STRING"/>
+      <arg name="AudioOutputIndex"   type="INT8U"/>
       <mandatoryConform>
         <feature name="AT"/>
       </mandatoryConform>
     </command>
 
     <command source="client" code="0x0D" name="ActivateTextTrack" optional="true">
-      <description>Upon receipt, the server SHALL set the active Text Track to the one identified by the TrackID in the Track catalog for the streaming media.</description>
-      <arg id="0" name="TrackID" type="char_string" length="32"/>
+      <description>Upon receipt, the server SHALL set the active Text Track to the one identified by the TrackID in the Track catalog for the streaming media. If the TrackID does not exist in the Track catalog, OR does not correspond to the streaming media OR no media is being streamed at the time of receipt of this command, the server SHALL return an error status of INVALID_ARGUMENT.</description>
+      <arg name="TrackID" type="CHAR_STRING"/>
       <mandatoryConform>
         <feature name="TT"/>
       </mandatoryConform>
     </command>
 
     <command source="client" code="0x0E" name="DeactivateTextTrack" optional="true">
-      <description>If a Text Track is active (i.e.</description>
+      <description>If a Text Track is active (i.e. being displayed), upon receipt of this command, the server SHALL stop displaying it.</description>
       <mandatoryConform>
         <feature name="TT"/>
       </mandatoryConform>
@@ -208,15 +211,15 @@ limitations under the License.
 
     <event side="server" code="0x00" priority="info" name="StateChanged" optional="true">
       <description>If supported, this event SHALL be generated when there is a change in any of the supported attributes of the Media Playback cluster.</description>
-      <field id="0" name="CurrentState" type="PlaybackStateEnum" min="0x00" max="0x03"/>
-      <field id="1" name="StartTime" type="epoch_us" optional="true"/>
-      <field id="2" name="Duration" type="int64u" optional="true"/>
-      <field id="3" name="SampledPosition" type="PlaybackPositionStruct" optional="true"/>
-      <field id="4" name="PlaybackSpeed" type="single" optional="true"/>
-      <field id="5" name="SeekRangeEnd" type="int64u" optional="true"/>
-      <field id="6" name="SeekRangeStart" type="int64u" optional="true"/>
-      <field id="7" name="Data" type="long_octet_string" optional="true" length="900"/>
-      <field id="8" name="AudioAdvanceUnmuted" type="boolean" default="0" optional="true"/>
+      <field id="0" name="CurrentState" type="PlaybackStateEnum"/>
+      <field id="1" name="StartTime" type="EPOCH_US"/>
+      <field id="2" name="Duration" type="INT64U"/>
+      <field id="3" name="SampledPosition" type="PlaybackPositionStruct"/>
+      <field id="4" name="PlaybackSpeed" type="single"/>
+      <field id="5" name="SeekRangeEnd" type="INT64U"/>
+      <field id="6" name="SeekRangeStart" type="INT64U"/>
+      <field id="7" name="Data" type="OCTET_STRING" optional="true" length="900" />
+      <field id="8" name="AudioAdvanceUnmuted" type="boolean" default="true"/>
       <optionalConform/>
     </event>
   </cluster>

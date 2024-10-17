@@ -28,10 +28,12 @@ limitations under the License.
     <server tick="false" tickFrequency="half" init="false">true</server>
 
     <globalAttribute side="either" code="0xFFFD" value="2"/>
+
     <attribute side="server" code="0x0000" define="TEMPERATURE_DISPLAY_MODE" type="TemperatureDisplayModeEnum" min="0x00" max="0x01" writable="true" default="0x00">
       <description>TemperatureDisplayMode</description>
       <mandatoryConform/>
     </attribute>
+    
     <attribute side="server" code="0x0001" define="KEYPAD_LOCKOUT" type="KeypadLockoutEnum" min="0x00" max="0x05" writable="true" default="0x00">
       <description>KeypadLockout</description>
       <access op="read" role="view"/>

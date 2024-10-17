@@ -31,14 +31,16 @@ limitations under the License.
         <optionalConform/>
       </feature>
     </features>
+
     <attribute side="server" code="0x0000" define="MEDIA_INPUT_LIST" type="array" entryType="InputInfoStruct" length="254">
       <description>InputList</description>
       <mandatoryConform/>
     </attribute>
-    <attribute side="server" code="0x0001" define="MEDIA_INPUT_CURRENT_INPUT" type="int8u" default="0x00" min="0x00" max="0xFF">
+    <attribute side="server" code="0x0001" define="MEDIA_INPUT_CURRENT_INPUT" type="int8u">
       <description>CurrentInput</description>
       <mandatoryConform/>
     </attribute>
+
     <command source="client" code="0x00" name="SelectInput" optional="false">
       <description>Upon receipt, this SHALL change the input on the media device to the input at a specific index in the Input List.</description>
       <arg name="Index" type="int8u"/>
@@ -46,7 +48,7 @@ limitations under the License.
     </command>
 
     <command source="client" code="0x01" name="ShowInputStatus" optional="false">
-      <description>Upon receipt, this command SHALL display the active status of the input list on screen.</description>
+      <description>Upon receipt, this SHALL display the active status of the input list on screen.</description>
       <mandatoryConform/>
     </command>
 
