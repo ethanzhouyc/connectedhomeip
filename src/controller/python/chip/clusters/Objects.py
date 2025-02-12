@@ -25764,10 +25764,6 @@ class EnergyEvseMode(Cluster):
             # prone, and was removed. See
             # src/app/common/templates/config-data.yaml.
 
-    class Bitmaps:
-        class Feature(IntFlag):
-            kOnOff = 0x1
-
     class Structs:
         @dataclass
         class ModeTagStruct(ClusterObject):
@@ -25991,10 +25987,6 @@ class WaterHeaterMode(Cluster):
             # cluster. As a result having kUnknownEnumValue in this enum is error
             # prone, and was removed. See
             # src/app/common/templates/config-data.yaml.
-
-    class Bitmaps:
-        class Feature(IntFlag):
-            kOnOff = 0x1
 
     class Structs:
         @dataclass
@@ -26220,10 +26212,6 @@ class DeviceEnergyManagementMode(Cluster):
             # cluster. As a result having kUnknownEnumValue in this enum is error
             # prone, and was removed. See
             # src/app/common/templates/config-data.yaml.
-
-    class Bitmaps:
-        class Feature(IntFlag):
-            kOnOff = 0x1
 
     class Structs:
         @dataclass

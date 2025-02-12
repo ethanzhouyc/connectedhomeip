@@ -2273,10 +2273,6 @@ provisional cluster DeviceEnergyManagementMode = 159 {
     kGridOptimization = 16387;
   }
 
-  bitmap Feature : bitmap32 {
-    kOnOff = 0x1;
-  }
-
   struct ModeTagStruct {
     optional vendor_id mfgCode = 0;
     enum16 value = 1;

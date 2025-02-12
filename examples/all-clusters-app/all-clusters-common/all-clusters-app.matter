@@ -4970,10 +4970,6 @@ cluster EnergyEvseMode = 157 {
     kV2X = 16387;
   }
 
-  bitmap Feature : bitmap32 {
-    kOnOff = 0x1;
-  }
-
   struct ModeTagStruct {
     optional vendor_id mfgCode = 0;
     enum16 value = 1;
@@ -5025,10 +5021,6 @@ cluster WaterHeaterMode = 158 {
     kOff = 16384;
     kManual = 16385;
     kTimed = 16386;
-  }
-
-  bitmap Feature : bitmap32 {
-    kOnOff = 0x1;
   }
 
   struct ModeTagStruct {
@@ -5083,10 +5075,6 @@ provisional cluster DeviceEnergyManagementMode = 159 {
     kDeviceOptimization = 16385;
     kLocalOptimization = 16386;
     kGridOptimization = 16387;
-  }
-
-  bitmap Feature : bitmap32 {
-    kOnOff = 0x1;
   }
 
   struct ModeTagStruct {
