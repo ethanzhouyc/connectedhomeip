@@ -64,6 +64,13 @@ def AttrsToAttribute(attrs) -> Attribute:
        underlying IDL Attribute dataclass.
     """
 
+    # support parsing list type format of both
+    #   <attribute type="array" entryType="int8u" ... /> and
+    #   <attribute type="int8u" array="true" ... />
+    if attrs.get('array', 'false') == 'true':
+        attrs['entryType'] = attrs['type']
+        attrs['type'] = 'array'
+
     if attrs['type'].lower() == 'array':
         data_type = DataType(name=attrs['entryType'])
     else:
